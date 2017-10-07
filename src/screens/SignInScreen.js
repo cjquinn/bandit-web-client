@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom';
 // Components
 import Input from '../components/Input';
 
-const ActivateAccountScreen = () => (
+const SignInScreen = () => (
     <div>
-        <h1>Activate account</h1>
-        <p>Join the ranks at Shoreditch Park Squash</p>
+        <h1>Bandit</h1>
+        <p>Game, match, bandit</p>
 
         <form>
             <Input
-                id="name"
-                label="Name"
-                name="name"
+                id="email"
+                label="Email"
+                name="email"
+                type="email"
             />
 
             <Input
@@ -24,15 +25,15 @@ const ActivateAccountScreen = () => (
             />
 
             <button type="submit">
-                Activate my account
+                Sign in
             </button>
         </form>
 
         <div>
-            <Link to="/sign-in">Sign in</Link>
             <Link to="/create-club">Create a club</Link>
+            <Link to="/request-password-reset">Reset password</Link>
         </div>
     </div>
 );
 
-export default ActivateAccountScreen;
+export default SignInScreen;

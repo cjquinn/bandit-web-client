@@ -42,10 +42,6 @@ const UserSettingsScreen = () => (
                 Update my settings
             </button>
         </form>
-
-        <div>
-            <a href="/sign-out">Sign out</a>
-        </div>
     </div>
 );
 
