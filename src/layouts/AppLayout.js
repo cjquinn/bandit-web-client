@@ -27,11 +27,10 @@ import SignInScreen from '../screens/SignInScreen';
 import UserSettingsScreen from '../screens/UserSettingsScreen';
 
 const AppLayout = () => (
-    <div class="o-window">
+    <div className="o-window">
+        <Header />
+
         <Switch>
-
-            <Header />
-
             {/* Club */}
             <Route exact path="/create-club-authenticated" component={CreateClubAuthenticatedScreen} />
             <Route exact path="/create-club-unauthenticated" component={CreateClubUnauthenticatedScreen} />
