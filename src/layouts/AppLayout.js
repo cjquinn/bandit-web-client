@@ -1,6 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+// Components
+import Header from '../components/Header';
+
 // Screens
 import ActivateAccountScreen from '../screens/ActivateAccountScreen';
 import AddResultScreen from '../screens/AddResultScreen';
@@ -24,41 +27,46 @@ import SignInScreen from '../screens/SignInScreen';
 import UserSettingsScreen from '../screens/UserSettingsScreen';
 
 const AppLayout = () => (
-    <Switch>
-        {/* Club */}
-        <Route exact path="/create-club-authenticated" component={CreateClubAuthenticatedScreen} />
-        <Route exact path="/create-club-unauthenticated" component={CreateClubUnauthenticatedScreen} />
-        <Route exact path="/clubs" component={ClubsScreen} />
-        <Route exact path="/club" component={ClubScreen} />
-        <Route exact path="/club-settings" component={ClubSettingsScreen} />
+    <div class="o-window">
+        <Switch>
 
-        {/* Dashboard */}
-        <Route exact path="/" component={DashboardScreen} />
+            <Header />
 
-        {/* Dispute */}
-        <Route exact path="/disputes" component={DisputesScreen} />
-        <Route exact path="/dispute" component={DisputeScreen} />
+            {/* Club */}
+            <Route exact path="/create-club-authenticated" component={CreateClubAuthenticatedScreen} />
+            <Route exact path="/create-club-unauthenticated" component={CreateClubUnauthenticatedScreen} />
+            <Route exact path="/clubs" component={ClubsScreen} />
+            <Route exact path="/club" component={ClubScreen} />
+            <Route exact path="/club-settings" component={ClubSettingsScreen} />
 
-        {/* Leaderboard */}
-        <Route exact path="/leaderboard" component={LeaderboardScreen} />
+            {/* Dashboard */}
+            <Route exact path="/" component={DashboardScreen} />
 
-        {/* Player */}
-        <Route exact path="/invite-player" component={InvitePlayerScreen} />
-        <Route exact path="/players" component={PlayersScreen} />
-        <Route exact path="/player" component={PlayerScreen} />
+            {/* Dispute */}
+            <Route exact path="/disputes" component={DisputesScreen} />
+            <Route exact path="/dispute" component={DisputeScreen} />
 
-        {/* Result */}
-        <Route exact path="/add-result" component={AddResultScreen} />
-        <Route exact path="/results" component={ResultsScreen} />
-        <Route exact path="/result" component={ResultScreen} />
+            {/* Leaderboard */}
+            <Route exact path="/leaderboard" component={LeaderboardScreen} />
 
-        {/* User */}
-        <Route exact path="/activate-account" component={ActivateAccountScreen} />
-        <Route exact path="/request-password-reset" component={RequestPasswordResetScreen} />
-        <Route exact path="/reset-password" component={ResetPasswordScreen} />
-        <Route exact path="/sign-in" component={SignInScreen} />
-        <Route exact path="/user-settings" component={UserSettingsScreen} />
-    </Switch>
+            {/* Player */}
+            <Route exact path="/invite-player" component={InvitePlayerScreen} />
+            <Route exact path="/players" component={PlayersScreen} />
+            <Route exact path="/player" component={PlayerScreen} />
+
+            {/* Result */}
+            <Route exact path="/add-result" component={AddResultScreen} />
+            <Route exact path="/results" component={ResultsScreen} />
+            <Route exact path="/result" component={ResultScreen} />
+
+            {/* User */}
+            <Route exact path="/activate-account" component={ActivateAccountScreen} />
+            <Route exact path="/request-password-reset" component={RequestPasswordResetScreen} />
+            <Route exact path="/reset-password" component={ResetPasswordScreen} />
+            <Route exact path="/sign-in" component={SignInScreen} />
+            <Route exact path="/user-settings" component={UserSettingsScreen} />
+        </Switch>
+    </div>
 );
 
 export default AppLayout;
