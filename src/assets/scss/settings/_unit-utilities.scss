@@ -1,0 +1,290 @@
+/*
+
+// top, right, bottom, left
+// width, min-width, max-width, // height, min-height, max-height,
+// margin..., padding...,
+
+*/
+
+$unitUtilitiesSettings: (
+  ( property: 'width',
+    propertyClass: 'width-',
+
+    units: (
+      (
+        unit: 'baseline',
+        unitClass: 'bl',
+
+        values: (
+          (
+            value: calc(var(--Baseline)),
+            valueClass: '1',
+          ),
+          (
+            value: calc(var(--Baseline) * 2),
+            valueClass: '2',
+          ),
+          (
+            value: calc(var(--Baseline) * 2.5),
+            valueClass: '205',
+          ),
+          (
+            value: calc(var(--Baseline) * 3),
+            valueClass: '3',
+          ),
+          (
+            value: calc(var(--Baseline) * 4),
+            valueClass: '4',
+          ),
+          (
+            value: calc(var(--Baseline) * 6),
+            valueClass: '6',
+          ),
+        ),
+      ),
+      (
+        unit: '%',
+        unitClass: 'pc',
+
+        values: (
+          (
+            value: 100,
+          ),
+        ),
+      ),
+    ),
+  ),
+  ( property: 'height',
+    propertyClass: 'height-',
+
+    units: (
+      (
+        unit: '%',
+        unitClass: 'pc',
+
+        values: (
+          (
+            value: 100,
+          ),
+        ),
+      ),
+      (
+        unit: 'rem',
+
+        values: (
+          (
+            value: 5,
+          ),
+        ),
+      ),
+      (
+        unit: 'px',
+
+        values: (
+          (
+            value: 2,
+          ),
+        ),
+      ),
+    ),
+
+    keywords: (
+      (
+        keyword: 'auto',
+      ),
+    ),
+  ),
+  ( property: ('margin-right', 'margin-left'),
+    propertyClass: 'mh-',
+
+    keywords: (
+      (
+        keyword: 'auto',
+      ),
+    ),
+  ),
+  ( property: ('margin-right'),
+    propertyClass: 'mr-',
+
+    units: (
+      (
+        unit: 'baseline',
+        unitClass: 'bl',
+
+        values: (
+          (
+            value: calc(var(--Baseline) * 1),
+            valueClass: 1,
+          ),
+          (
+            value: calc(var(--Baseline) * 2),
+            valueClass: 2,
+          ),
+        ),
+      ),
+    ),
+  ),
+  ( property: ('padding-top', 'padding-bottom'),
+    propertyClass: 'pv-',
+
+    units: (
+      (
+        unit: 'baseline',
+        unitClass: 'bl',
+
+        values: (
+          (
+            value: calc(var(--Baseline) * 1),
+            valueClass: 1,
+          ),
+          (
+            value: calc(var(--Baseline) * 1.25),
+            valueClass: 1025,
+          ),
+          (
+            value: calc(var(--Baseline) * 2),
+            valueClass: 2,
+          ),
+          (
+            value: calc(var(--Baseline) * 3),
+            valueClass: 3,
+          ),
+        ),
+      ),
+    ),
+  ),
+  ( property: 'padding-top',
+    propertyClass: 'pt-',
+
+    units: (
+      (
+        unit: 'baseline',
+        unitClass: 'bl',
+
+        values: (
+          (
+            value: calc(var(--Baseline) * 1),
+            valueClass: 1,
+          ),
+          (
+            value: calc(var(--Baseline) * 2),
+            valueClass: 2,
+          ),
+        ),
+      ),
+    ),
+  ),
+  ( property: 'margin-top',
+    propertyClass: 'mt-',
+
+    units: (
+      (
+        unit: 'baseline',
+        unitClass: 'bl',
+
+        values: (
+          (
+            value: calc(var(--Baseline) * 1),
+            valueClass: 1,
+          ),
+          (
+            value: calc(var(--Baseline) * 2),
+            valueClass: 2,
+          ),
+        ),
+      ),
+    ),
+
+    keywords: (
+      (
+        keyword: 'auto',
+      ),
+    ),
+  ),
+  ( property: 'margin-bottom',
+    propertyClass: 'mb-',
+
+    keywords: (
+      (
+        keyword: 'auto',
+      ),
+    ),
+  ),
+  ( property: ('padding-left', 'padding-right'),
+    propertyClass: 'ph-',
+
+    units: (
+      (
+        unit: 'baseline',
+        unitClass: 'bl',
+
+        values: (
+          (
+            value: calc(var(--Baseline) * 1),
+            valueClass: 1,
+          ),
+          (
+            value: calc(var(--Baseline) * 2),
+            valueClass: 2,
+          ),
+        ),
+      ),
+    ),
+  ),
+  ( property: 'min-height',
+    propertyClass: 'minh-',
+
+    units: (
+      (
+        unit: 'vh',
+
+        values: (
+          (
+            value: 90,
+          ),
+        ),
+      ),
+    ),
+  ),
+  ( property: 'font-size',
+    propertyClass: 'size-',
+
+    units: (
+      (
+        unit: '',
+        unitClass: '',
+
+        values: (
+          (
+            value: $font-size-h1,
+            valueClass: 'h1',
+          ),
+          (
+            value: $font-size-h2,
+            valueClass: 'h2',
+          ),
+          (
+            value: $font-size-h3,
+            valueClass: 'h3',
+          ),
+          (
+            value: $font-size-h4,
+            valueClass: 'h4',
+          ),
+        ),
+      ),
+      (
+        unit: 'px',
+
+        values: (
+          (
+            value: 13,
+          ),
+          (
+            value: 14,
+          ),
+        ),
+      ),
+    ),
+  ),
+);

@@ -1,0 +1,14 @@
+@mixin aspect-ratio($padding) {
+  @extend .u-pos-relative;
+
+  &:before {
+    @extend %no-content;
+    @extend .u-block;
+    @extend .u-width-100pc;
+    padding-top: $padding;
+  }
+
+  > * {
+    @extend .u-pos-absolute;
+  }
+}

@@ -1,0 +1,33 @@
+/**
+ * .o-main
+ * The contents of this view, below the navigation.
+ */
+
+$object: 'main';
+
+#{'.' + $iota-global-objects-namespace + $object} {
+  @extend .u-flex;
+  @extend .u-fd-col;
+  @extend .u-grow-1;
+  @extend .u-bgcolor-floor;
+  @extend .u-borrad-6;
+  @extend .u-vspace-all-3bl;
+
+  > *:nth-last-child(2) {
+    // push the footer to the bottom, but keep the footer's margin-top
+    @extend .u-mb-auto;
+  }
+
+  > * {
+    // animate in each section, delayed
+    @extend .u-opac-0;
+    animation: fadeUpIn .3s ease-out;
+    animation-fill-mode: forwards;
+
+    @for $i from 2 through 7 {
+      &:nth-child(#{$i}) {
+        animation-delay: #{.05 * $i}s;
+      }
+    }
+  }
+}

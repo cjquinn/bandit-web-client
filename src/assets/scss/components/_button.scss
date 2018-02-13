@@ -1,0 +1,63 @@
+/**
+ * .c-button
+ */
+
+$component: 'button';
+
+#{'.' + $iota-global-components-namespace + $component} {
+  @extend .u-pos-relative;
+  @extend .u-flex;
+  @extend .u-ai-center;
+  @extend .u-jc-around;
+  @extend .u-borrad-3;
+  @extend .u-size-h4;
+  @extend .u-weight-bold;
+  @extend .u-align-center;
+  @extend .u-pv-1bl;
+  letter-spacing: -0.5px;
+
+  &:not(:hover):not(:focus) {
+    // if these get to violate a modifier - don't add more :not's, just make a modifier whatever 'this' is describing.
+    @extend .u-bgcolor-floor;
+  }
+
+
+  &:active {
+    @extend .u-bgcolor-mariana;
+    box-shadow: 0 -3px 10px 0 rgba(0,2,7,0.25), inset 0 7px 10px 0 rgba(0,2,7, .39);
+  }
+
+  &--default,
+  &--warning {
+    @extend .u-color-white;
+    border-top: 2px solid $colour-satsuma;
+    border-bottom: 2px solid $colour-orange;
+    box-shadow: 0 3px 10px 0 rgba(0,0,0, .50), inset 0 2px 0 0 $colour-steam;
+
+    &:hover,
+    &:focus {
+      @extend .u-bgcolor-deepblue;
+      box-shadow: 0 3px 10px 0 rgba(0,0,0, .50);
+    }
+  }
+
+  &--default {
+    &:before {
+      // gradient border
+      @extend %no-content;
+      @extend .o-absolute-fill;
+      border-width: 2px;
+      border-style: solid;
+      border-image: linear-gradient(to bottom, $colour-satsuma, $colour-orange) 1 100%;
+    }
+  }
+
+  &--warning {
+    border: 2px solid $colour-hotmelon;
+  }
+
+  &[disabled] {
+    @extend .u-opac-07;
+    border: 2px solid currentColor;
+  }
+}

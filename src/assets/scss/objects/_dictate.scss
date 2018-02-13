@@ -1,0 +1,18 @@
+/**
+ * .o-dictate
+ * Sample component
+ *
+ * Used:
+ * here, here and here.
+ */
+
+$object: 'dictate';
+
+#{'.' + $iota-global-objects-namespace + $object} {
+  @extend .u-ov-hidden;
+  @extend .u-pos-absolute;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}

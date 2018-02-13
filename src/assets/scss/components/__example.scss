@@ -1,0 +1,10 @@
+/**
+ * .c-example
+ * Example component
+ */
+
+$component: 'example';
+
+#{'.' + $iota-global-objects-namespace + $component} {
+
+}

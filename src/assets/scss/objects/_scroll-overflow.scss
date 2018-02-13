@@ -1,0 +1,21 @@
+/**
+ * .o-scroll-overflow
+ */
+
+$object: 'scroll-overflow';
+
+#{'.' + $iota-global-objects-namespace + $object} {
+
+  @extend .u-ovx-auto;
+
+  //
+  // Doesn't work on mobile (hover = touch.. then it works....)
+  //
+  // &:not(:hover) {
+  //   @extend .u-ov-hidden;
+  // }
+
+  // &:hover {
+  //   @extend .u-ovx-auto;
+  // }
+}

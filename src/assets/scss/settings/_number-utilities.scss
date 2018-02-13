@@ -1,0 +1,182 @@
+/**
+ * Number Utilities
+ * - optional: Ranges of Numbers
+ * - optional: Steps within ranges.
+
+ * Classes
+ * - z-index
+ * - opacity
+ * - order
+ * - flex-grow
+ * - flex-shrink
+ * - font-weight
+ */
+
+$numberUtilitiesSettings: (
+  ( property: 'flex-grow',
+    propertyClass: 'grow-',
+
+    values: (
+      (
+        value: 0,
+      ),
+      (
+        value: 1,
+      ),
+    ),
+  ),
+  ( property: 'flex-shrink',
+    propertyClass: 'shrink-',
+
+    values: (
+      (
+        value: 0,
+      ),
+      (
+        value: 1,
+      ),
+    ),
+  ),
+  ( property: 'flex-basis',
+    propertyClass: 'basis-',
+
+    values: (
+      (
+        value: 0,
+      ),
+      (
+        value: 1,
+      ),
+    ),
+  ),
+  ( property: 'opacity',
+    propertyClass: 'opac-',
+
+    values: (
+      (
+        value: 0,
+      ),
+      (
+        value: 0.2,
+        valueClass: '02',
+      ),
+      (
+        value: 0.5,
+        valueClass: '05',
+      ),
+      (
+        value: 0.7,
+        valueClass: '07',
+      ),
+      (
+        value: 1,
+        pseudo: ('hover', 'focus'),
+      ),
+    ),
+  ),
+  ( property: 'order',
+    propertyClass: 'order-',
+
+    values: (
+      (
+        value: 1,
+      ),
+      (
+        value: 2,
+      ),
+      (
+        value: 3,
+      ),
+    ),
+  ),
+  ( property: 'font-weight',
+    propertyClass: 'weight-',
+
+    values: (
+      (
+        value: bold,
+      ),
+    ),
+  ),
+  (
+    property: 'border-radius',
+    propertyClass: 'borrad-',
+
+    values: (
+      (
+        value: '3px',
+        valueClass: '3',
+      ),
+      (
+        value: '6px',
+        valueClass: '6',
+      ),
+      (
+        value: '3px 3px 0 0',
+        valueClass: '3300',
+      ),
+      (
+        value: 'inherit',
+      ),
+    ),
+  ),
+  ( property: 'top',
+    propertyClass: 'top-',
+
+    values: (
+      (
+        value: 0,
+      ),
+    ),
+  ),
+  ( property: 'line-height',
+    propertyClass: 'line-',
+
+    values: (
+      (
+        value: 1.5,
+        valueClass: 105,
+      ),
+
+      (
+        value: 2,
+      ),
+    ),
+  ),
+  ( property: 'right',
+    propertyClass: 'right-',
+
+    values: (
+      (
+        value: 0,
+      ),
+    ),
+  ),
+  ( property: 'bottom',
+    propertyClass: 'bottom-',
+
+    values: (
+      (
+        value: 0,
+      ),
+    ),
+  ),
+  ( property: 'left',
+    propertyClass: 'left-',
+
+    values: (
+      (
+        value: 0,
+      ),
+    ),
+  ),
+  ( property: 'z-index',
+    propertyClass: 'z-',
+
+    values: (
+      (
+        value: 1,
+      ),
+    ),
+  ),
+);
