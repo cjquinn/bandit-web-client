@@ -1,38 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // Components
-import Input from '../components/Input';
+import Template from '../components/Template';
 
 const ActivateAccountScreen = () => (
-    <div>
-        <h1>Activate account</h1>
-        <p>Join the ranks at Shoreditch Park Squash</p>
-
-        <form>
-            <Input
-                id="name"
-                label="Name"
-                name="name"
-            />
-
-            <Input
-                id="password"
-                label="Password"
-                name="password"
-                type="password"
-            />
-
-            <button type="submit">
-                Activate my account
-            </button>
-        </form>
-
-        <div>
-            <Link to="/sign-in">Sign in</Link>
-            <Link to="/create-club">Create a club</Link>
-        </div>
-    </div>
+    <Template>
+        ActivateAccountScreen
+    </Template>
 );
 
 export default ActivateAccountScreen;

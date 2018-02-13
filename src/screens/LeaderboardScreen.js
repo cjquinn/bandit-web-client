@@ -1,9 +1,12 @@
 import React from 'react';
 
+// Components
+import Template from '../components/Template';
+
 const LeaderboardScreen = () => (
-    <div>
-        <h1>Leaderboard</h1>
-    </div>
+    <Template>
+        LeaderboardScreen
+    </Template>
 );
 
 export default LeaderboardScreen;

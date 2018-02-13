@@ -1,26 +1,12 @@
 import React from 'react';
 
 // Components
-import Input from '../components/Input';
+import Template from '../components/Template';
 
 const InvitePlayerScreen = () => (
-    <div>
-        <h1>Invite player</h1>
-        <p>Got a competitive buddy to bring in?</p>
-
-        <form>
-            <Input
-                id="email"
-                label="Email"
-                name="email"
-                type="email"
-            />
-
-            <button type="submit">
-                Send invite
-            </button>
-        </form>
-    </div>
+    <Template>
+        InvitePlayerScreen
+    </Template>
 );
 
 export default InvitePlayerScreen;

@@ -1,9 +1,12 @@
 import React from 'react';
 
+// Components
+import Template from '../components/Template';
+
 const ResultsScreen = () => (
-    <div>
-        <h1>Results</h1>
-    </div>
+    <Template>
+        ResultsScreen
+    </Template>
 );
 
 export default ResultsScreen;

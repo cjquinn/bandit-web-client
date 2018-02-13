@@ -1,9 +1,12 @@
 import React from 'react';
 
+// Components
+import Template from '../components/Template';
+
 const ClubsScreen = () => (
-    <div>
-        <h1>Clubs</h1>
-    </div>
+    <Template>
+        ClubsScreen
+    </Template>
 );
 
 export default ClubsScreen;

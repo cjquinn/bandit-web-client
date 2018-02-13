@@ -1,9 +1,12 @@
 import React from 'react';
 
+// Components
+import Template from '../components/Template';
+
 const DisputesScreen = () => (
-    <div>
-        <h1>Disputes</h1>
-    </div>
+    <Template>
+        DisputesScreen
+    </Template>
 );
 
 export default DisputesScreen;

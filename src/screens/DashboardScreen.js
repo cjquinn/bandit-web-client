@@ -1,9 +1,12 @@
 import React from 'react';
 
+// Components
+import Template from '../components/Template';
+
 const DashboardScreen = () => (
-    <div>
-        <h1>Dashboard</h1>
-    </div>
+    <Template>
+        DashboardScreen
+    </Template>
 );
 
 export default DashboardScreen;

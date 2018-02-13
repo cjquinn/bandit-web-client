@@ -1,10 +1,11 @@
 import React from 'react';
 
+import Template from '../components/Template';
+
 const AddResultScreen = () => (
-    <div>
-        <h1>Add a result</h1>
-        <p>Who did you beat, and if you didn&rsquo;t why are you adding the result loser?</p>
-    </div>
+    <Template>
+        AddResultScreen
+    </Template>
 );
 
 export default AddResultScreen;
