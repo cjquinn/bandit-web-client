@@ -1,8 +1,16 @@
 import React from 'react';
 
 // Components
-import Template from '../components/Template';
+import Footer from '../components/Footer';
+
 import Disputes from '../components/Disputes';
+import DashboardMatches from '../components/DashboardMatches';
+
+import Match from '../components/Match';
+import Template from '../components/Template';
+
+import AllTimeLeaderboardPlayer from '../components/AllTimeLeaderboardPlayer';
+import WeeklyLeaderboardPlayer from '../components/WeeklyLeaderboardPlayer';
 
 const DashboardScreen = () => (
     <Template>
@@ -11,30 +19,7 @@ const DashboardScreen = () => (
 
             <Disputes />
 
-            <section id="matches" className="o-container">
-
-                <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                    <h1 className="u-size-h2 u-color-white">Matches</h1>
-                    <a href="/matches.php" className="c-go u-color-playdough">go to</a>
-                </header>
-
-                <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                    {/* 
-                    <?php
-
-                        for ($i = 1; $i < 4; $i++) {
-                            include('components/result-row.php');
-                        }
-
-                    ?>
-                    */}
-                </ol>
-
-                <footer className="u-ph-1bl">
-                    <a href="/add-matches.php" className="c-button c-button--default u-mt-1bl">Add Matches</a>
-                </footer>
-
-            </section>
+            <DashboardMatches />
 
             <section id="weekly-leaderboard" className="o-container">
 
@@ -44,15 +29,10 @@ const DashboardScreen = () => (
                 </header>
 
                 <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                    {/* 
-                    <?php
 
-                        for ($i = 1; $i < 4; $i++) {
-                            include('components/weekly-leaderboard-row.php');
-                        }
-
-                    ?>
-                    */ }
+                    <WeeklyLeaderboardPlayer />
+                    <WeeklyLeaderboardPlayer />
+                    <WeeklyLeaderboardPlayer />
                 </ol>
 
             </section>
@@ -66,18 +46,15 @@ const DashboardScreen = () => (
 
                 <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
 
-                    {/* 
-                    <?php
+                    <AllTimeLeaderboardPlayer />
+                    <AllTimeLeaderboardPlayer />
+                    <AllTimeLeaderboardPlayer />
 
-                        for ($i = 1; $i < 4; $i++) {
-                            include('components/alltime-leaderboard-row.php');
-                        }
-
-                    ?>
-                    */}
                 </ol>
 
             </section>
+
+            <Footer />
 
         </main>
 
