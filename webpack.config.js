@@ -12,7 +12,7 @@ module.exports = {
     ],
 
     output: {
-        path: resolve(__dirname, 'public'),
+        path: resolve(__dirname, 'webroot'),
         filename: 'bundle.js'
     },
 
@@ -20,7 +20,7 @@ module.exports = {
         host: 'localhost',
         port: 3000,
         historyApiFallback: true,
-        contentBase: resolve(__dirname, 'public'),
+        contentBase: resolve(__dirname, 'webroot'),
         hot: true
     },
 
