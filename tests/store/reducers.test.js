@@ -1,5 +1,5 @@
 // Actions
-import { signOut } from '../../src/store/User/actions';
+import { SIGN_OUT } from '../../src/store/User/actions';
 
 // Api
 import { getJwt, setJwt } from '../../src/store/api';
@@ -18,21 +18,18 @@ describe('initial state', () => {
 });
 
 describe('app', () => {
-    it(signOut.toString(), () => {
-        setJwt({data: {jwt: 'JWT_TOKEN'}});
-
+    it(SIGN_OUT, () => {
         const state = {
         };
 
         const expected = {
         };
 
-        const updatedState = reducers(state, signOut());
+        const updatedState = reducers(state, {type: SIGN_OUT});
 
         // External reducers
         expected.form = updatedState.form;
 
-        expect(reducers(state, signOut())).toEqual(expected);
-        expect(getJwt()).toBeNull();
+        expect(updatedState).toEqual(expected);
     });
 });
