@@ -8,13 +8,16 @@ const ids = handleActions({
     [actions.fetchClubsSuccess]: (state, action) => action.payload.result
 }, []);
 
-const isFetching = handleActions({
-    [actions.fetchClubsRequest]: () => true,
-    [combineActions(
-        actions.fetchClubsFailure,
-        actions.fetchClubsSuccess,
-    )]: () => false
-}, false);
+const isFetching = handleActions(
+    {
+        [actions.fetchClubsRequest]: () => true,
+        [combineActions(
+            actions.fetchClubsFailure,
+            actions.fetchClubsSuccess,
+        )]: () => false
+    },
+    false
+);
 
 const reducers = combineReducers({ids, isFetching});
 
