@@ -18,14 +18,14 @@ describe('app', () => {
     it(SIGN_OUT, () => {
         const state = {
             user: {
-                current: {id: 1},
+                id: 1,
                 isLoading: true
             }
         };
 
         const expected = {
             user: {
-                current: null,
+                id: null,
                 isLoading: false
             }
         };

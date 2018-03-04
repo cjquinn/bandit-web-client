@@ -7,7 +7,7 @@ import reducers from '../../../src/store/User/reducers';
 describe('initial state', () => {
     it('shape', () => {
         const expected = {
-            current: null,
+            id: null,
             isLoading: false
         };
 
@@ -18,14 +18,14 @@ describe('initial state', () => {
 describe('activateAccount', () => {
     it(actions.activateAccountSuccess.toString(), () => {
         const state = {
-            current: null,
+            id: null,
             isLoading: false
         };
 
-        const payload = {id: 1};
+        const payload = {result: 1};
 
         const expected = {
-            current: payload,
+            id: payload.result,
             isLoading: false
         };
 
@@ -36,12 +36,12 @@ describe('activateAccount', () => {
 describe('fetchCurrentUser', () => {
     it(actions.fetchCurrentUserRequest.toString(), () => {
         const state = {
-            current: null,
+            id: null,
             isLoading: false
         };
 
         const expected = {
-            current: null,
+            id: null,
             isLoading: true
         };
 
@@ -50,12 +50,12 @@ describe('fetchCurrentUser', () => {
 
     it(actions.fetchCurrentUserFailure.toString(), () => {
         const state = {
-            current: null,
+            id: null,
             isLoading: true
         };
 
         const expected = {
-            current: null,
+            id: null,
             isLoading: false
         };
 
@@ -64,14 +64,14 @@ describe('fetchCurrentUser', () => {
 
     it(actions.fetchCurrentUserSuccess.toString(), () => {
         const state = {
-            current: null,
+            id: null,
             isLoading: true
         };
 
-        const payload = {id: 1};
+        const payload = {result: 1};
 
         const expected = {
-            current: payload,
+            id: payload.result,
             isLoading: false
         };
 
@@ -82,35 +82,17 @@ describe('fetchCurrentUser', () => {
 describe('signIn', () => {
     it(actions.signInSuccess.toString(), () => {
         const state = {
-            current: null,
+            id: null,
             isLoading: false
         };
 
-        const payload = {id: 1};
+        const payload = {result: 1};
 
         const expected = {
-            current: payload,
+            id: payload.result,
             isLoading: false
         };
 
         expect(reducers(state, actions.signInSuccess(payload))).toEqual(expected);
-    });
-});
-
-describe('updateSettings', () => {
-    it(actions.updateSettingsSuccess.toString(), () => {
-        const state = {
-            current: {id: 1, email: 'christy@banditmatch.com'},
-            isLoading: false
-        };
-
-        const payload = {id: 1, email: 'russell@banditmatch.com'};
-
-        const expected = {
-            current: payload,
-            isLoading: false
-        };
-
-        expect(reducers(state, actions.updateSettingsSuccess(payload))).toEqual(expected);
     });
 });

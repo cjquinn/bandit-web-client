@@ -2,32 +2,39 @@ import { getCurrentUser, getIsAuthorised, getIsLoading } from '../../../src/stor
 
 describe('selectors', () => {
     it('getCurrentUser', () => {
-        let state = {user: {current: null}};
+        let state = {
+            entities: {
+                users: {1: {id: 1, name: 'Christy'}}
+            },
+            user: {id: 1}
+        };
 
-        expect(getCurrentUser(state)).toEqual(null);
-
-        state = {user: {current: {id: 1}}};
-
-        expect(getCurrentUser(state)).toEqual({id: 1});
+        expect(getCurrentUser(state)).toEqual({id: 1, name: 'Christy'});
     });
 
     it('getIsAuthorised', () => {
-        let state = {user: {current: null}};
+        let state = {
+            entities: {
+                users: {1: {id: 1, name: 'Christy'}}
+            },
+            user: {id: null}
+        };
 
         expect(getIsAuthorised(state)).toBe(false);
 
-        state = {user: {current: {id: 1}}};
+        state = {
+            entities: {
+                users: {1: {id: 1, name: 'Christy'}}
+            },
+            user: {id: 1}
+        };
 
         expect(getIsAuthorised(state)).toBe(true);
     });
 
     it('getIsLoading', () => {
-        let state = {user: {isLoading: false}};
+        const state = {user: {isLoading: false}};
 
         expect(getIsLoading(state)).toBe(false);
-
-        state = {user: {isLoading: true}};
-
-        expect(getIsLoading(state)).toBe(true);
     });
 });

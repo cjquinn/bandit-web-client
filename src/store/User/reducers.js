@@ -4,13 +4,12 @@ import { combineActions, handleActions } from 'redux-actions';
 // Actions
 import * as actions from './actions';
 
-const current = handleActions({
+const id = handleActions({
     [combineActions(
         actions.activateAccountSuccess,
         actions.fetchCurrentUserSuccess,
-        actions.signInSuccess,
-        actions.updateSettingsSuccess
-    )]: (state, { payload }) => payload
+        actions.signInSuccess
+    )]: (state, { payload }) => payload.result
 }, null);
 
 const isLoading = handleActions({
@@ -21,6 +20,6 @@ const isLoading = handleActions({
     )]: () => false
 }, false);
 
-const reducers = combineReducers({current, isLoading});
+const reducers = combineReducers({id, isLoading});
 
 export default reducers;

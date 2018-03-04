@@ -1,4 +1,8 @@
+import { normalize } from 'normalizr';
 import { createAction } from 'redux-actions';
+
+// Schema
+import { user as userSchema } from '../schema';
 
 /**
  * Activate account
@@ -13,7 +17,8 @@ export const activateAccount = data => (dispatch, getState, api) => {
     return api.activateAccount(data)
         .then(api.checkStatus)
         .then(api.setJwt)
-        .then(response => dispatch(activateAccountSuccess(response.data.user)))
+        .then(response => normalize(response.data.user, userSchema))
+        .then(normalizedData => dispatch(activateAccountSuccess(normalizedData)))
         .catch(api.handleError(dispatch, activateAccountFailure));
 };
 
@@ -29,7 +34,8 @@ export const fetchCurrentUser = () => (dispatch, getState, api) => {
 
     return api.fetchCurrentUser()
         .then(api.checkStatus)
-        .then(response => dispatch(fetchCurrentUserSuccess(response.data.user)))
+        .then(response => normalize(response.data.user, userSchema))
+        .then(normalizedData => dispatch(fetchCurrentUserSuccess(normalizedData)))
         .catch(api.handleError(dispatch, fetchCurrentUserFailure));
 };
 
@@ -78,7 +84,8 @@ export const signIn = data => (dispatch, getState, api) => {
     return api.signIn(data)
         .then(api.checkStatus)
         .then(api.setJwt)
-        .then(response => dispatch(signInSuccess(response.data.user)))
+        .then(response => normalize(response.data.user, userSchema))
+        .then(normalizedData => dispatch(signInSuccess(normalizedData)))
         .catch(api.handleError(dispatch, signInFailure));
 };
 
@@ -105,7 +112,8 @@ export const updateSettings = data => (dispatch, getState, api) => {
 
     return api.updateSettings(data)
         .then(api.checkStatus)
-        .then(response => dispatch(updateSettingsSuccess(response.data.user)))
+        .then(response => normalize(response.data.user, userSchema))
+        .then(normalizedData => dispatch(updateSettingsSuccess(normalizedData)))
         .catch(api.handleError(dispatch, updateSettingsFailure));
 };
 

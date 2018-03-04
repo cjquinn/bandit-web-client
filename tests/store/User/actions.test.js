@@ -36,7 +36,7 @@ describe('activateAccount', () => {
         mock
             .onPatch('/users/activate-account.json?token=123')
             .reply(200, {
-                user: {id: 1, email: 'christy@banditmatch.com'},
+                user: {id: 1},
                 jwt: 'TOKEN'
             });
 
@@ -47,8 +47,10 @@ describe('activateAccount', () => {
                     {
                         type: actions.activateAccountSuccess.toString(),
                         payload: {
-                            id: 1,
-                            email: 'christy@banditmatch.com'
+                            result: 1,
+                            entities: {
+                                users: {1: {id: 1}}
+                            }
                         }
                     }
                 ];
@@ -85,7 +87,7 @@ describe('fetchCurrentUser', () => {
         mock
             .onGet('/users/current.json')
             .reply(200, {
-                user: {id: 1, email: 'christy@banditmatch.com'}
+                user: {id: 1}
             });
 
         return store.dispatch(actions.fetchCurrentUser())
@@ -95,8 +97,10 @@ describe('fetchCurrentUser', () => {
                     {
                         type: actions.fetchCurrentUserSuccess.toString(),
                         payload: {
-                            id: 1,
-                            email: 'christy@banditmatch.com'
+                            result: 1,
+                            entities: {
+                                users: {1: {id: 1}}
+                            }
                         }
                     }
                 ];
@@ -210,7 +214,7 @@ describe('signIn', () => {
         mock
             .onPost('/users/login.json')
             .reply(200, {
-                user: {id: 1, email: 'christy@banditmatch.com'},
+                user: {id: 1},
                 jwt: 'TOKEN'
             });
 
@@ -220,7 +224,12 @@ describe('signIn', () => {
                     {type: actions.signInRequest.toString()},
                     {
                         type: actions.signInSuccess.toString(),
-                        payload: {id: 1, email: 'christy@banditmatch.com'}
+                        payload: {
+                            result: 1,
+                            entities: {
+                                users: {1: {id: 1}}
+                            }
+                        }
                     }
                 ];
 
@@ -273,7 +282,7 @@ describe('updateSettings', () => {
         mock
             .onPut('/users/update-settings.json')
             .reply(200, {
-                user: {id: 1, email: 'christy@banditmatch.com'}
+                user: {id: 1}
             });
 
         return store.dispatch(actions.updateSettings())
@@ -282,7 +291,12 @@ describe('updateSettings', () => {
                     {type: actions.updateSettingsRequest.toString()},
                     {
                         type: actions.updateSettingsSuccess.toString(),
-                        payload: {id: 1, email: 'christy@banditmatch.com'}
+                        payload: {
+                            result: 1,
+                            entities: {
+                                users: {1: {id: 1}}
+                            }
+                        }
                     }
                 ];
 
