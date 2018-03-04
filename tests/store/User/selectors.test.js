@@ -1,6 +1,16 @@
-import { getIsAuthorised, getIsLoading } from '../../../src/store/User/selectors';
+import { getCurrentUser, getIsAuthorised, getIsLoading } from '../../../src/store/User/selectors';
 
 describe('selectors', () => {
+    it('getCurrentUser', () => {
+        let state = {user: {current: null}};
+
+        expect(getCurrentUser(state)).toEqual(null);
+
+        state = {user: {current: {id: 1}}};
+
+        expect(getCurrentUser(state)).toEqual({id: 1});
+    });
+
     it('getIsAuthorised', () => {
         let state = {user: {current: null}};
 

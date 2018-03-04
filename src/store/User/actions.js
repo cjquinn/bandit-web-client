@@ -12,6 +12,7 @@ export const activateAccount = data => (dispatch, getState, api) => {
 
     return api.activateAccount(data)
         .then(api.checkStatus)
+        .then(api.setJwt)
         .then(response => dispatch(activateAccountSuccess(response.data.user)))
         .catch(api.handleError(dispatch, activateAccountFailure));
 };
@@ -76,6 +77,7 @@ export const signIn = data => (dispatch, getState, api) => {
 
     return api.signIn(data)
         .then(api.checkStatus)
+        .then(api.setJwt)
         .then(response => dispatch(signInSuccess(response.data.user)))
         .catch(api.handleError(dispatch, signInFailure));
 };

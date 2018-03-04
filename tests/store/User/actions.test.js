@@ -36,7 +36,8 @@ describe('activateAccount', () => {
         mock
             .onPatch('/users/activate-account.json?token=123')
             .reply(200, {
-                user: {id: 1, email: 'christy@banditmatch.com'}
+                user: {id: 1, email: 'christy@banditmatch.com'},
+                jwt: 'TOKEN'
             });
 
         return store.dispatch(actions.activateAccount(123))
@@ -53,6 +54,7 @@ describe('activateAccount', () => {
                 ];
 
                 expect(store.getActions()).toEqual(expected);
+                expect(getJwt()).toEqual('TOKEN');
             });
     });
 });
@@ -208,7 +210,8 @@ describe('signIn', () => {
         mock
             .onPost('/users/login.json')
             .reply(200, {
-                user: {id: 1, email: 'christy@banditmatch.com'}
+                user: {id: 1, email: 'christy@banditmatch.com'},
+                jwt: 'TOKEN'
             });
 
         return store.dispatch(actions.signIn())
@@ -222,6 +225,7 @@ describe('signIn', () => {
                 ];
 
                 expect(store.getActions()).toEqual(expected);
+                expect(getJwt()).toEqual('TOKEN');
             });
     });
 });

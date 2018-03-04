@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { forIn, isPlainObject } from 'lodash';
 import { SubmissionError } from 'redux-form';
-import { push } from 'react-router-redux'
+import { push } from 'react-router-redux';
 
 
 // Actions
 import { signOut } from './User/actions';
 
 // Endpoints
+export * from './Club/endpoints';
 export * from './User/endpoints';
 
 /**
