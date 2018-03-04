@@ -8,7 +8,7 @@ describe('initial state', () => {
     it('shape', () => {
         const state = reducers(undefined, {});
 
-        const expected = ['form', 'router', 'user'];
+        const expected = ['club', 'form', 'entities', 'router', 'user'];
 
         expect(Object.keys(state)).toEqual(expected);
     });
@@ -17,6 +17,18 @@ describe('initial state', () => {
 describe('app', () => {
     it(SIGN_OUT, () => {
         const state = {
+            club: {
+                ids: [1],
+                isFetching: true
+            },
+            entities: {
+                clubs: {1: {id: 1}},
+                disputes: {1: {id: 1}},
+                matches: {1: {id: 1}},
+                players: {1: {id: 1}},
+                snapshots: {1: {id: 1}},
+                users: {1: {id: 1}}
+            },
             user: {
                 id: 1,
                 isLoading: true
@@ -24,6 +36,18 @@ describe('app', () => {
         };
 
         const expected = {
+            club: {
+                ids: [],
+                isFetching: false
+            },
+            entities: {
+                clubs: {},
+                disputes: {},
+                matches: {},
+                players: {},
+                snapshots: {},
+                users: {}
+            },
             user: {
                 id: null,
                 isLoading: false
