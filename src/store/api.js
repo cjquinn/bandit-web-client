@@ -1,9 +1,14 @@
 import axios from 'axios';
 import { forIn, isPlainObject } from 'lodash';
 import { SubmissionError } from 'redux-form';
+import { push } from 'react-router-redux'
+
 
 // Actions
 import { signOut } from './User/actions';
+
+// Endpoints
+export * from './User/endpoints';
 
 /**
  * Function to flattern cakephp error format
@@ -43,17 +48,12 @@ export const handleError = (dispatch, failure) => response => {
         case 403:
             return dispatch(signOut());
 
+        case 404:
+            return dispatch(push('/not-found'));
+
         default:
-            throw response;
+            return dispatch(push('/error'));
     }
-};
-
-export const handle404 = history => response => {
-    if (response.status === 404) {
-        history.replace('/not-found');
-    }
-
-    throw response;
 };
 
 /**

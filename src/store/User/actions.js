@@ -7,12 +7,30 @@ export const activateAccountRequest = createAction('ACTIVE_ACCOUNT_REQUEST');
 export const activateAccountSuccess = createAction('ACTIVE_ACCOUNT_SUCCESS');
 export const activateAccountFailure = createAction('ACTIVE_ACCOUNT_FAILURE');
 
+export const activateAccount = data => (dispatch, getState, api) => {
+    dispatch(activateAccountRequest());
+
+    return api.activateAccount(data)
+        .then(api.checkStatus)
+        .then(response => dispatch(activateAccountSuccess(response.data.user)))
+        .catch(api.handleError(dispatch, activateAccountFailure));
+};
+
 /**
  * Fetch current user
  */
 export const fetchCurrentUserRequest = createAction('FETCH_CURRENT_USER_REQUEST');
 export const fetchCurrentUserSuccess = createAction('FETCH_CURRENT_USER_SUCCESS');
 export const fetchCurrentUserFailure = createAction('FETCH_CURRENT_USER_FAILURE');
+
+export const fetchCurrentUser = () => (dispatch, getState, api) => {
+    dispatch(fetchCurrentUserRequest());
+
+    return api.fetchCurrentUser()
+        .then(api.checkStatus)
+        .then(response => dispatch(fetchCurrentUserSuccess(response.data.user)))
+        .catch(api.handleError(dispatch, fetchCurrentUserFailure));
+};
 
 /**
  * Request password reset
@@ -39,6 +57,12 @@ export const signInFailure = createAction('SIGN_IN_FAILURE');
  * Sign out
  */
 export const SIGN_OUT = 'SIGN_OUT';
+
+export const signOut = () => (dispatch, getState, api) => {
+    api.removeJwt();
+
+    dispatch({type: SIGN_OUT});
+};
 
 /**
  * Update settings

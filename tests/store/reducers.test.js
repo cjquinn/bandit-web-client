@@ -1,9 +1,6 @@
 // Actions
 import { SIGN_OUT } from '../../src/store/User/actions';
 
-// Api
-import { getJwt, setJwt } from '../../src/store/api';
-
 // Reducers
 import reducers from '../../src/store/reducers';
 
@@ -11,7 +8,7 @@ describe('initial state', () => {
     it('shape', () => {
         const state = reducers(undefined, {});
 
-        const expected = ['form'];
+        const expected = ['form', 'router', 'user'];
 
         expect(Object.keys(state)).toEqual(expected);
     });
@@ -20,15 +17,24 @@ describe('initial state', () => {
 describe('app', () => {
     it(SIGN_OUT, () => {
         const state = {
+            user: {
+                current: {id: 1},
+                isLoading: true
+            }
         };
 
         const expected = {
+            user: {
+                current: null,
+                isLoading: false
+            }
         };
 
         const updatedState = reducers(state, {type: SIGN_OUT});
 
         // External reducers
         expected.form = updatedState.form;
+        expected.router = updatedState.router;
 
         expect(updatedState).toEqual(expected);
     });
