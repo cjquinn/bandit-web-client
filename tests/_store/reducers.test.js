@@ -1,5 +1,5 @@
 // Actions
-import { SIGN_OUT } from '../../src/store/User/actions';
+import { SIGN_OUT } from '../../src/store/user/actions';
 
 // Reducers
 import reducers from '../../src/store/reducers';
@@ -8,7 +8,7 @@ describe('initial state', () => {
     it('shape', () => {
         const state = reducers(undefined, {});
 
-        const expected = ['club', 'form', 'entities', 'router', 'user'];
+        const expected = ['byClubId', 'club', 'form', 'entities', 'router', 'user'];
 
         expect(Object.keys(state)).toEqual(expected);
     });
@@ -17,6 +17,16 @@ describe('initial state', () => {
 describe('app', () => {
     it(SIGN_OUT, () => {
         const state = {
+            byClubId: {
+                1: {
+                    player: {
+                        didError: true,
+                        ids: [1, 2, 3],
+                        isFetching: true,
+                        orderBy: 'a-z'
+                    }
+                }
+            },
             club: {
                 ids: [1],
                 isFetching: true
@@ -36,6 +46,7 @@ describe('app', () => {
         };
 
         const expected = {
+            byClubId: {},
             club: {
                 ids: [],
                 isFetching: false

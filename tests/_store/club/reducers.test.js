@@ -1,8 +1,8 @@
 // Actions
-import * as actions from '../../../src/store/Club/actions';
+import * as actions from '../../../src/store/club/actions';
 
 // Reducers
-import reducers from '../../../src/store/Club/reducers';
+import reducers from '../../../src/store/club/reducers';
 
 describe('initial state', () => {
     it('shape', () => {

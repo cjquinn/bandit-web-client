@@ -1,4 +1,4 @@
-import { getClubs, getIds, getIsFetching, makeGetClub } from '../../../src/store/Club/selectors';
+import { getClubs, getIds, getIsFetching, makeGetClub } from '../../../src/store/club/selectors';
 
 describe('selectors', () => {
     it('getClubs', () => {

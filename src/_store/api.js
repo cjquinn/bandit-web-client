@@ -5,11 +5,11 @@ import { push } from 'react-router-redux';
 
 
 // Actions
-import { signOut } from './User/actions';
+import { signOut } from './user/actions';
 
 // Endpoints
-export * from './Club/endpoints';
-export * from './User/endpoints';
+export * from './club/endpoints';
+export * from './user/endpoints';
 
 /**
  * Function to flattern cakephp error format

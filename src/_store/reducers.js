@@ -6,11 +6,13 @@ import { routerReducer as router } from 'react-router-redux';
 import { SIGN_OUT } from './User/actions';
 
 // Reducers
-import club from './Club/reducers';
+import byClubId from './byClubId/reducers';
+import club from './club/reducers';
 import entities from './entities/reducers';
-import user from './User/reducers';
+import user from './user/reducers';
 
-const app = combineReducers({
+const appReducers = combineReducers({
+    byClubId,
     club,
     form,
     entities,
@@ -21,12 +23,13 @@ const app = combineReducers({
 const reducers = (state, action) => {
     if (action.type === SIGN_OUT) {
         // Only undefine state from this app
+        state.byClubId = undefined;
         state.club = undefined;
         state.entities = undefined;
         state.user = undefined;
     }
 
-    return app(state, action);
+    return appReducers(state, action);
 };
 
 export default reducers;

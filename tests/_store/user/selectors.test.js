@@ -1,4 +1,4 @@
-import { getCurrentUser, getIsAuthorised, getIsLoading } from '../../../src/store/User/selectors';
+import { getCurrentUser, getIsAuthorised, getIsLoading } from '../../../src/store/user/selectors';
 
 describe('selectors', () => {
     it('getCurrentUser', () => {

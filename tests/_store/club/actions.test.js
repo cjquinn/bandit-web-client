@@ -2,8 +2,8 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
 // Actions
-import * as actions from '../../../src/store/Club/actions';
-import { SIGN_OUT } from '../../../src/store/User/actions';
+import * as actions from '../../../src/store/club/actions';
+import { SIGN_OUT } from '../../../src/store/user/actions';
 
 // Api
 import { getJwt } from '../../../src/store/api';

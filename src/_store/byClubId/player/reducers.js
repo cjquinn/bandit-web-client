@@ -4,6 +4,17 @@ import { combineActions, handleAction, handleActions } from 'redux-actions';
 // Actions
 import * as actions from './actions';
 
+const didError = handleActions(
+    {
+        [actions.fetchPlayersFailure]: () => true,
+        [combineActions(
+            actions.fetchPlayersRequest,
+            actions.fetchPlayersSuccess,
+        )]: () => false
+    },
+    false
+);
+
 const ids = handleAction(
     actions.fetchPlayersSuccess,
     (state, { payload }) => payload.result,
@@ -27,22 +38,6 @@ const orderBy = handleAction(
     'a-z'
 );
 
-const clubPlayersReducers = combineReducers({ids, isFetching, orderBy});
-
-const byClubId = handleAction(
-    combineActions(
-        actions.fetchPlayersRequest,
-        actions.fetchPlayersFailure,
-        actions.fetchPlayersSuccess,
-        actions.orderPlayersBy
-    ),
-    (state, action) => ({
-        ...state,
-        [action.payload.clubId]: clubPlayersReducers(state[action.payload.clubId], action)
-    }),
-    {}
-);
-
-const reducers = combineReducers({byClubId});
+const reducers = combineReducers({didError, ids, isFetching, orderBy});
 
 export default reducers;

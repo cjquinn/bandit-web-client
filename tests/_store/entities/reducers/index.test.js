@@ -1,4 +1,4 @@
-import reducers from '../../../../src/store/Entities/reducers';
+import reducers from '../../../../src/store/entities/reducers';
 
 describe('initial state', () => {
     it('shape', () => {
