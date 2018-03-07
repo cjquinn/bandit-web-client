@@ -22,6 +22,6 @@ export const getClubs = createSelector(
 );
 
 export const makeGetClub = () => createSelector(
-    [getClubEntity],
+    getClubEntity,
     club => club
 );

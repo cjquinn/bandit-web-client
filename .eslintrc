@@ -12,7 +12,6 @@
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
             "jsx": true
         },
         "sourceType": "module"
@@ -21,6 +20,11 @@
         "jest",
         "react"
     ],
+    "settings": {
+        "react": {
+            "version": "16.0"
+        }
+    },
     "rules": {
         "brace-style": [
             "error",
