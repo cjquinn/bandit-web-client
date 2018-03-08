@@ -17,6 +17,11 @@ export const getPlayerEntity = (state, props) => state.entities.players[props.ma
 
 export const getPlayerEntities = state => state.entities.players;
 
+export const makeGetDidError = () => createSelector(
+    getPlayerByClubId,
+    playerState => getDidError(playerState)
+);
+
 export const makeGetIsFetching = () => createSelector(
     getPlayerByClubId,
     playerState => getIsFetching(playerState)

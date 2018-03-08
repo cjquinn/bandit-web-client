@@ -12,6 +12,7 @@ import {
     getOrderBy,
     getPlayerEntity,
     getPlayerEntities,
+    makeGetDidError,
     makeGetIsFetching,
     makeGetOrderBy,
     makeGetPlayers,
@@ -109,7 +110,7 @@ describe('selectors', () => {
         expect(getPlayerEntities(state)).toEqual(expected);
     });
 
-    it('makeGetOrderBy', () => {
+    it('makeGetDidError', () => {
         const state = {
             byClubId: {
                 1: {
@@ -125,9 +126,7 @@ describe('selectors', () => {
 
         const props = {match: {params: {clubId: 1}}};
 
-        const expected = 'a-z';
-
-        expect(makeGetOrderBy()(state, props)).toEqual(expected);
+        expect(makeGetDidError()(state, props)).toBe(false);
     });
 
     it('makeGetIsFetching', () => {
@@ -147,6 +146,27 @@ describe('selectors', () => {
         const props = {match: {params: {clubId: 1}}};
 
         expect(makeGetIsFetching()(state, props)).toBe(false);
+    });
+
+    it('makeGetOrderBy', () => {
+        const state = {
+            byClubId: {
+                1: {
+                    player: {
+                        didError: false,
+                        ids: [],
+                        isFetching: false,
+                        orderBy: 'a-z'
+                    }
+                }
+            }
+        };
+
+        const props = {match: {params: {clubId: 1}}};
+
+        const expected = 'a-z';
+
+        expect(makeGetOrderBy()(state, props)).toEqual(expected);
     });
 
     const stateForGetPlayers = {
