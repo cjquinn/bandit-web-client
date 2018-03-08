@@ -19,6 +19,12 @@ describe('app', () => {
         const state = {
             byClubId: {
                 1: {
+                    match: {
+                        didError: true,
+                        ids: [1, 2, 3],
+                        isFetching: true,
+                        page: 2
+                    },
                     player: {
                         didError: true,
                         ids: [1, 2, 3],
@@ -28,6 +34,7 @@ describe('app', () => {
                 }
             },
             club: {
+                didError: true,
                 ids: [1],
                 isFetching: true
             },
@@ -48,6 +55,7 @@ describe('app', () => {
         const expected = {
             byClubId: {},
             club: {
+                didError: false,
                 ids: [],
                 isFetching: false
             },

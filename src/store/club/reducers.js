@@ -1,24 +1,15 @@
 import { combineReducers } from 'redux';
-import { combineActions, handleActions } from 'redux-actions';
 
 // Actions
 import * as actions from './actions';
 
-const ids = handleActions({
-    [actions.fetchClubsSuccess]: (state, action) => action.payload.result
-}, []);
+// Reducers
+import { makeFetchReducers } from '../shared/reducers';
 
-const isFetching = handleActions(
-    {
-        [actions.fetchClubsRequest]: () => true,
-        [combineActions(
-            actions.fetchClubsFailure,
-            actions.fetchClubsSuccess,
-        )]: () => false
-    },
-    false
-);
-
-const reducers = combineReducers({ids, isFetching});
+const reducers = combineReducers(makeFetchReducers(
+    actions.fetchClubsRequest,
+    actions.fetchClubsFailure,
+    actions.fetchClubsSuccess
+));
 
 export default reducers;

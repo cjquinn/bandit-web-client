@@ -5,14 +5,11 @@ import { denormalize } from 'normalizr';
 import { player as playerSchema } from '../../schema';
 
 // Selectors
+import { makeFetchSelectors } from '../../shared/selectors';
 import { getPlayerByClubId } from '../selectors';
 import { getUserEntities } from '../../user/selectors';
 
-export const getDidError = playerState => playerState.didError;
-
-export const getIds = playerState => playerState.ids;
-
-export const getIsFetching = playerState => playerState.isFetching;
+export const { getDidError, getIds, getIsFetching } = makeFetchSelectors();
 
 export const getOrderBy = playerState => playerState.orderBy;
 

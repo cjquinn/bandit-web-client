@@ -1,12 +1,56 @@
+import { fetchMatchesSuccess } from '../../../src/store/byClubId/match/actions';
 import { fetchPlayersSuccess } from '../../../src/store/byClubId/player/actions';
 
 // Reducers
 import reducers from '../../../src/store/byClubId/reducers';
 
 describe('byClubId', () => {
-    it('player', () => {
-        const state = {
+    const state = {
+        1: {
+            match: {
+                didError: false,
+                ids: [],
+                isFetching: true,
+                page: 1
+            },
+            player: {
+                didError: false,
+                ids: [],
+                isFetching: true,
+                orderBy: 'a-z'
+            }
+        },
+        2: {
+            match: {
+                didError: false,
+                ids: [],
+                isFetching: false,
+                page: 1
+            },
+            player: {
+                didError: false,
+                ids: [],
+                isFetching: false,
+                orderBy: 'a-z'
+            }
+        }
+    };
+
+    it('match', () => {
+        const payload = {
+            clubId: 1,
+            result: [1, 2, 3],
+            page: 2
+        };
+
+        const expected = {
             1: {
+                match: {
+                    didError: false,
+                    ids: [1, 2, 3],
+                    isFetching: false,
+                    page: 2
+                },
                 player: {
                     didError: false,
                     ids: [],
@@ -15,6 +59,12 @@ describe('byClubId', () => {
                 }
             },
             2: {
+                match: {
+                    didError: false,
+                    ids: [],
+                    isFetching: false,
+                    page: 1
+                },
                 player: {
                     didError: false,
                     ids: [],
@@ -24,6 +74,10 @@ describe('byClubId', () => {
             }
         };
 
+        expect(reducers(state, fetchMatchesSuccess(payload))).toEqual(expected);
+    });
+
+    it('player', () => {
         const payload = {
             clubId: 1,
             result: [1, 2, 3]
@@ -31,6 +85,12 @@ describe('byClubId', () => {
 
         const expected = {
             1: {
+                match: {
+                    didError: false,
+                    ids: [],
+                    isFetching: true,
+                    page: 1
+                },
                 player: {
                     didError: false,
                     ids: [1, 2, 3],
@@ -39,6 +99,12 @@ describe('byClubId', () => {
                 }
             },
             2: {
+                match: {
+                    didError: false,
+                    ids: [],
+                    isFetching: false,
+                    page: 1
+                },
                 player: {
                     didError: false,
                     ids: [],

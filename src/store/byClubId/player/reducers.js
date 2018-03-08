@@ -1,36 +1,11 @@
 import { combineReducers } from 'redux';
-import { combineActions, handleAction, handleActions } from 'redux-actions';
+import { handleAction } from 'redux-actions';
 
 // Actions
 import * as actions from './actions';
 
-const didError = handleActions(
-    {
-        [actions.fetchPlayersFailure]: () => true,
-        [combineActions(
-            actions.fetchPlayersRequest,
-            actions.fetchPlayersSuccess,
-        )]: () => false
-    },
-    false
-);
-
-const ids = handleAction(
-    actions.fetchPlayersSuccess,
-    (state, { payload }) => payload.result,
-    []
-);
-
-const isFetching = handleActions(
-    {
-        [actions.fetchPlayersRequest]: () => true,
-        [combineActions(
-            actions.fetchPlayersFailure,
-            actions.fetchPlayersSuccess,
-        )]: () => false
-    },
-    false
-);
+// Reducers
+import { makeFetchReducers } from '../../shared/reducers';
 
 const orderBy = handleAction(
     actions.orderPlayersBy,
@@ -38,6 +13,13 @@ const orderBy = handleAction(
     'a-z'
 );
 
-const reducers = combineReducers({didError, ids, isFetching, orderBy});
+const reducers = combineReducers({
+    orderBy,
+    ...makeFetchReducers(
+        actions.fetchPlayersRequest,
+        actions.fetchPlayersFailure,
+        actions.fetchPlayersSuccess
+    )
+});
 
 export default reducers;
