@@ -7,14 +7,10 @@ import reducers from '../../../../src/store/reducers';
 // Selectors
 import {
     getDidError,
-    getIds,
     getIsFetching,
     getOrderBy,
     getPlayerEntity,
     getPlayerEntities,
-    makeGetDidError,
-    makeGetIsFetching,
-    makeGetOrderBy,
     makeGetPlayers,
     makeGetPlayersByName,
     makeGetPlayersByGames,
@@ -24,46 +20,61 @@ import {
 describe('selectors', () => {
     it('getDidError', () => {
         const state = {
-            didError: false,
-            ids: [],
-            isFetching: false,
-            orderBy: 'a-z'
+            byClubId: {
+                1: {
+                    player: {
+                        didError: false,
+                        ids: [],
+                        isFetching: false,
+                        orderBy: 'a-z'
+                    }
+                }
+            }
         };
 
-        expect(getDidError(state)).toBe(false);
-    });
+        const props = {match: {params: {clubId: 1}}};
 
-    it('getIds', () => {
-        const state = {
-            didError: false,
-            ids: [],
-            isFetching: false,
-            orderBy: 'a-z'
-        };
-
-        expect(getIds(state)).toEqual([]);
+        expect(getDidError(state, props)).toBe(false);
     });
 
     it('getIsFetching', () => {
         const state = {
-            didError: false,
-            ids: [],
-            isFetching: false,
-            orderBy: 'a-z'
+            byClubId: {
+                1: {
+                    player: {
+                        didError: false,
+                        ids: [],
+                        isFetching: false,
+                        orderBy: 'a-z'
+                    }
+                }
+            }
         };
 
-        expect(getIsFetching(state)).toBe(false);
+        const props = {match: {params: {clubId: 1}}};
+
+        expect(getIsFetching(state, props)).toBe(false);
     });
 
     it('getOrderBy', () => {
         const state = {
-            didError: false,
-            ids: [],
-            isFetching: false,
-            orderBy: 'a-z'
+            byClubId: {
+                1: {
+                    player: {
+                        didError: false,
+                        ids: [],
+                        isFetching: false,
+                        orderBy: 'a-z'
+                    }
+                }
+            }
         };
 
-        expect(getOrderBy(state)).toEqual('a-z');
+        const props = {match: {params: {clubId: 1}}};
+
+        const expected = 'a-z';
+
+        expect(getOrderBy(state, props)).toEqual(expected);
     });
 
     it('getPlayerEntity', () => {
@@ -108,65 +119,6 @@ describe('selectors', () => {
         };
 
         expect(getPlayerEntities(state)).toEqual(expected);
-    });
-
-    it('makeGetDidError', () => {
-        const state = {
-            byClubId: {
-                1: {
-                    player: {
-                        didError: false,
-                        ids: [],
-                        isFetching: false,
-                        orderBy: 'a-z'
-                    }
-                }
-            }
-        };
-
-        const props = {match: {params: {clubId: 1}}};
-
-        expect(makeGetDidError()(state, props)).toBe(false);
-    });
-
-    it('makeGetIsFetching', () => {
-        const state = {
-            byClubId: {
-                1: {
-                    player: {
-                        didError: false,
-                        ids: [],
-                        isFetching: false,
-                        orderBy: 'a-z'
-                    }
-                }
-            }
-        };
-
-        const props = {match: {params: {clubId: 1}}};
-
-        expect(makeGetIsFetching()(state, props)).toBe(false);
-    });
-
-    it('makeGetOrderBy', () => {
-        const state = {
-            byClubId: {
-                1: {
-                    player: {
-                        didError: false,
-                        ids: [],
-                        isFetching: false,
-                        orderBy: 'a-z'
-                    }
-                }
-            }
-        };
-
-        const props = {match: {params: {clubId: 1}}};
-
-        const expected = 'a-z';
-
-        expect(makeGetOrderBy()(state, props)).toEqual(expected);
     });
 
     const stateForGetPlayers = {

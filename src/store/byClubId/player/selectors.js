@@ -5,32 +5,22 @@ import { denormalize } from 'normalizr';
 import { player as playerSchema } from '../../schema';
 
 // Selectors
-import { makeFetchSelectors } from '../../shared/selectors';
+import {
+    getDidError as getFetchDidError,
+    getIds,
+    getIsFetching as getFetchIsFetching } from '../../shared/selectors';
 import { getPlayerByClubId } from '../selectors';
 import { getUserEntities } from '../../user/selectors';
 
-export const { getDidError, getIds, getIsFetching } = makeFetchSelectors();
+export const getDidError = (state, props) => getFetchDidError(getPlayerByClubId(state, props));
 
-export const getOrderBy = playerState => playerState.orderBy;
+export const getIsFetching = (state, props) => getFetchIsFetching(getPlayerByClubId(state, props));
+
+export const getOrderBy = (state, props) => getPlayerByClubId(state, props).orderBy;
 
 export const getPlayerEntity = (state, props) => state.entities.players[props.match.params.playerId];
 
 export const getPlayerEntities = state => state.entities.players;
-
-export const makeGetDidError = () => createSelector(
-    getPlayerByClubId,
-    playerState => getDidError(playerState)
-);
-
-export const makeGetIsFetching = () => createSelector(
-    getPlayerByClubId,
-    playerState => getIsFetching(playerState)
-);
-
-export const makeGetOrderBy = () => createSelector(
-    getPlayerByClubId,
-    playerState => getOrderBy(playerState)
-);
 
 export const makeGetPlayers = () => createSelector(
     [getPlayerByClubId, getPlayerEntities, getUserEntities],
@@ -75,7 +65,7 @@ export const makeGetPlayersByRating = () => createSelector(
 );
 
 export const makeGetPlayersOrdered = () => createSelector(
-    makeGetOrderBy(),
+    getOrderBy,
     makeGetPlayersByName(),
     makeGetPlayersByGames(),
     makeGetPlayersByRating(),

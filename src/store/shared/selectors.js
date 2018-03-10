@@ -1,15 +1,19 @@
 import { get } from 'lodash';
 
+export const getDidError = state => state.didError;
+
+export const getIds = state => state.ids;
+
+export const getIsFetching = state => state.isFetching;
+
 export const makeFetchSelectors = (path = '') => {
-    if (path) {
-        path += '.';
-    }
+    const getState = state => path !== ''
+        ? get(state, path)
+        : state;
 
-    const getDidError = state => get(state, `${path}didError`);
-
-    const getIds = state => get(state, `${path}ids`);
-
-    const getIsFetching = state => get(state, `${path}isFetching`);
-
-    return {getDidError, getIds, getIsFetching};
+    return {
+        getDidError: state => getDidError(getState(state)),
+        getIds: state => getIds(getState(state)),
+        getIsFetching: state => getIsFetching(getState(state)),
+    };
 };
