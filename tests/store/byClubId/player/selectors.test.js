@@ -11,13 +11,11 @@ import {
     getOrderBy,
     getPlayerEntity,
     getPlayerEntities,
-    makeGetPlayers,
-    makeGetPlayersByName,
-    makeGetPlayersByGames,
-    makeGetPlayersByRating,
-    makeGetPlayersOrdered } from '../../../../src/store/byClubId/player/selectors';
+    makeGetPlayers } from '../../../../src/store/byClubId/player/selectors';
 
 describe('selectors', () => {
+    const propsWithClubId = {match: {params: {clubId: 1}}};
+
     it('getDidError', () => {
         const state = {
             byClubId: {
@@ -32,9 +30,7 @@ describe('selectors', () => {
             }
         };
 
-        const props = {match: {params: {clubId: 1}}};
-
-        expect(getDidError(state, props)).toBe(false);
+        expect(getDidError(state, propsWithClubId)).toBe(false);
     });
 
     it('getIsFetching', () => {
@@ -51,9 +47,7 @@ describe('selectors', () => {
             }
         };
 
-        const props = {match: {params: {clubId: 1}}};
-
-        expect(getIsFetching(state, props)).toBe(false);
+        expect(getIsFetching(state, propsWithClubId)).toBe(false);
     });
 
     it('getOrderBy', () => {
@@ -70,11 +64,9 @@ describe('selectors', () => {
             }
         };
 
-        const props = {match: {params: {clubId: 1}}};
-
         const expected = 'a-z';
 
-        expect(getOrderBy(state, props)).toEqual(expected);
+        expect(getOrderBy(state, propsWithClubId)).toEqual(expected);
     });
 
     it('getPlayerEntity', () => {
@@ -173,20 +165,13 @@ describe('selectors', () => {
         }
     };
 
-    const propsForGetPlayers = {match: {params: {clubId: 1}}};
+    it('makeGetPlayers a-z', () => {
+        const state = reducers(stateForGetPlayers, orderPlayersBy({
+            clubId: 1,
+            orderBy: 'a-z'
+        }));
 
-    it('makeGetPlayers', () => {
         const expected  = [
-            {
-                id: 1,
-                rating: 1600,
-                wins: 1,
-                losses: 3,
-                user: {
-                    id: 1,
-                    name: 'Russell'  
-                }
-            },
             {
                 id: 2,
                 rating: 1800,
@@ -206,134 +191,104 @@ describe('selectors', () => {
                     id: 3,
                     name: 'Nathan'
                 }
+            },
+            {
+                id: 1,
+                rating: 1600,
+                wins: 1,
+                losses: 3,
+                user: {
+                    id: 1,
+                    name: 'Russell'  
+                }
             }
         ];
 
-        expect(makeGetPlayers()(stateForGetPlayers, propsForGetPlayers)).toEqual(expected);
+        expect(makeGetPlayers()(state, propsWithClubId)).toEqual(expected);
     });
 
-    const expectedPlayersByName  = [
-        {
-            id: 2,
-            rating: 1800,
-            wins: 1,
-            losses: 1,
-            user: {
-                id: 2,
-                name: 'Christy'
-            }
-        },
-        {
-            id: 3,
-            rating: 1220,
-            wins: 2,
-            losses: 1,
-            user: {
-                id: 3,
-                name: 'Nathan'
-            }
-        },
-        {
-            id: 1,
-            rating: 1600,
-            wins: 1,
-            losses: 3,
-            user: {
+
+    it('makeGetPlayers games', () => {
+        const state = reducers(stateForGetPlayers, orderPlayersBy({
+            clubId: 1,
+            orderBy: 'games'
+        }));
+
+        const expected  = [
+            {
                 id: 1,
-                name: 'Russell'  
-            }
-        }
-    ];
-
-    it('makeGetPlayersByName', () => {
-        expect(makeGetPlayersByName()(stateForGetPlayers, propsForGetPlayers)).toEqual(expectedPlayersByName);
-    });
-
-    const expectedPlayersByGames  = [
-        {
-            id: 1,
-            rating: 1600,
-            wins: 1,
-            losses: 3,
-            user: {
-                id: 1,
-                name: 'Russell'  
-            }
-        },
-        {
-            id: 3,
-            rating: 1220,
-            wins: 2,
-            losses: 1,
-            user: {
+                rating: 1600,
+                wins: 1,
+                losses: 3,
+                user: {
+                    id: 1,
+                    name: 'Russell'  
+                }
+            },
+            {
                 id: 3,
-                name: 'Nathan'
-            }
-        },
-        {
-            id: 2,
-            rating: 1800,
-            wins: 1,
-            losses: 1,
-            user: {
+                rating: 1220,
+                wins: 2,
+                losses: 1,
+                user: {
+                    id: 3,
+                    name: 'Nathan'
+                }
+            },
+            {
                 id: 2,
-                name: 'Christy'
+                rating: 1800,
+                wins: 1,
+                losses: 1,
+                user: {
+                    id: 2,
+                    name: 'Christy'
+                }
             }
-        }
-    ];
+        ];
 
-    it('makeGetPlayersByGames', () => {
-        expect(makeGetPlayersByGames()(stateForGetPlayers, propsForGetPlayers)).toEqual(expectedPlayersByGames);
+        expect(makeGetPlayers()(state, propsWithClubId)).toEqual(expected);
     });
 
-    const expectedPlayersByRating  = [
-        {
-            id: 3,
-            rating: 1220,
-            wins: 2,
-            losses: 1,
-            user: {
+    it('makeGetPlayers rating', () => {
+        const state = reducers(stateForGetPlayers, orderPlayersBy({
+            clubId: 1,
+            orderBy: 'rating'
+        }));
+
+        const expected  = [
+            {
                 id: 3,
-                name: 'Nathan'
-            }
-        },
-        {
-            id: 1,
-            rating: 1600,
-            wins: 1,
-            losses: 3,
-            user: {
+                rating: 1220,
+                wins: 2,
+                losses: 1,
+                user: {
+                    id: 3,
+                    name: 'Nathan'
+                }
+            },
+            {
                 id: 1,
-                name: 'Russell'  
-            }
-        },
-        {
-            id: 2,
-            rating: 1800,
-            wins: 1,
-            losses: 1,
-            user: {
+                rating: 1600,
+                wins: 1,
+                losses: 3,
+                user: {
+                    id: 1,
+                    name: 'Russell'  
+                }
+            },
+            {
                 id: 2,
-                name: 'Christy'
+                rating: 1800,
+                wins: 1,
+                losses: 1,
+                user: {
+                    id: 2,
+                    name: 'Christy'
+                }
             }
-        }
-    ];
+        ];
 
-    it('makeGetPlayersByRating', () => {
-        expect(makeGetPlayersByRating()(stateForGetPlayers, propsForGetPlayers)).toEqual(expectedPlayersByRating);
-    });
-
-    it('makeGetPlayersOrdered', () => {
-        const stateOrderByAz = reducers(stateForGetPlayers, orderPlayersBy({clubId: 1, orderBy: 'a-z'}));
-
-        expect(makeGetPlayersOrdered()(stateOrderByAz, propsForGetPlayers)).toEqual(expectedPlayersByName);
-
-        const stateOrderByGames = reducers(stateForGetPlayers, orderPlayersBy({clubId: 1, orderBy: 'games'}));
-
-        expect(makeGetPlayersOrdered()(stateOrderByGames, propsForGetPlayers)).toEqual(expectedPlayersByGames);
-
-        const stateOrderByRating = reducers(stateForGetPlayers, orderPlayersBy({clubId: 1, orderBy: 'rating'}));
-
-        expect(makeGetPlayersOrdered()(stateOrderByRating, propsForGetPlayers)).toEqual(expectedPlayersByRating);
+        expect(makeGetPlayers()(state, propsWithClubId)).toEqual(expected);
     });
 });

@@ -6,12 +6,19 @@ import player from './player/reducers';
 
 const clubReducers = combineReducers({match, player});
 
-const reducers = (state = {}, action) =>
-    action.payload && action.payload.clubId
-        ? {
-            ...state,
-            [action.payload.clubId]: clubReducers(state[action.payload.clubId], action)
-        }
-        : state;
+const reducers = (state = {}, action) => {
+    if (!action.payload ||
+        !action.payload.clubId
+    ) {
+        return state;
+    }
+
+    const clubId = action.payload.clubId;
+
+    return {
+        ...state,
+        [clubId]: clubReducers(state[clubId], action)
+    };
+};
 
 export default reducers;

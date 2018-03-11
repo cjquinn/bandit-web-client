@@ -6,36 +6,30 @@ import { match as matchSchema } from '../../schema';
 
 // Selectors
 import { getPlayerEntities } from '../player/selectors';
-import { makeFetchSelectors } from '../../shared/selectors';
 import { getMatchByClubId } from '../selectors';
+import { makeFetchSelectors } from '../../shared/selectors';
 import { getUserEntities } from '../../user/selectors';
 
-export const { getDidError, getIds, getIsFetching } = makeFetchSelectors();
+const fetchSelectors = makeFetchSelectors(getMatchByClubId);
 
-export const getPage = matchState => matchState.page;
+export const { getDidError, getIsFetching } = fetchSelectors;
+
+export const getLimit = (state, props) => props.limit;
+
+export const getPage = (state, props) => getMatchByClubId(state, props).page;
 
 export const getMatchEntity = (state, props) => state.entities.matches[props.match.params.matchId];
 
 export const getMatchEntities = state => state.entities.matches;
 
-export const makeGetDidError = () => createSelector(
-    getMatchByClubId,
-    playerState => getDidError(playerState)
-);
-
-export const makeGetIsFetching = () => createSelector(
-    getMatchByClubId,
-    playerState => getIsFetching(playerState)
-);
-
-export const makeGetPage = () => createSelector(
-    getMatchByClubId,
-    playerState => getPage(playerState)
+export const getIds = createSelector(
+    [fetchSelectors.getIds, getLimit],
+    (ids, limit) => limit ? ids.splice(0, limit) : ids
 );
 
 export const makeGetMatches = () => createSelector(
-    [getMatchByClubId, getMatchEntities, getPlayerEntities, getUserEntities],
-    (matchState, matches, players, users) => {
-        return denormalize(getIds(matchState), [matchSchema], {matches, players, users});
+    [getIds, getMatchEntities, getPlayerEntities, getUserEntities],
+    (ids, matches, players, users) => {
+        return denormalize(ids, [matchSchema], {matches, players, users});
     }
 );
