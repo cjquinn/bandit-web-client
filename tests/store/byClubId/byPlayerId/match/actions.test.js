@@ -1,0 +1,177 @@
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+
+// Actions
+import * as actions from '../../../../../src/store/byClubId/byPlayerId/match/actions';
+import { SIGN_OUT } from '../../../../../src/store/user/actions';
+
+const clubId = 1;
+const mock = new MockAdapter(axios);
+let store;
+
+describe('fetchMatch', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    const matchId = 1;
+
+    it('failure', () => {
+        mock
+            .onGet(`/clubs/${clubId}/matches/${matchId}.json`)
+            .reply(403);
+
+        return store.dispatch(actions.fetchMatch(clubId, matchId))
+            .then(() => {
+                const expected = [
+                    {type: actions.fetchMatchRequest.toString()},
+                    {type: actions.fetchMatchFailure.toString()},
+                    {type: SIGN_OUT}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onGet(`/clubs/${clubId}/matches/${matchId}.json`)
+            .reply(200, {match: {id: 1, player_a_id: 1, player_b_id: 2}});
+
+        return store.dispatch(actions.fetchMatch(clubId, matchId))
+            .then(() => {
+                const expected = [
+                    {type: actions.fetchMatchRequest.toString()},
+                    {
+                        type: actions.fetchMatchSuccess.toString(),
+                        payload: {
+                            result: 1,
+                            entities: {
+                                matches: {1: {id: 1, player_a_id: 1, player_b_id: 2}}
+                            }
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});
+
+describe('fetchMatches', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    const playerId = 'all';
+    const page = 1;
+
+    it('failure', () => {
+        mock
+            .onGet(`/clubs/${clubId}/matches.json?page=${page}&player_id=${playerId}`)
+            .reply(403);
+
+        return store.dispatch(actions.fetchMatches(clubId, playerId))
+            .then(() => {
+                const expected = [
+                    {type: actions.fetchMatchesRequest.toString()},
+                    {type: actions.fetchMatchesFailure.toString()},
+                    {type: SIGN_OUT}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onGet(`/clubs/${clubId}/matches.json?page=${page}&player_id=${playerId}`)
+            .reply(200, {matches: [{id: 1, player_a_id: 1, player_b_id: 2}]});
+
+        return store.dispatch(actions.fetchMatches(clubId, playerId))
+            .then(() => {
+                const expected = [
+                    {type: actions.fetchMatchesRequest.toString()},
+                    {
+                        type: actions.fetchMatchesSuccess.toString(),
+                        payload: {
+                            clubId,
+                            page,
+                            playerId,
+                            result: [1],
+                            entities: {
+                                matches: {1: {id: 1, player_a_id: 1, player_b_id: 2}}
+                            }
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});
+
+describe('fetchMoreMatches', () => {
+    beforeEach(() => store = global.configureStore({
+        byClubId: {
+            1: {
+                byPlayerId: {
+                    'all': {
+                        match: {
+                            page: 1
+                        }
+                    }
+                }
+            }
+        }
+    }));
+
+    afterEach(() => mock.reset());
+
+    const page = 2;
+    const playerId = 'all';
+
+    it('failure', () => {
+        mock
+            .onGet(`/clubs/${clubId}/matches.json?page=${page}&player_id=${playerId}`)
+            .reply(403);
+
+        return store.dispatch(actions.fetchMoreMatches(clubId, playerId))
+            .then(() => {
+                const expected = [
+                    {type: actions.fetchMatchesRequest.toString()},
+                    {type: actions.fetchMatchesFailure.toString()},
+                    {type: SIGN_OUT}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onGet(`/clubs/${clubId}/matches.json?page=${page}&player_id=${playerId}`)
+            .reply(200, {matches: [{id: 1, player_a_id: 1, player_b_id: 2}]});
+
+        return store.dispatch(actions.fetchMoreMatches(clubId, playerId))
+            .then(() => {
+                const expected = [
+                    {type: actions.fetchMatchesRequest.toString()},
+                    {
+                        type: actions.fetchMatchesSuccess.toString(),
+                        payload: {
+                            clubId,
+                            page,
+                            playerId,
+                            result: [1],
+                            entities: {
+                                matches: {1: {id: 1, player_a_id: 1, player_b_id: 2}}
+                            }
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});

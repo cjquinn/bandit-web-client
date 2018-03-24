@@ -34,7 +34,10 @@ export const fetchPlayers = clubId => (dispatch, getState, api) => {
     return api.fetchPlayers(clubId)
         .then(api.checkStatus)
         .then(response => normalize(response.data.players, [playerSchema]))
-        .then(normalizedData => dispatch(fetchPlayersSuccess(normalizedData)))
+        .then(normalizedData => dispatch(fetchPlayersSuccess({
+            ...normalizedData,
+            clubId
+        })))
         .catch(api.handleError(dispatch, fetchPlayersFailure));
 };
 
