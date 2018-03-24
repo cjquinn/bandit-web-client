@@ -2,21 +2,21 @@ import { createSelector } from 'reselect';
 import { denormalize } from 'normalizr';
 
 // Schema
-import { match as matchSchema } from '../../schema';
+import { match as matchSchema } from '../../../schema';
 
 // Selectors
-import { getPlayerEntities } from '../player/selectors';
-import { getMatchByClubId } from '../selectors';
-import { makeFetchSelectors } from '../../shared/selectors';
-import { getUserEntities } from '../../user/selectors';
+import { getPlayerEntities } from '../../player/selectors';
+import { getMatchByPlayerId } from '../selectors';
+import { makeFetchSelectors } from '../../../shared/selectors';
+import { getUserEntities } from '../../../user/selectors';
 
-const fetchSelectors = makeFetchSelectors(getMatchByClubId);
+const fetchSelectors = makeFetchSelectors(getMatchByPlayerId);
 
 export const { getDidError, getIsFetching } = fetchSelectors;
 
-export const getLimit = (state, props) => props.limit;
+export const getLimit = (_, props) => props.limit;
 
-export const getPage = (state, props) => getMatchByClubId(state, props).page;
+export const getPage = (state, props) => getMatchByPlayerId(state, props).page;
 
 export const getMatchEntity = (state, props) => state.entities.matches[props.match.params.matchId];
 

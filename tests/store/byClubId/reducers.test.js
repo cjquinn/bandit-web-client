@@ -1,4 +1,4 @@
-import { fetchMatchesSuccess } from '../../../src/store/byClubId/match/actions';
+import { fetchMatchesSuccess } from '../../../src/store/byClubId/byPlayerId/match/actions';
 import { fetchPlayersSuccess } from '../../../src/store/byClubId/player/actions';
 
 // Reducers
@@ -7,11 +7,15 @@ import reducers from '../../../src/store/byClubId/reducers';
 describe('byClubId', () => {
     const state = {
         1: {
-            match: {
-                didError: false,
-                ids: [],
-                isFetching: true,
-                page: 1
+            byPlayerId: {
+                1: {
+                    match: {
+                        didError: false,
+                        ids: [],
+                        isFetching: true,
+                        page: 1
+                    },
+                }
             },
             player: {
                 didError: false,
@@ -21,11 +25,15 @@ describe('byClubId', () => {
             }
         },
         2: {
-            match: {
-                didError: false,
-                ids: [],
-                isFetching: false,
-                page: 1
+            byPlayerId: {
+                1: {
+                    match: {
+                        didError: false,
+                        ids: [],
+                        isFetching: false,
+                        page: 1
+                    }
+                }
             },
             player: {
                 didError: false,
@@ -36,20 +44,25 @@ describe('byClubId', () => {
         }
     };
 
-    it('match', () => {
+    it('byPlayerId', () => {
         const payload = {
             clubId: 1,
+            playerId: 1,
             result: [1, 2, 3],
             page: 2
         };
 
         const expected = {
             1: {
-                match: {
-                    didError: false,
-                    ids: [1, 2, 3],
-                    isFetching: false,
-                    page: 2
+                byPlayerId: {
+                    1: {
+                        match: {
+                            didError: false,
+                            ids: [1, 2, 3],
+                            isFetching: false,
+                            page: 2
+                        }
+                    }
                 },
                 player: {
                     didError: false,
@@ -59,11 +72,15 @@ describe('byClubId', () => {
                 }
             },
             2: {
-                match: {
-                    didError: false,
-                    ids: [],
-                    isFetching: false,
-                    page: 1
+                byPlayerId: {
+                    1: {
+                        match: {
+                            didError: false,
+                            ids: [],
+                            isFetching: false,
+                            page: 1
+                        }
+                    }
                 },
                 player: {
                     didError: false,
@@ -80,16 +97,21 @@ describe('byClubId', () => {
     it('player', () => {
         const payload = {
             clubId: 1,
+            playerId: 1,
             result: [1, 2, 3]
         };
 
         const expected = {
             1: {
-                match: {
-                    didError: false,
-                    ids: [],
-                    isFetching: true,
-                    page: 1
+                byPlayerId: {
+                    1: {
+                        match: {
+                            didError: false,
+                            ids: [],
+                            isFetching: true,
+                            page: 1
+                        }
+                    }
                 },
                 player: {
                     didError: false,
@@ -99,11 +121,15 @@ describe('byClubId', () => {
                 }
             },
             2: {
-                match: {
-                    didError: false,
-                    ids: [],
-                    isFetching: false,
-                    page: 1
+                byPlayerId: {
+                    1: {
+                        match: {
+                            didError: false,
+                            ids: [],
+                            isFetching: false,
+                            page: 1
+                        }
+                    }
                 },
                 player: {
                     didError: false,

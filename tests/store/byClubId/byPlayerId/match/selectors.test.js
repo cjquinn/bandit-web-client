@@ -7,37 +7,45 @@ import {
     getPage,
     getMatchEntity,
     getMatchEntities,
-    makeGetMatches } from '../../../../src/store/byClubId/match/selectors';
+    makeGetMatches } from '../../../../../src/store/byClubId/byPlayerId/match/selectors';
 
 describe('selectors', () => {
-    const propsWithClubId = {match: {params: {clubId: 1}}};
+    const propsWithClubIdPlayerId = {match: {params: {clubId: 1, playerId: 1}}};
 
     it('getDidError', () => {
         const state = {
             byClubId: {
                 1: {
-                    match: {
-                        didError: false,
-                        ids: [],
-                        isFetching: false,
-                        page: 1
+                    byPlayerId: {
+                        1: {
+                            match: {
+                                didError: false,
+                                ids: [],
+                                isFetching: false,
+                                page: 1
+                            }
+                        }
                     }
                 }
             }
         };
 
-        expect(getDidError(state, propsWithClubId)).toBe(false);
+        expect(getDidError(state, propsWithClubIdPlayerId)).toBe(false);
     });
 
     it('getIds', () => {
         const state = {
             byClubId: {
                 1: {
-                    match: {
-                        didError: false,
-                        ids: [1, 2, 3, 4, 5],
-                        isFetching: false,
-                        page: 1
+                    byPlayerId: {
+                        1: {
+                            match: {
+                                didError: false,
+                                ids: [1, 2, 3, 4, 5],
+                                isFetching: false,
+                                page: 1
+                            }
+                        }
                     }
                 }
             }
@@ -45,10 +53,10 @@ describe('selectors', () => {
 
         const expected = [1, 2, 3, 4, 5];
 
-        expect(getIds(state, propsWithClubId)).toEqual(expected);
+        expect(getIds(state, propsWithClubIdPlayerId)).toEqual(expected);
 
         const propsWithLimit = {
-            ...propsWithClubId,
+            ...propsWithClubIdPlayerId,
             limit: 3
         };
 
@@ -61,17 +69,21 @@ describe('selectors', () => {
         const state = {
             byClubId: {
                 1: {
-                    match: {
-                        didError: false,
-                        ids: [],
-                        isFetching: false,
-                        page: 1
+                    byPlayerId: {
+                        1: {
+                            match: {
+                                didError: false,
+                                ids: [],
+                                isFetching: false,
+                                page: 1
+                            }
+                        }
                     }
                 }
             }
         };
 
-        expect(getIsFetching(state, propsWithClubId)).toBe(false);
+        expect(getIsFetching(state, propsWithClubIdPlayerId)).toBe(false);
     });
 
     it('getLimit', () => {
@@ -88,11 +100,15 @@ describe('selectors', () => {
         const state = {
             byClubId: {
                 1: {
-                    match: {
-                        didError: false,
-                        ids: [],
-                        isFetching: false,
-                        page: 1
+                    byPlayerId: {
+                        1: {
+                            match: {
+                                didError: false,
+                                ids: [],
+                                isFetching: false,
+                                page: 1
+                            }
+                        }
                     }
                 }
             }
@@ -100,7 +116,7 @@ describe('selectors', () => {
 
         const expected = 1;
 
-        expect(getPage(state, propsWithClubId)).toEqual(expected);
+        expect(getPage(state, propsWithClubIdPlayerId)).toEqual(expected);
     });
 
     it('getMatchEntity', () => {
@@ -157,11 +173,15 @@ describe('selectors', () => {
         const state = {
             byClubId: {
                 1: {
-                    match: {
-                        didError: false,
-                        ids: [1, 2],
-                        isFetching: false,
-                        page: 1
+                    byPlayerId: {
+                        1: {
+                            match: {
+                                didError: false,
+                                ids: [1, 2],
+                                isFetching: false,
+                                page: 1
+                            }
+                        }
                     }
                 }
             },
@@ -246,10 +266,10 @@ describe('selectors', () => {
             }
         ];
 
-        expect(makeGetMatches()(state, propsWithClubId)).toEqual(expected);
+        expect(makeGetMatches()(state, propsWithClubIdPlayerId)).toEqual(expected);
 
         const propsWithLimit = {
-            ...propsWithClubId,
+            ...propsWithClubIdPlayerId,
             limit: 1
         };
 

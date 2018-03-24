@@ -11,6 +11,7 @@ import {
     getOrderBy,
     getPlayerEntity,
     getPlayerEntities,
+    makeGetPlayer,
     makeGetPlayers } from '../../../../src/store/byClubId/player/selectors';
 
 describe('selectors', () => {
@@ -111,6 +112,43 @@ describe('selectors', () => {
         };
 
         expect(getPlayerEntities(state)).toEqual(expected);
+    });
+
+    it('makeGetPlayer', () => {
+        const state = {
+            entities: {
+                players: {
+                    1: {
+                        id: 1,
+                        rating: 1600,
+                        wins: 1,
+                        losses: 3,
+                        user: 1
+                    }
+                },
+                users: {
+                    1: {
+                        id: 1,
+                        name: 'Russell'
+                    }
+                }
+            }
+        };
+
+        const props = {match: {params: {playerId: 1}}};
+
+        const expected = {
+            id: 1,
+            rating: 1600,
+            wins: 1,
+            losses: 3,
+            user: {
+                id: 1,
+                name: 'Russell'
+            }
+        };
+
+        expect(makeGetPlayer()(state, props)).toEqual(expected);
     });
 
     const stateForGetPlayers = {

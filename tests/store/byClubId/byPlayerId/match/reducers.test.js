@@ -1,8 +1,8 @@
 // Actions
-import * as actions from '../../../../src/store/byClubId/match/actions';
+import * as actions from '../../../../../src/store/byClubId/byPlayerId/match/actions';
 
 // Reducers
-import reducers from '../../../../src/store/byClubId/match/reducers';
+import reducers from '../../../../../src/store/byClubId/byPlayerId/match/reducers';
 
 describe('initial state', () => {
     it('shape', () => {

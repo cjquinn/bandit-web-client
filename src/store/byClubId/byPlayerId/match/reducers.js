@@ -5,7 +5,7 @@ import { handleAction } from 'redux-actions';
 import * as actions from './actions';
 
 // Reducers
-import { makeFetchReducers } from '../../shared/reducers';
+import { makeFetchReducers } from '../../../shared/reducers';
 
 const ids = handleAction(
     actions.fetchMatchesSuccess,

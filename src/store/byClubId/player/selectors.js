@@ -17,6 +17,14 @@ export const getPlayerEntity = (state, props) => state.entities.players[props.ma
 
 export const getPlayerEntities = state => state.entities.players;
 
+export const makeGetPlayer = () => createSelector(
+    [getPlayerEntity, getUserEntities],
+    (player, users) => denormalize(player.id, playerSchema, {
+        players: {[player.id]: player},
+        users
+    })
+);
+
 const sortPlayers = {
     'a-z': (a, b) => {
         if (a.user.name < b.user.name) {

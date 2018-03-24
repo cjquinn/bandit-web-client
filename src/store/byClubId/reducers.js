@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
 // Reducers
-import match from './match/reducers';
+import byPlayerId from './byPlayerId/reducers';
 import player from './player/reducers';
 
-const clubReducers = combineReducers({match, player});
+const clubReducers = combineReducers({byPlayerId, player});
 
 const reducers = (state = {}, action) => {
     if (!action.payload ||

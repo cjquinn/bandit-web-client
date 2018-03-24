@@ -1,15 +1,19 @@
-import { getMatchByClubId, getPlayerByClubId } from '../../../src/store/byClubId/selectors';
+import { getByPlayerIdByClubId, getPlayerByClubId } from '../../../src/store/byClubId/selectors';
 
 describe('selectors', () => {
-    it('getMatchByClubId', () => {
+    it('getByPlayerIdByClubId', () => {
         let state = {
             byClubId: {
                 1: {
-                    match: {
-                        didError: false,
-                        ids: [],
-                        isFetching: false,
-                        page: 1
+                    byPlayerId: {
+                        1: {
+                            match: {
+                                didError: false,
+                                ids: [],
+                                isFetching: false,
+                                page: 1
+                            }
+                        }
                     }
                 }
             }
@@ -18,13 +22,17 @@ describe('selectors', () => {
         const props = {match: {params: {clubId: 1}}};
 
         const expected = {
-            didError: false,
-            ids: [],
-            isFetching: false,
-            page: 1
+            1: {
+                match: {
+                    didError: false,
+                    ids: [],
+                    isFetching: false,
+                    page: 1
+                }
+            }
         };
 
-        expect(getMatchByClubId(state, props)).toEqual(expected);
+        expect(getByPlayerIdByClubId(state, props)).toEqual(expected);
     });
 
     it('getPlayerByClubId', () => {
