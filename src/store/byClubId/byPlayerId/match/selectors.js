@@ -27,9 +27,18 @@ export const getIds = createSelector(
     (ids, limit) => limit ? ids.splice(0, limit) : ids
 );
 
+export const makeGetMatch = () => createSelector(
+    [getMatchEntity, getPlayerEntities, getUserEntities],
+    (match, players, users) =>
+        denormalize(match.id, matchSchema, {
+            matches: {[match.id]: match},
+            players,
+            users
+        })
+);  
+
 export const makeGetMatches = () => createSelector(
     [getIds, getMatchEntities, getPlayerEntities, getUserEntities],
-    (ids, matches, players, users) => {
-        return denormalize(ids, [matchSchema], {matches, players, users});
-    }
+    (ids, matches, players, users) =>
+        denormalize(ids, [matchSchema], {matches, players, users})
 );

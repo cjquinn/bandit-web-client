@@ -7,6 +7,7 @@ import {
     getPage,
     getMatchEntity,
     getMatchEntities,
+    makeGetMatch,
     makeGetMatches } from '../../../../../src/store/byClubId/byPlayerId/match/selectors';
 
 describe('selectors', () => {
@@ -167,6 +168,62 @@ describe('selectors', () => {
         };
 
         expect(getMatchEntities(state, props)).toEqual(expected);
+    });
+
+    it('makeGetMatch', () => {
+        const state = {
+            entities: {
+                matches: {
+                    1: {
+                        id: 1,
+                        player_a: 1,
+                        player_b: 2
+                    }
+                },
+                players: {
+                    1: {
+                        id: 1,
+                        user: 1
+                    },
+                    2: {
+                        id: 2,
+                        user: 2
+                    }
+                },
+                users: {
+                    1: {
+                        id: 1,
+                        name: 'Russell'
+                    },
+                    2: {
+                        id: 2,
+                        name: 'Christy'
+                    }
+                }
+            }
+        };
+
+        const props = {match: {params: {matchId: 1}}};
+
+        const expected  = {
+            id: 1,
+            player_a: {
+                id: 1,
+                user: {
+                    id: 1,
+                    name: 'Russell'  
+                }
+            },
+            player_b: {
+                id: 2,
+                user: {
+                    id: 2,
+                    name: 'Christy'
+                }
+            }
+        };
+
+        expect(makeGetMatch()(state, props)).toEqual(expected);
     });
 
     it('makeGetMatches', () => {
