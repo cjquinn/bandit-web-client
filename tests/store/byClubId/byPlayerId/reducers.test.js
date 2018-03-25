@@ -10,7 +10,8 @@ describe('byPlayerId', () => {
                 didError: false,
                 ids: [],
                 isFetching: true,
-                page: 1
+                page: 1,
+                total: 0
             },
         },
         2: {
@@ -18,7 +19,8 @@ describe('byPlayerId', () => {
                 didError: false,
                 ids: [],
                 isFetching: false,
-                page: 1
+                page: 1,
+                total: 0
             }
         }
     };
@@ -27,7 +29,8 @@ describe('byPlayerId', () => {
         const payload = {
             playerId: 1,
             result: [1, 2, 3],
-            page: 2
+            page: 2,
+            total: 40
         };
 
         const expected = {
@@ -36,7 +39,8 @@ describe('byPlayerId', () => {
                     didError: false,
                     ids: [1, 2, 3],
                     isFetching: false,
-                    page: 2
+                    page: 2,
+                    total: 40
                 }
             },
             2: {
@@ -44,7 +48,8 @@ describe('byPlayerId', () => {
                     didError: false,
                     ids: [],
                     isFetching: false,
-                    page: 1
+                    page: 1,
+                    total: 0
                 }
             }
         };

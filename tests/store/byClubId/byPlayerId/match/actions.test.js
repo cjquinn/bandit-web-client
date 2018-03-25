@@ -9,6 +9,54 @@ const clubId = 1;
 const mock = new MockAdapter(axios);
 let store;
 
+describe('addMatch', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    it('failure', () => {
+        mock
+            .onPost(`/clubs/${clubId}/matches.json`)
+            .reply(403);
+
+        return store.dispatch(actions.addMatch(clubId))
+            .then(() => {
+                const expected = [
+                    {type: actions.addMatchRequest.toString()},
+                    {type: actions.addMatchFailure.toString()},
+                    {type: SIGN_OUT}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onPost(`/clubs/${clubId}/matches.json`)
+            .reply(200, {match: {id: 1, player_a_id: 1, player_b_id: 2}});
+
+        return store.dispatch(actions.addMatch(clubId))
+            .then(() => {
+                const expected = [
+                    {type: actions.addMatchRequest.toString()},
+                    {
+                        type: actions.addMatchSuccess.toString(),
+                        payload: {
+                            clubId,
+                            result: 1,
+                            entities: {
+                                matches: {1: {id: 1, player_a_id: 1, player_b_id: 2}}
+                            }
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});
+
 describe('fetchMatch', () => {
     beforeEach(() => store = global.configureStore());
 

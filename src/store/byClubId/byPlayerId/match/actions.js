@@ -8,6 +8,26 @@ import { match as matchSchema } from '../../../schema';
 import { getPage } from './selectors';
 
 /**
+ * Add match
+ */
+export const addMatchRequest = createAction('ADD_MATCH_REQUEST');
+export const addMatchSuccess = createAction('ADD_MATCH_SUCCESS');
+export const addMatchFailure = createAction('ADD_MATCH_FAILURE');
+
+export const addMatch = (clubId, data) => (dispatch, getState, api) => {
+    dispatch(addMatchRequest());
+
+    return api.addMatch(clubId, data)
+        .then(api.checkStatus)
+        .then(response => normalize(response.data.match, matchSchema))
+        .then(normalizedData => dispatch(addMatchSuccess({
+            ...normalizedData,
+            clubId
+        })))
+        .catch(api.handleError(dispatch, addMatchFailure));
+};
+
+/**
  * Fetch match
  */
 export const fetchMatchRequest = createAction('FETCH_MATCH_REQUEST');

@@ -13,7 +13,8 @@ describe('byClubId', () => {
                         didError: false,
                         ids: [],
                         isFetching: true,
-                        page: 1
+                        page: 1,
+                        total: 0
                     },
                 }
             },
@@ -31,7 +32,8 @@ describe('byClubId', () => {
                         didError: false,
                         ids: [],
                         isFetching: false,
-                        page: 1
+                        page: 1,
+                        total: 0
                     }
                 }
             },
@@ -49,7 +51,8 @@ describe('byClubId', () => {
             clubId: 1,
             playerId: 1,
             result: [1, 2, 3],
-            page: 2
+            page: 2,
+            total: 50
         };
 
         const expected = {
@@ -60,7 +63,8 @@ describe('byClubId', () => {
                             didError: false,
                             ids: [1, 2, 3],
                             isFetching: false,
-                            page: 2
+                            page: 2,
+                            total: 50
                         }
                     }
                 },
@@ -78,7 +82,8 @@ describe('byClubId', () => {
                             didError: false,
                             ids: [],
                             isFetching: false,
-                            page: 1
+                            page: 1,
+                            total: 0
                         }
                     }
                 },
@@ -109,7 +114,8 @@ describe('byClubId', () => {
                             didError: false,
                             ids: [],
                             isFetching: true,
-                            page: 1
+                            page: 1,
+                            total: 0
                         }
                     }
                 },
@@ -127,7 +133,8 @@ describe('byClubId', () => {
                             didError: false,
                             ids: [],
                             isFetching: false,
-                            page: 1
+                            page: 1,
+                            total: 0
                         }
                     }
                 },
