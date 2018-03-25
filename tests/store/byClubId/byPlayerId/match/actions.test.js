@@ -57,6 +57,57 @@ describe('addMatch', () => {
     });
 });
 
+describe('deleteMatch', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => mock.reset());
+
+    const matchId = 1;
+
+    it('failure', () => {
+        mock
+            .onDelete(`/clubs/${clubId}/matches/${matchId}.json`)
+            .reply(403);
+
+        return store.dispatch(actions.deleteMatch(clubId, matchId))
+            .then(() => {
+                const expected = [
+                    {type: actions.deleteMatchRequest.toString()},
+                    {type: actions.deleteMatchFailure.toString()},
+                    {type: SIGN_OUT}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onDelete(`/clubs/${clubId}/matches/${matchId}.json`)
+            .reply(200, {matches: [{id: 1, player_a_id: 1, player_b_id: 2}]});
+
+        return store.dispatch(actions.deleteMatch(clubId, matchId))
+            .then(() => {
+                const expected = [
+                    {type: actions.deleteMatchRequest.toString()},
+                    {
+                        type: actions.deleteMatchSuccess.toString(),
+                        payload: {
+                            clubId,
+                            matchId,
+                            result: [1],
+                            entities: {
+                                matches: {1: {id: 1, player_a_id: 1, player_b_id: 2}}
+                            }
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});
+
 describe('fetchMatch', () => {
     beforeEach(() => store = global.configureStore());
 

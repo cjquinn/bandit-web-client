@@ -30,6 +30,27 @@ export const addMatch = (clubId, data) => (dispatch, getState, api) => {
 /**
  * Fetch match
  */
+export const deleteMatchRequest = createAction('DELETE_MATCH_REQUEST');
+export const deleteMatchSuccess = createAction('DELETE_MATCH_SUCCESS');
+export const deleteMatchFailure = createAction('DELETE_MATCH_FAILURE');
+
+export const deleteMatch = (clubId, matchId) => (dispatch, getState, api) => {
+    dispatch(deleteMatchRequest());
+
+    return api.deleteMatch(clubId, matchId)
+        .then(api.checkStatus)
+        .then(response => normalize(response.data.matches, [matchSchema]))
+        .then(normalizedData => dispatch(deleteMatchSuccess({
+            ...normalizedData,
+            clubId,
+            matchId
+        })))
+        .catch(api.handleError(dispatch, deleteMatchFailure));
+};
+
+/**
+ * Fetch match
+ */
 export const fetchMatchRequest = createAction('FETCH_MATCH_REQUEST');
 export const fetchMatchSuccess = createAction('FETCH_MATCH_SUCCESS');
 export const fetchMatchFailure = createAction('FETCH_MATCH_FAILURE');

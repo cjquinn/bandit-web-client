@@ -44,6 +44,32 @@ describe('addMatch', () => {
     });
 });
 
+describe('deleteMatch', () => {
+    it(actions.deleteMatchSuccess.toString(), () => {
+        const state = {
+            didError: false,
+            ids: [1, 2, 3],
+            isFetching: false,
+            page: 1,
+            total: 50
+        };
+
+        const payload = {
+            matchId: 1
+        };
+
+        const expected = {
+            didError: false,
+            ids: [2, 3],
+            isFetching: false,
+            page: 1,
+            total: 49
+        };
+
+        expect(reducers(state, actions.deleteMatchSuccess(payload))).toEqual(expected);
+    });
+});
+
 describe('fetchMatches', () => {
     it(actions.fetchMatchesRequest.toString(), () => {
         const state = {
