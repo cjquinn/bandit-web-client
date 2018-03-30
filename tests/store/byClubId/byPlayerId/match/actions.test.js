@@ -46,7 +46,13 @@ describe('addMatch', () => {
                             clubId,
                             result: 1,
                             entities: {
-                                matches: {1: {id: 1, player_a_id: 1, player_b_id: 2}}
+                                matches: {1: {
+                                    id: 1,
+                                    player_a_id: 1,
+                                    player_b_id: 2,
+                                    player_a: 1,
+                                    player_b: 2
+                                }}
                             }
                         }
                     }
@@ -97,7 +103,13 @@ describe('deleteMatch', () => {
                             matchId,
                             result: [1],
                             entities: {
-                                matches: {1: {id: 1, player_a_id: 1, player_b_id: 2}}
+                                matches: {1: {
+                                    id: 1,
+                                    player_a_id: 1,
+                                    player_b_id: 2,
+                                    player_a: 1,
+                                    player_b: 2
+                                }}
                             }
                         }
                     }
@@ -146,7 +158,13 @@ describe('fetchMatch', () => {
                         payload: {
                             result: 1,
                             entities: {
-                                matches: {1: {id: 1, player_a_id: 1, player_b_id: 2}}
+                                matches: {1: {
+                                    id: 1,
+                                    player_a_id: 1,
+                                    player_b_id: 2,
+                                    player_a: 1,
+                                    player_b: 2
+                                }}
                             }
                         }
                     }
@@ -199,7 +217,13 @@ describe('fetchMatches', () => {
                             playerId,
                             result: [1],
                             entities: {
-                                matches: {1: {id: 1, player_a_id: 1, player_b_id: 2}}
+                                matches: {1: {
+                                    id: 1,
+                                    player_a_id: 1,
+                                    player_b_id: 2,
+                                    player_a: 1,
+                                    player_b: 2
+                                }}
                             }
                         }
                     }
@@ -264,7 +288,13 @@ describe('fetchMoreMatches', () => {
                             playerId,
                             result: [1],
                             entities: {
-                                matches: {1: {id: 1, player_a_id: 1, player_b_id: 2}}
+                                matches: {1: {
+                                    id: 1,
+                                    player_a_id: 1,
+                                    player_b_id: 2,
+                                    player_a: 1,
+                                    player_b: 2
+                                }}
                             }
                         }
                     }

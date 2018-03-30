@@ -10,6 +10,7 @@ import { signOut } from './user/actions';
 // Endpoints
 export * from './club/endpoints';
 export * from './byClubId/byPlayerId/match/endpoints';
+export * from './byClubId/dispute/endpoints';
 export * from './byClubId/leaderboard/endpoints';
 export * from './byClubId/player/endpoints';
 export * from './user/endpoints';

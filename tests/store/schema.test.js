@@ -90,3 +90,113 @@ describe('dispute + match + player + user', () => {
         expect(normalize(response.dispute, schema.dispute)).toEqual(expected);
     });
 });
+
+describe('dispute', () => {
+    it('normalize', () => {
+        let response = {
+            dispute: {
+                match_id: 1
+            }
+        };
+
+        let expected = {
+            result: 1,
+            entities: {
+                disputes: {
+                    1: {
+                        match_id: 1,
+                        match: 1
+                    }
+                }
+            }
+        };
+
+        expect(normalize(response.dispute, schema.dispute)).toEqual(expected);
+
+        response = {
+            dispute: {
+                match_id: 1,
+                match: {
+                    id: 1
+                }
+            }
+        };
+
+        expected = {
+            result: 1,
+            entities: {
+                disputes: {
+                    1: {
+                        match_id: 1,
+                        match: 1
+                    }
+                },
+                matches: {
+                    1: {id: 1}
+                }
+            }
+        };
+
+        expect(normalize(response.dispute, schema.dispute)).toEqual(expected);
+    });
+});
+
+describe('match', () => {
+    it('normalize', () => {
+        let response = {
+            match: {
+                id: 1,
+                player_a_id: 1,
+                player_b_id: 2
+            }
+        };
+
+        let expected = {
+            result: 1,
+            entities: {
+                matches: {
+                    1: {
+                        id: 1,
+                        player_a_id: 1,
+                        player_b_id: 2,
+                        player_a: 1,
+                        player_b: 2
+                    }
+                }
+            }
+        };
+
+        expect(normalize(response.match, schema.match)).toEqual(expected);
+
+        response = {
+            match: {
+                id: 1,
+                player_a_id: 1,
+                player_b_id: 2,
+                player_a: {id: 1},
+                player_b: {id: 2}
+            }
+        };
+
+        expected = {
+            result: 1,
+            entities: {
+                matches: {
+                    1: {
+                        id: 1,
+                        player_a_id: 1,
+                        player_b_id: 2,
+                        player_a: 1,
+                        player_b: 2
+                    }
+                },
+                players: {
+                    1: {id: 1},
+                    2: {id: 2}
+                }
+            }
+        };
+
+        expect(normalize(response.match, schema.match)).toEqual(expected);
+    });
+});
