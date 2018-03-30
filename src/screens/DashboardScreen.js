@@ -25,7 +25,7 @@ const DashboardScreen = () => (
 
                 <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                     <h1 className="u-size-h2 u-color-white">Weekly <span className="u-color-steam">leaderboard</span></h1>
-                    <a href="/leaderboards.php" className="c-go u-color-playdough">go to</a>
+                    <a href="/leaderboards.php" className="c-go">go</a>
                 </header>
 
                 <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
@@ -41,7 +41,7 @@ const DashboardScreen = () => (
 
                 <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                     <h1 className="u-size-h2 u-color-white">All time <span className="u-color-steam">leaderboard</span></h1>
-                    <a href="/leaderboards.php" className="c-go u-color-playdough">go to</a>
+                    <a href="/leaderboards.php" className="c-go">go</a>
                 </header>
 
                 <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
