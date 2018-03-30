@@ -1,7 +1,7 @@
 $colour-basement: #000207;
 $colour-fold: #0F121F;
 $colour-fold05: rgba($colour-fold, .5);
-$colour-floor: #1D2438;
+$colour-floor: saturate(#1D2438, 5%);
 $colour-floor05: rgba($colour-floor, .5);
 
 $colour-playdough: #3CB1FF;
@@ -16,6 +16,9 @@ $colour-orange: #FF7048;
 $colour-satsuma: #F29E44;
 
 $colour-hotmelon: #F5515F;
+
+$colour-puss: #FAD5AD;
+$colour-puss2: #FAD549;
 
 $colour-win: #9CEB6E;
 $colour-loss: $colour-hotmelon;

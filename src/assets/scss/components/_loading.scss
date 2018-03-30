@@ -1,0 +1,95 @@
+/**
+ * .c-loading
+ */
+
+$component: 'loading';
+
+#{'.' + $iota-global-components-namespace + $component} {
+  animation: loadingRotateSteps calc(var(--cycleTime) * 4) infinite ease-in-out;
+
+  &__hexagon {
+    @extend .u-clip-hexagon-flat;
+    width: var(--loadingWidth);
+    height: calc(var(--loadingWidth) * .85);
+    transform: rotate($loadingDegrees / 2);
+  }
+
+  &__line {
+    @extend .o-absfill;
+
+    &:before {
+      @extend %no-content;
+      @extend .u-pos-absolute;
+      @extend .u-top-0;
+      @extend .u-will-transform;
+      left: calc(25% - (var(--lineWidth) / 2));
+      width: calc(50% + var(--lineWidth));
+      height: var(--lineWidth);
+      background-color: var(--lineColour);
+      transform: scaleX(0);
+      transform-origin: 0 0;
+      animation: loadingLineGrow calc(var(--cycleTime) * 3) infinite;
+    }
+
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        transform: rotate(($i - 1) * $loadingDegrees);
+
+        &:before {
+          animation-delay: calc((var(--cycleTime) / 2) * #{$i - 1});
+        }
+      }
+    }
+
+    @each $colour in $loadingLineColours {
+
+      $i: index($loadingLineColours, $colour);
+
+      &:nth-child(#{$i}) {
+        --lineColour: $colour;
+      }
+    }
+  }
+}
+
+@keyframes loadingRotateSteps {
+
+  @for $i from 1 through $loadingSides {
+
+    $percentageStart: percentage(1 / 12 * ($i * 2 - 2));
+    $percentageEnd: percentage(1 / 12 * ($i * 2 - 1));
+
+    #{$percentageStart},
+    #{$percentageEnd} {
+      transform: rotate(($i - 1) * $loadingDegrees);
+    }
+  }
+
+  100% {
+    transform: rotate($loadingSides * $loadingDegrees);
+  }
+}
+
+@keyframes loadingLineGrow {
+  0% {
+    transform: scaleX(0);
+  }
+
+  0%,
+  50% {
+    transform-origin: 0 0;
+  }
+
+  50% {
+    transform: scaleX(1);
+  }
+
+  50.1%,
+  100% {
+    transform-origin: 100% 0;
+  }
+
+  100% {
+    transform: scaleX(0);
+  }
+}

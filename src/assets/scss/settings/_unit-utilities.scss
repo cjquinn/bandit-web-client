@@ -7,6 +7,38 @@
 */
 
 $unitUtilitiesSettings: (
+  ( property: 'top',
+    propertyClass: 'top-',
+
+    units: (
+      (
+        unit: '%',
+        unitClass: 'pc',
+
+        values: (
+          (
+            value: 50,
+          ),
+        ),
+      ),
+    ),
+  ),
+  ( property: 'left',
+    propertyClass: 'left-',
+
+    units: (
+      (
+        unit: '%',
+        unitClass: 'pc',
+
+        values: (
+          (
+            value: 50,
+          ),
+        ),
+      ),
+    ),
+  ),
   ( property: 'width',
     propertyClass: 'width-',
 
