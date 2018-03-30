@@ -12,7 +12,7 @@ const AddResultScreen = () => (
 
         <div class="o-container u-ph-1bl u-vspace-2bl">
 
-                <a href="/matches.php" class="u-color-playdough">Back to Matches</a>
+                <a href="/matches.php" class="c-go">Go</a>
 
                 <header class="o-container">
 
