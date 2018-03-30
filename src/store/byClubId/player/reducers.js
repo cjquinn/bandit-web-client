@@ -7,6 +7,9 @@ import * as actions from './actions';
 // Reducers
 import { makeIsFetchingReducer } from '../../shared/reducers';
 
+// Selectors
+import { initialState } from './selectors';
+
 const ids = handleActions(
     {
         [actions.fetchPlayerSuccess]: (state, { payload }) => ([
@@ -15,7 +18,7 @@ const ids = handleActions(
         ]),
         [actions.fetchPlayersSuccess]: (state, { payload }) => payload.result
     },
-    []
+    initialState.ids
 );
 
 const isFetching = makeIsFetchingReducer(
@@ -27,7 +30,7 @@ const isFetching = makeIsFetchingReducer(
 const orderBy = handleAction(
     actions.orderPlayersBy,
     (state, { payload }) => payload.orderBy,
-    'a-z'
+    initialState.orderBy
 );
 
 const reducers = combineReducers({

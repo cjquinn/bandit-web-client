@@ -4,11 +4,14 @@ import { combineActions, handleAction, handleActions } from 'redux-actions';
 // Actions
 import * as actions from './actions';
 
+// Selectors
+import { initialState } from './selectors';
+
 const makeLeaderboardReducers = period => {
     const ids = handleAction(
         actions.fetchLeaderboardSuccess,
         (state, { payload }) => payload.period === period ? payload.result : state,
-        []
+        initialState.ids
     );
 
     const isFetching = handleActions(
@@ -21,7 +24,7 @@ const makeLeaderboardReducers = period => {
             )]: (state, { payload }) =>
                 payload.period === period ? false : state
         },
-        false
+        initialState.isFetching
     );
 
     return combineReducers({

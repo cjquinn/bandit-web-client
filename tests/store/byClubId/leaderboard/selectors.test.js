@@ -1,12 +1,12 @@
 import { getIds, getIsFetching, makeGetLeaderboard } from '../../../../src/store/byClubId/leaderboard/selectors';
 
 describe('selectors', () => {
-    const props = {
+    const propsWithClubId = {
         period: 'allTime',
         match: {params: {clubId: 1}}
     };
 
-    it('getIsIds', () => {
+    it('getIds', () => {
         const state = {
             byClubId: {
                 1: {
@@ -24,7 +24,13 @@ describe('selectors', () => {
             }
         };
 
-        expect(getIds(state, props)).toEqual([1, 2, 3]);
+        expect(getIds(state, propsWithClubId)).toEqual([1, 2, 3]);
+
+        const stateNoByClubId = {
+            byClubId: {}
+        };
+
+        expect(getIds(stateNoByClubId, propsWithClubId)).toEqual([]);
     });
 
     it('getIsFetching', () => {
@@ -34,18 +40,24 @@ describe('selectors', () => {
                     leaderboard: {
                         allTime: {
                             ids: [],
-                            isFetching: false
+                            isFetching: true
                         },
                         weekly: {
                             ids: [],
-                            isFetching: true
+                            isFetching: false
                         }
                     }
                 }
             }
         };
 
-        expect(getIsFetching(state, props)).toBe(false);
+        expect(getIsFetching(state, propsWithClubId)).toBe(true);
+
+        const stateNoByClubId = {
+            byClubId: {}
+        };
+
+        expect(getIsFetching(stateNoByClubId, propsWithClubId)).toBe(false);
     });
 
     it('makeGetLeaderboard', () => {
@@ -159,10 +171,10 @@ describe('selectors', () => {
             }
         ];
 
-        expect(makeGetLeaderboard()(state, props)).toEqual(expected);
+        expect(makeGetLeaderboard()(state, propsWithClubId)).toEqual(expected);
 
         const propsWithLimit = {
-            ...props,
+            ...propsWithClubId,
             limit: 1
         };
 
@@ -182,7 +194,7 @@ describe('selectors', () => {
         expect(makeGetLeaderboard()(state, propsWithLimit)).toEqual(expectedWithLimit);
 
         let propsWithPlayerId = {
-            ...props,
+            ...propsWithClubId,
             limit: 3,
             playerId: 2
         };
@@ -332,5 +344,15 @@ describe('selectors', () => {
         ];
 
         expect(makeGetLeaderboard()(state, propsWithPlayerId)).toEqual(expectedWithPlayerId);
+
+        const stateNoByClubId = {
+            byClubId: {},
+            entities: {
+                players: {},
+                users: {}
+            }
+        };
+
+        expect(makeGetLeaderboard()(stateNoByClubId, propsWithClubId)).toEqual([]);
     });
 });

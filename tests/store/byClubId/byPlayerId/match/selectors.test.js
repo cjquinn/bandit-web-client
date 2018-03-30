@@ -2,7 +2,6 @@
 import {
     getIds,
     getIsFetching,
-    getLimit,
     getPage,
     getMatchEntity,
     getMatchEntities,
@@ -33,6 +32,22 @@ describe('selectors', () => {
         const expected = [1, 2];
 
         expect(getIds(state, propsWithClubIdPlayerId)).toEqual(expected);
+
+        const stateNoByClubId = {
+            byClubId: {}
+        };
+
+        expect(getIds(stateNoByClubId, propsWithClubIdPlayerId)).toEqual([]);
+
+        const stateNoByPlayerId = {
+            byClubId: {
+                1: {
+                    byPlayerId: {}
+                }
+            }
+        };
+
+        expect(getIds(stateNoByPlayerId, propsWithClubIdPlayerId)).toEqual([]);
     });
 
     it('getIsFetching', () => {
@@ -44,7 +59,7 @@ describe('selectors', () => {
                             match: {
                                 didError: false,
                                 ids: [],
-                                isFetching: false,
+                                isFetching: true,
                                 page: 1
                             }
                         }
@@ -53,17 +68,23 @@ describe('selectors', () => {
             }
         };
 
-        expect(getIsFetching(state, propsWithClubIdPlayerId)).toBe(false);
-    });
+        expect(getIsFetching(state, propsWithClubIdPlayerId)).toBe(true);
 
-    it('getLimit', () => {
-        const props = {
-            limit: 3
+        const stateNoByClubId = {
+            byClubId: {}
         };
 
-        const expected = 3;
+        expect(getIsFetching(stateNoByClubId, propsWithClubIdPlayerId)).toBe(false);
 
-        expect(getLimit({}, props)).toEqual(expected);
+        const stateNoByPlayerId = {
+            byClubId: {
+                1: {
+                    byPlayerId: {}
+                }
+            }
+        };
+
+        expect(getIsFetching(stateNoByPlayerId, propsWithClubIdPlayerId)).toBe(false);
     });
 
     it('getPage', () => {
@@ -76,7 +97,7 @@ describe('selectors', () => {
                                 didError: false,
                                 ids: [],
                                 isFetching: false,
-                                page: 1
+                                page: 2
                             }
                         }
                     }
@@ -84,9 +105,25 @@ describe('selectors', () => {
             }
         };
 
-        const expected = 1;
-
+        const expected = 2;
+        
         expect(getPage(state, propsWithClubIdPlayerId)).toEqual(expected);
+
+        const stateNoByClubId = {
+            byClubId: {}
+        };
+
+        expect(getPage(stateNoByClubId, propsWithClubIdPlayerId)).toEqual(1);
+
+        const stateNoByPlayerId = {
+            byClubId: {
+                1: {
+                    byPlayerId: {}
+                }
+            }
+        };
+
+        expect(getPage(stateNoByPlayerId, propsWithClubIdPlayerId)).toEqual(1);
     });
 
     it('getMatchEntity', () => {
@@ -146,7 +183,8 @@ describe('selectors', () => {
                     1: {
                         id: 1,
                         player_a: 1,
-                        player_b: 2
+                        player_b: 2,
+                        dispute: null
                     }
                 },
                 players: {
@@ -189,10 +227,41 @@ describe('selectors', () => {
                     id: 2,
                     name: 'Christy'
                 }
-            }
+            },
+            dispute: null
         };
 
         expect(makeGetMatch()(state, props)).toEqual(expected);
+
+        const stateNoMatch = {
+            entities: {
+                matches: {},
+                players: {
+                    1: {
+                        id: 1,
+                        user: 1
+                    },
+                    2: {
+                        id: 2,
+                        user: 2
+                    }
+                },
+                users: {
+                    1: {
+                        id: 1,
+                        name: 'Russell'
+                    },
+                    2: {
+                        id: 2,
+                        name: 'Christy'
+                    }
+                }
+            }
+        };
+
+        const expectedNoMatch = undefined;
+
+        expect(makeGetMatch()(stateNoMatch, props)).toEqual(expectedNoMatch);
     });
 
     it('makeGetMatches', () => {
@@ -216,12 +285,14 @@ describe('selectors', () => {
                     1: {
                         id: 1,
                         player_a: 1,
-                        player_b: 2
+                        player_b: 2,
+                        dispute: null
                     },
                     2: {
                         id: 2,
                         player_a: 2,
-                        player_b: 3
+                        player_b: 3,
+                        dispute: null
                     }
                 },
                 players: {
@@ -271,7 +342,8 @@ describe('selectors', () => {
                         id: 2,
                         name: 'Christy'
                     }
-                }
+                },
+                dispute: null
             },
             {
                 id: 2,
@@ -288,7 +360,8 @@ describe('selectors', () => {
                         id: 3,
                         name: 'Nathan'
                     }
-                }
+                },
+                dispute: null
             }
         ];
 
@@ -315,10 +388,33 @@ describe('selectors', () => {
                         id: 2,
                         name: 'Christy'
                     }
-                }
+                },
+                dispute: null
             }
         ];
 
         expect(makeGetMatches()(state, propsWithLimit)).toEqual(expectedWithLimit);
+
+        const stateNoByClubId = {
+            byClubId: {},
+            entities: {
+                matches: {}
+            }
+        };
+
+        expect(makeGetMatches()(stateNoByClubId, propsWithClubIdPlayerId)).toEqual([]);
+
+        const stateNoByPlayerId = {
+            byClubId: {
+                1: {
+                    byPlayerId: {}
+                }
+            },
+            entities: {
+                matches: {}
+            }
+        };
+
+        expect(makeGetMatches()(stateNoByPlayerId, propsWithClubIdPlayerId)).toEqual([]);
     });
 });

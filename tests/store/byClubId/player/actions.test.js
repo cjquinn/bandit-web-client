@@ -45,6 +45,7 @@ describe('fetchPlayer', () => {
                     {
                         type: actions.fetchPlayerSuccess.toString(),
                         payload: {
+                            clubId,
                             result: 1,
                             entities: {
                                 players: {1: {id: 1, rating: 1200}}

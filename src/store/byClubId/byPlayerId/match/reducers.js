@@ -7,6 +7,9 @@ import * as actions from './actions';
 // Reducers
 import { makeIsFetchingReducer } from '../../../shared/reducers';
 
+// Selectors
+import { initialState } from './selectors';
+
 const ids = handleActions(
     {
         [actions.addMatchSuccess]: (state, { payload }) => ([
@@ -20,7 +23,7 @@ const ids = handleActions(
             ? payload.result
             : [...state, ...payload.result]
     },
-    []
+    initialState.ids
 );
 
 const isFetching = makeIsFetchingReducer(
@@ -32,7 +35,7 @@ const isFetching = makeIsFetchingReducer(
 const page = handleAction(
     actions.fetchMatchesSuccess,
     (state, { payload }) => payload.page,
-    1
+    initialState.page
 );
 
 const total = handleActions(
@@ -41,7 +44,7 @@ const total = handleActions(
         [actions.deleteMatchSuccess]: state => state - 1,
         [actions.fetchMatchesSuccess]: (state, { payload }) => payload.total
     },
-    0
+    initialState.total
 );
 
 const reducers = combineReducers({

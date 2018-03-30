@@ -8,18 +8,23 @@ import { player as playerSchema } from '../../schema';
 import { getByClubIdState } from '../selectors';
 import { makeIsFetchingSelector } from '../../shared/selectors';
 import { getPlayerEntities } from '../player/selectors';
+import { getLimit, getPlayerId } from '../../props/selectors';
 import { getUserEntities } from '../../user/selectors';
 
+export const initialState = {
+    ids: [],
+    isFetching: false
+};
+
 // State
-const getLeaderboardState = (state, props) => getByClubIdState(state, props).leaderboard[props.period];
+const getLeaderboardState = (state, props) =>
+    getByClubIdState(state, props)
+        ? getByClubIdState(state, props).leaderboard[props.period]
+        : initialState;
 
 export const getIds = (state, props) => getLeaderboardState(state, props).ids;
 
 export const getIsFetching = makeIsFetchingSelector(getLeaderboardState);
-
-export const getLimit = (_, props) => props.limit;
-
-export const getPlayerId = (_, props) => props.playerId;
 
 // Memoized
 export const makeGetLeaderboard = () => createSelector(

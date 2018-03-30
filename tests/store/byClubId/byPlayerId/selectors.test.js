@@ -2,7 +2,7 @@ import { getByPlayerIdState } from '../../../../src/store/byClubId/byPlayerId/se
 
 describe('selectors', () => {
     it('getByPlayerIdState', () => {
-        let state = {
+        const state = {
             byClubId: {
                 1: {
                     byPlayerId: {
@@ -31,5 +31,11 @@ describe('selectors', () => {
         };
 
         expect(getByPlayerIdState(state, props)).toEqual(expected);
+
+        const stateNoByClubId = {
+            byClubId: {}
+        };
+
+        expect(getByPlayerIdState(stateNoByClubId, props)).toEqual(undefined);
     });
 });

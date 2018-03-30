@@ -6,6 +6,7 @@ import reducers from '../../../../src/store/reducers';
 
 // Selectors
 import {
+    getIds,
     getIsFetching,
     getOrderBy,
     getPlayerEntity,
@@ -16,20 +17,48 @@ import {
 describe('selectors', () => {
     const propsWithClubId = {match: {params: {clubId: 1}}};
 
-    it('getIsFetching', () => {
+    it('getIds', () => {
         const state = {
             byClubId: {
                 1: {
                     player: {
-                        ids: [],
-                        isFetching: false,
+                        ids: [1, 2],
+                        isFetching: true,
                         orderBy: 'a-z'
                     }
                 }
             }
         };
 
-        expect(getIsFetching(state, propsWithClubId)).toBe(false);
+        expect(getIds(state, propsWithClubId)).toEqual([1, 2]);
+
+        const stateNoByClubId = {
+            byClubId: {}
+        };
+
+        expect(getIds(stateNoByClubId, propsWithClubId)).toEqual([]);
+    });
+
+    it('getIsFetching', () => {
+        const state = {
+            byClubId: {
+                1: {
+                    player: {
+                        ids: [],
+                        isFetching: true,
+                        orderBy: 'a-z'
+                    }
+                }
+            }
+        };
+
+        expect(getIsFetching(state, propsWithClubId)).toBe(true);
+
+        const stateNoByClubId = {
+            byClubId: {}
+        };
+
+        expect(getIsFetching(stateNoByClubId, propsWithClubId)).toBe(false);
     });
 
     it('getOrderBy', () => {
@@ -39,15 +68,21 @@ describe('selectors', () => {
                     player: {
                         ids: [],
                         isFetching: false,
-                        orderBy: 'a-z'
+                        orderBy: 'rating'
                     }
                 }
             }
         };
 
-        const expected = 'a-z';
+        const expected = 'rating';
 
         expect(getOrderBy(state, propsWithClubId)).toEqual(expected);
+
+        const stateNoByClubId = {
+            byClubId: {}
+        };
+
+        expect(getOrderBy(stateNoByClubId, propsWithClubId)).toEqual('a-z');
     });
 
     it('getPlayerEntity', () => {
@@ -129,6 +164,22 @@ describe('selectors', () => {
         };
 
         expect(makeGetPlayer()(state, props)).toEqual(expected);
+
+        const stateNoPlayer = {
+            entities: {
+                players: {},
+                users: {
+                    1: {
+                        id: 1,
+                        name: 'Russell'
+                    }
+                }
+            }
+        };
+
+        const expectedNoPlayer = undefined;
+
+        expect(makeGetPlayer()(stateNoPlayer, props)).toEqual(expectedNoPlayer);
     });
 
     const stateForGetPlayers = {
@@ -181,6 +232,18 @@ describe('selectors', () => {
             }
         }
     };
+
+    it('makeGetPlayers noByClubId', () => {
+        const stateNoByClubId = {
+            byClubId: {},
+            entities: {
+                players: {},
+                users: {}
+            }
+        };
+
+        expect(makeGetPlayers()(stateNoByClubId, propsWithClubId)).toEqual([]);
+    });
 
     it('makeGetPlayers a-z', () => {
         const state = reducers(stateForGetPlayers, orderPlayersBy({
