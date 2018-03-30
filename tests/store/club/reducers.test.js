@@ -7,7 +7,6 @@ import reducers from '../../../src/store/club/reducers';
 describe('initial state', () => {
     it('shape', () => {
         const expected = {
-            didError: false,
             ids: [],
             isFetching: false
         };
@@ -16,16 +15,50 @@ describe('initial state', () => {
     });
 });
 
+describe('createClub', () => {
+    it(actions.createClubSuccess.toString(), () => {
+        const state = {
+            ids: [1, 2],
+            isFetching: false
+        };
+
+        const payload  = {result: 3};
+
+        const expected = {
+            ids: [1, 2, 3],
+            isFetching: false
+        };
+
+        expect(reducers(state, actions.createClubSuccess(payload))).toEqual(expected);
+    });
+});
+
+describe('fetchClub', () => {
+    it(actions.fetchClubSuccess.toString(), () => {
+        const state = {
+            ids: [1, 2],
+            isFetching: false
+        };
+
+        const payload  = {result: 3};
+
+        const expected = {
+            ids: [1, 2, 3],
+            isFetching: false
+        };
+
+        expect(reducers(state, actions.fetchClubSuccess(payload))).toEqual(expected);
+    });
+});
+
 describe('fetchClubs', () => {
     it(actions.fetchClubsRequest.toString(), () => {
         const state = {
-            didError: true,
             ids: [],
             isFetching: false
         };
 
         const expected = {
-            didError: false,
             ids: [],
             isFetching: true
         };
@@ -35,13 +68,11 @@ describe('fetchClubs', () => {
 
     it(actions.fetchClubsFailure.toString(), () => {
         const state = {
-            didError: false,
             ids: [],
             isFetching: true
         };
 
         const expected = {
-            didError: true,
             ids: [],
             isFetching: false
         };
@@ -51,7 +82,6 @@ describe('fetchClubs', () => {
 
     it(actions.fetchClubsSuccess.toString(), () => {
         const state = {
-            didError: true,
             ids: [1, 2],
             isFetching: true
         };
@@ -61,7 +91,6 @@ describe('fetchClubs', () => {
         };
 
         const expected = {
-            didError: false,
             ids: [1, 2, 3],
             isFetching: false
         };

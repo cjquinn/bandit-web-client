@@ -6,26 +6,23 @@ import { match as matchSchema } from '../../../schema';
 
 // Selectors
 import { getPlayerEntities } from '../../player/selectors';
-import { getMatchByPlayerId } from '../selectors';
-import { makeFetchSelectors } from '../../../shared/selectors';
+import { getByPlayerIdState } from '../selectors';
+import { makeIsFetchingSelector } from '../../../shared/selectors';
 import { getUserEntities } from '../../../user/selectors';
-
-const fetchSelectors = makeFetchSelectors(getMatchByPlayerId);
-
-export const { getDidError, getIsFetching } = fetchSelectors;
-
-export const getLimit = (_, props) => props.limit;
-
-export const getPage = (state, props) => getMatchByPlayerId(state, props).page;
 
 export const getMatchEntity = (state, props) => state.entities.matches[props.match.params.matchId];
 
 export const getMatchEntities = state => state.entities.matches;
 
-export const getIds = createSelector(
-    [fetchSelectors.getIds, getLimit],
-    (ids, limit) => limit ? ids.splice(0, limit) : ids
-);
+const getMatchState = (state, props) => getByPlayerIdState(state, props).match;
+
+export const getIds = (state, props) => getMatchState(state, props).ids;
+
+export const getIsFetching = makeIsFetchingSelector(getMatchState);
+
+export const getLimit = (_, props) => props.limit;
+
+export const getPage = (state, props) => getMatchState(state, props).page;
 
 export const makeGetMatch = () => createSelector(
     [getMatchEntity, getPlayerEntities, getUserEntities],
@@ -38,7 +35,7 @@ export const makeGetMatch = () => createSelector(
 );  
 
 export const makeGetMatches = () => createSelector(
-    [getIds, getMatchEntities, getPlayerEntities, getUserEntities],
-    (ids, matches, players, users) =>
-        denormalize(ids, [matchSchema], {matches, players, users})
+    [getIds, getLimit, getMatchEntities, getPlayerEntities, getUserEntities],
+    (ids, limit, matches, players, users) =>
+        denormalize(limit ? ids.splice(0, limit) : ids, [matchSchema], {matches, players, users})
 );

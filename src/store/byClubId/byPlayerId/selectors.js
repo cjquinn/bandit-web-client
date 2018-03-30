@@ -1,3 +1,3 @@
-import { getByPlayerIdByClubId } from '../selectors';
+import { getByClubIdState } from '../selectors';
 
-export const getMatchByPlayerId = (state, props) => getByPlayerIdByClubId(state, props)[props.match.params.playerId].match;
+export const getByPlayerIdState = (state, props) => getByClubIdState(state, props).byPlayerId[props.match.params.playerId];

@@ -1,6 +1,47 @@
-import { getClubs, getIds, getIsFetching, makeGetClub } from '../../../src/store/club/selectors';
+import {
+    getClubEntity,
+    getClubEntities,
+    getClubs,
+    getIds,
+    getIsFetching,
+    makeGetClub } from '../../../src/store/club/selectors';
 
 describe('selectors', () => {
+    it('getClubEntity', () => {
+        const state = {
+            entities: {
+                clubs: {
+                    1: {id: 1, name: 'Squash'},
+                    2: {id: 2, name: 'Bandit'}
+                }
+            }
+        };
+
+        const props = {match: {params: {clubId: 1}}};
+
+        const expected = {id: 1, name: 'Squash'};
+
+        expect(getClubEntity(state, props)).toEqual(expected);
+    });
+
+    it('getClubEntities', () => {
+        const state = {
+            entities: {
+                clubs: {
+                    1: {id: 1, name: 'Squash'},
+                    2: {id: 2, name: 'Bandit'}
+                }
+            }
+        };
+
+        const expected = {
+            1: {id: 1, name: 'Squash'},
+            2: {id: 2, name: 'Bandit'}
+        };
+
+        expect(getClubEntities(state)).toEqual(expected);
+    });
+
     it('getClubs', () => {
         const state = {
             club: {

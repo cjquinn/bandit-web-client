@@ -7,7 +7,6 @@ import reducers from '../../../../../src/store/byClubId/byPlayerId/match/reducer
 describe('initial state', () => {
     it('shape', () => {
         const expected = {
-            didError: false,
             ids: [],
             isFetching: false,
             page: 1,
@@ -21,7 +20,6 @@ describe('initial state', () => {
 describe('addMatch', () => {
     it(actions.addMatchSuccess.toString(), () => {
         const state = {
-            didError: false,
             ids: [4, 5],
             isFetching: false,
             page: 1,
@@ -33,7 +31,6 @@ describe('addMatch', () => {
         };
 
         const expected = {
-            didError: false,
             ids: [1, 4, 5],
             isFetching: false,
             page: 1,
@@ -47,7 +44,6 @@ describe('addMatch', () => {
 describe('deleteMatch', () => {
     it(actions.deleteMatchSuccess.toString(), () => {
         const state = {
-            didError: false,
             ids: [1, 2, 3],
             isFetching: false,
             page: 1,
@@ -59,7 +55,6 @@ describe('deleteMatch', () => {
         };
 
         const expected = {
-            didError: false,
             ids: [2, 3],
             isFetching: false,
             page: 1,
@@ -73,7 +68,6 @@ describe('deleteMatch', () => {
 describe('fetchMatches', () => {
     it(actions.fetchMatchesRequest.toString(), () => {
         const state = {
-            didError: true,
             ids: [],
             isFetching: false,
             page: 1,
@@ -81,7 +75,6 @@ describe('fetchMatches', () => {
         };
 
         const expected = {
-            didError: false,
             ids: [],
             isFetching: true,
             page: 1,
@@ -93,7 +86,6 @@ describe('fetchMatches', () => {
 
     it(actions.fetchMatchesFailure.toString(), () => {
         const state = {
-            didError: false,
             ids: [],
             isFetching: true,
             page: 1,
@@ -101,7 +93,6 @@ describe('fetchMatches', () => {
         };
 
         const expected = {
-            didError: true,
             ids: [],
             isFetching: false,
             page: 1,
@@ -113,7 +104,6 @@ describe('fetchMatches', () => {
 
     it(actions.fetchMatchesSuccess.toString(), () => {
         const state = {
-            didError: true,
             ids: [4, 5],
             isFetching: true,
             page: 1,
@@ -127,7 +117,6 @@ describe('fetchMatches', () => {
         };
 
         const expected = {
-            didError: false,
             ids: [1, 2, 3],
             isFetching: false,
             page: 1,
@@ -141,7 +130,6 @@ describe('fetchMatches', () => {
 describe('fetchMoreMatches', () => {
     it(actions.fetchMatchesSuccess.toString(), () => {
         const state = {
-            didError: true,
             ids: [1, 2],
             isFetching: true,
             page: 1,
@@ -155,7 +143,6 @@ describe('fetchMoreMatches', () => {
         };
 
         const expected = {
-            didError: false,
             ids: [1, 2, 3, 4],
             isFetching: false,
             page: 2,

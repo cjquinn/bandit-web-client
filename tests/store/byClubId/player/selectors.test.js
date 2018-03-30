@@ -6,7 +6,6 @@ import reducers from '../../../../src/store/reducers';
 
 // Selectors
 import {
-    getDidError,
     getIsFetching,
     getOrderBy,
     getPlayerEntity,
@@ -17,29 +16,11 @@ import {
 describe('selectors', () => {
     const propsWithClubId = {match: {params: {clubId: 1}}};
 
-    it('getDidError', () => {
-        const state = {
-            byClubId: {
-                1: {
-                    player: {
-                        didError: false,
-                        ids: [],
-                        isFetching: false,
-                        orderBy: 'a-z'
-                    }
-                }
-            }
-        };
-
-        expect(getDidError(state, propsWithClubId)).toBe(false);
-    });
-
     it('getIsFetching', () => {
         const state = {
             byClubId: {
                 1: {
                     player: {
-                        didError: false,
                         ids: [],
                         isFetching: false,
                         orderBy: 'a-z'
@@ -56,7 +37,6 @@ describe('selectors', () => {
             byClubId: {
                 1: {
                     player: {
-                        didError: false,
                         ids: [],
                         isFetching: false,
                         orderBy: 'a-z'
@@ -155,7 +135,6 @@ describe('selectors', () => {
         byClubId: {
             1: {
                 player: {
-                    didError: false,
                     ids: [1, 2, 3],
                     isFetching: false,
                     orderBy: 'a-z'

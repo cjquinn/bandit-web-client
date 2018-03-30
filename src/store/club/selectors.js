@@ -1,13 +1,17 @@
 import { createSelector } from 'reselect';
 
 // Selectors
-import { makeFetchSelectors } from '../shared/selectors';
-
-export const { getDidError, getIds, getIsFetching } = makeFetchSelectors(state => state.club);
+import { makeIsFetchingSelector } from '../shared/selectors';
 
 export const getClubEntity = (state, props) => state.entities.clubs[props.match.params.clubId];
 
 export const getClubEntities = state => state.entities.clubs;
+
+const getClubState = state => state.club;
+
+export const getIsFetching = makeIsFetchingSelector(getClubState);
+
+export const getIds = state => getClubState(state).ids;
 
 export const getClubs = createSelector(
     [getIds, getClubEntities],

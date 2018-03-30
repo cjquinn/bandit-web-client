@@ -10,7 +10,6 @@ describe('byClubId', () => {
             byPlayerId: {
                 1: {
                     match: {
-                        didError: false,
                         ids: [],
                         isFetching: true,
                         page: 1,
@@ -19,7 +18,6 @@ describe('byClubId', () => {
                 }
             },
             player: {
-                didError: false,
                 ids: [],
                 isFetching: true,
                 orderBy: 'a-z'
@@ -29,7 +27,6 @@ describe('byClubId', () => {
             byPlayerId: {
                 1: {
                     match: {
-                        didError: false,
                         ids: [],
                         isFetching: false,
                         page: 1,
@@ -38,7 +35,6 @@ describe('byClubId', () => {
                 }
             },
             player: {
-                didError: false,
                 ids: [],
                 isFetching: false,
                 orderBy: 'a-z'
@@ -60,7 +56,6 @@ describe('byClubId', () => {
                 byPlayerId: {
                     1: {
                         match: {
-                            didError: false,
                             ids: [1, 2, 3],
                             isFetching: false,
                             page: 2,
@@ -69,7 +64,6 @@ describe('byClubId', () => {
                     }
                 },
                 player: {
-                    didError: false,
                     ids: [],
                     isFetching: true,
                     orderBy: 'a-z'
@@ -79,7 +73,6 @@ describe('byClubId', () => {
                 byPlayerId: {
                     1: {
                         match: {
-                            didError: false,
                             ids: [],
                             isFetching: false,
                             page: 1,
@@ -88,7 +81,6 @@ describe('byClubId', () => {
                     }
                 },
                 player: {
-                    didError: false,
                     ids: [],
                     isFetching: false,
                     orderBy: 'a-z'
@@ -111,7 +103,6 @@ describe('byClubId', () => {
                 byPlayerId: {
                     1: {
                         match: {
-                            didError: false,
                             ids: [],
                             isFetching: true,
                             page: 1,
@@ -120,7 +111,6 @@ describe('byClubId', () => {
                     }
                 },
                 player: {
-                    didError: false,
                     ids: [1, 2, 3],
                     isFetching: false,
                     orderBy: 'a-z'
@@ -130,7 +120,6 @@ describe('byClubId', () => {
                 byPlayerId: {
                     1: {
                         match: {
-                            didError: false,
                             ids: [],
                             isFetching: false,
                             page: 1,
@@ -139,7 +128,6 @@ describe('byClubId', () => {
                     }
                 },
                 player: {
-                    didError: false,
                     ids: [],
                     isFetching: false,
                     orderBy: 'a-z'

@@ -5,17 +5,21 @@ import { denormalize } from 'normalizr';
 import { player as playerSchema } from '../../schema';
 
 // Selectors
-import { getPlayerByClubId } from '../selectors';
-import { makeFetchSelectors } from '../../shared/selectors';
+import { getByClubIdState } from '../selectors';
+import { makeIsFetchingSelector } from '../../shared/selectors';
 import { getUserEntities } from '../../user/selectors';
-
-export const { getDidError, getIds, getIsFetching } = makeFetchSelectors(getPlayerByClubId);
-
-export const getOrderBy = (state, props) => getPlayerByClubId(state, props).orderBy;
 
 export const getPlayerEntity = (state, props) => state.entities.players[props.match.params.playerId];
 
 export const getPlayerEntities = state => state.entities.players;
+
+const getPlayerState = (state, props) => getByClubIdState(state, props).player;
+
+export const getIds = (state, props) => getPlayerState(state, props).ids;
+
+export const getIsFetching = makeIsFetchingSelector(getPlayerState);
+
+export const getOrderBy = (state, props) => getPlayerState(state, props).orderBy;
 
 export const makeGetPlayer = () => createSelector(
     [getPlayerEntity, getUserEntities],

@@ -1,6 +1,5 @@
 // Selectors
 import {
-    getDidError,
     getIds,
     getIsFetching,
     getLimit,
@@ -13,27 +12,6 @@ import {
 describe('selectors', () => {
     const propsWithClubIdPlayerId = {match: {params: {clubId: 1, playerId: 1}}};
 
-    it('getDidError', () => {
-        const state = {
-            byClubId: {
-                1: {
-                    byPlayerId: {
-                        1: {
-                            match: {
-                                didError: false,
-                                ids: [],
-                                isFetching: false,
-                                page: 1
-                            }
-                        }
-                    }
-                }
-            }
-        };
-
-        expect(getDidError(state, propsWithClubIdPlayerId)).toBe(false);
-    });
-
     it('getIds', () => {
         const state = {
             byClubId: {
@@ -42,7 +20,7 @@ describe('selectors', () => {
                         1: {
                             match: {
                                 didError: false,
-                                ids: [1, 2, 3, 4, 5],
+                                ids: [1, 2],
                                 isFetching: false,
                                 page: 1
                             }
@@ -52,18 +30,9 @@ describe('selectors', () => {
             }
         };
 
-        const expected = [1, 2, 3, 4, 5];
+        const expected = [1, 2];
 
         expect(getIds(state, propsWithClubIdPlayerId)).toEqual(expected);
-
-        const propsWithLimit = {
-            ...propsWithClubIdPlayerId,
-            limit: 3
-        };
-
-        const expectedWithLimit = [1, 2, 3];
-
-        expect(getIds(state, propsWithLimit)).toEqual(expectedWithLimit);
     });
 
     it('getIsFetching', () => {

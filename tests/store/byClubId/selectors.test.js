@@ -1,7 +1,7 @@
-import { getByPlayerIdByClubId, getPlayerByClubId } from '../../../src/store/byClubId/selectors';
+import { getByClubIdState } from '../../../src/store/byClubId/selectors';
 
 describe('selectors', () => {
-    it('getByPlayerIdByClubId', () => {
+    it('getByClubIdState', () => {
         let state = {
             byClubId: {
                 1: {
@@ -14,31 +14,7 @@ describe('selectors', () => {
                                 page: 1
                             }
                         }
-                    }
-                }
-            }
-        };
-
-        const props = {match: {params: {clubId: 1}}};
-
-        const expected = {
-            1: {
-                match: {
-                    didError: false,
-                    ids: [],
-                    isFetching: false,
-                    page: 1
-                }
-            }
-        };
-
-        expect(getByPlayerIdByClubId(state, props)).toEqual(expected);
-    });
-
-    it('getPlayerByClubId', () => {
-        let state = {
-            byClubId: {
-                1: {
+                    },
                     player: {
                         didError: false,
                         ids: [],
@@ -52,12 +28,24 @@ describe('selectors', () => {
         const props = {match: {params: {clubId: 1}}};
 
         const expected = {
-            didError: false,
-            ids: [],
-            isFetching: false,
-            orderBy: 'a-z'   
+            byPlayerId: {
+                1: {
+                    match: {
+                        didError: false,
+                        ids: [],
+                        isFetching: false,
+                        page: 1
+                    }
+                }
+            },
+            player: {
+                didError: false,
+                ids: [],
+                isFetching: false,
+                orderBy: 'a-z'
+            }
         };
 
-        expect(getPlayerByClubId(state, props)).toEqual(expected);
+        expect(getByClubIdState(state, props)).toEqual(expected);
     });
 });

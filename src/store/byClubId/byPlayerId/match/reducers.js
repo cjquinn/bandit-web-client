@@ -5,7 +5,7 @@ import { handleAction, handleActions } from 'redux-actions';
 import * as actions from './actions';
 
 // Reducers
-import { makeFetchReducers } from '../../../shared/reducers';
+import { makeIsFetchingReducer } from '../../../shared/reducers';
 
 const ids = handleActions(
     {
@@ -23,6 +23,12 @@ const ids = handleActions(
     []
 );
 
+const isFetching = makeIsFetchingReducer(
+    actions.fetchMatchesRequest,
+    actions.fetchMatchesFailure,
+    actions.fetchMatchesSuccess
+);
+
 const page = handleAction(
     actions.fetchMatchesSuccess,
     (state, { payload }) => payload.page,
@@ -38,14 +44,7 @@ const total = handleActions(
     0
 );
 
-const { didError, isFetching } = makeFetchReducers(
-    actions.fetchMatchesRequest,
-    actions.fetchMatchesFailure,
-    actions.fetchMatchesSuccess
-);
-
 const reducers = combineReducers({
-    didError,
     ids,
     isFetching,
     page,

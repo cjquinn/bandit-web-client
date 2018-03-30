@@ -7,7 +7,6 @@ describe('byPlayerId', () => {
     const state = {
         1: {
             match: {
-                didError: false,
                 ids: [],
                 isFetching: true,
                 page: 1,
@@ -16,7 +15,6 @@ describe('byPlayerId', () => {
         },
         2: {
             match: {
-                didError: false,
                 ids: [],
                 isFetching: false,
                 page: 1,
@@ -36,7 +34,6 @@ describe('byPlayerId', () => {
         const expected = {
             1: {
                 match: {
-                    didError: false,
                     ids: [1, 2, 3],
                     isFetching: false,
                     page: 2,
@@ -45,7 +42,6 @@ describe('byPlayerId', () => {
             },
             2: {
                 match: {
-                    didError: false,
                     ids: [],
                     isFetching: false,
                     page: 1,

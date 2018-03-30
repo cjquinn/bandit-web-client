@@ -7,7 +7,6 @@ import reducers from '../../../../src/store/byClubId/player/reducers';
 describe('initial state', () => {
     it('shape', () => {
         const expected = {
-            didError: false,
             ids: [],
             isFetching: false,
             orderBy: 'a-z'
@@ -17,17 +16,35 @@ describe('initial state', () => {
     });
 });
 
+describe('fetchPlayer', () => {
+    it(actions.fetchPlayerSuccess.toString(), () => {
+        const state = {
+            ids: [1, 2],
+            isFetching: false,
+            orderBy: 'a-z'
+        };
+
+        const payload  = {result: 3};
+
+        const expected = {
+            ids: [1, 2, 3],
+            isFetching: false,
+            orderBy: 'a-z'
+        };
+
+        expect(reducers(state, actions.fetchPlayerSuccess(payload))).toEqual(expected);
+    });
+});
+
 describe('fetchPlayers', () => {
     it(actions.fetchPlayersRequest.toString(), () => {
         const state = {
-            didError: true,
             ids: [],
             isFetching: false,
             orderBy: 'a-z'
         };
 
         const expected = {
-            didError: false,
             ids: [],
             isFetching: true,
             orderBy: 'a-z'
@@ -38,14 +55,12 @@ describe('fetchPlayers', () => {
 
     it(actions.fetchPlayersFailure.toString(), () => {
         const state = {
-            didError: false,
             ids: [],
             isFetching: true,
             orderBy: 'a-z'
         };
 
         const expected = {
-            didError: true,
             ids: [],
             isFetching: false,
             orderBy: 'a-z'
@@ -56,7 +71,6 @@ describe('fetchPlayers', () => {
 
     it(actions.fetchPlayersSuccess.toString(), () => {
         const state = {
-            didError: true,
             ids: [],
             isFetching: true,
             orderBy: 'a-z'
@@ -67,7 +81,6 @@ describe('fetchPlayers', () => {
         };
 
         const expected = {
-            didError: false,
             ids: [1, 2, 3],
             isFetching: false,
             orderBy: 'a-z'
@@ -80,7 +93,6 @@ describe('fetchPlayers', () => {
 describe('orderPlayersBy', () => {
     it(actions.orderPlayersBy.toString(), () => {
         const state = {
-            didError: false,
             ids: [],
             isFetching: false,
             orderBy: 'a-z'
@@ -91,7 +103,6 @@ describe('orderPlayersBy', () => {
         };
 
         const expected = {
-            didError: false,
             ids: [],
             isFetching: false,
             orderBy: 'rating'
