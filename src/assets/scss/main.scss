@@ -49,3 +49,11 @@
 @import 'components/hr';
 @import 'components/loading';
 @import 'components/info';
+
+// Temporary - before JS
+#open-dispute {
+    display: none;
+}
+#open-dispute:target {
+    display: block;
+}

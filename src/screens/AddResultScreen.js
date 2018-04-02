@@ -12,7 +12,7 @@ const AddResultScreen = () => (
 
         <div class="o-container u-ph-1bl u-vspace-2bl">
 
-                <a href="/matches.php" class="c-go">Go</a>
+                <a href="/matches.php" class="c-go">Back</a>
 
                 <header class="o-container">
 
@@ -29,7 +29,21 @@ const AddResultScreen = () => (
 
             </div>
 
-            <hr class="c-hr" />
+            <div class="c-info">
+
+                <div class="o-container u-ph-1bl u-pv-2bl u-color-puss u-line-105">
+
+                    <h3 class="u-size-h4">What’s the score <em>if</em>&hellip;?</h3>
+
+                    <ol class="u-vspace-mt-">
+                        <li>You won <strong class="u-color-white">5 games</strong></li>
+                        <li>Your opponent won <strong class="u-color-white">3 games</strong></li>
+                        <li>Score is <strong class="u-color-white">5 &ndash; 3</strong></li>
+                    </ol>
+
+                </div>
+
+            </div>
 
             <section class="o-container u-vspace-3bl">
 
@@ -37,9 +51,6 @@ const AddResultScreen = () => (
 
                     <div class="u-vspace-1px">
                         <div title>
-                            <AddMatches />
-                        </div>
-                        <div title class="u-opac-02">
                             <AddMatches />
                         </div>
                     </div>
