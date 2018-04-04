@@ -1,0 +1,22 @@
+:root {
+
+  --ViewportWidth: 100vw;
+  --WindowWidth: var(--ViewportWidth);
+  --ContainerWidth: calc(var(--WindowWidth) - (var(--Baseline) * 2));
+
+  @include iota-breakpoint(uptowindowgap) {
+    --Baseline: 10px;
+  }
+
+  @include iota-breakpoint(fromwindowgap) {
+    --Baseline: 12px;
+  }
+
+  @include iota-breakpoint(fromwindowgap) {
+    --WindowWidth: calc(var(--ViewportWidth) - (var(--Baseline) * 2));
+  }
+
+  @include iota-breakpoint(frommax) {
+    --ViewportWidth: 465px;
+  }
+}

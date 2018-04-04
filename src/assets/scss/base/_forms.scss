@@ -1,0 +1,126 @@
+::-webkit-input-placeholder {
+  color: $colour-steam;
+}
+
+::-moz-placeholder {
+  color: $colour-steam;
+}
+
+:-ms-input-placeholder {
+  color: $colour-steam;
+}
+
+:-moz-placeholder {
+  color: $colour-steam;
+}
+
+[disabled] {
+  cursor: default;
+}
+
+input,
+select,
+textarea,
+label {
+  transition: all .4s;
+}
+
+input,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input,
+textarea {
+  color: $colour-paste;
+  border-bottom: 3px solid rgba($colour-paste, .2);
+
+  // &:not(:placeholder-shown),
+  &:focus {
+    border-bottom-color: $colour-paste;
+  }
+
+  &:invalid {
+    background-color: rgba($colour-hotmelon, .2);
+    border-bottom-color: $colour-hotmelon;
+    color: $colour-hotmelon;
+  }
+
+  &[disabled] {
+    @extend .u-color-steam;
+
+    ~ label {
+      @extend .u-color-steam;
+    }
+  }
+}
+
+label {
+  @extend .u-pos-absolute;
+  @extend .u-top-0;
+  @extend .u-left-0;
+  @extend .u-weight-bold;
+  @extend .u-ws-no;
+  @extend .u-color-white;
+}
+
+textarea {
+  @extend .u-ph-1bl;
+  @extend .u-pv-1bl;
+  max-width: 100%;
+
+  &:not(:focus) {
+    @extend .u-bgcolor-fold05;
+  }
+
+  &:focus {
+    @extend .u-bgcolor-fold;
+  }
+}
+
+select {
+  @extend .u-width-100pc;
+  max-width: 160px; // too generic
+
+  &[disabled] {
+    color: inherit;
+  }
+}
+
+[type="text"],
+[type="email"],
+[type="password"],
+[type="file"] {
+  @extend .u-block;
+  @extend .u-width-100pc;
+  @extend .u-pv-1bl;
+  @extend .u-ph-1bl;
+  @extend .u-size-h4;
+  @extend .u-weight-bold;
+
+  ~ label {
+    transform: translateY(-70%);
+  }
+
+  &:focus {
+
+    ~ label {
+      @extend .u-color-white;
+      transform: translateY(-120%);
+    }
+  }
+
+  &:not(:placeholder-shown) {
+    ~ label {
+      // opacity: .5;
+    }
+  }
+}

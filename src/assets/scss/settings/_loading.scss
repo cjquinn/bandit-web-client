@@ -1,0 +1,11 @@
+$loadingSides: 6;
+$loadingDegrees: 360deg / $loadingSides;
+
+$loadingLineColours: (
+  $colour-orange,
+  $colour-scout,
+  $colour-warrior,
+  $colour-god,
+  $colour-fighter,
+  $colour-ninja,
+);

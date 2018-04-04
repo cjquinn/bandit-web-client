@@ -1,0 +1,415 @@
+// position, visibility, overflow, display
+// flex-direction, align-content, align-items, align-self, justify-content,
+// appearance, float,
+// backgound-color, background-position, background-attachment, background-repeat, background-size, background-blend-mode,
+// font-family, font-weight [bold/light...]
+// color,
+// box-shadow,
+// list-style*, text-align, text-decoration, text-overflow, text-transform, white-space,
+// will-change, cursor, pointer-events
+
+$wordUtilitiesSettings: (
+  (
+    property: 'overflow',
+    propertyClass: 'ov-',
+
+    values: (
+      (
+        value: 'hidden',
+      ),
+    ),
+  ),
+  (
+    property: 'overflow-x',
+    propertyClass: 'ovx-',
+
+    values: (
+      (
+        value: 'hidden',
+      ),
+      (
+        value: 'auto',
+      ),
+    ),
+  ),
+  (
+    property: 'position',
+    propertyClass: 'pos-',
+
+    values: (
+      (
+        value: 'absolute',
+      ),
+      (
+        value: 'relative',
+      ),
+    ),
+  ),
+  (
+    property: 'clip-path',
+    propertyClass: 'clip-',
+
+    values: (
+      (
+        value: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%),
+        valueClass: 'hexagon',
+      ),
+      (
+        value: polygon(25% 0%, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0% 50%),
+        valueClass: 'hexagon-flat',
+      ),
+    ),
+  ),
+  (
+    property: 'display',
+    propertyClass: '',
+
+    values: (
+      (
+        value: 'flex',
+      ),
+      (
+        value: 'inline-flex',
+      ),
+      (
+        value: 'block',
+      ),
+    ),
+  ),
+  (
+    property: 'flex-direction',
+    propertyClass: 'fd-',
+
+    values: (
+      (
+        value: 'column',
+        valueClass: 'col',
+      ),
+    ),
+  ),
+  (
+    property: 'flex-wrap',
+    propertyClass: 'fw-',
+
+    values: (
+      (
+        value: 'wrap',
+      ),
+    ),
+  ),
+  (
+    property: 'justify-content',
+    propertyClass: 'jc-',
+
+    values: (
+      (
+        value: 'space-between',
+        valueClass: 'between',
+      ),
+      (
+        value: 'space-around',
+        valueClass: 'around',
+      ),
+      (
+        value: 'center',
+      ),
+      (
+        value: 'flex-end',
+        valueClass: 'end',
+      ),
+    ),
+  ),
+  (
+    property: 'align-items',
+    propertyClass: 'ai-',
+
+    values: (
+      (
+        value: 'center',
+      ),
+    ),
+  ),
+  (
+    property: 'background-color',
+    propertyClass: 'bgcolor-',
+
+    values: (
+      (
+        value: $colour-basement,
+        valueClass: 'basement',
+      ),
+      (
+        value: $colour-fold,
+        valueClass: 'fold',
+      ),
+      (
+        value: $colour-fold05,
+        valueClass: 'fold05',
+      ),
+      (
+        value: $colour-floor,
+        valueClass: 'floor',
+      ),
+      (
+        value: $colour-floor05,
+        valueClass: 'floor05',
+
+        pseudo: ('hover', 'focus'),
+      ),
+      (
+        value: $colour-deepblue,
+        valueClass: 'deepblue',
+      ),
+      (
+        value: $colour-mariana,
+        valueClass: 'mariana',
+      ),
+      (
+        value: $colour-bandit,
+        valueClass: 'bandit',
+      ),
+      (
+        value: $colour-god,
+        valueClass: 'god',
+      ),
+      (
+        value: $colour-legendary,
+        valueClass: 'legendary',
+      ),
+      (
+        value: $colour-monster,
+        valueClass: 'monster',
+      ),
+      (
+        value: $colour-warrior,
+        valueClass: 'warrior',
+      ),
+      (
+        value: $colour-ninja,
+        valueClass: 'ninja',
+      ),
+      (
+        value: $colour-assassin,
+        valueClass: 'assassin',
+      ),
+      (
+        value: $colour-knight,
+        valueClass: 'knight',
+      ),
+      (
+        value: $colour-fighter,
+        valueClass: 'fighter',
+      ),
+      (
+        value: $colour-scout,
+        valueClass: 'scout',
+      ),
+      (
+        value: $colour-junior,
+        valueClass: 'junior',
+      ),
+      (
+        value: $colour-rookie,
+        valueClass: 'rookie',
+      ),
+    ),
+  ),
+  (
+    property: 'background-size',
+    propertyClass: '',
+
+    values: (
+      (
+        value: 'cover',
+      ),
+    ),
+  ),
+  (
+    property: 'color',
+    propertyClass: 'color-',
+
+    values: (
+      (
+        value: $colour-blanket,
+        valueClass: 'blanket',
+      ),
+      (
+        value: $colour-white,
+        valueClass: 'white',
+        pseudo: ('hover', 'focus'),
+      ),
+      (
+        value: $colour-paste,
+        valueClass: 'paste',
+      ),
+      (
+        value: $colour-steam,
+        valueClass: 'steam',
+      ),
+      (
+        value: $colour-hotmelon,
+        valueClass: 'hotmelon',
+      ),
+      (
+        value: $colour-basement,
+        valueClass: 'basement',
+      ),
+      (
+        value: $colour-win,
+        valueClass: 'win',
+      ),
+      (
+        value: $colour-loss,
+        valueClass: 'loss',
+      ),
+      (
+        value: $colour-orange,
+        valueClass: 'orange',
+      ),
+      (
+        value: $colour-playdough,
+        valueClass: 'playdough',
+        pseudo: 'hover',
+      ),
+
+      /**
+       *  Level colours
+       */
+      (
+        value: $colour-bandit,
+        valueClass: 'bandit',
+      ),
+      (
+        value: $colour-god,
+        valueClass: 'god',
+      ),
+      (
+        value: $colour-legendary,
+        valueClass: 'legendary',
+      ),
+      (
+        value: $colour-monster,
+        valueClass: 'monster',
+      ),
+      (
+        value: $colour-warrior,
+        valueClass: 'warrior',
+      ),
+      (
+        value: $colour-ninja,
+        valueClass: 'ninja',
+      ),
+      (
+        value: $colour-assassin,
+        valueClass: 'assassin',
+      ),
+      (
+        value: $colour-knight,
+        valueClass: 'knight',
+      ),
+      (
+        value: $colour-fighter,
+        valueClass: 'fighter',
+      ),
+      (
+        value: $colour-scout,
+        valueClass: 'scout',
+      ),
+      (
+        value: $colour-junior,
+        valueClass: 'junior',
+      ),
+      (
+        value: $colour-rookie,
+        valueClass: 'rookie',
+      ),
+      (
+        value: $colour-puss,
+        valueClass: 'puss',
+      ),
+    ),
+  ),
+  (
+    property: 'box-shadow',
+    propertyClass: 'shadow-',
+
+    values: (
+      (
+        value: 'inset 2px 0 0 0' $colour-hotmelon,
+        valueClass: 'dispute'
+      ),
+      (
+        value: 'inset 2px 0 0 0' $colour-blanket,
+        valueClass: 'you'
+      ),
+    ),
+  ),
+  (
+    property: 'font-family',
+    propertyClass: 'font-',
+
+    values: (
+      (
+        value: 'Europa, europa, Futura, "Helvetica Neue", Helvetia, sans-serif',
+        valueClass: 'europa',
+      ),
+    ),
+  ),
+  (
+    property: 'text-align',
+    propertyClass: 'align-',
+
+    values: (
+      (
+        value: 'left',
+      ),
+      (
+        value: 'center',
+      ),
+      (
+        value: 'right',
+      ),
+    ),
+  ),
+  (
+    property: 'text-transform',
+    propertyClass: '',
+
+    values: (
+      (
+        value: 'uppercase',
+      ),
+    ),
+  ),
+  (
+    property: 'white-space',
+    propertyClass: 'ws-',
+
+    values: (
+      (
+        value: nowrap,
+        valueClass: no,
+      ),
+    ),
+  ),
+  (
+    property: 'will-change',
+    propertyClass: 'will-',
+
+    values: (
+      (
+        value: 'transform',
+      ),
+    ),
+  ),
+  (
+    property: 'pointer-events',
+    propertyClass: 'pointer-',
+
+    values: (
+      (
+        value: 'none',
+      ),
+    ),
+  ),
+);

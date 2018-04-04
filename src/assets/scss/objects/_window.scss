@@ -1,0 +1,24 @@
+/**
+ * .o-window
+ * Window component - where the UI starts and ends.
+ *
+ * Used:
+ * here, here and here.
+ */
+
+$object: 'window';
+
+#{'.' + $iota-global-objects-namespace + $object} {
+  $windowGap: 3vw;
+  @extend .u-mh-auto;
+  @extend .u-minh-90vh;
+  @extend .u-flex;
+  @extend .u-fd-col;
+  @extend .u-bgcolor-fold;
+  @extend .u-borrad-6;
+  @extend .u-font-europa;
+  @extend .u-color-blanket;
+  width: var(--WindowWidth);
+  margin-top: $windowGap;
+  margin-bottom: $windowGap;
+}

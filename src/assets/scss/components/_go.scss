@@ -1,0 +1,21 @@
+/**
+ * .c-go
+ */
+
+$component: 'go';
+
+#{'.' + $iota-global-components-namespace + $component} {
+  @extend .u-inline-flex;
+  @extend .u-borrad-3;
+  @extend .u-weight-bold;
+  @extend .u-color-basement;
+  padding: .4em .7em;
+  text-shadow: 0 1px 0 rgba(white, .3);
+  letter-spacing: -0.02em;
+  background-image: linear-gradient(-180deg, $colour-orange 3%, $colour-satsuma 100%);
+
+  &:hover,
+  &:focus {
+    background-color: $colour-satsuma;
+  }
+}

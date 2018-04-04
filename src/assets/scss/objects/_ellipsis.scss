@@ -1,0 +1,15 @@
+/**
+ * .o-ellipsis
+ * Sample component
+ *
+ * Used:
+ * here, here and here.
+ */
+
+$object: 'ellipsis';
+
+#{'.' + $iota-global-objects-namespace + $object} {
+  @extend .u-ws-no;
+  @extend .u-ov-hidden;
+  text-overflow: ellipsis;
+}

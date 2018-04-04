@@ -1,0 +1,166 @@
+$combinatorUtilitiesSettings: (
+  ( combinator: '> * + *',
+    properties: (
+      ( property: 'margin-top',
+        propertyClass: 'vspace-',
+
+        units: (
+          (
+            unit: 'rem',
+            unitClass: 'r',
+
+            values: (
+              (
+                value: .3,
+                valueClass: '03',
+              ),
+              (
+                value: .6,
+                valueClass: '06',
+              ),
+            ),
+          ),
+          (
+            unit: 'baseline',
+            unitClass: 'bl',
+
+            values: (
+              (
+                value: calc(var(--Baseline) * 1),
+                valueClass: '1',
+              ),
+              (
+                value: calc(var(--Baseline) * 2),
+                valueClass: '2',
+              ),
+              (
+                value: calc(var(--Baseline) * 3),
+                valueClass: '3',
+              ),
+            ),
+          ),
+          (
+            unit: 'px',
+
+            values: (
+              (
+                value: 1,
+              ),
+            ),
+          ),
+        ),
+      ),
+      ( property: 'margin-left',
+        propertyClass: 'hspace-',
+
+        units: (
+          (
+            unit: 'px',
+
+            values: (
+              (
+                value: 1,
+              ),
+              (
+                value: 4,
+              ),
+              (
+                value: 8,
+              ),
+            ),
+          ),
+          (
+            unit: 'baseline',
+            unitClass: 'bl',
+
+            values: (
+              (
+                value: calc(var(--Baseline) * .5),
+                valueClass: '05',
+              ),
+              (
+                value: calc(var(--Baseline) * 1),
+                valueClass: '1',
+              ),
+              (
+                value: calc(var(--Baseline) * 2),
+                valueClass: '2',
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+  ( combinator: '> *',
+    properties: (
+      ( property: 'margin-top',
+        propertyClass: 'vspace-all-',
+
+        units: (
+          (
+            unit: 'baseline',
+            unitClass: 'bl',
+
+            values: (
+              (
+                value: calc(var(--Baseline) * 3),
+                valueClass: '3',
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+  ( combinator: '> *:first-child',
+    properties: (
+      ( property: 'border-radius',
+        propertyClass: 'borrad-first-',
+
+        units: (
+          (
+            unit: 'px',
+            unitClass: '',
+
+            values: (
+              (
+                value: '2px 2px 0 0',
+                valueClass: '2200',
+              ),
+              (
+                value: '2px 0 0 2px',
+                valueClass: '2002',
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+  ( combinator: '> *:last-child',
+    properties: (
+      ( property: 'border-radius',
+        propertyClass: 'borrad-last-',
+
+        units: (
+          (
+            unit: 'px',
+            unitClass: '',
+
+            values: (
+              (
+                value: '0 0 2px 2px',
+                valueClass: '0022',
+              ),
+              (
+                value: '0 2px 2px 0',
+                valueClass: '0220',
+              ),
+            ),
+          ),
+        ),
+      ),
+    ),
+  ),
+);

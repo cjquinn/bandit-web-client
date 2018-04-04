@@ -1,0 +1,28 @@
+/**
+ * .o-absfill
+ */
+
+$object: 'absfill';
+
+#{'.' + $iota-global-objects-namespace + $object} {
+  @extend .u-pos-absolute;
+  @extend .u-top-0;
+  @extend .u-right-0;
+  @extend .u-bottom-0;
+  @extend .u-left-0;
+}
+
+
+/**
+ * .o-abscentre
+ */
+
+$object: 'abscentre';
+
+#{'.' + $iota-global-objects-namespace + $object} {
+  @extend .u-pos-absolute;
+  @extend .u-top-50pc;
+  @extend .u-left-50pc;
+  transform: translate(-50%, -50%);
+}
+

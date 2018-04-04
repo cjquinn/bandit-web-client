@@ -1,0 +1,9 @@
+:root {
+  font-size: $font-size-largest-body;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+%no-content {
+  content: '';
+}

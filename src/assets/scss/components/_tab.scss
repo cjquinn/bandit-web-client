@@ -1,0 +1,27 @@
+/**
+ * .c-tab
+ */
+
+$component: 'tab';
+
+#{'.' + $iota-global-components-namespace + $component} {
+  @extend .u-size-h4; // is this global?
+
+  &--active,
+  &--inactive {
+    @extend .u-block;
+    @extend .u-pv-1bl;
+    @extend .u-ph-1bl;
+    @extend .u-borrad-3300;
+
+  }
+  &--active {
+    @extend .u-color-white;
+    @extend .u-bgcolor-floor;
+  }
+
+  &--inactive {
+    @extend .u-color-playdough\@hover;
+    @extend .u-bgcolor-floor05\@hover;
+  }
+}
