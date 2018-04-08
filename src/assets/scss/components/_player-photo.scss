@@ -9,25 +9,31 @@ $component: 'player-photo';
   @extend .u-cover;
   @extend .u-bgcolor-fold05;
   @extend .u-clip-hexagon;
-  background-image: url('/assets/img/empty.png');
+
+  &--no-photo {
+    background-image: url('/assets/img/empty.png');
+  }
 
   &__level {
+    --levelThickness: 25%;
     @extend .u-pos-absolute;
     @extend .u-top-0;
     @extend .u-width-100pc;
     @extend .u-height-100pc;
     filter: drop-shadow(-1px -1px 3px rgba($colour-basement, 0.5));
 
-    $distance: -25%;
+    &--only {
+      --levelThickness: 40%;
+    }
 
     &:first-of-type {
-      left: $distance;
+      left: calc(-1 * var(--levelThickness));
       transform: skew(-60deg) translateX(150%);
     }
 
     &:nth-of-type(2) {
       // bandit level
-      right: $distance;
+      right: calc(-1 * var(--levelThickness));
       transform: skew(60deg) translateX(-150%);
     }
   }
