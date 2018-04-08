@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// Components
+import PlayerLevel from '../components/PlayerLevel';
+
 const MiniStats = () => (
 
     <section class="u-vspace-1bl">
@@ -53,10 +56,7 @@ const MiniStats = () => (
                     <div class="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
                         <dt class="u-color-paste u-weight-bold">Highest Level</dt>
                         <dd class="u-flex u-ai-center u-hspace-8px u-size-13px">
-                            {/* <?php
-                                $photoWidth = 1;
-                                include('components/player-photo-blank.php');
-                            ?> */}
+                            <PlayerLevel />
                             <span class="u-uppercase u-color-god">God</span>
                         </dd>
                     </div>
