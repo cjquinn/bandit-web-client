@@ -4,7 +4,7 @@
 
 $object: 'scroll-overflow';
 
-#{'.' + $iota-global-objects-namespace + $object} {
+#{'.' + $global-objects-namespace + $object} {
 
   @extend .u-ovx-auto;
 

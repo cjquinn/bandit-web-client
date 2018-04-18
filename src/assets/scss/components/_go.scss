@@ -4,7 +4,7 @@
 
 $component: 'go';
 
-#{'.' + $iota-global-components-namespace + $component} {
+#{'.' + $global-components-namespace + $component} {
   @extend .u-inline-flex;
   @extend .u-borrad-3;
   @extend .u-weight-bold;

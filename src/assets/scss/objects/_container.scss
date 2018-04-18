@@ -4,7 +4,7 @@
 
 $object: 'container';
 
-#{'.' + $iota-global-objects-namespace + $object} {
+#{'.' + $global-objects-namespace + $object} {
   @extend .u-mh-auto;
   width: var(--ContainerWidth);
 }

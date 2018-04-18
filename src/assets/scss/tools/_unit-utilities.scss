@@ -46,7 +46,7 @@
 
           @if map-get($valueSetting, global) != false {
 
-            $selector: #{'.' + $iota-global-utilities-namespace + $propertyClass + $valueClass + $unitClass};
+            $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $unitClass};
 
             @include makeClass($selector, $property, $value);
           }
@@ -56,7 +56,7 @@
 
               @include iota-breakpoint($breakpointName) {
 
-                $selector: #{'.' + $iota-global-utilities-namespace + $propertyClass + $valueClass + $unitClass + $iota-global-breakpoint-separator + $breakpointName};
+                $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $unitClass + $global-breakpoint-separator + $breakpointName};
 
                 @include makeClass($selector, $property, $value);
               }
@@ -82,7 +82,7 @@
 
         @if map-get($keywordSetting, global) != false {
 
-          $selector: #{'.' + $iota-global-utilities-namespace + $propertyClass + $keywordClass};
+          $selector: #{'.' + $global-utilities-namespace + $propertyClass + $keywordClass};
 
           @include makeClass($selector, $property, $keyword);
         }
@@ -91,7 +91,7 @@
           @each $breakpointName in map-get($keywordSetting, responsive) {
 
             @include iota-breakpoint($breakpointName) {
-              $selector: #{'.' + $iota-global-utilities-namespace + $propertyClass + $keywordClass + $iota-global-breakpoint-separator + $breakpointName};
+              $selector: #{'.' + $global-utilities-namespace + $propertyClass + $keywordClass + $global-breakpoint-separator + $breakpointName};
 
               @include makeClass($selector, $property, $keyword);
             }

@@ -5,7 +5,7 @@
 
 $object: 'main';
 
-#{'.' + $iota-global-objects-namespace + $object} {
+#{'.' + $global-objects-namespace + $object} {
   @extend .u-flex;
   @extend .u-fd-col;
   @extend .u-grow-1;

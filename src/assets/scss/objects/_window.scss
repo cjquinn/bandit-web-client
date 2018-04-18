@@ -8,7 +8,7 @@
 
 $object: 'window';
 
-#{'.' + $iota-global-objects-namespace + $object} {
+#{'.' + $global-objects-namespace + $object} {
   $windowGap: 3vw;
   @extend .u-mh-auto;
   @extend .u-minh-90vh;

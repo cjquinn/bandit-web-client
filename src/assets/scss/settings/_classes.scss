@@ -1,6 +1,16 @@
-$iota-global-objects-namespace    : 'o-';
-$iota-global-utilities-namespace  : 'u-';
-$iota-global-components-namespace : 'c-';
+$global-objects-namespace    : 'o-';
+$global-utilities-namespace  : 'u-';
+$global-components-namespace : 'c-';
+$global-interactions-namespace:'i-';
 
-$iota-global-breakpoint-separator: \@;
-$iota-global-pseudo-separator: $iota-global-breakpoint-separator;
+$global-breakpoint-separator:  \@;
+$global-pseudo-separator:      $global-breakpoint-separator;
+
+$global-delimiter:             \/;
+
+$global-rem-class:             'rem';
+$global-em-class:              'em';
+$global-percentage-class:      'pc';
+$global-px-class:              'px';
+$global-vw-class:              'vw';
+$global-vh-class:              'vh';

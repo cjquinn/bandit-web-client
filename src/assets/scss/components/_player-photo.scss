@@ -4,7 +4,7 @@
 
 $component: 'player-photo';
 
-#{'.' + $iota-global-components-namespace + $component} {
+#{'.' + $global-components-namespace + $component} {
   @include aspect-ratio($aspect-player-photo);
   @extend .u-cover;
   @extend .u-bgcolor-fold05;

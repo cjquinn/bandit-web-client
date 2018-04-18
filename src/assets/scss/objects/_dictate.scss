@@ -8,7 +8,7 @@
 
 $object: 'dictate';
 
-#{'.' + $iota-global-objects-namespace + $object} {
+#{'.' + $global-objects-namespace + $object} {
   @extend .u-ov-hidden;
   @extend .u-pos-absolute;
   width: 1px;

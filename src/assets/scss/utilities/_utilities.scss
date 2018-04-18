@@ -1,0 +1,3 @@
+@each $utility-settings in $make-utilities {
+    @include makeUtilities($utility-settings);
+}

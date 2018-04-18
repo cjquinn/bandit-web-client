@@ -4,7 +4,7 @@
 
 $component: 'button';
 
-#{'.' + $iota-global-components-namespace + $component} {
+#{'.' + $global-components-namespace + $component} {
   @extend .u-pos-relative;
   @extend .u-flex;
   @extend .u-ai-center;

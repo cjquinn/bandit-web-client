@@ -4,7 +4,7 @@
 
 $component: 'fade';
 
-#{'.' + $iota-global-components-namespace + $component} {
+#{'.' + $global-components-namespace + $component} {
   @extend .u-pos-absolute;
   @extend .u-top-0;
   @extend .u-bottom-0;

@@ -23,7 +23,7 @@
 
       @if map-get($valueSetting, global) != false {
 
-        $selector: #{'.' + $iota-global-utilities-namespace + $propertyClass + $valueClass};
+        $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass};
 
         @include makeClass($selector, $property, $value);
       }
@@ -32,7 +32,7 @@
         @each $breakpointName in map-get($valueSetting, responsive) {
           @include iota-breakpoint($breakpointName) {
 
-            $selector: #{'.' + $iota-global-utilities-namespace + $propertyClass + $valueClass + $iota-global-breakpoint-separator + $breakpointName};
+            $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-breakpoint-separator + $breakpointName};
 
             @include makeClass($selector, $property, $value);
           }
@@ -56,17 +56,17 @@
 
             @each $pseudoName in $pseudo {
 
-              #{'.' + $iota-global-utilities-namespace + $propertyClass + $valueClass + $iota-global-pseudo-separator + $pseudoClass + ':' + $pseudoName} {
+              #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudoClass + ':' + $pseudoName} {
 
-                @extend #{'.' + $iota-global-utilities-namespace + $propertyClass + $valueClass} !optional;
+                @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
               }
             }
           }
 
           @else {
-            #{'.' + $iota-global-utilities-namespace + $propertyClass + $valueClass + $iota-global-pseudo-separator + $pseudo + ':' + $pseudo} {
+            #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $global-pseudo-separator + $pseudo + ':' + $pseudo} {
 
-              @extend #{'.' + $iota-global-utilities-namespace + $propertyClass + $valueClass} !optional;
+              @extend #{'.' + $global-utilities-namespace + $propertyClass + $valueClass} !optional;
             }
           }
         }

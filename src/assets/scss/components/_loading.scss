@@ -4,7 +4,7 @@
 
 $component: 'loading';
 
-#{'.' + $iota-global-components-namespace + $component} {
+#{'.' + $global-components-namespace + $component} {
   animation: loadingRotateSteps calc(var(--cycleTime) * 4) infinite ease-in-out;
 
   &__hexagon {

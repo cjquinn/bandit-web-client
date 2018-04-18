@@ -5,32 +5,18 @@
 @import 'tools/combinator-utilities';
 @import 'tools/unit-utilities';
 @import 'tools/number-utilities';
+@import 'tools/utilities';
 @import 'tools/aspect-ratio';
 
-@import 'settings/classes';
-@import 'settings/colours';
-@import 'settings/breakpoints';
-@import 'settings/classes';
-@import 'settings/grid';
-@import 'settings/aspect-ratio';
-@import 'settings/container';
-@import 'settings/type';
-@import 'settings/loading';
-
-@import 'settings/word-utilities';
-@import 'settings/unit-utilities';
-@import 'settings/number-utilities';
-@import 'settings/combinator-utilities';
+@import 'settings/_import';
 
 @import 'base/reset';
 @import 'base/forms';
 @import 'base/type';
 @import 'base/animation';
 
-@import 'utilities/word-utilities';
-@import 'utilities/combinator-utilities';
-@import 'utilities/unit-utilities';
-@import 'utilities/number-utilities';
+@import 'utilities/_import';
+@import 'utilities/utilities';
 
 @import 'objects/window';
 @import 'objects/main';

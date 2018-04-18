@@ -50,7 +50,7 @@
               }
             }
 
-            $selector: #{'.' + $iota-global-utilities-namespace + $propertyClass + $valueClass + $unitClass} #{$combinator};
+            $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $unitClass} #{$combinator};
 
             @if map-get($valueSetting, global) != false {
 
@@ -61,7 +61,7 @@
             @if map-has-key($valueSetting, responsive) {
               @each $breakpointName in map-get($valueSetting, responsive) {
 
-                $selector: #{'.' + $iota-global-utilities-namespace + $propertyClass + $valueClass + $unitClass + $iota-global-breakpoint-separator + $breakpointName} #{$combinator};
+                $selector: #{'.' + $global-utilities-namespace + $propertyClass + $valueClass + $unitClass + $global-breakpoint-separator + $breakpointName} #{$combinator};
 
                 @include iota-breakpoint($breakpointName) {
 
