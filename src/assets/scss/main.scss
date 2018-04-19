@@ -1,45 +1,26 @@
-@import 'tools/aspect-ratio';
-@import 'tools/breakpoint';
-@import 'tools/ifhas';
-@import 'tools/lists';
-@import 'tools/make-class';
-@import 'tools/placeholders';
-@import 'tools/strings';
-@import 'tools/utilities';
+// Tools
+@import 'tools/_import';
 
 // Settings
 @import 'settings/_import';
 
-@import 'base/reset';
-@import 'base/forms';
-@import 'base/type';
-@import 'base/animation';
+// Base
+@import 'base/_import';
 
 // Utilities
 @import 'utilities/_import';
 
-@import 'objects/window';
-@import 'objects/main';
-@import 'objects/container';
-@import 'objects/dictate';
-@import 'objects/ellipsis';
-@import 'objects/scroll-overflow';
-@import 'objects/position';
-// @import 'objects/type';
+// Objects
+@import 'objects/_import';
 
-@import 'components/player-photo';
-@import 'components/button';
-@import 'components/go';
-@import 'components/tab';
-@import 'components/fade';
-@import 'components/hr';
-@import 'components/loading';
-@import 'components/info';
+// Components
+@import 'components/_import';
 
 // Temporary - before JS
 #open-dispute {
     display: none;
 }
+
 #open-dispute:target {
     display: block;
 }
