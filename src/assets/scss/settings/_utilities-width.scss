@@ -1,0 +1,19 @@
+$utilities-width-settings: (
+  (
+    property: 'width',
+
+    values: (
+      (
+        ('100%', '100pc'),
+        (calc(var(--Baseline) * 1), '1bl'),
+        (calc(var(--Baseline) * 2), '2bl'),
+        (calc(var(--Baseline) * 2.5), '205bl'),
+        (calc(var(--Baseline) * 3), '3bl'),
+        (calc(var(--Baseline) * 4), '4bl'),
+        (calc(var(--Baseline) * 6), '6bl'),
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-width-settings);

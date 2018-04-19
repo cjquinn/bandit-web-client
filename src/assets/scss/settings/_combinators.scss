@@ -1,0 +1,4 @@
+$combinator-child: '> *';
+$combinator-child-siblings: '> * + *';
+$combinator-first-child: '> *:first-child';
+$combinator-last-child: '> *:last-child';

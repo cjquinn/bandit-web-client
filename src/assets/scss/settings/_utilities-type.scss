@@ -1,0 +1,75 @@
+$utilities-type-settings: (
+  (
+    property: ('font-size', 'size'),
+
+    values: (
+      (
+        ($font-size-h1, 'h1'),
+        ($font-size-h2, 'h2'),
+        ($font-size-h3, 'h3'),
+        ($font-size-h4, 'h4'),
+        '13px',
+        '14px',
+      ),
+    ),
+  ),
+  (
+    property: ('font-family', 'font'),
+
+    values: (
+      (
+        ('Europa, europa, Futura, "Helvetica Neue", Helvetia, sans-serif', 'europa'),
+      ),
+    ),
+  ),
+  (
+    property: ('font-weight', 'weight'),
+
+    values: (
+      (
+        'bold',
+      ),
+    ),
+  ),
+  (
+    property: ('line-height', 'line'),
+
+    values: (
+      (
+        ('1.5', '105'),
+        '2',
+      ),
+    ),
+  ),
+  (
+    property: ('text-align', 'align'),
+
+    values: (
+      (
+        'left',
+        'center',
+        'right',
+      ),
+    ),
+  ),
+  (
+    property: ('text-transform', ''),
+
+    values: (
+      (
+        'uppercase',
+      ),
+    ),
+  ),
+  (
+    property: ('white-space', 'ws'),
+
+    values: (
+      (
+        ('nowrap', 'no'),
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-type-settings);

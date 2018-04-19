@@ -1,0 +1,70 @@
+$utilities-border-radius-settings: (
+  (
+    property: ('border-radius', 'borrad'),
+
+    values: (
+      (
+        'inherit',
+        ('3px', '3'),
+        ('6px', '6'),
+        ('3px 3px 0 0', '3300'),
+      ),
+    ),
+  ),
+  (
+    property: (('border-top-left-radius', 'border-top-right-radius'), 'borrad-first'),
+
+    values: (
+      (
+        value: ('2px', '2200'),
+        combinator: $combinator-first-child,
+      ),
+    ),
+  ),
+  (
+    property: (('border-top-left-radius', 'border-bottom-left-radius'), 'borrad-first'),
+
+    values: (
+      (
+        value: ('2px', '2002'),
+        combinator: $combinator-first-child,
+      ),
+    ),
+  ),
+  (
+    property: (('border-bottom-left-radius', 'border-bottom-right-radius'), 'borrad-last'),
+
+    values: (
+      (
+        value: ('2px', '0022'),
+        combinator: $combinator-last-child,
+      ),
+    ),
+  ),
+  (
+    property: (('border-top-right-radius', 'border-bottom-right-radius'), 'borrad-last'),
+
+    values: (
+      (
+        value: ('2px', '0220'),
+        combinator: $combinator-last-child,
+      ),
+    ),
+  ),
+  // (
+  //   property: ('border-radius', 'borrad-last'),
+
+  //   values: (
+  //     (
+  //       value: ('0 0 2px 2px', '0022'),
+  //       combinator: $combinator-last-child,
+  //     ),
+  //     (
+  //       value: ('0 2px 2px 0', '0220'),
+  //       combinator: $combinator-last-child,
+  //     ),
+  //   ),
+  // ),
+);
+
+$make-utilities: append($make-utilities, $utilities-border-radius-settings);

@@ -1,6 +1,7 @@
 // Global
 @import 'classes';
 @import 'colours';
+@import 'combinators';
 @import 'breakpoints';
 @import 'classes';
 @import 'grid';
@@ -12,9 +13,20 @@
 // Utilities
 $make-utilities: ();
 @import 'utilities-position';
-
-// Old Utilities
-@import 'word-utilities';
-@import 'unit-utilities';
-@import 'number-utilities';
-@import 'combinator-utilities';
+@import 'utilities-z-index';
+@import 'utilities-opacity';
+@import 'utilities-clip-path';
+@import 'utilities-overflow';
+@import 'utilities-display';
+@import 'utilities-flex';
+@import 'utilities-width';
+@import 'utilities-height';
+@import 'utilities-margin';
+@import 'utilities-padding';
+@import 'utilities-background';
+@import 'utilities-border-radius';
+@import 'utilities-box-shadow';
+@import 'utilities-type';
+@import 'utilities-color';
+@import 'utilities-pointer-events';
+@import 'utilities-will-change';

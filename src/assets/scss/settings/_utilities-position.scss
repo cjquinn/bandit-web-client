@@ -1,11 +1,11 @@
 $utilities-position-settings: (
   (
-    property: ('position', 'test'),
+    property: ('position', 'pos'),
 
     values: (
       (
-        absolute,
-        relative,
+        'absolute',
+        'relative',
       ),
     ),
   ),
@@ -14,9 +14,26 @@ $utilities-position-settings: (
 
     values: (
       (
-        0,
-        (50%, 50pc),
-        (100%, 100pc),
+        '0',
+        ('50%', '50pc'),
+      ),
+    ),
+  ),
+  (
+    property: 'right',
+
+    values: (
+      (
+        '0',
+      ),
+    ),
+  ),
+  (
+    property: 'bottom',
+
+    values: (
+      (
+        '0',
       ),
     ),
   ),
@@ -25,9 +42,8 @@ $utilities-position-settings: (
 
     values: (
       (
-        0,
-        (50%, 50pc),
-        (100%, 100pc),
+        '0',
+        ('50%', '50pc'),
       ),
     ),
   ),

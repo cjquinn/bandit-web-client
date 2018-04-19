@@ -1,0 +1,83 @@
+$utilities-flex-settings: (
+  (
+    property: ('flex-direction', 'fd'),
+
+    values: (
+      (
+        ('column', 'col'),
+      ),
+    ),
+  ),
+  (
+    property: ('flex-grow', 'grow'),
+
+    values: (
+      (
+        '0',
+        '1',
+      ),
+    ),
+  ),
+  (
+    property: ('flex-shrink', 'shrink'),
+
+    values: (
+      (
+        '0',
+        '1',
+      ),
+    ),
+  ),
+  (
+    property: ('flex-basis', 'basis'),
+
+    values: (
+      (
+        '0',
+        '1',
+      ),
+    ),
+  ),
+  (
+    property: ('flex-wrap', 'fw'),
+
+    values: (
+      (
+        'wrap',
+      ),
+    ),
+  ),
+  (
+    property: ('justify-content', 'jc'),
+
+    values: (
+      (
+        ('space-between', 'between'),
+        ('space-around', 'around'),
+        'center',
+        ('flex-end', 'end'),
+      ),
+    ),
+  ),
+  (
+    property: ('align-items', 'ai'),
+
+    values: (
+      (
+        'center',
+      ),
+    ),
+  ),
+  (
+    property: 'order',
+
+    values: (
+      (
+        start: 1,
+        end: 3,
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-flex-settings);

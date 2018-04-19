@@ -1,13 +1,13 @@
-@import 'tools/breakpoint';
-@import 'tools/strings';
-@import 'tools/make-class';
-@import 'tools/word-utilities';
-@import 'tools/combinator-utilities';
-@import 'tools/unit-utilities';
-@import 'tools/number-utilities';
-@import 'tools/utilities';
 @import 'tools/aspect-ratio';
+@import 'tools/breakpoint';
+@import 'tools/ifhas';
+@import 'tools/lists';
+@import 'tools/make-class';
+@import 'tools/placeholders';
+@import 'tools/strings';
+@import 'tools/utilities';
 
+// Settings
 @import 'settings/_import';
 
 @import 'base/reset';
@@ -15,8 +15,8 @@
 @import 'base/type';
 @import 'base/animation';
 
+// Utilities
 @import 'utilities/_import';
-@import 'utilities/utilities';
 
 @import 'objects/window';
 @import 'objects/main';

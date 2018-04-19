@@ -1,0 +1,23 @@
+$utilities-overflow-settings: (
+  (
+    property: ('overflow', 'ov'),
+
+    values: (
+      (
+        'hidden',
+      ),
+    ),
+  ),
+  (
+    property: ('overflow-x', 'ovx'),
+
+    values: (
+      (
+        'hidden',
+        'auto',
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-overflow-settings);
