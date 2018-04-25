@@ -14,7 +14,7 @@ $component: 'button';
   @extend .u-weight-bold;
   @extend .u-align-center;
   @extend .u-pv-1bl;
-  letter-spacing: -0.5px;
+  @extend .u-ls--05px;
 
   // @extend .u-test-absolute;
 

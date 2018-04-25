@@ -6,5 +6,5 @@ $object: 'container';
 
 #{'.' + $global-objects-namespace + $object} {
   @extend .u-mh-auto;
-  width: var(--ContainerWidth);
+  @extend .u-width-container;
 }

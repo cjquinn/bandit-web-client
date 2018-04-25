@@ -71,6 +71,15 @@ $utilities-type-settings: (
     ),
   ),
   (
+    property: ('letter-spacing', 'ls'),
+
+    values: (
+      (
+        ('-0.5px', '-05px'),
+      ),
+    ),
+  ),
+  (
     property: ('white-space', 'ws'),
 
     values: (

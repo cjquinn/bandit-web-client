@@ -8,8 +8,8 @@ $component: 'fade';
   @extend .u-pos-absolute;
   @extend .u-top-0;
   @extend .u-bottom-0;
+  @extend .u-width-4rem;
   @extend .u-pointer-none;
-  width: 4rem;
   transition: all .15s ease;
 
   &--left {
@@ -23,6 +23,6 @@ $component: 'fade';
   }
 
   *:hover > & {
-    width: 0;
+    @extend .u-width-0;
   }
 }

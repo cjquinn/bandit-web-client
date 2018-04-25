@@ -4,8 +4,10 @@ $utilities-width-settings: (
 
     values: (
       (
+        '0',
         '1px',
         ('100%', '100pc'),
+        '4rem',
         ('calc(var(--Baseline) * 1)', '1bl'),
         ('calc(var(--Baseline) * 2)', '2bl'),
         ('calc(var(--Baseline) * 2.5)', '205bl'),
@@ -13,6 +15,7 @@ $utilities-width-settings: (
         ('calc(var(--Baseline) * 4)', '4bl'),
         ('calc(var(--Baseline) * 6)', '6bl'),
         ('var(--WindowWidth)', 'window'),
+        ('var(--ContainerWidth)', 'container'),
       ),
     ),
   ),
