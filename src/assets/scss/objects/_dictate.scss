@@ -11,8 +11,7 @@ $object: 'dictate';
 #{'.' + $global-objects-namespace + $object} {
   @extend .u-ov-hidden;
   @extend .u-pos-absolute;
-  width: 1px;
-  height: 1px;
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-  clip: rect(1px, 1px, 1px, 1px);
+  @extend .u-width-1px;
+  @extend .u-height-1px;
+  @extend .u-clip-rect-1px;
 }

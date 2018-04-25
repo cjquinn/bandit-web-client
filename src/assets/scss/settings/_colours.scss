@@ -43,15 +43,29 @@ $colour-scout: #6EEBE9;
 $colour-junior: #97F7E6;
 $colour-rookie: #D7F3FC;
 
+$shared-colours: (
+  ($colour-bandit, 'bandit'),
+  ($colour-god, 'god'),
+  ($colour-legendary, 'legendary'),
+  ($colour-monster, 'monster'),
+  ($colour-warrior, 'warrior'),
+  ($colour-ninja, 'legendary'),
+  ($colour-assassin, 'assassin'),
+  ($colour-knight, 'knight'),
+  ($colour-fighter, 'fighter'),
+  ($colour-scout, 'scout'),
+  ($colour-junior, 'junior'),
+  ($colour-rookie, 'rookie'),
+);
+
+@debug type-of($shared-colours);
+@debug $shared-colours;
+
 
 
 
 // greys
 // $colour-newcomer //Newcomer (<10 games played)
-
-
-
-
 
 // Junior <= 849
 // Rookie <= 1099

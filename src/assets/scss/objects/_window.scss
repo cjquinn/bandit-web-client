@@ -18,7 +18,6 @@ $object: 'window';
   @extend .u-borrad-6;
   @extend .u-font-europa;
   @extend .u-color-blanket;
-  width: var(--WindowWidth);
-  margin-top: $windowGap;
-  margin-bottom: $windowGap;
+  @extend .u-width-window;
+  @extend .u-mv-window;
 }

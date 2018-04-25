@@ -109,6 +109,15 @@ $utilities-margin-settings: (
       ),
     ),
   ),
+  (
+    property: (('margin-top', 'margin-bottom'), 'mv'),
+
+    values: (
+      (
+        ('var(--WindowGap)', 'window'),
+      ),
+    ),
+  ),
 );
 
 $make-utilities: append($make-utilities, $utilities-margin-settings);

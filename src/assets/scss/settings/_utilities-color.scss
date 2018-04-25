@@ -4,6 +4,9 @@ $utilities-color-settings: (
 
     values: (
       (
+        // Levels
+        #{$shared-colours},
+        
         ($colour-blanket, 'blanket'),
         ($colour-paste, 'paste'),
         ($colour-steam, 'steam'),
@@ -13,20 +16,6 @@ $utilities-color-settings: (
         ($colour-loss, 'loss'),
         ($colour-orange, 'orange'),
         ($colour-puss, 'puss'),
-
-        // Levels
-        ($colour-bandit, 'bandit'),
-        ($colour-god, 'god'),
-        ($colour-legendary, 'legendary'),
-        ($colour-monster, 'monster'),
-        ($colour-warrior, 'warrior'),
-        ($colour-ninja, 'legendary'),
-        ($colour-assassin, 'assassin'),
-        ($colour-knight, 'knight'),
-        ($colour-fighter, 'fighter'),
-        ($colour-scout, 'scout'),
-        ($colour-junior, 'junior'),
-        ($colour-rookie, 'rookie'),
       ),
       (
         value: ($colour-white, 'white'),

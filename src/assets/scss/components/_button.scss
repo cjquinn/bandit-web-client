@@ -45,7 +45,7 @@ $component: 'button';
   &--default {
     &:before {
       // gradient border
-      @extend %no-content;
+      @extend %u-content-none;
       @extend .o-absfill;
       border-width: 2px;
       border-style: solid;

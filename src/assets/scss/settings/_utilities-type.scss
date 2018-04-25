@@ -62,11 +62,31 @@ $utilities-type-settings: (
     ),
   ),
   (
+    property: ('text-overflow', 'text-ov'),
+
+    values: (
+      (
+        'ellipsis',
+      ),
+    ),
+  ),
+  (
     property: ('white-space', 'ws'),
 
     values: (
       (
         ('nowrap', 'no'),
+      ),
+    ),
+  ),
+  (
+    property: 'content',
+
+    values: (
+      (
+        placeholders: (
+          ('""', 'none'),
+        ),
       ),
     ),
   ),
