@@ -3,7 +3,7 @@ import { reducer as form } from 'redux-form';
 import { routerReducer as router } from 'react-router-redux';
 
 // Actions
-import { SIGN_OUT } from './User/actions';
+import { SIGN_OUT } from './user/actions';
 
 // Reducers
 import byClubId from './byClubId/reducers';
