@@ -5,7 +5,18 @@ $utilities-background-settings: (
     values: (
       (
         // Levels
-        #{$shared-colours},
+        ($colour-bandit, 'bandit'),
+  ($colour-god, 'god'),
+  ($colour-legendary, 'legendary'),
+  ($colour-monster, 'monster'),
+  ($colour-warrior, 'warrior'),
+  ($colour-ninja, 'legendary'),
+  ($colour-assassin, 'assassin'),
+  ($colour-knight, 'knight'),
+  ($colour-fighter, 'fighter'),
+  ($colour-scout, 'scout'),
+  ($colour-junior, 'junior'),
+  ($colour-rookie, 'rookie'),
         
         ($colour-basement, 'basement'),
         ($colour-fold, 'fold'),
