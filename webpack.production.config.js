@@ -6,9 +6,6 @@ module.exports = {
 
     entry: [
         'babel-polyfill',
-        'react-hot-loader/patch',
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server',
         'react',
         'react-dom',
         './index.js'
@@ -19,18 +16,10 @@ module.exports = {
         filename: 'bundle.js'
     },
 
-    devServer: {
-        host: 'localhost',
-        port: 3000,
-        historyApiFallback: true,
-        contentBase: resolve(__dirname, 'webroot'),
-        hot: true
-    },
-
     module: {
         rules: [
             {
-                test: /\.js?$/,
+                test: /\.js$/,
                 use: ['babel-loader'],
                 exclude: /node_modules/
             },
@@ -58,7 +47,7 @@ module.exports = {
                 use: [
                     {
                         loader: 'file-loader',
-                        options: {}
+                        options: {outputPath: 'img/'}
                     }
                 ]
             }
@@ -66,10 +55,20 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NamedModulesPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.LoaderOptionsPlugin({
+            minimize: true,
+            debug: false
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            beautify: false,
+            mangle: {
+                screw_ie8: true,
+                keep_fnames: true
+            },
+            compress: {
+                screw_ie8: true
+            },
+            comments: false
+        })
     ],
-
-    devtool: 'inline-source-map'
 };
