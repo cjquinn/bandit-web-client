@@ -6,6 +6,9 @@ import Footer from '../components/Footer';
 import Svg from '../components/Svg';
 import Template from '../components/Template';
 
+// Containers
+import SignInFormContainer from '../containers/forms/SignInFormContainer';
+
 // Sprites
 import logo_knot from '../assets/svg/sprite/logo_knot.svg';
 import logo_head from '../assets/svg/sprite/logo_head.svg';
@@ -33,21 +36,7 @@ const SignInScreen = () => (
 
         <hr className="c-hr" />
 
-        <section className="o-container u-vspace-3bl">
-            <div className="u-ph-1bl u-vspace-3bl">
-                <fieldset className="u-pos-relative">
-                    <input type="email" />
-                    <label>Email:</label>
-                </fieldset>
-
-                <fieldset className="u-pos-relative">
-                    <input type="password" />
-                    <label>Password:</label>
-                </fieldset>
-            </div>
-
-            <a href="/" className="c-button c-button--default">Sign in</a>
-        </section>
+        <SignInFormContainer />
 
         <Footer>
             <Link
