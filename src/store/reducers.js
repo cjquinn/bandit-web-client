@@ -26,7 +26,7 @@ const reducers = (state, action) => {
         state.byClubId = undefined;
         state.club = undefined;
         state.entities = undefined;
-        state.user = undefined;
+        state.user = {isLoading: false};
     }
 
     return appReducers(state, action);

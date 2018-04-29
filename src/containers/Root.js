@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 
-
 // Containers
 import App from './App';
 

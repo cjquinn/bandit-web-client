@@ -14,7 +14,6 @@ const Header = () => (
         <div className="o-container u-pv-1025bl">
             <div className="u-ph-1bl u-flex u-jc-between">
                 <a href="/" className="u-flex u-ai-center u-hspace-05bl">
-
                     <div className="u-pos-relative">
                         <Svg
                             sprite={logo_head}
@@ -32,13 +31,13 @@ const Header = () => (
 
                 <a href="/profile.php" className="u-flex u-ai-center u-hspace-05bl u-opac-05 u-opac-1@hover">
                     <PlayerPhoto />
+                    
                     <span className="u-color-orange u-uppercase u-weight-bold">Stephen</span>
                 </a>
             </div>
         </div>
 
         <NavClub />
-
     </nav>
 );
 

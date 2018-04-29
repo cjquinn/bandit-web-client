@@ -1,4 +1,4 @@
-import { getCurrentUser, getIsAuthorised, getIsLoading } from '../../../src/store/user/selectors';
+import { getCurrentUser, getIsAuthenticated, getIsLoading } from '../../../src/store/user/selectors';
 
 describe('selectors', () => {
     it('getCurrentUser', () => {
@@ -12,7 +12,7 @@ describe('selectors', () => {
         expect(getCurrentUser(state)).toEqual({id: 1, name: 'Christy'});
     });
 
-    it('getIsAuthorised', () => {
+    it('getIsAuthenticated', () => {
         let state = {
             entities: {
                 users: {1: {id: 1, name: 'Christy'}}
@@ -20,7 +20,7 @@ describe('selectors', () => {
             user: {id: null}
         };
 
-        expect(getIsAuthorised(state)).toBe(false);
+        expect(getIsAuthenticated(state)).toBe(false);
 
         state = {
             entities: {
@@ -29,7 +29,7 @@ describe('selectors', () => {
             user: {id: 1}
         };
 
-        expect(getIsAuthorised(state)).toBe(true);
+        expect(getIsAuthenticated(state)).toBe(true);
     });
 
     it('getIsLoading', () => {

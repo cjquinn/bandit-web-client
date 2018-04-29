@@ -1,24 +1,50 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
+
+// Actions
+import { fetchCurrentUser } from '../store/user/actions';
 
 // Layouts
 import AppLayout from '../layouts/AppLayout';
 
+// Selectors
+import { getIsAuthenticated, getIsLoading } from '../store/user/selectors';
+
 class App extends Component {
+    componentDidMount() {
+        this.props.fetchCurrentUser();
+    }
+    
     render() {
-        const { history } = this.props;
+        const { history, isAuthenticated, isLoading } = this.props;
 
         return (
             <ConnectedRouter history={history}>
-                <AppLayout />
+                <AppLayout
+                    isAuthenticated={isAuthenticated}
+                    isLoading={isLoading}
+                />
             </ConnectedRouter>
         );
     }
 }
 
 App.propTypes = {
-    history: PropTypes.object.isRequired
+    fetchCurrentUser: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired
 };
 
-export default App;
+const mapStateToProps = state => ({
+    isAuthenticated: getIsAuthenticated(state),
+    isLoading: getIsLoading(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+    fetchCurrentUser: () => dispatch(fetchCurrentUser())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

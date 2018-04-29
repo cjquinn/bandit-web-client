@@ -11,7 +11,7 @@ export const getCurrentUser = createSelector(
     (id, users) => users[id]
 );
 
-export const getIsAuthorised = createSelector(
+export const getIsAuthenticated = createSelector(
     [getId],
     id => id !== null
 );

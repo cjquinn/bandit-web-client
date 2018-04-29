@@ -1,16 +1,19 @@
 import { combineReducers } from 'redux';
-import { combineActions, handleAction, handleActions } from 'redux-actions';
+import { combineActions, handleActions } from 'redux-actions';
 
 // Actions
 import * as actions from './actions';
+import { createClubSuccess } from '../club/actions';
 
-const id = handleAction(
-    combineActions(
-        actions.activateAccountSuccess,
-        actions.fetchCurrentUserSuccess,
-        actions.signInSuccess
-    ),
-    (state, { payload }) => payload.result,
+const id = handleActions(
+    {
+        [combineActions(
+            actions.activateAccountSuccess,
+            actions.fetchCurrentUserSuccess,
+            actions.signInSuccess
+        )]: (state, { payload }) => payload.result,
+        [createClubSuccess]: (state, { payload }) => payload.entities.clubs[payload.result].founder_id
+    },
     null
 );
 
@@ -22,7 +25,7 @@ const isLoading = handleActions(
             actions.fetchCurrentUserSuccess,
         )]: () => false
     },
-    false
+    true
 );
 
 const reducers = combineReducers({id, isLoading});

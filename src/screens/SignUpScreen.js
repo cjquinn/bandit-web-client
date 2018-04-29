@@ -1,13 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Components
+import Footer from '../components/Footer';
 import Svg from '../components/Svg';
 import Template from '../components/Template';
+
+// Containers
+import SignUpFormContainer from '../containers/forms/SignUpFormContainer';
 
 // Sprites
 import logo_knot from '../assets/svg/sprite/logo_knot.svg';
 
-const CreateClubUnauthenticatedScreen = () => (
+const SignUpScreen = () => (
     <Template>
         <main className="o-main">
             <header className="o-container u-flex u-ai-center u-fd-col u-ph-1bl u-vspace-06r">
@@ -27,27 +32,18 @@ const CreateClubUnauthenticatedScreen = () => (
 
             <hr className="c-hr" />
 
-            <section className="o-container u-vspace-3bl">
-                <div className="u-ph-1bl u-vspace-3bl">
-                    <fieldset className="u-pos-relative">
-                        <input type="text" />
-                        <label>Club name:</label>
-                    </fieldset>
+            <SignUpFormContainer />
 
-                    <fieldset className="u-pos-relative">
-                        <select>
-                            <option>Squash</option>
-                        </select>
-                        <label>Sport:</label>
-                    </fieldset>
-                </div>
-
-                <a href="/register.php" className="c-button c-button--default">Next</a>
-            </section>
-
-            {/* <?php include('components/footer-create-club.php'); ?> */}
+            <Footer>
+                <Link
+                    className="u-color-playdough"
+                    to="/sign-in"
+                >
+                    Sign in
+                </Link>
+            </Footer>
         </main>
     </Template>
 );
 
-export default CreateClubUnauthenticatedScreen;
+export default SignUpScreen;
