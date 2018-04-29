@@ -7,28 +7,28 @@ import Template from '../components/Template';
 
 const PlayersScreen = () => (
     <Template>
-        <main class="o-main">
+        <main className="o-main">
 
-            <header class="o-container u-ph-1bl">
+            <header className="o-container u-ph-1bl">
 
-                <div class="u-flex u-ai-center u-jc-between">
+                <div className="u-flex u-ai-center u-jc-between">
 
-                    <div class="u-vspace-06r">
-                        <h1 class="u-size-h1 u-color-white">Club Players</h1>
-                        <h2 class="u-size-h4">Who to play ball with?</h2>
+                    <div className="u-vspace-06r">
+                        <h1 className="u-size-h1 u-color-white">Club Players</h1>
+                        <h2 className="u-size-h4">Who to play ball with?</h2>
                     </div>
 
                 </div>
 
             </header>
 
-            <hr class="c-hr" />
+            <hr className="c-hr" />
 
-            <section class="o-container u-vspace-2bl">
+            <section className="o-container u-vspace-2bl">
 
-                <div class="u-flex u-jc-between u-ph-1bl">
+                <div className="u-flex u-jc-between u-ph-1bl">
 
-                    <select class="u-color-playdough">
+                    <select className="u-color-playdough">
                         <option selected="">A &ndash; Z</option>
                         <optgroup label="Order players:">
                             <option>Highest Rating</option>
@@ -36,11 +36,11 @@ const PlayersScreen = () => (
                         </optgroup>
                     </select>
 
-                    <a href="/invite-player.php" class="u-color-playdough">Invite player</a>
+                    <a href="/invite-player.php" className="u-color-playdough">Invite player</a>
 
                 </div>
 
-                <ol class="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+                <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
                     <Player />
                     <Player />
                     <Player />
@@ -53,8 +53,8 @@ const PlayersScreen = () => (
                     <Player />
                 </ol>
 
-                <footer class="u-ph-1bl">
-                    <a href="/matches.php" class="c-button c-button--default u-mt-1bl">Load more&hellip;</a>
+                <footer className="u-ph-1bl">
+                    <a href="/matches.php" className="c-button c-button--default u-mt-1bl">Load more&hellip;</a>
                 </footer>
 
             </section>

@@ -6,44 +6,44 @@ import Template from '../components/Template';
 
 const UserSettingsScreen = () => (
     <Template>
-        <main class="o-main">
+        <main className="o-main">
 
-            <header class="o-container u-ph-1bl u-vspace-06r">
+            <header className="o-container u-ph-1bl u-vspace-06r">
 
-                <h1 class="u-size-h1 u-color-white">Settings</h1>
-                <h2 class="u-size-h4">Be your true self! Unless that person is a loser.</h2>
+                <h1 className="u-size-h1 u-color-white">Settings</h1>
+                <h2 className="u-size-h4">Be your true self! Unless that person is a loser.</h2>
 
             </header>
 
-            <hr class="c-hr" />
+            <hr className="c-hr" />
 
-            <section class="o-container u-vspace-3bl">
+            <section className="o-container u-vspace-3bl">
 
-                <div class="u-ph-1bl u-vspace-3bl">
+                <div className="u-ph-1bl u-vspace-3bl">
 
-                    <fieldset class="u-pos-relative">
+                    <fieldset className="u-pos-relative">
                         <input type="text" value="Christy Quinn" placeholder="Christy Quinn" required />
                         <label>Name:</label>
                     </fieldset>
 
-                    <fieldset class="u-pos-relative">
+                    <fieldset className="u-pos-relative">
                         <input type="email" value="christyjquinn@gmail.com" placeholder="christyjquinn@gmail.com" required />
                         <label>Email:</label>
                     </fieldset>
 
-                    <fieldset class="u-pos-relative">
+                    <fieldset className="u-pos-relative">
                         <input type="file" value="" />
                         <label>Photo:</label>
                     </fieldset>
 
-                    <div class="u-flex u-hspace-2bl">
+                    <div className="u-flex u-hspace-2bl">
 
-                        <fieldset class="u-pos-relative">
+                        <fieldset className="u-pos-relative">
                             <input type="password" />
                             <label>New password:</label>
                         </fieldset>
 
-                        <fieldset class="u-pos-relative">
+                        <fieldset className="u-pos-relative">
                             <input type="password" />
                             <label>Re-type:</label>
                         </fieldset>
@@ -52,7 +52,7 @@ const UserSettingsScreen = () => (
 
                 </div>
 
-                <a href="/" class="c-button c-button--default">Update my settings</a>
+                <a href="/" className="c-button c-button--default">Update my settings</a>
 
             </section>
 

@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Components
-import Match from '../components/Match';
-import PlayerPhoto from '../components/PlayerPhoto';
+import Match from './Match';
+import PlayerPhoto from './PlayerPhoto';
 
 const DashboardMatches = () => (
 

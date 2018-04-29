@@ -1,65 +1,73 @@
 import React from 'react';
 
 // Components
+import Svg from '../components/Svg';
 import Template from '../components/Template';
+
+// Sprites
+import logo_knot from '../assets/svg/sprite/logo_knot.svg';
 
 const ActivateAccountScreen = () => (
     <Template>
-        <main class="o-main">
+        <main className="o-main">
+            <header className="o-container u-flex u-ai-center u-fd-col u-ph-1bl u-vspace-06r u-align-center">
+                <h1 className="u-size-h1 u-color-white">
+                    <span className="u-pos-relative">
+                        <Svg
+                            className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto"
+                            sprite={logo_knot}
+                        />
 
-<header class="o-container u-flex u-ai-center u-fd-col u-ph-1bl u-vspace-06r u-align-center">
+                        Activate Account
+                    </span>
+                </h1>
+                <h2 className="u-size-h4">Ready to join the ranks?</h2>
 
-    <h1 class="u-size-h1 u-color-white"><span class="u-pos-relative">
-        {/* <svg class="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto" width="36" height="31" viewBox="0 0 36 31"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/dist/svg/sprite.svg#logo-knot"></use></svg> */}
-        Activate Account</span></h1>
-    <h2 class="u-size-h4">Ready to join the ranks?</h2>
+            </header>
 
-</header>
+            <hr className="c-hr" />
 
-<hr class="c-hr" />
+            <section className="o-container u-vspace-3bl">
 
-<section class="o-container u-vspace-3bl">
+                <div className="u-ph-1bl u-vspace-3bl">
 
-    <div class="u-ph-1bl u-vspace-3bl">
+                    <fieldset className="u-pos-relative">
+                        <input type="text" />
+                        <label>Name:</label>
+                    </fieldset>
 
-        <fieldset class="u-pos-relative">
-            <input type="text" />
-            <label>Name:</label>
-        </fieldset>
+                    <fieldset className="u-pos-relative">
+                        <input type="email" value="alreadyhere@gmail.com" />
+                        <label>Email:</label>
+                    </fieldset>
 
-        <fieldset class="u-pos-relative">
-            <input type="email" value="alreadyhere@gmail.com" />
-            <label>Email:</label>
-        </fieldset>
+                    <div className="u-flex u-hspace-2bl">
 
-        <div class="u-flex u-hspace-2bl">
+                        <fieldset className="u-pos-relative">
+                            <input type="password" />
+                            <label>New password:</label>
+                        </fieldset>
 
-            <fieldset class="u-pos-relative">
-                <input type="password" />
-                <label>New password:</label>
-            </fieldset>
+                        <fieldset className="u-pos-relative">
+                            <input type="password" />
+                            <label>Re-type:</label>
+                        </fieldset>
 
-            <fieldset class="u-pos-relative">
-                <input type="password" />
-                <label>Re-type:</label>
-            </fieldset>
+                    </div>
 
-        </div>
-
-        <fieldset class="u-pos-relative">
-            <input type="text" disabled="" value="Shoreditch Park Squash League" />
-            <label>Club to join:</label>
-        </fieldset>
+                    <fieldset className="u-pos-relative">
+                        <input type="text" disabled="" value="Shoreditch Park Squash League" />
+                        <label>Club to join:</label>
+                    </fieldset>
 
 
-    </div>
+                </div>
 
-    <a href="/register.php" class="c-button c-button--default">Activate my Account</a>
+                <a href="/register.php" className="c-button c-button--default">Activate my Account</a>
 
-</section>
+            </section>
 
-{/* <?php include('components/footer-create-club.php'); ?> */}
-
+            {/* <?php include('components/footer-create-club.php'); ?> */}
         </main>
     </Template>
 );

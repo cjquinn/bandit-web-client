@@ -1,10 +1,11 @@
 import React from 'react';
 
-import NavClub from '../components/NavClub';
-import PlayerPhoto from '../components/PlayerPhoto';
+// Components
+import NavClub from './NavClub';
+import PlayerPhoto from './PlayerPhoto';
 import Svg from './Svg';
 
-// Sprite
+// Sprites
 import logo_head from '../assets/svg/sprite/logo_head.svg';
 import logo_knot from '../assets/svg/sprite/logo_knot.svg';
 

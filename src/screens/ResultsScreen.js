@@ -7,28 +7,28 @@ import Template from '../components/Template';
 
 const ResultsScreen = () => (
     <Template>
-        <main class="o-main">
+        <main className="o-main">
 
-            <header class="o-container u-ph-1bl">
+            <header className="o-container u-ph-1bl">
 
-                <div class="u-vspace-06r">
-                    <h1 class="u-size-h1 u-color-white">Club Matches</h1>
-                    <h2 class="u-size-h4">Who’s been collecting scalps lately?</h2>
+                <div className="u-vspace-06r">
+                    <h1 className="u-size-h1 u-color-white">Club Matches</h1>
+                    <h2 className="u-size-h4">Who’s been collecting scalps lately?</h2>
                 </div>
 
-                <a href="/add-matches.php" class="c-button c-button--default u-mt-2bl">Add matches</a>
+                <a href="/add-matches.php" className="c-button c-button--default u-mt-2bl">Add matches</a>
 
             </header>
 
-            <hr class="c-hr" />
+            <hr className="c-hr" />
 
-            <section class="o-container">
+            <section className="o-container">
 
-                <header class="u-flex u-jc-between u-ai-center u-ph-1bl">
-                    <h1 class="u-size-h2 u-color-white">Sunday 18th</h1>
+                <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                    <h1 className="u-size-h2 u-color-white">Sunday 18th</h1>
                 </header>
 
-                <ol class="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+                <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
                     <Match />
                     <Match />
                     <Match />
@@ -36,13 +36,13 @@ const ResultsScreen = () => (
 
             </section>
 
-            <section class="o-container">
+            <section className="o-container">
 
-                <header class="u-flex u-jc-between u-ai-center u-ph-1bl">
-                    <h1 class="u-size-h2 u-color-white">Saturday 17th</h1>
+                <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                    <h1 className="u-size-h2 u-color-white">Saturday 17th</h1>
                 </header>
 
-                <ol class="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+                <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
                     <Match />
                     <Match />
                     <Match />
@@ -50,13 +50,13 @@ const ResultsScreen = () => (
 
             </section>
 
-            <section class="o-container">
+            <section className="o-container">
 
-                <header class="u-flex u-jc-between u-ai-center u-ph-1bl">
-                    <h1 class="u-size-h2 u-color-white">Thursday 14th</h1>
+                <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                    <h1 className="u-size-h2 u-color-white">Thursday 14th</h1>
                 </header>
 
-                <ol class="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+                <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
                     <Match />
                     <Match />
                     <Match />

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Dispute from '../components/Dispute';
+import Dispute from './Dispute';
 
 const Disputes = () => (
     <section id="disputes" className="o-container">

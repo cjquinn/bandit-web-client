@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
 
 
 // Containers
@@ -14,9 +13,7 @@ class Root extends Component {
 
         return (
             <Provider store={store}>
-                <ConnectedRouter history={history}>
-                    <App />
-                </ConnectedRouter>
+                <App history={history} />
             </Provider>
         );
     }

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Components
-import PlayerPhoto from '../components/PlayerPhoto';
+import PlayerPhoto from './PlayerPhoto';
 
 const Dispute = () => (
     <li className="u-bgcolor-fold u-pos-relative">
