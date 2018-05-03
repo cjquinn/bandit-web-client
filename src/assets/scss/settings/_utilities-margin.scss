@@ -78,7 +78,7 @@ $utilities-margin-settings: (
         start: 1,
         end: 8,
         unit: 'px',
-        combinator: $combinator-child,
+        combinator: $combinator-child-siblings,
       ),
     ),
   ),

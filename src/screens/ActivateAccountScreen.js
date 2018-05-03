@@ -2,6 +2,10 @@ import React from 'react';
 
 // Components
 import Template from '../components/Template';
+import Svg from '../components/Svg';
+
+// Sprite
+import logo_knot from '../assets/svg/sprite/logo_knot.svg';
 
 const ActivateAccountScreen = () => (
     <Template>
@@ -9,9 +13,14 @@ const ActivateAccountScreen = () => (
 
 <header class="o-container u-flex u-ai-center u-fd-col u-ph-1bl u-vspace-06r u-align-center">
 
-    <h1 class="u-size-h1 u-color-white"><span class="u-pos-relative">
-        {/* <svg class="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto" width="36" height="31" viewBox="0 0 36 31"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/dist/svg/sprite.svg#logo-knot"></use></svg> */}
-        Activate Account</span></h1>
+    <h1 class="u-size-h1 u-color-white">
+        <span class="u-pos-relative">
+            <Svg
+                sprite={logo_knot}
+                className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto"
+            />Activate Account
+        </span>
+    </h1>
     <h2 class="u-size-h4">Ready to join the ranks?</h2>
 
 </header>

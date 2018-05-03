@@ -3,11 +3,15 @@ import React from 'react';
 
 // Components
 import PlayerPhoto from '../components/PlayerPhoto';
+import Svg from './Svg';
+
+// Sprite
+import rating from '../assets/svg/sprite/rating.svg';
 
 const Player = () => (
 
     <li class="u-bgcolor-fold">
-        <a href="/single-player.php" class="u-flex u-ai-center u-pv-1bl u-ph-1bl">
+        <a href="/player" class="u-flex u-ai-center u-pv-1bl u-ph-1bl">
 
             <div class="u-mr-1bl">
                 <PlayerPhoto />
@@ -19,9 +23,10 @@ const Player = () => (
                     <dd class="u-flex u-ai-center u-hspace-8px u-size-13px">
                         <span class="u-flex u-ai-center u-hspace-8px">
                             <span class="u-flex u-ai-center u-hspace-4px">
-                                {/* <svg class="u-width-1bl u-height-auto" width="11" height="13" viewBox="0 0 11 13">
-                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/dist/svg/sprite.svg#rating"></use>
-                                </svg> */}
+                                <Svg
+                                    sprite={rating}
+                                    className="u-width-1bl u-height-auto"
+                                />
                                 <span class="u-color-paste">1650 <span class="o-dictate">rating</span></span>
                             </span>
 

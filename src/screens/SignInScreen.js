@@ -3,6 +3,7 @@ import React from 'react';
 // Components
 import Footer from '../components/Footer';
 import Template from '../components/Template';
+import Svg from '../components/Svg';
 
 const SignInScreen = () => (
     <Template>
@@ -11,8 +12,17 @@ const SignInScreen = () => (
             <header class="o-container u-ph-1bl u-vspace-06r u-flex u-fd-col u-ai-center">
 
                 <div class="u-pos-relative">
-                    {/* <svg class="u-width-6bl u-height-auto" width="95" height="95" viewBox="0 0 95 95"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/dist/svg/sprite.svg#logo-head"></use></svg>
-                    <svg class="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-2bl u-height-auto" width="36" height="31" viewBox="0 0 36 31"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/dist/svg/sprite.svg#logo-knot"></use></svg> */}
+
+                    <Svg 
+                        sprite={logo_head}
+                        className="u-width-6bl u-height-auto"
+                    />
+
+                    <Svg
+                        sprite={logo_knot}
+                        className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-2bl u-height-auto"
+                    />
+                    
                 </div>
 
                 <h1 class="u-size-h2 u-color-orange u-uppercase u-weight-bold">Bandit</h1>

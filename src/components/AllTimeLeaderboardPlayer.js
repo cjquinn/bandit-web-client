@@ -3,6 +3,10 @@ import React from 'react';
 
 // Components
 import PlayerPhoto from '../components/PlayerPhoto';
+import Svg from './Svg';
+
+// Sprite
+import rating from '../assets/svg/sprite/rating.svg';
 
 const AllTimeLeaderboardPlayer = () => (
 
@@ -27,9 +31,10 @@ const AllTimeLeaderboardPlayer = () => (
                     <dt class="u-color-paste">Rebekah Reeves</dt>
                     <dd class="u-flex u-ai-center u-hspace-8px u-size-13px">
                         <span class="u-flex u-ai-center u-hspace-4px">
-                            <svg class="u-width-1bl u-height-auto" width="11" height="13" viewBox="0 0 11 13">
-                                <use href="/dist/svg/sprite.svg#rating"></use>
-                            </svg>
+                            <Svg
+                                sprite={rating}
+                                className="u-width-1bl u-height-auto"
+                            />
                             <span class="u-color-paste">1955 <span class="o-dictate">rating</span></span>
                         </span>
                         <span class="u-uppercase u-color-god">god</span>
