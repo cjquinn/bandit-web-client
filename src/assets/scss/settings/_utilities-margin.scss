@@ -1,0 +1,123 @@
+$utilities-margin-settings: (
+  (
+    property: ('margin-top', 'mt'),
+
+    values: (
+      (
+        'auto',
+        (calc(var(--Baseline) * 1), '1bl'),
+        (calc(var(--Baseline) * 2), '2bl'),
+      ),
+    ),
+  ),
+  (
+    property: ('margin-top', 'vspace-all'),
+
+    values: (
+      (
+        value: (calc(var(--Baseline) * 3), '3bl'),
+        combinator: $combinator-child,
+      ),
+    ),
+  ),
+  (
+    property: ('margin-top', 'vspace'),
+
+    values: (
+      (
+        value: ('.3rem', '03r'),
+        combinator: $combinator-child-siblings,
+      ),
+      (
+        value: ('.6rem', '06r'),
+        combinator: $combinator-child-siblings,
+      ),
+      (
+        value: '1px',
+        combinator: $combinator-child-siblings,
+      ),
+      (
+        value: (calc(var(--Baseline) * 1), '1bl'),
+        combinator: $combinator-child-siblings,
+      ),
+      (
+        value: (calc(var(--Baseline) * 2), '2bl'),
+        combinator: $combinator-child-siblings,
+      ),
+      (
+        value: (calc(var(--Baseline) * 3), '3bl'),
+        combinator: $combinator-child-siblings,
+      ),
+    ),
+  ),
+  (
+    property: ('margin-right', 'mr'),
+
+    values: (
+      (
+        'auto',
+        (calc(var(--Baseline) * 1), '1bl'),
+        (calc(var(--Baseline) * 2), '2bl'),
+      ),
+    ),
+  ),
+  (
+    property: ('margin-bottom', 'mb'),
+
+    values: (
+      (
+        'auto',
+      ),
+    ),
+  ),
+  (
+    property: ('margin-left', 'hspace'),
+
+    values: (
+      (
+        start: 1,
+        end: 8,
+        unit: 'px',
+        combinator: $combinator-child-siblings,
+      ),
+    ),
+  ),
+  (
+    property: ('margin-left', 'hspace'),
+
+    values: (
+      (
+        value: (calc(var(--Baseline) * .5), '05bl'),
+        combinator: $combinator-child-siblings,
+      ),
+      (
+        value: (calc(var(--Baseline) * 1), '1bl'),
+        combinator: $combinator-child-siblings,
+      ),
+      (
+        value: (calc(var(--Baseline) * 2), '2bl'),
+        combinator: $combinator-child-siblings,
+      ),
+    ),
+  ),
+  (
+    property: (('margin-right', 'margin-left'), 'mh'),
+
+    values: (
+      (
+        'auto',
+      ),
+    ),
+  ),
+  (
+    property: (('margin-top', 'margin-bottom'), 'mv'),
+
+    values: (
+      (
+        ('var(--WindowGap)', 'window'),
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-margin-settings);

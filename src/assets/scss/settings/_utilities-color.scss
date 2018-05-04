@@ -1,0 +1,52 @@
+$utilities-color-settings: (
+  (
+    property: 'color',
+
+    values: (
+      (
+        // Levels
+        ($colour-bandit, 'bandit'),
+        ($colour-god, 'god'),
+        ($colour-legendary, 'legendary'),
+        ($colour-monster, 'monster'),
+        ($colour-warrior, 'warrior'),
+        ($colour-ninja, 'legendary'),
+        ($colour-assassin, 'assassin'),
+        ($colour-knight, 'knight'),
+        ($colour-fighter, 'fighter'),
+        ($colour-scout, 'scout'),
+        ($colour-junior, 'junior'),
+        ($colour-rookie, 'rookie'),
+        
+        ($colour-blanket, 'blanket'),
+        ($colour-paste, 'paste'),
+        ($colour-steam, 'steam'),
+        ($colour-hotmelon, 'hotmelon'),
+        ($colour-basement, 'basement'),
+        ($colour-win, 'win'),
+        ($colour-loss, 'loss'),
+        ($colour-orange, 'orange'),
+        ($colour-puss, 'puss'),
+      ),
+      (
+        value: ($colour-white, 'white'),
+        pseudos: ('hover', 'focus'),
+      ),
+      (
+        value: ($colour-playdough, 'playdough'),
+        pseudos: 'hover',
+      ),
+    ),
+  ),
+  (
+    property: ('background-size', ''),
+
+    values: (
+      (
+        'cover',
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-color-settings);

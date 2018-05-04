@@ -2,9 +2,9 @@
   @extend .u-pos-relative;
 
   &:before {
-    @extend %no-content;
     @extend .u-block;
     @extend .u-width-100pc;
+    @extend %u-content-none;
     padding-top: $padding;
   }
 

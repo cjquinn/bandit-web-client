@@ -10,7 +10,7 @@ import rating from '../assets/svg/sprite/rating.svg';
 const Player = () => (
 
     <li className="u-bgcolor-fold">
-        <a href="/single-player.php" className="u-flex u-ai-center u-pv-1bl u-ph-1bl">
+        <a href="/player" className="u-flex u-ai-center u-pv-1bl u-ph-1bl">
 
             <div className="u-mr-1bl">
                 <PlayerPhoto />

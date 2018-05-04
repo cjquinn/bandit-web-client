@@ -1,0 +1,13 @@
+$utilities-will-change-settings: (
+  (
+    property: ('will-change', 'will'),
+
+    values: (
+      (
+        'transform',
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-will-change-settings);

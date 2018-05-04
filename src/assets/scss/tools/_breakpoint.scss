@@ -1,4 +1,4 @@
-@mixin iota-breakpoint($size, $breakpoints: $iota-global-breakpoints) {
+@mixin iota-breakpoint($size, $breakpoints: $global-breakpoints) {
   $breakpoint-found: map-has-key($breakpoints, $size);
 
   @if ($breakpoint-found == true) {

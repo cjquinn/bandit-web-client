@@ -3,6 +3,10 @@ import React from 'react';
 // Components
 import Svg from '../components/Svg';
 import Template from '../components/Template';
+import Svg from '../components/Svg';
+
+// Sprite
+import logo_knot from '../assets/svg/sprite/logo_knot.svg';
 
 // Sprites
 import logo_knot from '../assets/svg/sprite/logo_knot.svg';

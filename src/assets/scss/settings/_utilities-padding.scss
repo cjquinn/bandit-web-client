@@ -1,0 +1,36 @@
+$utilities-padding-settings: (
+  (
+    property: ('padding-top', 'pt'),
+
+    values: (
+      (
+        (calc(var(--Baseline) * 1), '1bl'),
+        (calc(var(--Baseline) * 2), '2bl'),
+      ),
+    ),
+  ),
+  (
+    property: (('padding-top', 'padding-bottom'), 'pv'),
+
+    values: (
+      (
+        (calc(var(--Baseline) * 1), '1bl'),
+        (calc(var(--Baseline) * 1.25), '1025bl'),
+        (calc(var(--Baseline) * 2), '2bl'),
+        (calc(var(--Baseline) * 3), '3bl'),
+      ),
+    ),
+  ),
+  (
+    property: (('padding-right', 'padding-left'), 'ph'),
+
+    values: (
+      (
+        (calc(var(--Baseline) * 1), '1bl'),
+        (calc(var(--Baseline) * 2), '2bl'),
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-padding-settings);

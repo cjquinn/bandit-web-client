@@ -1,7 +1,5 @@
 :root {
-
   --ViewportWidth: 100vw;
-  --WindowWidth: var(--ViewportWidth);
   --ContainerWidth: calc(var(--WindowWidth) - (var(--Baseline) * 2));
 
   @include iota-breakpoint(uptowindowgap) {

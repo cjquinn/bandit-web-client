@@ -5,7 +5,7 @@
 
 $component: 'hr';
 
-#{'.' + $iota-global-components-namespace + $component} {
+#{'.' + $global-components-namespace + $component} {
   @extend .u-bgcolor-basement;
   @extend .u-height-2px;
   border-bottom: 1px solid rgba($colour-blanket, .3);

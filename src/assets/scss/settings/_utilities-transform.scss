@@ -1,0 +1,13 @@
+$utilities-transform-settings: (
+  (
+    property: ('transform', ''),
+
+    values: (
+      (
+        ('translate(-50%, -50%)', 'translate--50pc'),
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-transform-settings);

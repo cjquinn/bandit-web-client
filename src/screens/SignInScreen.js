@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Svg from '../components/Svg';
 import Template from '../components/Template';
+import Svg from '../components/Svg';
 
 // Containers
 import SignInFormContainer from '../containers/forms/SignInFormContainer';

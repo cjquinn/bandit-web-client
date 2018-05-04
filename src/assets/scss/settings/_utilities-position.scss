@@ -1,0 +1,52 @@
+$utilities-position-settings: (
+  (
+    property: ('position', 'pos'),
+
+    values: (
+      (
+        'absolute',
+        'relative',
+      ),
+    ),
+  ),
+  (
+    property: 'top',
+
+    values: (
+      (
+        '0',
+        ('50%', '50pc'),
+      ),
+    ),
+  ),
+  (
+    property: 'right',
+
+    values: (
+      (
+        '0',
+      ),
+    ),
+  ),
+  (
+    property: 'bottom',
+
+    values: (
+      (
+        '0',
+      ),
+    ),
+  ),
+  (
+    property: 'left',
+
+    values: (
+      (
+        '0',
+        ('50%', '50pc'),
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-position-settings);

@@ -1,0 +1,14 @@
+$utilities-box-shadow-settings: (
+  (
+    property: ('box-shadow', 'shadow'),
+
+    values: (
+      (
+        ('inset 2px 0 0 0' $colour-hotmelon, 'dispute'),
+        ('inset 2px 0 0 0' $colour-blanket, 'you'),
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-box-shadow-settings);

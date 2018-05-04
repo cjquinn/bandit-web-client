@@ -12,10 +12,9 @@ const NavClub = () => (
         <div className="o-scroll-overflow">
             <ul className="u-flex u-ph-1bl u-hspace-1bl">
                 <li><a href="/" className="c-tab c-tab--active">Dashboard</a></li>
-                <li><a href="/matches.php" className="c-tab c-tab--inactive">Matches</a></li>
-                <li><a href="/leaderboards.php" className="c-tab c-tab--inactive">Leaderboards</a></li>
-                <li><a href="/players.php" className="c-tab c-tab--inactive">Players</a></li>
-                <li><a href="/club-info.php" className="c-tab c-tab--inactive">Club</a></li>
+                <li><a href="/results" className="c-tab c-tab--inactive">Matches</a></li>
+                <li><a href="/leaderboard" className="c-tab c-tab--inactive">Leaderboards</a></li>
+                <li><a href="/players" className="c-tab c-tab--inactive">Players</a></li>
                 <li aria-hidden="true">&nbsp;</li>
             </ul>
         </div>

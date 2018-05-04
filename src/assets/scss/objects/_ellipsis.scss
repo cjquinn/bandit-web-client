@@ -8,8 +8,8 @@
 
 $object: 'ellipsis';
 
-#{'.' + $iota-global-objects-namespace + $object} {
+#{'.' + $global-objects-namespace + $object} {
   @extend .u-ws-no;
   @extend .u-ov-hidden;
-  text-overflow: ellipsis;
+  @extend .u-text-ov-ellipsis;
 }

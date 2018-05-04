@@ -4,7 +4,7 @@
 
 $component: 'loading';
 
-#{'.' + $iota-global-components-namespace + $component} {
+#{'.' + $global-components-namespace + $component} {
   animation: loadingRotateSteps calc(var(--cycleTime) * 4) infinite ease-in-out;
 
   &__hexagon {
@@ -18,9 +18,9 @@ $component: 'loading';
     @extend .o-absfill;
 
     &:before {
-      @extend %no-content;
       @extend .u-pos-absolute;
       @extend .u-top-0;
+      @extend %u-content-none;
       @extend .u-will-transform;
       left: calc(25% - (var(--lineWidth) / 2));
       width: calc(50% + var(--lineWidth));

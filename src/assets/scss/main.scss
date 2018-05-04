@@ -1,59 +1,26 @@
-@import 'tools/breakpoint';
-@import 'tools/strings';
-@import 'tools/make-class';
-@import 'tools/word-utilities';
-@import 'tools/combinator-utilities';
-@import 'tools/unit-utilities';
-@import 'tools/number-utilities';
-@import 'tools/aspect-ratio';
+// Tools
+@import 'tools/_import';
 
-@import 'settings/classes';
-@import 'settings/colours';
-@import 'settings/breakpoints';
-@import 'settings/classes';
-@import 'settings/grid';
-@import 'settings/aspect-ratio';
-@import 'settings/container';
-@import 'settings/type';
-@import 'settings/loading';
+// Settings
+@import 'settings/_import';
 
-@import 'settings/word-utilities';
-@import 'settings/unit-utilities';
-@import 'settings/number-utilities';
-@import 'settings/combinator-utilities';
+// Base
+@import 'base/_import';
 
-@import 'base/reset';
-@import 'base/forms';
-@import 'base/type';
-@import 'base/animation';
+// Utilities
+@import 'utilities/_import';
 
-@import 'utilities/word-utilities';
-@import 'utilities/combinator-utilities';
-@import 'utilities/unit-utilities';
-@import 'utilities/number-utilities';
+// Objects
+@import 'objects/_import';
 
-@import 'objects/window';
-@import 'objects/main';
-@import 'objects/container';
-@import 'objects/dictate';
-@import 'objects/ellipsis';
-@import 'objects/scroll-overflow';
-@import 'objects/position';
-// @import 'objects/type';
-
-@import 'components/player-photo';
-@import 'components/button';
-@import 'components/go';
-@import 'components/tab';
-@import 'components/fade';
-@import 'components/hr';
-@import 'components/loading';
-@import 'components/info';
+// Components
+@import 'components/_import';
 
 // Temporary - before JS
-#open-dispute {
-    display: none;
-}
-#open-dispute:target {
-    display: block;
-}
+// #open-dispute {
+//     display: none;
+// }
+
+// #open-dispute:target {
+//     display: block;
+// }

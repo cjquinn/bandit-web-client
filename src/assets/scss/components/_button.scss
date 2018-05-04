@@ -4,7 +4,7 @@
 
 $component: 'button';
 
-#{'.' + $iota-global-components-namespace + $component} {
+#{'.' + $global-components-namespace + $component} {
   @extend .u-pos-relative;
   @extend .u-flex;
   @extend .u-ai-center;
@@ -14,7 +14,7 @@ $component: 'button';
   @extend .u-weight-bold;
   @extend .u-align-center;
   @extend .u-pv-1bl;
-  letter-spacing: -0.5px;
+  @extend .u-ls--05px;
 
   &:active {
     @extend .u-bgcolor-mariana;
@@ -43,7 +43,7 @@ $component: 'button';
   &--default {
     &:before {
       // gradient border
-      @extend %no-content;
+      @extend %u-content-none;
       @extend .o-absfill;
       border-width: 2px;
       border-style: solid;

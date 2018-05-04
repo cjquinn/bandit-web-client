@@ -1,10 +1,10 @@
 import React from 'react';
 
 // Components
-import PlayerPhoto from './PlayerPhoto';
+import PlayerPhoto from '../components/PlayerPhoto';
 import Svg from './Svg';
 
-// Sprites
+// Sprite
 import rating from '../assets/svg/sprite/rating.svg';
 
 const AllTimeLeaderboardPlayer = () => (
@@ -31,10 +31,9 @@ const AllTimeLeaderboardPlayer = () => (
                     <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
                         <span className="u-flex u-ai-center u-hspace-4px">
                             <Svg
-                                className="u-width-1bl u-height-auto"
                                 sprite={rating}
+                                className="u-width-1bl u-height-auto"
                             />
-
                             <span className="u-color-paste">1955 <span className="o-dictate">rating</span></span>
                         </span>
                         <span className="u-uppercase u-color-god">god</span>

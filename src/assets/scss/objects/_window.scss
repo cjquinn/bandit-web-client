@@ -8,7 +8,7 @@
 
 $object: 'window';
 
-#{'.' + $iota-global-objects-namespace + $object} {
+#{'.' + $global-objects-namespace + $object} {
   $windowGap: 3vw;
   @extend .u-mh-auto;
   @extend .u-minh-90vh;
@@ -18,7 +18,6 @@ $object: 'window';
   @extend .u-borrad-6;
   @extend .u-font-europa;
   @extend .u-color-blanket;
-  width: var(--WindowWidth);
-  margin-top: $windowGap;
-  margin-bottom: $windowGap;
+  @extend .u-width-window;
+  @extend .u-mv-window;
 }
