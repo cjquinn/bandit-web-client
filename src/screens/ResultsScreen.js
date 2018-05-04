@@ -16,7 +16,7 @@ const ResultsScreen = () => (
                     <h2 className="u-size-h4">Who’s been collecting scalps lately?</h2>
                 </div>
 
-                <a href="/add-matches.php" className="c-button c-button--default u-mt-2bl">Add matches</a>
+                <a href="/add-result" className="c-button c-button--default u-mt-2bl">Add matches</a>
 
             </header>
 

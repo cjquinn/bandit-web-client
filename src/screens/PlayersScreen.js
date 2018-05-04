@@ -36,7 +36,7 @@ const PlayersScreen = () => (
                         </optgroup>
                     </select>
 
-                    <a href="/invite-player.php" className="u-color-playdough">Invite player</a>
+                    <a href="/invite-player" className="u-color-playdough">Invite player</a>
 
                 </div>
 
@@ -54,7 +54,7 @@ const PlayersScreen = () => (
                 </ol>
 
                 <footer className="u-ph-1bl">
-                    <a href="/matches.php" className="c-button c-button--default u-mt-1bl">Load more&hellip;</a>
+                    <a href="/results" className="c-button c-button--default u-mt-1bl">Load more&hellip;</a>
                 </footer>
 
             </section>

@@ -8,7 +8,7 @@ const Match = () => (
 
     <li className="u-pos-relative u-bgcolor-fold">
 
-        <a href="/single-result.php" className="u-flex u-ai-center u-pv-1bl u-ph-1bl u-color-paste">
+        <a href="/result" className="u-flex u-ai-center u-pv-1bl u-ph-1bl u-color-paste">
 
             <div className="u-grow-1 u-basis-0 u-flex u-ai-center u-jc-center u-order-2 u-align-center u-hspace-1bl">
 

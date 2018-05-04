@@ -47,7 +47,7 @@ const ClubsScreen = () => (
 
                 </div>
 
-                <a href="/create-club.php" className="c-button c-button--default">Create a club</a>
+                <a href="/create-club-authenticated" className="c-button c-button--default">Create a club</a>
             </section>
 
             <Footer/>

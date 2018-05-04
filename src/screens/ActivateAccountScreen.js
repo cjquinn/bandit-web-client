@@ -3,10 +3,6 @@ import React from 'react';
 // Components
 import Svg from '../components/Svg';
 import Template from '../components/Template';
-import Svg from '../components/Svg';
-
-// Sprite
-import logo_knot from '../assets/svg/sprite/logo_knot.svg';
 
 // Sprites
 import logo_knot from '../assets/svg/sprite/logo_knot.svg';
@@ -67,11 +63,10 @@ const ActivateAccountScreen = () => (
 
                 </div>
 
-                <a href="/register.php" className="c-button c-button--default">Activate my Account</a>
+                <a href="/sign-up" className="c-button c-button--default">Activate my Account</a>
 
             </section>
-
-            {/* <?php include('components/footer-create-club.php'); ?> */}
+            
         </main>
     </Template>
 );

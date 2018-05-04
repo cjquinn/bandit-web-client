@@ -29,7 +29,7 @@ const Header = () => (
                     <span className="u-color-orange u-uppercase u-weight-bold">Bandit</span>
                 </a>
 
-                <a href="/profile.php" className="u-flex u-ai-center u-hspace-05bl u-opac-05 u-opac-1@hover">
+                <a href="/player" className="u-flex u-ai-center u-hspace-05bl u-opac-05 u-opac-1@hover">
                     <PlayerPhoto />
                     
                     <span className="u-color-orange u-uppercase u-weight-bold">Stephen</span>

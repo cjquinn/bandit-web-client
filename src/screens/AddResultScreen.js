@@ -12,7 +12,7 @@ const AddResultScreen = () => (
 
         <div className="o-container u-ph-1bl u-vspace-2bl">
 
-                <a href="/matches.php" className="c-go">Back</a>
+                <a href="/results" className="c-go">Back</a>
 
                 <header className="o-container">
 

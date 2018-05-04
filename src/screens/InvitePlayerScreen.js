@@ -10,7 +10,7 @@ const InvitePlayerScreen = () => (
 
             <div className="o-container u-ph-1bl u-vspace-2bl">
 
-                <a href="/players.php" className="u-color-playdough">Back to Players</a>
+                <a href="/players" className="u-color-playdough">Back to Players</a>
 
                 <header className="u-vspace-06r">
 

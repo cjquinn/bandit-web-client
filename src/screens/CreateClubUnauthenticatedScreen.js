@@ -45,11 +45,9 @@ const CreateClubUnauthenticatedScreen = () => (
 
     </div>
 
-    <a href="/register.php" className="c-button c-button--default">Next</a>
+    <a href="/sign-up" className="c-button c-button--default">Next</a>
 
 </section>
-
-{/* <?php include('components/footer-create-club.php'); ?> */}
 
 </main>
     </Template>

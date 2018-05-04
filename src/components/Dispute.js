@@ -7,7 +7,7 @@ import PlayerPhoto from './PlayerPhoto';
 const Dispute = () => (
     <li className="u-bgcolor-fold u-pos-relative">
         <div className="o-absolute-fill u-borrad-inherit u-shadow-dispute u-pointer-none"></div>
-        <a href="/single-result-disputed.php" className="u-flex u-ai-center u-pv-1bl u-ph-1bl">
+        <a href="/result" className="u-flex u-ai-center u-pv-1bl u-ph-1bl">
             <div className="u-mr-1bl">
                 <PlayerPhoto />
             </div>

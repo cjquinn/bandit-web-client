@@ -59,7 +59,7 @@ const PlayerScreen = () => (
 
                 <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                     <h1 className="u-size-h2 u-color-white">Matches</h1>
-                    <a href="/profile-matches.php" className="c-go">See all</a>
+                    <a href="/results" className="c-go">See all</a>
                 </header>
 
                 <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
@@ -74,7 +74,7 @@ const PlayerScreen = () => (
 
                 <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                     <h1 className="u-size-h2 u-color-white">Weekly <span className="u-color-steam">leaderboard</span></h1>
-                    <a href="/leaderboards.php" className="c-go">See all</a>
+                    <a href="/leaderboard" className="c-go">See all</a>
                 </header>
 
                 <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
@@ -89,7 +89,7 @@ const PlayerScreen = () => (
 
                 <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                     <h1 className="u-size-h2 u-color-white">All time <span className="u-color-steam">leaderboard</span></h1>
-                    <a href="/leaderboards.php" className="c-go">See all</a>
+                    <a href="/leaderboard" className="c-go">See all</a>
                 </header>
 
                 <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
