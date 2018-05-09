@@ -8,8 +8,7 @@ import Svg from '../components/Svg';
 import logo_knot from '../assets/svg/sprite/logo_knot.svg';
 
 const CreateClubUnauthenticatedScreen = () => (
-    <Template>
-        <main className="o-main">
+<Template>
 
 <header className="o-container u-flex u-ai-center u-fd-col u-ph-1bl u-vspace-06r">
 
@@ -49,8 +48,7 @@ const CreateClubUnauthenticatedScreen = () => (
 
 </section>
 
-</main>
-    </Template>
+</Template>
 );
 
 export default CreateClubUnauthenticatedScreen;

@@ -15,94 +15,92 @@ import rating from '../assets/svg/sprite/rating.svg';
 
 const PlayerScreen = () => (
     <Template>
-        <main className="o-main">
 
-            <div className="o-container u-vspace-3bl">
+        <div className="o-container u-vspace-3bl">
 
-                <header className="u-flex u-ai-center u-ph-1bl">
+            <header className="u-flex u-ai-center u-ph-1bl">
 
-                    <div className="u-mr-1bl">
-                        <PlayerPhoto />
-                    </div>
+                <div className="u-mr-1bl">
+                    <PlayerPhoto />
+                </div>
 
-                    <dl className="u-flex u-jc-between u-ai-center u-width-100pc">
-                        <div className="u-grow-1 u-vspace-06r">
-                            <dt><h1 className="u-size-h1 u-color-white">Stephen Haynult</h1></dt>
-                            <dd className="u-flex u-ai-center u-hspace-8px u-size-15px">
-                                <span className="u-flex u-ai-center u-hspace-8px">
-                                    <span className="u-flex u-ai-center u-hspace-4px">
-                                        <Svg
-                                            className="u-width-1bl u-height-auto"
-                                            sprite={rating}
-                                        />
+                <dl className="u-flex u-jc-between u-ai-center u-width-100pc">
+                    <div className="u-grow-1 u-vspace-06r">
+                        <dt><h1 className="u-size-h1 u-color-white">Stephen Haynult</h1></dt>
+                        <dd className="u-flex u-ai-center u-hspace-8px u-size-15px">
+                            <span className="u-flex u-ai-center u-hspace-8px">
+                                <span className="u-flex u-ai-center u-hspace-4px">
+                                    <Svg
+                                        className="u-width-1bl u-height-auto"
+                                        sprite={rating}
+                                    />
 
-                                        <span className="u-color-paste">1865 <span className="o-dictate">rating</span></span>
-                                    </span>
-
-                                    <span className="u-uppercase u-color-ninja">ninja</span>
-
-                                    <span><span className="o-dictate">from</span> 153 games</span>
+                                    <span className="u-color-paste">1865 <span className="o-dictate">rating</span></span>
                                 </span>
-                            </dd>
-                        </div>
-                    </dl>
 
-                </header>
+                                <span className="u-uppercase u-color-ninja">ninja</span>
 
-                <MiniStats />
+                                <span><span className="o-dictate">from</span> 153 games</span>
+                            </span>
+                        </dd>
+                    </div>
+                </dl>
 
-            </div>
+            </header>
 
-            <hr className="c-hr" />
+            <MiniStats />
 
-            <section id="results" className="o-container">
+        </div>
 
-                <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                    <h1 className="u-size-h2 u-color-white">Matches</h1>
-                    <a href="/results" className="c-go">See all</a>
-                </header>
+        <hr className="c-hr" />
 
-                <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                    <Match />
-                    <Match />
-                    <Match />
-                </ol>
+        <section id="results" className="o-container">
 
-            </section>
+            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                <h1 className="u-size-h2 u-color-white">Matches</h1>
+                <a href="/results" className="c-go">See all</a>
+            </header>
 
-            <section id="weekly-leaderboard" className="o-container">
+            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+                <Match />
+                <Match />
+                <Match />
+            </ol>
 
-                <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                    <h1 className="u-size-h2 u-color-white">Weekly <span className="u-color-steam">leaderboard</span></h1>
-                    <a href="/leaderboard" className="c-go">See all</a>
-                </header>
+        </section>
 
-                <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                    <WeeklyLeaderboardPlayer />
-                    <WeeklyLeaderboardPlayer />
-                    <WeeklyLeaderboardPlayer />
-                </ol>
+        <section id="weekly-leaderboard" className="o-container">
 
-            </section>
+            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                <h1 className="u-size-h2 u-color-white">Weekly <span className="u-color-steam">leaderboard</span></h1>
+                <a href="/leaderboard" className="c-go">See all</a>
+            </header>
 
-            <section id="alltime-leaderboard" className="o-container">
+            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+                <WeeklyLeaderboardPlayer />
+                <WeeklyLeaderboardPlayer />
+                <WeeklyLeaderboardPlayer />
+            </ol>
 
-                <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                    <h1 className="u-size-h2 u-color-white">All time <span className="u-color-steam">leaderboard</span></h1>
-                    <a href="/leaderboard" className="c-go">See all</a>
-                </header>
+        </section>
 
-                <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                    <AllTimeLeaderboardPlayer />
-                    <AllTimeLeaderboardPlayer />
-                    <AllTimeLeaderboardPlayer />
-                </ol>
+        <section id="alltime-leaderboard" className="o-container">
 
-            </section>
+            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                <h1 className="u-size-h2 u-color-white">All time <span className="u-color-steam">leaderboard</span></h1>
+                <a href="/leaderboard" className="c-go">See all</a>
+            </header>
 
-            <Footer />
+            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+                <AllTimeLeaderboardPlayer />
+                <AllTimeLeaderboardPlayer />
+                <AllTimeLeaderboardPlayer />
+            </ol>
 
-        </main>
+        </section>
+
+        <Footer />
+
     </Template>
 );
 

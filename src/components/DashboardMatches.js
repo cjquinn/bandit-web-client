@@ -23,7 +23,7 @@ const DashboardMatches = () => (
         </ol>
 
         <footer className="u-ph-1bl">
-            <a href="/add-result" className="c-button c-button--default u-mt-1bl">Add Matches</a>
+            <button type="button" className="c-button c-button--default u-mt-1bl">Add Matches</button>
         </footer>
 
     </section>

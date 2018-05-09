@@ -9,65 +9,64 @@ import logo_knot from '../assets/svg/sprite/logo_knot.svg';
 
 const ActivateAccountScreen = () => (
     <Template>
-        <main className="o-main">
-            <header className="o-container u-flex u-ai-center u-fd-col u-ph-1bl u-vspace-06r u-align-center">
-                <h1 className="u-size-h1 u-color-white">
-                    <span className="u-pos-relative">
-                        <Svg
-                            className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto"
-                            sprite={logo_knot}
-                        />
 
-                        Activate Account
-                    </span>
-                </h1>
-                <h2 className="u-size-h4">Ready to join the ranks?</h2>
+        <header className="o-container u-flex u-ai-center u-fd-col u-ph-1bl u-vspace-06r u-align-center">
+            <h1 className="u-size-h1 u-color-white">
+                <span className="u-pos-relative">
+                    <Svg
+                        className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto"
+                        sprite={logo_knot}
+                    />
 
-            </header>
+                    Activate Account
+                </span>
+            </h1>
+            <h2 className="u-size-h4">Ready to join the ranks?</h2>
 
-            <hr className="c-hr" />
+        </header>
 
-            <section className="o-container u-vspace-3bl">
+        <hr className="c-hr" />
 
-                <div className="u-ph-1bl u-vspace-3bl">
+        <section className="o-container u-vspace-3bl">
+
+            <div className="u-ph-1bl u-vspace-3bl">
+
+                <fieldset className="u-pos-relative">
+                    <input type="text" />
+                    <label>Name:</label>
+                </fieldset>
+
+                <fieldset className="u-pos-relative">
+                    <input type="email" value="alreadyhere@gmail.com" />
+                    <label>Email:</label>
+                </fieldset>
+
+                <div className="u-flex u-hspace-2bl">
 
                     <fieldset className="u-pos-relative">
-                        <input type="text" />
-                        <label>Name:</label>
+                        <input type="password" />
+                        <label>New password:</label>
                     </fieldset>
 
                     <fieldset className="u-pos-relative">
-                        <input type="email" value="alreadyhere@gmail.com" />
-                        <label>Email:</label>
+                        <input type="password" />
+                        <label>Re-type:</label>
                     </fieldset>
-
-                    <div className="u-flex u-hspace-2bl">
-
-                        <fieldset className="u-pos-relative">
-                            <input type="password" />
-                            <label>New password:</label>
-                        </fieldset>
-
-                        <fieldset className="u-pos-relative">
-                            <input type="password" />
-                            <label>Re-type:</label>
-                        </fieldset>
-
-                    </div>
-
-                    <fieldset className="u-pos-relative">
-                        <input type="text" disabled="" value="Shoreditch Park Squash League" />
-                        <label>Club to join:</label>
-                    </fieldset>
-
 
                 </div>
 
-                <a href="/sign-up" className="c-button c-button--default">Activate my Account</a>
+                <fieldset className="u-pos-relative">
+                    <input type="text" disabled="" value="Shoreditch Park Squash League" />
+                    <label>Club to join:</label>
+                </fieldset>
 
-            </section>
-            
-        </main>
+
+            </div>
+
+            <a href="/sign-up" className="c-button c-button--default">Activate my Account</a>
+
+        </section>
+
     </Template>
 );
 

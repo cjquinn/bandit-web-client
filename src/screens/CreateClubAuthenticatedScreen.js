@@ -6,7 +6,6 @@ import Template from '../components/Template';
 
 const CreateClubAuthenticatedScreen = () => (
     <Template>
-        <main className="o-main">
 
             <header className="o-container u-ph-1bl u-vspace-06r">
 
@@ -41,7 +40,6 @@ const CreateClubAuthenticatedScreen = () => (
 
             <Footer/>
 
-        </main>
     </Template>
 );
 

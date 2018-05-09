@@ -15,48 +15,44 @@ import WeeklyLeaderboardPlayer from '../components/WeeklyLeaderboardPlayer';
 const DashboardScreen = () => (
     <Template>
 
-        <main className="o-main">
+        <Disputes />
 
-            <Disputes />
+        <DashboardMatches />
 
-            <DashboardMatches />
+        <section id="weekly-leaderboard" className="o-container">
 
-            <section id="weekly-leaderboard" className="o-container">
+            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                <h1 className="u-size-h2 u-color-white">Weekly <span className="u-color-steam">leaderboard</span></h1>
+                <a href="/leaderboard" className="c-go">Go</a>
+            </header>
 
-                <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                    <h1 className="u-size-h2 u-color-white">Weekly <span className="u-color-steam">leaderboard</span></h1>
-                    <a href="/leaderboard" className="c-go">Go</a>
-                </header>
+            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
 
-                <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+                <WeeklyLeaderboardPlayer />
+                <WeeklyLeaderboardPlayer />
+                <WeeklyLeaderboardPlayer />
+            </ol>
 
-                    <WeeklyLeaderboardPlayer />
-                    <WeeklyLeaderboardPlayer />
-                    <WeeklyLeaderboardPlayer />
-                </ol>
+        </section>
 
-            </section>
+        <section id="alltime-leaderboard" className="o-container">
 
-            <section id="alltime-leaderboard" className="o-container">
+            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                <h1 className="u-size-h2 u-color-white">All time <span className="u-color-steam">leaderboard</span></h1>
+                <a href="/leaderboard" className="c-go">Go</a>
+            </header>
 
-                <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                    <h1 className="u-size-h2 u-color-white">All time <span className="u-color-steam">leaderboard</span></h1>
-                    <a href="/leaderboard" className="c-go">Go</a>
-                </header>
+            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
 
-                <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+                <AllTimeLeaderboardPlayer />
+                <AllTimeLeaderboardPlayer />
+                <AllTimeLeaderboardPlayer />
 
-                    <AllTimeLeaderboardPlayer />
-                    <AllTimeLeaderboardPlayer />
-                    <AllTimeLeaderboardPlayer />
+            </ol>
 
-                </ol>
+        </section>
 
-            </section>
-
-            <Footer />
-
-        </main>
+        <Footer />
 
     </Template>
 );

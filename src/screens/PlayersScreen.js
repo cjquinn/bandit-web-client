@@ -7,61 +7,58 @@ import Template from '../components/Template';
 
 const PlayersScreen = () => (
     <Template>
-        <main className="o-main">
 
-            <header className="o-container u-ph-1bl">
+        <header className="o-container u-ph-1bl">
 
-                <div className="u-flex u-ai-center u-jc-between">
+            <div className="u-flex u-ai-center u-jc-between">
 
-                    <div className="u-vspace-06r">
-                        <h1 className="u-size-h1 u-color-white">Club Players</h1>
-                        <h2 className="u-size-h4">Who to play ball with?</h2>
-                    </div>
-
+                <div className="u-vspace-06r">
+                    <h1 className="u-size-h1 u-color-white">Club Players</h1>
+                    <h2 className="u-size-h4">Who to play ball with?</h2>
                 </div>
 
-            </header>
+            </div>
 
-            <hr className="c-hr" />
+        </header>
 
-            <section className="o-container u-vspace-2bl">
+        <hr className="c-hr" />
 
-                <div className="u-flex u-jc-between u-ph-1bl">
+        <section className="o-container u-vspace-2bl">
 
-                    <select className="u-color-playdough">
-                        <option selected="">A &ndash; Z</option>
-                        <optgroup label="Order players:">
-                            <option>Highest Rating</option>
-                            <option>Most Games</option>
-                        </optgroup>
-                    </select>
+            <div className="u-flex u-jc-between u-ph-1bl">
 
-                    <a href="/invite-player" className="u-color-playdough">Invite player</a>
+                <select className="u-color-playdough">
+                    <option selected="">A &ndash; Z</option>
+                    <optgroup label="Order players:">
+                        <option>Highest Rating</option>
+                        <option>Most Games</option>
+                    </optgroup>
+                </select>
 
-                </div>
+                <a href="/invite-player" className="u-color-playdough">Invite player</a>
 
-                <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                    <Player />
-                    <Player />
-                    <Player />
-                    <Player />
-                    <Player />
-                    <Player />
-                    <Player />
-                    <Player />
-                    <Player />
-                    <Player />
-                </ol>
+            </div>
 
-                <footer className="u-ph-1bl">
-                    <a href="/results" className="c-button c-button--default u-mt-1bl">Load more&hellip;</a>
-                </footer>
+            <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+                <Player />
+                <Player />
+                <Player />
+                <Player />
+                <Player />
+                <Player />
+                <Player />
+                <Player />
+                <Player />
+                <Player />
+            </ol>
 
-            </section>
+            <footer className="u-ph-1bl">
+                <a href="/results" className="c-button c-button--default u-mt-1bl">Load more&hellip;</a>
+            </footer>
 
-            <Footer />
+        </section>
 
-        </main>
+        <Footer />
 
     </Template>
 );

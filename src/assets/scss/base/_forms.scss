@@ -18,6 +18,11 @@
   cursor: default;
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0px 9999px rgba($colour-floor, .85);
+  -webkit-text-fill-color: $colour-white !important;
+}
+
 input,
 select,
 textarea,
