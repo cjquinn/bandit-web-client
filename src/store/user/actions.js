@@ -1,5 +1,6 @@
 import { normalize } from 'normalizr';
 import { createAction } from 'redux-actions';
+import { push } from 'react-router-redux';
 
 // Schema
 import { user as userSchema } from '../schema';
@@ -52,6 +53,7 @@ export const requestPasswordReset = data => (dispatch, getState, api) => {
     return api.requestPasswordReset(data)
         .then(api.checkStatus)
         .then(() => dispatch(requestPasswordResetSuccess()))
+        .then(() => dispatch(push('/sign-in')))
         .catch(api.handleError(dispatch, requestPasswordResetFailure));
 };
 

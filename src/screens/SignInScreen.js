@@ -16,7 +16,6 @@ import logo_head from '../assets/svg/sprite/logo_head.svg';
 const SignInScreen = () => (
     <Template>
         <header className="o-container u-ph-1bl u-vspace-06r u-flex u-fd-col u-ai-center">
-
             <div className="u-pos-relative">
                 <Svg
                     className="u-width-6bl u-height-auto"

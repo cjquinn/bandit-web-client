@@ -1,5 +1,6 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import { push } from 'react-router-redux';
 
 // Actions
 import * as actions from '../../../src/store/user/actions';
@@ -141,7 +142,8 @@ describe('requestPasswordReset', () => {
             .then(() => {
                 const expected = [
                     {type: actions.requestPasswordResetRequest.toString()},
-                    {type: actions.requestPasswordResetSuccess.toString()}
+                    {type: actions.requestPasswordResetSuccess.toString()},
+                    push('/sign-in')
                 ];
 
                 expect(store.getActions()).toEqual(expected);
