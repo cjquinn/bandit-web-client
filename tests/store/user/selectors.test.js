@@ -2,7 +2,7 @@ import { getCurrentUser, getIsAuthenticated, getIsLoading } from '../../../src/s
 
 describe('selectors', () => {
     it('getCurrentUser', () => {
-        let state = {
+        const state = {
             entities: {
                 users: {1: {id: 1, name: 'Christy'}}
             },

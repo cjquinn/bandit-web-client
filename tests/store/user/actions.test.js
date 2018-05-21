@@ -12,7 +12,13 @@ const mock = new MockAdapter(axios);
 let store;
 
 describe('activateAccount', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => store = global.configureStore({
+        router: {
+            location: {
+                search: '?token=123'
+            }
+        }
+    }));
 
     afterEach(() => mock.reset());
 
@@ -21,7 +27,7 @@ describe('activateAccount', () => {
             .onPatch('/users/activate-account.json?token=123')
             .reply(403);
 
-        return store.dispatch(actions.activateAccount(123))
+        return store.dispatch(actions.activateAccount())
             .then(() => {
                 const expected = [
                     {type: actions.activateAccountRequest.toString()},
@@ -41,7 +47,7 @@ describe('activateAccount', () => {
                 jwt: 'TOKEN'
             });
 
-        return store.dispatch(actions.activateAccount(123))
+        return store.dispatch(actions.activateAccount())
             .then(() => {
                 const expected = [
                     {type: actions.activateAccountRequest.toString()},
@@ -152,7 +158,13 @@ describe('requestPasswordReset', () => {
 });
 
 describe('resetPassword', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => store = global.configureStore({
+        router: {
+            location: {
+                search: '?token=123'
+            }
+        }
+    }));
 
     afterEach(() => mock.reset());
 
@@ -161,7 +173,7 @@ describe('resetPassword', () => {
             .onPatch('/users/reset-password.json?token=123')
             .reply(403);
 
-        return store.dispatch(actions.resetPassword(123))
+        return store.dispatch(actions.resetPassword())
             .then(() => {
                 const expected = [
                     {type: actions.resetPasswordRequest.toString()},
@@ -178,11 +190,12 @@ describe('resetPassword', () => {
             .onPatch('/users/reset-password.json?token=123')
             .reply(200);
 
-        return store.dispatch(actions.resetPassword(123))
+        return store.dispatch(actions.resetPassword())
             .then(() => {
                 const expected = [
                     {type: actions.resetPasswordRequest.toString()},
-                    {type: actions.resetPasswordSuccess.toString()}
+                    {type: actions.resetPasswordSuccess.toString()},
+                    push('/sign-in')
                 ];
 
                 expect(store.getActions()).toEqual(expected);
@@ -308,7 +321,13 @@ describe('updateSettings', () => {
 });
 
 describe('validateActivateAccountToken', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => store = global.configureStore({
+        router: {
+            location: {
+                search: '?token=123'
+            }
+        }
+    }));
 
     afterEach(() => mock.reset());
 
@@ -317,7 +336,7 @@ describe('validateActivateAccountToken', () => {
             .onGet('/users/activate-account.json?token=123')
             .reply(403);
 
-        return store.dispatch(actions.validateActivateAccountToken(123))
+        return store.dispatch(actions.validateActivateAccountToken())
             .then(() => {
                 const expected = [
                     {type: actions.validateActivateAccountTokenRequest.toString()},
@@ -334,7 +353,7 @@ describe('validateActivateAccountToken', () => {
             .onGet('/users/activate-account.json?token=123')
             .reply(200);
 
-        return store.dispatch(actions.validateActivateAccountToken(123))
+        return store.dispatch(actions.validateActivateAccountToken())
             .then(() => {
                 const expected = [
                     {type: actions.validateActivateAccountTokenRequest.toString()},
@@ -347,7 +366,13 @@ describe('validateActivateAccountToken', () => {
 });
 
 describe('validateResetPasswordToken', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => store = global.configureStore({
+        router: {
+            location: {
+                search: '?token=123'
+            }
+        }
+    }));
 
     afterEach(() => mock.reset());
 
@@ -356,7 +381,7 @@ describe('validateResetPasswordToken', () => {
             .onGet('/users/reset-password.json?token=123')
             .reply(403);
 
-        return store.dispatch(actions.validateResetPasswordToken(123))
+        return store.dispatch(actions.validateResetPasswordToken())
             .then(() => {
                 const expected = [
                     {type: actions.validateResetPasswordTokenRequest.toString()},
@@ -373,7 +398,7 @@ describe('validateResetPasswordToken', () => {
             .onGet('/users/reset-password.json?token=123')
             .reply(200);
 
-        return store.dispatch(actions.validateResetPasswordToken(123))
+        return store.dispatch(actions.validateResetPasswordToken())
             .then(() => {
                 const expected = [
                     {type: actions.validateResetPasswordTokenRequest.toString()},

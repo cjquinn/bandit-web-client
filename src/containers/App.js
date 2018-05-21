@@ -14,6 +14,7 @@ import { getIsAuthenticated, getIsLoading } from '../store/user/selectors';
 
 class App extends Component {
     componentDidMount() {
+        // Do a better job of handling this
         this.props.fetchCurrentUser();
     }
     

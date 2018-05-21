@@ -5,6 +5,9 @@ import { push } from 'react-router-redux';
 // Schema
 import { user as userSchema } from '../schema';
 
+// Selectors
+import { getToken } from '../router/selectors';
+
 /**
  * Activate account
  */
@@ -15,7 +18,7 @@ export const activateAccountFailure = createAction('ACTIVE_ACCOUNT_FAILURE');
 export const activateAccount = data => (dispatch, getState, api) => {
     dispatch(activateAccountRequest());
 
-    return api.activateAccount(data)
+    return api.activateAccount(getToken(getState()), data)
         .then(api.checkStatus)
         .then(api.setJwt)
         .then(response => normalize(response.data.user, userSchema))
@@ -64,12 +67,13 @@ export const resetPasswordRequest = createAction('RESET_PASSWORD_REQUEST');
 export const resetPasswordSuccess = createAction('RESET_PASSWORD_SUCCESS');
 export const resetPasswordFailure = createAction('RESET_PASSWORD_FAILURE');
 
-export const resetPassword = token => (dispatch, getState, api) => {
+export const resetPassword = data => (dispatch, getState, api) => {
     dispatch(resetPasswordRequest());
 
-    return api.resetPassword(token)
+    return api.resetPassword(getToken(getState()), data)
         .then(api.checkStatus)
         .then(() => dispatch(resetPasswordSuccess()))
+        .then(() => dispatch(push('/sign-in')))
         .catch(api.handleError(dispatch, resetPasswordFailure));
 };
 
@@ -126,10 +130,10 @@ export const validateActivateAccountTokenRequest = createAction('VALIDATE_ACTIVA
 export const validateActivateAccountTokenSuccess = createAction('VALIDATE_ACTIVATE_ACCOUNT_TOKEN_SUCCESS');
 export const validateActivateAccountTokenFailure = createAction('VALIDATE_ACTIVATE_ACCOUNT_TOKEN_FAILURE');
 
-export const validateActivateAccountToken = token => (dispatch, getState, api) => {
+export const validateActivateAccountToken = () => (dispatch, getState, api) => {
     dispatch(validateActivateAccountTokenRequest());
 
-    return api.validateActivateAccountToken(token)
+    return api.validateActivateAccountToken(getToken(getState()))
         .then(api.checkStatus)
         .then(() => dispatch(validateActivateAccountTokenSuccess()))
         .catch(api.handleError(dispatch, validateActivateAccountTokenFailure));
@@ -142,10 +146,10 @@ export const validateResetPasswordTokenRequest = createAction('VALIDATE_RESET_PA
 export const validateResetPasswordTokenSuccess = createAction('VALIDATE_RESET_PASSWORD_TOKEN_SUCCESS');
 export const validateResetPasswordTokenFailure = createAction('VALIDATE_RESET_PASSWORD_TOKEN_FAILURE');
 
-export const validateResetPasswordToken = token => (dispatch, getState, api) => {
+export const validateResetPasswordToken = () => (dispatch, getState, api) => {
     dispatch(validateResetPasswordTokenRequest());
 
-    return api.validateResetPasswordToken(token)
+    return api.validateResetPasswordToken(getToken(getState()))
         .then(api.checkStatus)
         .then(() => dispatch(validateResetPasswordTokenSuccess()))
         .catch(api.handleError(dispatch, validateResetPasswordTokenFailure));
