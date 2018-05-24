@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import Match from '../components/Match';
 import Template from '../components/Template';
 
-const ResultsScreen = () => (
+const MatchesScreen = () => (
     <Template>
 
         <header className="o-container u-ph-1bl">
@@ -71,4 +71,4 @@ const ResultsScreen = () => (
     </Template>
 );
 
-export default ResultsScreen;
+export default MatchesScreen;

@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 
 import AddMatches from '../components/AddMatches';
 
-const AddResultScreen = () => (
+const AddMatchScreen = () => (
 
     <div className="o-container u-ph-1bl u-vspace-2bl">
 
@@ -68,4 +68,4 @@ const AddResultScreen = () => (
             
 );
 
-export default AddResultScreen;
+export default AddMatchScreen;

@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Components
 import Footer from '../components/Footer';
 import Template from '../components/Template';
+
+// Containers
+import ClubsListContainer from '../containers/lists/ClubsListContainer';
 
 const ClubsScreen = () => (
     <Template>
@@ -17,40 +21,17 @@ const ClubsScreen = () => (
         <hr className="c-hr" />
 
         <section className="o-container u-vspace-3bl">
+            <ClubsListContainer />
 
-            <div className="u-ph-1bl u-vspace-1px">
-
-                <li className="u-bgcolor-fold u-pos-relative">
-                    <div className="o-absolute-fill u-borrad-inherit u-shadow-you u-pointer-none"></div>
-                    <div className="u-flex u-ai-center u-pv-1bl u-ph-1bl">
-                    <div className="u-grow-1 u-vspace-03r">
-                    <dt className="u-color-paste u-weight-bold"><span className="o-dictate">Signed into </span>Britannia Squash</dt>
-                    <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                    <span>48 players</span>
-                    <span>11 days since you've played</span>
-                    </dd>
-                    </div>
-                    </div>
-                </li>
-                <li className="u-bgcolor-fold u-pos-relative u-opac-05 u-opac-1@hover">
-                    <a href="#" className="u-flex u-ai-center u-pv-1bl u-ph-1bl">
-                    <div className="u-grow-1 u-vspace-03r">
-                    <dt className="u-color-paste u-weight-bold">Atrium Ping Pong Park</dt>
-                    <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                    <span>48 players</span>
-                    <span>11 days since you've played</span>
-                    </dd>
-                    </div>
-                    </a>
-                </li>
-
-            </div>
-
-            <a href="/create-club-authenticated" className="c-button c-button--default">Create a club</a>
+            <Link
+                to="/create-club"
+                className="c-button c-button--default"
+            >
+                Create a club
+            </Link>
         </section>
 
         <Footer/>
-
     </Template>
 );
 

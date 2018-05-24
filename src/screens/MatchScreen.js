@@ -7,7 +7,7 @@ import PlayerPhoto from '../components/PlayerPhoto';
 import Scoresheet from '../components/Scoresheet';
 import Template from '../components/Template';
 
-const ResultScreen = () => (
+const MatchScreen = () => (
 
 <Template>
 
@@ -307,4 +307,4 @@ const ResultScreen = () => (
 </Template>
 );
 
-export default ResultScreen;
+export default MatchScreen;

@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 // Components
-import Header from '../components/Header';
+import ClubMenu from '../components/menus/ClubMenu';
+import UserMenu from '../components/menus/UserMenu';
+
+// Containers
+import HeaderContainer from '../containers/shared/HeaderContainer';
 
 // Routes
 import AuthenticatedRoute from '../routes/AuthenticatedRoute';
@@ -11,12 +15,11 @@ import UnauthenticatedRoute from '../routes/UnauthenticatedRoute';
 
 // Screens
 import ActivateAccountScreen from '../screens/ActivateAccountScreen';
-import AddResultScreen from '../screens/AddResultScreen';
+import AddMatchScreen from '../screens/AddMatchScreen';
 import ClubScreen from '../screens/ClubScreen';
 import ClubSettingsScreen from '../screens/ClubSettingsScreen';
 import ClubsScreen from '../screens/ClubsScreen';
 import CreateClubAuthenticatedScreen from '../screens/CreateClubAuthenticatedScreen';
-import DashboardScreen from '../screens/DashboardScreen';
 import DisputeScreen from '../screens/DisputeScreen';
 import DisputesScreen from '../screens/DisputesScreen';
 import InvitePlayerScreen from '../screens/InvitePlayerScreen';
@@ -25,39 +28,49 @@ import PlayerScreen from '../screens/PlayerScreen';
 import PlayersScreen from '../screens/PlayersScreen';
 import RequestPasswordResetScreen from '../screens/RequestPasswordResetScreen';
 import ResetPasswordScreen from '../screens/ResetPasswordScreen';
-import ResultScreen from '../screens/ResultScreen';
-import ResultsScreen from '../screens/ResultsScreen';
+import MatchScreen from '../screens/MatchScreen';
+import MatchesScreen from '../screens/MatchesScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import UserSettingsScreen from '../screens/UserSettingsScreen';
 
-const AppLayout = ({ isAuthenticated, isLoading }) => {
+const AppLayout = ({ isLoading }) => {
     if (isLoading) {
         return <p>Loading...</p>;
     }
 
     return (
         <div className="o-window">
-            {isAuthenticated && <Header />}
+            <HeaderContainer>
+                <Switch>
+                    <Route path="/clubs/:clubId" component={ClubMenu} />
+                    <Route component={UserMenu} />
+                </Switch>
+            </HeaderContainer>
 
             <main className="o-main">
                 <Switch>
                     {/* Authenticated */}
-                    <AuthenticatedRoute exact path="/create-club-authenticated" component={CreateClubAuthenticatedScreen} />
+                    <AuthenticatedRoute exact path="/" component={ClubsScreen} />
                     <AuthenticatedRoute exact path="/clubs" component={ClubsScreen} />
-                    <AuthenticatedRoute exact path="/club" component={ClubScreen} />
-                    <AuthenticatedRoute exact path="/club-settings" component={ClubSettingsScreen} />
-                    <AuthenticatedRoute exact path="/" component={DashboardScreen} />
-                    <AuthenticatedRoute exact path="/disputes" component={DisputesScreen} />
-                    <AuthenticatedRoute exact path="/dispute" component={DisputeScreen} />
-                    <AuthenticatedRoute exact path="/leaderboard" component={LeaderboardScreen} />
-                    <AuthenticatedRoute exact path="/invite-player" component={InvitePlayerScreen} />
-                    <AuthenticatedRoute exact path="/players" component={PlayersScreen} />
-                    <AuthenticatedRoute exact path="/player" component={PlayerScreen} />
-                    <AuthenticatedRoute exact path="/add-result" component={AddResultScreen} />
-                    <AuthenticatedRoute exact path="/results" component={ResultsScreen} />
-                    <AuthenticatedRoute exact path="/result" component={ResultScreen} />
-                    <AuthenticatedRoute exact path="/user-settings" component={UserSettingsScreen} />
+                    <AuthenticatedRoute exact path="/create-club" component={CreateClubAuthenticatedScreen} />
+                    <AuthenticatedRoute exact path="/settings" component={UserSettingsScreen} />
+
+                    <AuthenticatedRoute exact path="/clubs/:clubId" component={ClubScreen} />
+                    <AuthenticatedRoute exact path="/clubs/:clubId/settings" component={ClubSettingsScreen} />
+                    <AuthenticatedRoute exact path="/clubs/:clubId/invite-player" component={InvitePlayerScreen} />
+
+                    <AuthenticatedRoute exact path="/clubs/:clubId/disputes" component={DisputesScreen} />
+                    <AuthenticatedRoute exact path="/clubs/:clubId/disputes/:disputeId" component={DisputeScreen} />
+
+                    <AuthenticatedRoute exact path="/clubs/:clubId/leaderboard" component={LeaderboardScreen} />
+                    
+                    <AuthenticatedRoute exact path="/clubs/:clubId/players" component={PlayersScreen} />
+                    <AuthenticatedRoute exact path="/clubs/:clubId/players/:playerId" component={PlayerScreen} />
+
+                    <AuthenticatedRoute exact path="/clubs/:clubId/add-match" component={AddMatchScreen} />
+                    <AuthenticatedRoute exact path="/clubs/:clubId/matches" component={MatchesScreen} />
+                    <AuthenticatedRoute exact path="/clubs/:clubId/matches/:matchId" component={MatchScreen} />
 
                     {/* Unauthenticated */}
                     <UnauthenticatedRoute exact path="/activate-account" component={ActivateAccountScreen} />
@@ -72,7 +85,6 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
 };
 
 AppLayout.propTypes = {
-    isAuthenticated: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired
 };
 
