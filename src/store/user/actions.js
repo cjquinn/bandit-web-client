@@ -20,6 +20,7 @@ export const activateAccount = data => (dispatch, getState, api) => {
 
     return api.activateAccount(getToken(getState()), data)
         .then(api.checkStatus)
+        .then(api.setClubId)
         .then(api.setJwt)
         .then(response => normalize(response.data.user, userSchema))
         .then(normalizedData => dispatch(activateAccountSuccess(normalizedData)))
@@ -38,6 +39,7 @@ export const fetchCurrentUser = () => (dispatch, getState, api) => {
 
     return api.fetchCurrentUser()
         .then(api.checkStatus)
+        .then(response => api.getClubId() ? response : api.setClubId(response))
         .then(response => normalize(response.data.user, userSchema))
         .then(normalizedData => dispatch(fetchCurrentUserSuccess(normalizedData)))
         .catch(api.handleError(dispatch, fetchCurrentUserFailure));
@@ -89,6 +91,7 @@ export const signIn = data => (dispatch, getState, api) => {
 
     return api.signIn(data)
         .then(api.checkStatus)
+        .then(response => api.getClubId() ? response : api.setClubId(response))
         .then(api.setJwt)
         .then(response => normalize(response.data.user, userSchema))
         .then(normalizedData => dispatch(signInSuccess(normalizedData)))
@@ -101,6 +104,7 @@ export const signIn = data => (dispatch, getState, api) => {
 export const SIGN_OUT = 'SIGN_OUT';
 
 export const signOut = () => (dispatch, getState, api) => {
+    api.removeClubId();
     api.removeJwt();
 
     dispatch({type: SIGN_OUT});

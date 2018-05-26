@@ -78,6 +78,25 @@ export const instance = () => axios.create({
     validateStatus: () => true
 });
 
+const CLUB_ID = 'clubId';
+
+export const getClubId = () => window.localStorage.getItem(CLUB_ID);
+
+export const setClubId = response => {
+    if (response.data.user || response.data.club) {
+        const clubId = response.data.club
+            ? response.data.club.id
+            : response.data.user.players[0].club_id;
+
+        window.localStorage.setItem(CLUB_ID, clubId);
+    }
+
+    return response;
+};
+
+export const removeClubId = () => window.localStorage.removeItem(CLUB_ID);
+
+
 const JWT = 'jwt';
 
 export const getJwt = () => window.localStorage.getItem(JWT);

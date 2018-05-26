@@ -16,6 +16,7 @@ export const createClub = data => (dispatch, getState, api) => {
 
     return api.createClub(data)
         .then(api.checkStatus)
+        .then(api.setClubId)
         .then(api.setJwt)
         .then(response => normalize(response.data.club, clubSchema))
         .then(normalizedData => dispatch(createClubSuccess(normalizedData)))

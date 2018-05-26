@@ -3,12 +3,15 @@ import { normalize } from 'normalizr';
 // Schema
 import * as schema from '../../src/store/schema';
 
-describe('club + user', () => {
+describe('club + user + players', () => {
     it('normalize', () => {
         const response = {
             club: {
                 id: 1,
-                founder: {id: 1}
+                founder: {
+                    id: 1,
+                    players: [{id: 1}]
+                }
             }
         };
 
@@ -21,8 +24,14 @@ describe('club + user', () => {
                         founder: 1
                     }
                 },
-                users: {
+                players: {
                     1: {id: 1}
+                },
+                users: {
+                    1: {
+                        id: 1,
+                        players: [1]
+                    }
                 }
             }
         };

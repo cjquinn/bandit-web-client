@@ -6,7 +6,7 @@ import { push } from 'react-router-redux';
 import * as actions from '../../../src/store/user/actions';
 
 // Api
-import { getJwt, setJwt } from '../../../src/store/api';
+import { getClubId, setClubId, getJwt, setJwt } from '../../../src/store/api';
 
 const mock = new MockAdapter(axios);
 let store;
@@ -20,7 +20,10 @@ describe('activateAccount', () => {
         }
     }));
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('failure', () => {
         mock
@@ -43,7 +46,7 @@ describe('activateAccount', () => {
         mock
             .onPatch('/users/activate-account.json?token=123')
             .reply(200, {
-                user: {id: 1},
+                user: {id: 1, players: [{id: 1, club_id: 1}]},
                 jwt: 'TOKEN'
             });
 
@@ -56,13 +59,15 @@ describe('activateAccount', () => {
                         payload: {
                             result: 1,
                             entities: {
-                                users: {1: {id: 1}}
+                                players: {1: {id: 1, club_id: 1}},
+                                users: {1: {id: 1, players: [1]}}
                             }
                         }
                     }
                 ];
 
                 expect(store.getActions()).toEqual(expected);
+                expect(getClubId()).toEqual(1);
                 expect(getJwt()).toEqual('TOKEN');
             });
     });
@@ -71,7 +76,10 @@ describe('activateAccount', () => {
 describe('fetchCurrentUser', () => {
     beforeEach(() => store = global.configureStore());
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('failure', () => {
         mock
@@ -90,11 +98,11 @@ describe('fetchCurrentUser', () => {
             });
     });
 
-    it('success', () => {
+    it('success without clubId', () => {
         mock
             .onGet('/users/current.json')
             .reply(200, {
-                user: {id: 1}
+                user: {id: 1, players: [{id: 1, club_id: 1}]}
             });
 
         return store.dispatch(actions.fetchCurrentUser())
@@ -106,13 +114,45 @@ describe('fetchCurrentUser', () => {
                         payload: {
                             result: 1,
                             entities: {
-                                users: {1: {id: 1}}
+                                players: {1: {id: 1, club_id: 1}},
+                                users: {1: {id: 1, players: [1]}}
                             }
                         }
                     }
                 ];
 
                 expect(store.getActions()).toEqual(expected);
+                expect(getClubId()).toEqual(1);
+            });
+    });
+
+    it('success with clubId', () => {
+        setClubId({data: {club: {id: 2}}});
+
+        mock
+            .onGet('/users/current.json')
+            .reply(200, {
+                user: {id: 1, players: [{id: 1, club_id: 1}]},
+            });
+
+        return store.dispatch(actions.fetchCurrentUser())
+            .then(() => {
+                const expected = [
+                    {type: actions.fetchCurrentUserRequest.toString()},
+                    {
+                        type: actions.fetchCurrentUserSuccess.toString(),
+                        payload: {
+                            result: 1,
+                            entities: {
+                                players: {1: {id: 1, club_id: 1}},
+                                users: {1: {id: 1, players: [1]}}
+                            }
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+                expect(getClubId()).toEqual(2);
             });
     });
 });
@@ -120,7 +160,10 @@ describe('fetchCurrentUser', () => {
 describe('requestPasswordReset', () => {
     beforeEach(() => store = global.configureStore());
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('failure', () => {
         mock
@@ -166,7 +209,10 @@ describe('resetPassword', () => {
         }
     }));
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('failure', () => {
         mock
@@ -206,7 +252,10 @@ describe('resetPassword', () => {
 describe('signIn', () => {
     beforeEach(() => store = global.configureStore());
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('failure', () => {
         mock
@@ -225,11 +274,11 @@ describe('signIn', () => {
             });
     });
 
-    it('success', () => {
+    it('success without cludId', () => {
         mock
             .onPost('/users/login.json')
             .reply(200, {
-                user: {id: 1},
+                user: {id: 1, players: [{id: 1, club_id: 1}]},
                 jwt: 'TOKEN'
             });
 
@@ -242,7 +291,8 @@ describe('signIn', () => {
                         payload: {
                             result: 1,
                             entities: {
-                                users: {1: {id: 1}}
+                                players: {1: {id: 1, club_id: 1}},
+                                users: {1: {id: 1, players: [1]}}
                             }
                         }
                     }
@@ -250,6 +300,39 @@ describe('signIn', () => {
 
                 expect(store.getActions()).toEqual(expected);
                 expect(getJwt()).toEqual('TOKEN');
+                expect(getClubId()).toEqual(1);
+            });
+    });
+
+    it('success with cludId', () => {
+        setClubId({data: {club: {id: 2}}});
+
+        mock
+            .onPost('/users/login.json')
+            .reply(200, {
+                user: {id: 1, players: [{id: 1, club_id: 1}]},
+                jwt: 'TOKEN'
+            });
+
+        return store.dispatch(actions.signIn())
+            .then(() => {
+                const expected = [
+                    {type: actions.signInRequest.toString()},
+                    {
+                        type: actions.signInSuccess.toString(),
+                        payload: {
+                            result: 1,
+                            entities: {
+                                players: {1: {id: 1, club_id: 1}},
+                                users: {1: {id: 1, players: [1]}}
+                            }
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+                expect(getJwt()).toEqual('TOKEN');
+                expect(getClubId()).toEqual(2);
             });
     });
 });
@@ -257,10 +340,14 @@ describe('signIn', () => {
 describe('signOut', () => {
     beforeEach(() => store = global.configureStore());
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('success', () => {
         setJwt({data: {jwt: 'TOKEN'}});
+        setClubId({data: {club: {id: 2}}});
 
         store.dispatch(actions.signOut());
 
@@ -268,13 +355,17 @@ describe('signOut', () => {
 
         expect(store.getActions()).toEqual(expected);
         expect(getJwt()).toBeNull();
+        expect(getClubId()).toBeNull();
     });
 });
 
 describe('updateSettings', () => {
     beforeEach(() => store = global.configureStore());
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('failure', () => {
         mock
@@ -329,7 +420,10 @@ describe('validateActivateAccountToken', () => {
         }
     }));
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('failure', () => {
         mock
@@ -374,7 +468,10 @@ describe('validateResetPasswordToken', () => {
         }
     }));
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('failure', () => {
         mock

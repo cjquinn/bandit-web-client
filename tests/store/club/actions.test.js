@@ -6,7 +6,7 @@ import * as actions from '../../../src/store/club/actions';
 import { SIGN_OUT } from '../../../src/store/user/actions';
 
 // Api
-import { getJwt } from '../../../src/store/api';
+import { getClubId, getJwt } from '../../../src/store/api';
 
 const mock = new MockAdapter(axios);
 let store;
@@ -14,7 +14,10 @@ let store;
 describe('createClub', () => {
     beforeEach(() => store = global.configureStore());
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('failure', () => {
         mock
@@ -57,6 +60,7 @@ describe('createClub', () => {
                 ];
 
                 expect(store.getActions()).toEqual(expected);
+                expect(getClubId()).toEqual(1);
                 expect(getJwt()).toEqual('TOKEN');
             });
     });
@@ -65,7 +69,10 @@ describe('createClub', () => {
 describe('fetchClub', () => {
     beforeEach(() => store = global.configureStore());
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('failure', () => {
         mock
@@ -114,7 +121,10 @@ describe('fetchClub', () => {
 describe('fetchClubs', () => {
     beforeEach(() => store = global.configureStore());
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('failure', () => {
         mock
@@ -163,7 +173,10 @@ describe('fetchClubs', () => {
 describe('updateClub', () => {
     beforeEach(() => store = global.configureStore());
 
-    afterEach(() => mock.reset());
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
 
     it('failure', () => {
         mock

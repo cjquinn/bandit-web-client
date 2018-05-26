@@ -33,3 +33,5 @@ match.define({
 });
 
 player.define({user});
+
+user.define({players: [player]});

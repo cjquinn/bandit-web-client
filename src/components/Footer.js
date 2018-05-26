@@ -6,7 +6,7 @@ const Footer = ({ children }) => (
         <hr className="c-hr" />
 
         <div className="o-container u-flex u-jc-between u-ai-center u-ph-1bl u-pv-2bl">
-            {children}
+            {children && children}
 
             {/*
                 <select className="u-color-playdough">
@@ -40,7 +40,7 @@ Footer.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
-    ]).isRequired
+    ])
 };
 
 export default Footer;
