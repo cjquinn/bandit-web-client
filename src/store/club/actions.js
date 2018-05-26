@@ -1,5 +1,6 @@
 import { normalize } from 'normalizr';
 import { createAction } from 'redux-actions';
+import { push } from 'react-router-redux';
 
 // Schema
 import { club as clubSchema } from '../schema';
@@ -34,9 +35,15 @@ export const fetchClubSuccess = createAction('FETCH_CLUB_SUCCESS');
 export const fetchClubFailure = createAction('FETCH_CLUB_FAILURE');
 
 export const fetchClub = () => (dispatch, getState, api) => {
+    const clubId = getClubId(getState());
+
+    if (!clubId) {
+        return dispatch(push('/clubs'));
+    }
+
     dispatch(fetchClubRequest());
 
-    return api.fetchClub(getClubId(getState()))
+    return api.fetchClub(clubId)
         .then(api.checkStatus)
         .then(response => normalize(response.data.club, clubSchema))
         .then(normalizedData => dispatch(fetchClubSuccess(normalizedData)))

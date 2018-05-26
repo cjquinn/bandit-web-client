@@ -10,20 +10,20 @@ import { fetchCurrentUser } from '../store/user/actions';
 import AppLayout from '../layouts/AppLayout';
 
 // Selectors
-import { getIsLoading } from '../store/user/selectors';
+import { getIsAuthenticated, getIsLoading } from '../store/user/selectors';
 
 class App extends Component {
     componentDidMount() {
-        // Do a better job of handling this
+        // TODO: Do a better job of handling this
         this.props.fetchCurrentUser();
     }
     
     render() {
-        const { history, isLoading } = this.props;
+        const { history, isAuthenticated, isLoading } = this.props;
 
         return (
             <ConnectedRouter history={history}>
-                <AppLayout isLoading={isLoading} />
+                <AppLayout isAuthenticated={isAuthenticated} isLoading={isLoading} />
             </ConnectedRouter>
         );
     }
@@ -32,10 +32,12 @@ class App extends Component {
 App.propTypes = {
     fetchCurrentUser: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => ({
+    isAuthenticated: getIsAuthenticated(state),
     isLoading: getIsLoading(state)
 });
 

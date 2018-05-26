@@ -10,9 +10,10 @@ import reducers from './reducers';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const configureStore = history => {
+const configureStore = (initialState, history) => {
     const store = createStore(
         reducers,
+        initialState,
         composeEnhancers(
             applyMiddleware(
                 thunk.withExtraArgument(api),

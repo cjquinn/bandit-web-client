@@ -3,7 +3,6 @@ import { forIn, isPlainObject } from 'lodash';
 import { SubmissionError } from 'redux-form';
 import { push } from 'react-router-redux';
 
-
 // Actions
 import { signOut } from './user/actions';
 

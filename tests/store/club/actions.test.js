@@ -1,5 +1,6 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import { push } from 'react-router-redux';
 
 // Actions
 import * as actions from '../../../src/store/club/actions';
@@ -112,6 +113,16 @@ describe('fetchClub', () => {
 
                 expect(store.getActions()).toEqual(expected);
             });
+    });
+
+    it('no clubId', () => {
+        store = global.configureStore({user: {}});
+
+        store.dispatch(actions.fetchClub());
+
+        const expected = [push('/clubs')];
+
+        expect(store.getActions()).toEqual(expected);
     });
 });
 

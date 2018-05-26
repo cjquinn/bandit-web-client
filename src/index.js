@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import createHistory from 'history/createBrowserHistory';
 
+// Api
+import { getClubId } from './store/api';
+
 // Components
 import Root from './containers/Root';
 
@@ -13,7 +16,7 @@ import configureStore from './store/configureStore';
 import './assets/scss/main.scss';
 
 const history = createHistory();
-const store = configureStore(history);
+const store = configureStore({user: {clubId: getClubId()}}, history);
 
 const render = Component => {
     ReactDOM.render(

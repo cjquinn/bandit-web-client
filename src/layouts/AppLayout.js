@@ -34,19 +34,21 @@ import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import UserSettingsScreen from '../screens/UserSettingsScreen';
 
-const AppLayout = ({ isLoading }) => {
+const AppLayout = ({ isAuthenticated, isLoading }) => {
     if (isLoading) {
         return <p>Loading...</p>;
     }
 
     return (
         <div className="o-window">
-            <HeaderContainer>
-                <Switch>
-                    <Route path="/(clubs|settings|profile)" component={UserMenu} />
-                    <Route component={ClubMenu} />
-                </Switch>
-            </HeaderContainer>
+            {isAuthenticated &&
+                <HeaderContainer>
+                    <Switch>
+                        <Route path="/(clubs|settings|profile)" component={UserMenu} />
+                        <Route component={ClubMenu} />
+                    </Switch>
+                </HeaderContainer>
+            }
 
             <main className="o-main">
                 <Switch>
@@ -85,6 +87,7 @@ const AppLayout = ({ isLoading }) => {
 };
 
 AppLayout.propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired
 };
 

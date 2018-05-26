@@ -2,6 +2,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+// Actions
+import { fetchClub } from '../../store/club/actions';
+
 // Components
 import Header from '../../components/shared/Header';
 
@@ -10,6 +13,10 @@ import { getClub } from '../../store/club/selectors';
 import { getUser } from '../../store/user/selectors';
 
 class HeaderContainer extends Component {
+    componentDidMount() {
+        this.props.fetchClub();
+    }
+
     render() {
         const { children, club, user } = this.props;
 
@@ -24,7 +31,8 @@ class HeaderContainer extends Component {
 HeaderContainer.propTypes = {
     children: PropTypes.node.isRequired,
     club: PropTypes.object,
-    user: PropTypes.object
+    fetchClub: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -32,4 +40,8 @@ const mapStateToProps = state => ({
     user: getUser(state)
 });
 
-export default connect(mapStateToProps)(HeaderContainer);
+const mapDispatchToProps = dispatch => ({
+    fetchClub: () => dispatch(fetchClub())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
