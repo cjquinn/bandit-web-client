@@ -5,12 +5,18 @@ import MockAdapter from 'axios-mock-adapter';
 import * as actions from '../../../../../src/store/byClubId/byPlayerId/match/actions';
 import { SIGN_OUT } from '../../../../../src/store/user/actions';
 
+// Api
+import { setClubId } from '../../../../../src/store/api';
+
 const clubId = 1;
 const mock = new MockAdapter(axios);
 let store;
 
 describe('addMatch', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => {
+        store = global.configureStore();
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
@@ -19,7 +25,7 @@ describe('addMatch', () => {
             .onPost(`/clubs/${clubId}/matches.json`)
             .reply(403);
 
-        return store.dispatch(actions.addMatch(clubId))
+        return store.dispatch(actions.addMatch())
             .then(() => {
                 const expected = [
                     {type: actions.addMatchRequest.toString()},
@@ -36,7 +42,7 @@ describe('addMatch', () => {
             .onPost(`/clubs/${clubId}/matches.json`)
             .reply(200, {match: {id: 1, player_a_id: 1, player_b_id: 2}});
 
-        return store.dispatch(actions.addMatch(clubId))
+        return store.dispatch(actions.addMatch())
             .then(() => {
                 const expected = [
                     {type: actions.addMatchRequest.toString()},
@@ -64,18 +70,21 @@ describe('addMatch', () => {
 });
 
 describe('deleteMatch', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => {
+        store = global.configureStore();
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
-    const matchId = 1;
+    const matchId = 2;
 
     it('failure', () => {
         mock
             .onDelete(`/clubs/${clubId}/matches/${matchId}.json`)
             .reply(403);
 
-        return store.dispatch(actions.deleteMatch(clubId, matchId))
+        return store.dispatch(actions.deleteMatch(matchId))
             .then(() => {
                 const expected = [
                     {type: actions.deleteMatchRequest.toString()},
@@ -92,7 +101,7 @@ describe('deleteMatch', () => {
             .onDelete(`/clubs/${clubId}/matches/${matchId}.json`)
             .reply(200, {matches: [{id: 1, player_a_id: 1, player_b_id: 2}]});
 
-        return store.dispatch(actions.deleteMatch(clubId, matchId))
+        return store.dispatch(actions.deleteMatch(matchId))
             .then(() => {
                 const expected = [
                     {type: actions.deleteMatchRequest.toString()},
@@ -121,18 +130,21 @@ describe('deleteMatch', () => {
 });
 
 describe('fetchMatch', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => {
+        store = global.configureStore();
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
-    const matchId = 1;
+    const matchId = 2;
 
     it('failure', () => {
         mock
             .onGet(`/clubs/${clubId}/matches/${matchId}.json`)
             .reply(403);
 
-        return store.dispatch(actions.fetchMatch(clubId, matchId))
+        return store.dispatch(actions.fetchMatch( matchId))
             .then(() => {
                 const expected = [
                     {type: actions.fetchMatchRequest.toString()},
@@ -149,7 +161,7 @@ describe('fetchMatch', () => {
             .onGet(`/clubs/${clubId}/matches/${matchId}.json`)
             .reply(200, {match: {id: 1, player_a_id: 1, player_b_id: 2}});
 
-        return store.dispatch(actions.fetchMatch(clubId, matchId))
+        return store.dispatch(actions.fetchMatch(matchId))
             .then(() => {
                 const expected = [
                     {type: actions.fetchMatchRequest.toString()},
@@ -176,7 +188,10 @@ describe('fetchMatch', () => {
 });
 
 describe('fetchMatches', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => {
+        store = global.configureStore();
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
@@ -188,7 +203,7 @@ describe('fetchMatches', () => {
             .onGet(`/clubs/${clubId}/matches.json?page=${page}&player_id=${playerId}`)
             .reply(403);
 
-        return store.dispatch(actions.fetchMatches(clubId, playerId))
+        return store.dispatch(actions.fetchMatches(playerId))
             .then(() => {
                 const expected = [
                     {type: actions.fetchMatchesRequest.toString()},
@@ -205,7 +220,7 @@ describe('fetchMatches', () => {
             .onGet(`/clubs/${clubId}/matches.json?page=${page}&player_id=${playerId}`)
             .reply(200, {matches: [{id: 1, player_a_id: 1, player_b_id: 2}]});
 
-        return store.dispatch(actions.fetchMatches(clubId, playerId))
+        return store.dispatch(actions.fetchMatches(playerId))
             .then(() => {
                 const expected = [
                     {type: actions.fetchMatchesRequest.toString()},
@@ -235,19 +250,22 @@ describe('fetchMatches', () => {
 });
 
 describe('fetchMoreMatches', () => {
-    beforeEach(() => store = global.configureStore({
-        byClubId: {
-            1: {
-                byPlayerId: {
-                    'all': {
-                        match: {
-                            page: 1
+    beforeEach(() => {
+        store = global.configureStore({
+            byClubId: {
+                1: {
+                    byPlayerId: {
+                        'all': {
+                            match: {
+                                page: 1
+                            }
                         }
                     }
                 }
             }
-        }
-    }));
+        });
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
@@ -259,7 +277,7 @@ describe('fetchMoreMatches', () => {
             .onGet(`/clubs/${clubId}/matches.json?page=${page}&player_id=${playerId}`)
             .reply(403);
 
-        return store.dispatch(actions.fetchMoreMatches(clubId, playerId))
+        return store.dispatch(actions.fetchMoreMatches(playerId))
             .then(() => {
                 const expected = [
                     {type: actions.fetchMatchesRequest.toString()},
@@ -276,7 +294,7 @@ describe('fetchMoreMatches', () => {
             .onGet(`/clubs/${clubId}/matches.json?page=${page}&player_id=${playerId}`)
             .reply(200, {matches: [{id: 1, player_a_id: 1, player_b_id: 2}]});
 
-        return store.dispatch(actions.fetchMoreMatches(clubId, playerId))
+        return store.dispatch(actions.fetchMoreMatches(playerId))
             .then(() => {
                 const expected = [
                     {type: actions.fetchMatchesRequest.toString()},
