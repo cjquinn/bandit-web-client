@@ -5,13 +5,19 @@ import MockAdapter from 'axios-mock-adapter';
 import * as actions from '../../../../src/store/byClubId/leaderboard/actions';
 import { SIGN_OUT } from '../../../../src/store/user/actions';
 
+// Api
+import { setClubId } from '../../../../src/store/api';
+
 const clubId = 1;
 const period = 'allTime';
 const mock = new MockAdapter(axios);
 let store;
 
 describe('fetchLeaderboard', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => {
+        store = global.configureStore();
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
@@ -20,7 +26,7 @@ describe('fetchLeaderboard', () => {
             .onGet(`/clubs/${clubId}/leaderboards/all-time.json`)
             .reply(403);
 
-        return store.dispatch(actions.fetchLeaderboard(clubId, period))
+        return store.dispatch(actions.fetchLeaderboard(period))
             .then(() => {
                 const expected = [
                     {type: actions.fetchLeaderboardRequest.toString()},
@@ -37,7 +43,7 @@ describe('fetchLeaderboard', () => {
             .onGet(`/clubs/${clubId}/leaderboards/all-time.json`)
             .reply(200, {players: [{id: 1, rating: 1200}]});
 
-        return store.dispatch(actions.fetchLeaderboard(clubId, period))
+        return store.dispatch(actions.fetchLeaderboard(period))
             .then(() => {
                 const expected = [
                     {type: actions.fetchLeaderboardRequest.toString()},

@@ -11,8 +11,10 @@ export const fetchLeaderboardRequest = createAction('FETCH_LEADERBOARD_REQUEST')
 export const fetchLeaderboardSuccess = createAction('FETCH_LEADERBOARD_SUCCESS');
 export const fetchLeaderboardFailure = createAction('FETCH_LEADERBOARD_FAILURE');
 
-export const fetchLeaderboard = (clubId, period) => (dispatch, getState, api) => {
+export const fetchLeaderboard = period => (dispatch, getState, api) => {
     dispatch(fetchLeaderboardRequest());
+
+    const clubId = api.getClubId();
 
     return api.fetchLeaderboard(clubId, period)
         .then(api.checkStatus)

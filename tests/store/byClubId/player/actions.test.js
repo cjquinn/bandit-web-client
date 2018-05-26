@@ -5,12 +5,18 @@ import MockAdapter from 'axios-mock-adapter';
 import * as actions from '../../../../src/store/byClubId/player/actions';
 import { SIGN_OUT } from '../../../../src/store/user/actions';
 
+// Api
+import { setClubId } from '../../../../src/store/api';
+
 const clubId = 1;
 const mock = new MockAdapter(axios);
 let store;
 
 describe('fetchPlayer', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => {
+        store = global.configureStore();
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
@@ -21,7 +27,7 @@ describe('fetchPlayer', () => {
             .onGet(`/clubs/${clubId}/players/${playerId}.json`)
             .reply(403);
 
-        return store.dispatch(actions.fetchPlayer(clubId, playerId))
+        return store.dispatch(actions.fetchPlayer(playerId))
             .then(() => {
                 const expected = [
                     {type: actions.fetchPlayerRequest.toString()},
@@ -38,7 +44,7 @@ describe('fetchPlayer', () => {
             .onGet(`/clubs/${clubId}/players/${playerId}.json`)
             .reply(200, {player: {id: 1, rating: 1200}});
 
-        return store.dispatch(actions.fetchPlayer(clubId, playerId))
+        return store.dispatch(actions.fetchPlayer(playerId))
             .then(() => {
                 const expected = [
                     {type: actions.fetchPlayerRequest.toString()},
@@ -60,7 +66,10 @@ describe('fetchPlayer', () => {
 });
 
 describe('fetchPlayers', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => {
+        store = global.configureStore();
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
@@ -69,7 +78,7 @@ describe('fetchPlayers', () => {
             .onGet(`/clubs/${clubId}/players.json`)
             .reply(403);
 
-        return store.dispatch(actions.fetchPlayers(clubId))
+        return store.dispatch(actions.fetchPlayers())
             .then(() => {
                 const expected = [
                     {type: actions.fetchPlayersRequest.toString()},
@@ -86,7 +95,7 @@ describe('fetchPlayers', () => {
             .onGet(`/clubs/${clubId}/players.json`)
             .reply(200, {players: [{id: 1, rating: 1200}]});
 
-        return store.dispatch(actions.fetchPlayers(clubId))
+        return store.dispatch(actions.fetchPlayers())
             .then(() => {
                 const expected = [
                     {type: actions.fetchPlayersRequest.toString()},
@@ -108,7 +117,10 @@ describe('fetchPlayers', () => {
 });
 
 describe('invitePlayer', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => {
+        store = global.configureStore();
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
@@ -117,7 +129,7 @@ describe('invitePlayer', () => {
             .onPost(`/clubs/${clubId}/players.json`)
             .reply(403);
 
-        return store.dispatch(actions.invitePlayer(clubId))
+        return store.dispatch(actions.invitePlayer())
             .then(() => {
                 const expected = [
                     {type: actions.invitePlayerRequest.toString()},
@@ -134,7 +146,7 @@ describe('invitePlayer', () => {
             .onPost(`/clubs/${clubId}/players.json`)
             .reply(200, {player: {id: 1, rating: 1200}});
 
-        return store.dispatch(actions.invitePlayer(clubId))
+        return store.dispatch(actions.invitePlayer())
             .then(() => {
                 const expected = [
                     {type: actions.invitePlayerRequest.toString()},

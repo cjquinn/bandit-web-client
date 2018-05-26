@@ -5,12 +5,18 @@ import MockAdapter from 'axios-mock-adapter';
 import * as actions from '../../../../src/store/byClubId/dispute/actions';
 import { SIGN_OUT } from '../../../../src/store/user/actions';
 
+// Api
+import { setClubId } from '../../../../src/store/api';
+
 const clubId = 1;
 const mock = new MockAdapter(axios);
 let store;
 
 describe('addDispute', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => {
+        store = global.configureStore();
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
@@ -19,7 +25,7 @@ describe('addDispute', () => {
             .onPost(`/clubs/${clubId}/disputes.json`)
             .reply(403);
 
-        return store.dispatch(actions.addDispute(clubId))
+        return store.dispatch(actions.addDispute())
             .then(() => {
                 const expected = [
                     {type: actions.addDisputeRequest.toString()},
@@ -36,7 +42,7 @@ describe('addDispute', () => {
             .onPost(`/clubs/${clubId}/disputes.json`)
             .reply(200, {dispute: {match_id: 1}});
 
-        return store.dispatch(actions.addDispute(clubId))
+        return store.dispatch(actions.addDispute())
             .then(() => {
                 const expected = [
                     {type: actions.addDisputeRequest.toString()},
@@ -61,7 +67,10 @@ describe('addDispute', () => {
 });
 
 describe('closeDispute', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => {
+        store = global.configureStore();
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
@@ -72,7 +81,7 @@ describe('closeDispute', () => {
             .onPatch(`/clubs/${clubId}/disputes/${disputeId}.json`)
             .reply(403);
 
-        return store.dispatch(actions.closeDispute(clubId, disputeId))
+        return store.dispatch(actions.closeDispute(disputeId))
             .then(() => {
                 const expected = [
                     {type: actions.closeDisputeRequest.toString()},
@@ -89,7 +98,7 @@ describe('closeDispute', () => {
             .onPatch(`/clubs/${clubId}/disputes/${disputeId}.json`)
             .reply(200, {disputes: [{match_id: 1}]});
 
-        return store.dispatch(actions.closeDispute(clubId, disputeId))
+        return store.dispatch(actions.closeDispute(disputeId))
             .then(() => {
                 const expected = [
                     {type: actions.closeDisputeRequest.toString()},
@@ -113,7 +122,10 @@ describe('closeDispute', () => {
 });
 
 describe('deleteDispute', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => {
+        store = global.configureStore();
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
@@ -124,7 +136,7 @@ describe('deleteDispute', () => {
             .onDelete(`/clubs/${clubId}/disputes/${disputeId}.json`)
             .reply(403);
 
-        return store.dispatch(actions.deleteDispute(clubId, disputeId))
+        return store.dispatch(actions.deleteDispute(disputeId))
             .then(() => {
                 const expected = [
                     {type: actions.deleteDisputeRequest.toString()},
@@ -141,7 +153,7 @@ describe('deleteDispute', () => {
             .onDelete(`/clubs/${clubId}/disputes/${disputeId}.json`)
             .reply(200, {dispute: {match_id: 1}});
 
-        return store.dispatch(actions.deleteDispute(clubId, disputeId))
+        return store.dispatch(actions.deleteDispute(disputeId))
             .then(() => {
                 const expected = [
                     {type: actions.deleteDisputeRequest.toString()},
@@ -166,7 +178,10 @@ describe('deleteDispute', () => {
 });
 
 describe('fetchDisputes', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => {
+        store = global.configureStore();
+        setClubId({data: {club: {id: clubId}}});
+    });
 
     afterEach(() => mock.reset());
 
@@ -175,7 +190,7 @@ describe('fetchDisputes', () => {
             .onGet(`/clubs/${clubId}/disputes.json`)
             .reply(403);
 
-        return store.dispatch(actions.fetchDisputes(clubId))
+        return store.dispatch(actions.fetchDisputes())
             .then(() => {
                 const expected = [
                     {type: actions.fetchDisputesRequest.toString()},
@@ -192,7 +207,7 @@ describe('fetchDisputes', () => {
             .onGet(`/clubs/${clubId}/disputes.json`)
             .reply(200, {disputes: [{match_id: 1}]});
 
-        return store.dispatch(actions.fetchDisputes(clubId))
+        return store.dispatch(actions.fetchDisputes())
             .then(() => {
                 const expected = [
                     {type: actions.fetchDisputesRequest.toString()},

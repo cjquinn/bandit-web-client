@@ -11,8 +11,10 @@ export const addDisputeRequest = createAction('ADD_DISPUTE_REQUEST');
 export const addDisputeSuccess = createAction('ADD_DISPUTE_SUCCESS');
 export const addDisputeFailure = createAction('ADD_DISPUTE_FAILURE');
 
-export const addDispute = (clubId, data) => (dispatch, getState, api) => {
+export const addDispute = data => (dispatch, getState, api) => {
     dispatch(addDisputeRequest());
+
+    const clubId = api.getClubId();
 
     return api.addDispute(clubId, data)
         .then(api.checkStatus)
@@ -31,10 +33,10 @@ export const closeDisputeRequest = createAction('CLOSE_DISPUTE_REQUEST');
 export const closeDisputeSuccess = createAction('CLOSE_DISPUTE_SUCCESS');
 export const closeDisputeFailure = createAction('CLOSE_DISPUTE_FAILURE');
 
-export const closeDispute = (clubId, disputeId, data) => (dispatch, getState, api) => {
+export const closeDispute = (disputeId, data) => (dispatch, getState, api) => {
     dispatch(closeDisputeRequest());
 
-    return api.closeDispute(clubId, disputeId, data)
+    return api.closeDispute(api.getClubId(), disputeId, data)
         .then(api.checkStatus)
         .then(response => normalize(response.data.disputes, [disputeSchema]))
         .then(normalizedData => dispatch(closeDisputeSuccess(normalizedData)))
@@ -48,8 +50,10 @@ export const deleteDisputeRequest = createAction('DELETE_DISPUTE_REQUEST');
 export const deleteDisputeSuccess = createAction('DELETE_DISPUTE_SUCCESS');
 export const deleteDisputeFailure = createAction('DELETE_DISPUTE_FAILURE');
 
-export const deleteDispute = (clubId, disputeId) => (dispatch, getState, api) => {
+export const deleteDispute = disputeId => (dispatch, getState, api) => {
     dispatch(deleteDisputeRequest());
+
+    const clubId = api.getClubId();
 
     return api.deleteDispute(clubId, disputeId)
         .then(api.checkStatus)
@@ -69,8 +73,10 @@ export const fetchDisputesRequest = createAction('FETCH_DISPUTES_REQUEST');
 export const fetchDisputesSuccess = createAction('FETCH_DISPUTES_SUCCESS');
 export const fetchDisputesFailure = createAction('FETCH_DISPUTES_FAILURE');
 
-export const fetchDisputes = (clubId, disputeId) => (dispatch, getState, api) => {
+export const fetchDisputes = disputeId => (dispatch, getState, api) => {
     dispatch(fetchDisputesRequest());
+
+    const clubId = api.getClubId();
 
     return api.fetchDisputes(clubId, disputeId)
         .then(api.checkStatus)
