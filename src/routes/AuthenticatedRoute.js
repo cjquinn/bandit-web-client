@@ -3,11 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
-// Api
-import { getClubId } from '../store/api';
-
 // Selectors
-import { getIsAuthenticated } from '../store/user/selectors';
+import { getClubId, getIsAuthenticated } from '../store/user/selectors';
 
 class AuthenticatedRoute extends Component {
     render() {
@@ -36,7 +33,7 @@ AuthenticatedRoute.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    clubId: getClubId(),
+    clubId: getClubId(state),
     isAuthenticated: getIsAuthenticated(state)
 });
 

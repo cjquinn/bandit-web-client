@@ -5,6 +5,30 @@ import { combineActions, handleActions } from 'redux-actions';
 import * as actions from './actions';
 import { createClubSuccess } from '../club/actions';
 
+const clubId = handleActions(
+    {
+        [combineActions(
+            actions.activateAccountSuccess,
+            actions.fetchCurrentUserSuccess,
+            actions.signInSuccess
+        )]: (state, { payload }) => {
+            if (state) {
+                return state;
+            }
+
+            const playerIds = Object.keys(payload.entities.players);
+
+            if (playerIds.length === 0) {
+                return null;
+            }
+
+            return payload.entities.players[playerIds[0]].club_id;
+        },
+        [createClubSuccess]: (state, { payload }) => payload.result
+    },
+    null
+);
+
 const id = handleActions(
     {
         [combineActions(
@@ -28,6 +52,6 @@ const isLoading = handleActions(
     true
 );
 
-const reducers = combineReducers({id, isLoading});
+const reducers = combineReducers({clubId, id, isLoading});
 
 export default reducers;

@@ -4,6 +4,9 @@ import { normalize } from 'normalizr';
 // Schema
 import { dispute as disputeSchema } from '../../schema';
 
+// Selectors
+import { getClubId } from '../../user/selectors';
+
 /**
  * Add dispute
  */
@@ -14,7 +17,7 @@ export const addDisputeFailure = createAction('ADD_DISPUTE_FAILURE');
 export const addDispute = data => (dispatch, getState, api) => {
     dispatch(addDisputeRequest());
 
-    const clubId = api.getClubId();
+    const clubId = getClubId(getState());
 
     return api.addDispute(clubId, data)
         .then(api.checkStatus)
@@ -36,7 +39,7 @@ export const closeDisputeFailure = createAction('CLOSE_DISPUTE_FAILURE');
 export const closeDispute = (disputeId, data) => (dispatch, getState, api) => {
     dispatch(closeDisputeRequest());
 
-    return api.closeDispute(api.getClubId(), disputeId, data)
+    return api.closeDispute(getClubId(getState()), disputeId, data)
         .then(api.checkStatus)
         .then(response => normalize(response.data.disputes, [disputeSchema]))
         .then(normalizedData => dispatch(closeDisputeSuccess(normalizedData)))
@@ -53,7 +56,7 @@ export const deleteDisputeFailure = createAction('DELETE_DISPUTE_FAILURE');
 export const deleteDispute = disputeId => (dispatch, getState, api) => {
     dispatch(deleteDisputeRequest());
 
-    const clubId = api.getClubId();
+    const clubId = getClubId(getState());
 
     return api.deleteDispute(clubId, disputeId)
         .then(api.checkStatus)
@@ -76,7 +79,7 @@ export const fetchDisputesFailure = createAction('FETCH_DISPUTES_FAILURE');
 export const fetchDisputes = disputeId => (dispatch, getState, api) => {
     dispatch(fetchDisputesRequest());
 
-    const clubId = api.getClubId();
+    const clubId = getClubId(getState());
 
     return api.fetchDisputes(clubId, disputeId)
         .then(api.checkStatus)

@@ -1,10 +1,8 @@
 import { createSelector } from 'reselect';
 
-// Api
-import { getClubId } from '../api';
-
 // Selectors
 import { makeIsFetchingSelector } from '../shared/selectors';
+import { getClubId } from '../user/selectors';
 
 // Normalized
 export const getClubEntities = state => state.entities.clubs;
@@ -16,7 +14,7 @@ export const getIsFetching = makeIsFetchingSelector(getClubState);
 
 export const getIds = state => getClubState(state).ids;
 
-export const getClub = state => state.entities.clubs[getClubId()];
+export const getClub = state => state.entities.clubs[getClubId(state)];
 
 // Memoized
 export const getClubs = createSelector(

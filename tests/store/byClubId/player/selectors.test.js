@@ -1,9 +1,6 @@
 // Actions
 import { orderPlayersBy } from '../../../../src/store/byClubId/player/actions';
 
-// Api
-import { setClubId } from '../../../../src/store/api';
-
 // Reducers
 import reducers from '../../../../src/store/reducers';
 
@@ -17,8 +14,6 @@ import {
     makeGetPlayer,
     makeGetPlayers } from '../../../../src/store/byClubId/player/selectors';
 
-setClubId({data: {club: {id: 1}}});
-
 describe('selectors', () => {
     it('getIds', () => {
         const state = {
@@ -30,13 +25,15 @@ describe('selectors', () => {
                         orderBy: 'a-z'
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(getIds(state)).toEqual([1, 2]);
 
         const stateNoByClubId = {
-            byClubId: {}
+            byClubId: {},
+            user: {clubId: 1}
         };
 
         expect(getIds(stateNoByClubId)).toEqual([]);
@@ -52,13 +49,15 @@ describe('selectors', () => {
                         orderBy: 'a-z'
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(getIsFetching(state)).toBe(true);
 
         const stateNoByClubId = {
-            byClubId: {}
+            byClubId: {},
+            user: {clubId: 1}
         };
 
         expect(getIsFetching(stateNoByClubId)).toBe(false);
@@ -74,7 +73,8 @@ describe('selectors', () => {
                         orderBy: 'rating'
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const expected = 'rating';
@@ -82,7 +82,8 @@ describe('selectors', () => {
         expect(getOrderBy(state)).toEqual(expected);
 
         const stateNoByClubId = {
-            byClubId: {}
+            byClubId: {},
+            user: {clubId: 1}
         };
 
         expect(getOrderBy(stateNoByClubId)).toEqual('a-z');
@@ -233,7 +234,8 @@ describe('selectors', () => {
                     name: 'Nathan'
                 }
             }
-        }
+        },
+        user: {clubId: 1}
     };
 
     it('makeGetPlayers noByClubId', () => {
@@ -242,7 +244,8 @@ describe('selectors', () => {
             entities: {
                 players: {},
                 users: {}
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(makeGetPlayers()(stateNoByClubId)).toEqual([]);

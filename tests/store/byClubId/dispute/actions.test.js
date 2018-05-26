@@ -5,18 +5,12 @@ import MockAdapter from 'axios-mock-adapter';
 import * as actions from '../../../../src/store/byClubId/dispute/actions';
 import { SIGN_OUT } from '../../../../src/store/user/actions';
 
-// Api
-import { setClubId } from '../../../../src/store/api';
-
 const clubId = 1;
 const mock = new MockAdapter(axios);
 let store;
 
 describe('addDispute', () => {
-    beforeEach(() => {
-        store = global.configureStore();
-        setClubId({data: {club: {id: clubId}}});
-    });
+    beforeEach(() => store = global.configureStore({user: {clubId}}));
 
     afterEach(() => mock.reset());
 
@@ -67,10 +61,7 @@ describe('addDispute', () => {
 });
 
 describe('closeDispute', () => {
-    beforeEach(() => {
-        store = global.configureStore();
-        setClubId({data: {club: {id: clubId}}});
-    });
+    beforeEach(() => store = global.configureStore({user: {clubId}}));
 
     afterEach(() => mock.reset());
 
@@ -122,10 +113,7 @@ describe('closeDispute', () => {
 });
 
 describe('deleteDispute', () => {
-    beforeEach(() => {
-        store = global.configureStore();
-        setClubId({data: {club: {id: clubId}}});
-    });
+    beforeEach(() => store = global.configureStore({user: {clubId}}));
 
     afterEach(() => mock.reset());
 
@@ -178,10 +166,7 @@ describe('deleteDispute', () => {
 });
 
 describe('fetchDisputes', () => {
-    beforeEach(() => {
-        store = global.configureStore();
-        setClubId({data: {club: {id: clubId}}});
-    });
+    beforeEach(() => store = global.configureStore({user: {clubId}}));
 
     afterEach(() => mock.reset());
 

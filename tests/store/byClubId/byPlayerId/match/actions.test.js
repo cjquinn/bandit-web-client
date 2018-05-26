@@ -5,18 +5,12 @@ import MockAdapter from 'axios-mock-adapter';
 import * as actions from '../../../../../src/store/byClubId/byPlayerId/match/actions';
 import { SIGN_OUT } from '../../../../../src/store/user/actions';
 
-// Api
-import { setClubId } from '../../../../../src/store/api';
-
 const clubId = 1;
 const mock = new MockAdapter(axios);
 let store;
 
 describe('addMatch', () => {
-    beforeEach(() => {
-        store = global.configureStore();
-        setClubId({data: {club: {id: clubId}}});
-    });
+    beforeEach(() => store = global.configureStore({user: {clubId}}));
 
     afterEach(() => mock.reset());
 
@@ -70,10 +64,7 @@ describe('addMatch', () => {
 });
 
 describe('deleteMatch', () => {
-    beforeEach(() => {
-        store = global.configureStore();
-        setClubId({data: {club: {id: clubId}}});
-    });
+    beforeEach(() => store = global.configureStore({user: {clubId}}));
 
     afterEach(() => mock.reset());
 
@@ -130,10 +121,7 @@ describe('deleteMatch', () => {
 });
 
 describe('fetchMatch', () => {
-    beforeEach(() => {
-        store = global.configureStore();
-        setClubId({data: {club: {id: clubId}}});
-    });
+    beforeEach(() => store = global.configureStore({user: {clubId}}));
 
     afterEach(() => mock.reset());
 
@@ -188,10 +176,7 @@ describe('fetchMatch', () => {
 });
 
 describe('fetchMatches', () => {
-    beforeEach(() => {
-        store = global.configureStore();
-        setClubId({data: {club: {id: clubId}}});
-    });
+    beforeEach(() => store = global.configureStore({user: {clubId}}));
 
     afterEach(() => mock.reset());
 
@@ -250,22 +235,20 @@ describe('fetchMatches', () => {
 });
 
 describe('fetchMoreMatches', () => {
-    beforeEach(() => {
-        store = global.configureStore({
-            byClubId: {
-                1: {
-                    byPlayerId: {
-                        'all': {
-                            match: {
-                                page: 1
-                            }
+    beforeEach(() => store = global.configureStore({
+        byClubId: {
+            1: {
+                byPlayerId: {
+                    'all': {
+                        match: {
+                            page: 1
                         }
                     }
                 }
             }
-        });
-        setClubId({data: {club: {id: clubId}}});
-    });
+        },
+        user: {clubId}
+    }));
 
     afterEach(() => mock.reset());
 

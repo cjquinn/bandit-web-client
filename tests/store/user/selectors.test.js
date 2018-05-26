@@ -1,6 +1,14 @@
-import { getUser, getIsAuthenticated, getIsLoading } from '../../../src/store/user/selectors';
+import { getClubId, getUser, getIsAuthenticated, getIsLoading } from '../../../src/store/user/selectors';
 
 describe('selectors', () => {
+    it('getClubId', () => {
+        const state = {
+            user: {clubId: 1}
+        };
+
+        expect(getClubId(state)).toEqual(1);
+    });
+
     it('getUser', () => {
         const state = {
             entities: {

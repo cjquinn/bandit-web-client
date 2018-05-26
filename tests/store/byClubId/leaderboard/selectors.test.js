@@ -1,10 +1,5 @@
-// Api
-import { setClubId } from '../../../../src/store/api';
-
 // Selectors
 import { getIds, getIsFetching, makeGetLeaderboard } from '../../../../src/store/byClubId/leaderboard/selectors';
-
-setClubId({data: {club: {id: 1}}});
 
 describe('selectors', () => {
     const props = {period: 'allTime'};
@@ -24,13 +19,15 @@ describe('selectors', () => {
                         }
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(getIds(state, props)).toEqual([1, 2, 3]);
 
         const stateNoByClubId = {
-            byClubId: {}
+            byClubId: {},
+            user: {clubId: 1}
         };
 
         expect(getIds(stateNoByClubId, props)).toEqual([]);
@@ -51,13 +48,15 @@ describe('selectors', () => {
                         }
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(getIsFetching(state, props)).toBe(true);
 
         const stateNoByClubId = {
-            byClubId: {}
+            byClubId: {},
+            user: {clubId: 1}
         };
 
         expect(getIsFetching(stateNoByClubId, props)).toBe(false);
@@ -128,7 +127,8 @@ describe('selectors', () => {
                         name: 'Tom'
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const expected  = [
@@ -353,7 +353,8 @@ describe('selectors', () => {
             entities: {
                 players: {},
                 users: {}
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(makeGetLeaderboard()(stateNoByClubId, props)).toEqual([]);

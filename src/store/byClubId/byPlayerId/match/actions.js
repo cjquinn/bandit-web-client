@@ -6,6 +6,7 @@ import { match as matchSchema } from '../../../schema';
 
 // Selectors
 import { getPage } from './selectors';
+import { getClubId } from '../../../user/selectors';
 
 /**
  * Add match
@@ -17,7 +18,7 @@ export const addMatchFailure = createAction('ADD_MATCH_FAILURE');
 export const addMatch = data => (dispatch, getState, api) => {
     dispatch(addMatchRequest());
 
-    const clubId = api.getClubId();
+    const clubId = getClubId(getState());
 
     return api.addMatch(clubId, data)
         .then(api.checkStatus)
@@ -39,7 +40,7 @@ export const deleteMatchFailure = createAction('DELETE_MATCH_FAILURE');
 export const deleteMatch = matchId => (dispatch, getState, api) => {
     dispatch(deleteMatchRequest());
 
-    const clubId = api.getClubId();
+    const clubId = getClubId(getState());
 
     return api.deleteMatch(clubId, matchId)
         .then(api.checkStatus)
@@ -62,7 +63,7 @@ export const fetchMatchFailure = createAction('FETCH_MATCH_FAILURE');
 export const fetchMatch = matchId => (dispatch, getState, api) => {
     dispatch(fetchMatchRequest());
 
-    return api.fetchMatch(api.getClubId(), matchId)
+    return api.fetchMatch(getClubId(getState()), matchId)
         .then(api.checkStatus)
         .then(response => normalize(response.data.match, matchSchema))
         .then(normalizedData => dispatch(fetchMatchSuccess(normalizedData)))
@@ -79,7 +80,7 @@ export const fetchMatchesFailure = createAction('FETCH_MATCHES_FAILURE');
 export const fetchMatches = (playerId, page) => (dispatch, getState, api) => {
     dispatch(fetchMatchesRequest());
 
-    const clubId = api.getClubId();
+    const clubId = getClubId(getState());
     page = page || 1;
 
     return api.fetchMatches(clubId, playerId, page)
@@ -97,8 +98,8 @@ export const fetchMatches = (playerId, page) => (dispatch, getState, api) => {
 /**
  * Fetch more matches
  */
-export const fetchMoreMatches = playerId => (dispatch, getState, api) => {
-    const page = getPage(getState(), {match: {params: {clubId: api.getClubId(), playerId}}}) + 1;
+export const fetchMoreMatches = playerId => (dispatch, getState) => {
+    const page = getPage(getState(), {match: {params: {playerId}}}) + 1;
 
     return dispatch(fetchMatches(playerId, page));
 };

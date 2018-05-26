@@ -1,6 +1,3 @@
-// Api
-import { setClubId } from '../../../src/store/api';
-
 // Selectors
 import {
     getClub,
@@ -8,8 +5,6 @@ import {
     getClubs,
     getIds,
     getIsFetching } from '../../../src/store/club/selectors';
-
-setClubId({data: {club: {id: 1}}});
 
 describe('selectors', () => {
     it('getClub', () => {
@@ -19,7 +14,8 @@ describe('selectors', () => {
                     1: {id: 1, name: 'Squash'},
                     2: {id: 2, name: 'Bandit'}
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const expected = {id: 1, name: 'Squash'};

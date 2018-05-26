@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect';
 
+export const getClubId = state => state.user.clubId;
+
 export const getId = state => state.user.id;
 
 export const getIsLoading = state => state.user.isLoading;

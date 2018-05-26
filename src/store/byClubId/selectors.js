@@ -1,4 +1,4 @@
 // Api
-import { getClubId } from '../api';
+import { getClubId } from '../user/selectors';
 
-export const getByClubIdState = state => state.byClubId[getClubId()];
+export const getByClubIdState = state => state.byClubId[getClubId(state)];

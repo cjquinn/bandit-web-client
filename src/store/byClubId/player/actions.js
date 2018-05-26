@@ -4,6 +4,9 @@ import { normalize } from 'normalizr';
 // Schema
 import { player as playerSchema } from '../../schema';
 
+// Selectors
+import { getClubId } from '../../user/selectors';
+
 /**
  * Fetch player
  */
@@ -14,7 +17,7 @@ export const fetchPlayerFailure = createAction('FETCH_PLAYER_FAILURE');
 export const fetchPlayer = playerId => (dispatch, getState, api) => {
     dispatch(fetchPlayerRequest());
 
-    const clubId = api.getClubId();
+    const clubId = getClubId(getState());
 
     return api.fetchPlayer(clubId, playerId)
         .then(api.checkStatus)
@@ -36,7 +39,7 @@ export const fetchPlayersFailure = createAction('FETCH_PLAYERS_FAILURE');
 export const fetchPlayers = () => (dispatch, getState, api) => {
     dispatch(fetchPlayersRequest());
 
-    const clubId = api.getClubId();
+    const clubId = getClubId(getState());
 
     return api.fetchPlayers(clubId)
         .then(api.checkStatus)
@@ -58,7 +61,7 @@ export const invitePlayerFailure = createAction('INVITE_PLAYER_FAILURE');
 export const invitePlayer = data => (dispatch, getState, api) => {
     dispatch(invitePlayerRequest());
 
-    return api.invitePlayer(api.getClubId(), data)
+    return api.invitePlayer(getClubId(getState()), data)
         .then(api.checkStatus)
         .then(response => normalize(response.data.player, playerSchema))
         .then(normalizedData => dispatch(invitePlayerSuccess(normalizedData)))

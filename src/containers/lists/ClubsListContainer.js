@@ -5,14 +5,12 @@ import { connect } from 'react-redux';
 // Actions
 import { fetchClubs } from '../../store/club/actions';
 
-// Api
-import { getClubId } from '../../store/api';
-
 // Components
 import ClubsList from '../../components/lists/ClubsList';
 
 // Selectors
 import { getClubs } from '../../store/club/selectors';
+import { getClubId } from '../../store/user/selectors';
 
 class ClubsListContainer extends Component {
     componentDidMount() {
@@ -38,7 +36,7 @@ ClubsListContainer.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    clubId: getClubId(),
+    clubId: getClubId(state),
     clubs: getClubs(state)
 });
 

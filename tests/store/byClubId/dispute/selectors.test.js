@@ -1,6 +1,3 @@
-// Api
-import { setClubId } from '../../../../src/store/api';
-
 // Selectors
 import {
     getIds,
@@ -9,8 +6,6 @@ import {
     getDisputeEntities,
     makeGetDispute,
     makeGetDisputes } from '../../../../src/store/byClubId/dispute/selectors';
-
-setClubId({data: {club: {id: 1}}});
 
 describe('selectors', () => {
     it('getIds', () => {
@@ -22,13 +17,15 @@ describe('selectors', () => {
                         isFetching: true
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(getIds(state)).toEqual([1, 2]);
 
         const stateNoByClubId = {
-            byClubId: {}
+            byClubId: {},
+            user: {clubId: 1}
         };
 
         expect(getIds(stateNoByClubId)).toEqual([]);
@@ -43,13 +40,15 @@ describe('selectors', () => {
                         isFetching: true
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(getIsFetching(state)).toBe(true);
 
         const stateNoByClubId = {
-            byClubId: {}
+            byClubId: {},
+            user: {clubId: 1}
         };
 
         expect(getIsFetching(stateNoByClubId)).toBe(false);
@@ -64,7 +63,8 @@ describe('selectors', () => {
                         is_resolved: null
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const props = {disputeId: 1};
@@ -86,7 +86,8 @@ describe('selectors', () => {
                         is_resolved: null
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const expected = {
@@ -133,7 +134,8 @@ describe('selectors', () => {
                         id: 2
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const props = {disputeId: 1};
@@ -187,7 +189,8 @@ describe('selectors', () => {
                         id: 2
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const expectedNoDispute = undefined;
@@ -236,7 +239,8 @@ describe('selectors', () => {
                         id: 2
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const expected = [{
@@ -267,7 +271,8 @@ describe('selectors', () => {
                 matches: {},
                 players: {},
                 users: {}
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(makeGetDisputes()(stateNoByClubId)).toEqual([]);

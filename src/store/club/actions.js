@@ -4,6 +4,9 @@ import { createAction } from 'redux-actions';
 // Schema
 import { club as clubSchema } from '../schema';
 
+// Selectors
+import { getClubId } from '../user/selectors';
+
 /**
  * Create club
  */
@@ -30,10 +33,10 @@ export const fetchClubRequest = createAction('FETCH_CLUB_REQUEST');
 export const fetchClubSuccess = createAction('FETCH_CLUB_SUCCESS');
 export const fetchClubFailure = createAction('FETCH_CLUB_FAILURE');
 
-export const fetchClub = id => (dispatch, getState, api) => {
+export const fetchClub = () => (dispatch, getState, api) => {
     dispatch(fetchClubRequest());
 
-    return api.fetchClub(id)
+    return api.fetchClub(getClubId(getState()))
         .then(api.checkStatus)
         .then(response => normalize(response.data.club, clubSchema))
         .then(normalizedData => dispatch(fetchClubSuccess(normalizedData)))

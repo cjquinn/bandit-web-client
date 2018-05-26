@@ -67,19 +67,16 @@ describe('createClub', () => {
 });
 
 describe('fetchClub', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => store = global.configureStore({user: {clubId: 1}}));
 
-    afterEach(() => {
-        mock.reset();
-        global.localStorage.clear();
-    });
+    afterEach(() => mock.reset());
 
     it('failure', () => {
         mock
             .onGet('/clubs/1.json')
             .reply(403);
 
-        return store.dispatch(actions.fetchClub(1))
+        return store.dispatch(actions.fetchClub())
             .then(() => {
                 const expected = [
                     {type: actions.fetchClubRequest.toString()},
@@ -98,7 +95,7 @@ describe('fetchClub', () => {
                 club: {id: 1, name: 'Bandit'}
             });
 
-        return store.dispatch(actions.fetchClub(1))
+        return store.dispatch(actions.fetchClub())
             .then(() => {
                 const expected = [
                     {type: actions.fetchClubRequest.toString()},
@@ -121,10 +118,7 @@ describe('fetchClub', () => {
 describe('fetchClubs', () => {
     beforeEach(() => store = global.configureStore());
 
-    afterEach(() => {
-        mock.reset();
-        global.localStorage.clear();
-    });
+    afterEach(() => mock.reset());
 
     it('failure', () => {
         mock
@@ -173,10 +167,7 @@ describe('fetchClubs', () => {
 describe('updateClub', () => {
     beforeEach(() => store = global.configureStore());
 
-    afterEach(() => {
-        mock.reset();
-        global.localStorage.clear();
-    });
+    afterEach(() => mock.reset());
 
     it('failure', () => {
         mock

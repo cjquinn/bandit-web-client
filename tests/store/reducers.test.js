@@ -44,6 +44,7 @@ describe('app', () => {
                 users: {1: {id: 1}}
             },
             user: {
+                clubId: 1,
                 id: 1,
                 isLoading: true
             }
@@ -64,6 +65,7 @@ describe('app', () => {
                 users: {}
             },
             user: {
+                clubId: null,
                 id: null,
                 isLoading: false
             }

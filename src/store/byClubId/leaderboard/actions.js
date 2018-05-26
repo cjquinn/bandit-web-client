@@ -4,6 +4,9 @@ import { normalize } from 'normalizr';
 // Schema
 import { player as playerSchema } from '../../schema';
 
+// Selectors
+import { getClubId } from '../../user/selectors';
+
 /**
  * Fetch leaderboard
  */
@@ -14,7 +17,7 @@ export const fetchLeaderboardFailure = createAction('FETCH_LEADERBOARD_FAILURE')
 export const fetchLeaderboard = period => (dispatch, getState, api) => {
     dispatch(fetchLeaderboardRequest());
 
-    const clubId = api.getClubId();
+    const clubId = getClubId(getState());
 
     return api.fetchLeaderboard(clubId, period)
         .then(api.checkStatus)

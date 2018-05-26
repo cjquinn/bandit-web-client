@@ -1,10 +1,5 @@
-// Api
-import { setClubId } from '../../../src/store/api';
-
 // Selectors
 import { getByClubIdState } from '../../../src/store/byClubId/selectors';
-
-setClubId({data: {club: {id: 1}}});
 
 describe('selectors', () => {
     it('getByClubIdState', () => {
@@ -28,7 +23,8 @@ describe('selectors', () => {
                         orderBy: 'a-z'
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const expected = {

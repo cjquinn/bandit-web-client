@@ -1,6 +1,3 @@
-// Api
-import { setClubId } from '../../../../../src/store/api';
-
 // Selectors
 import {
     getIds,
@@ -10,9 +7,6 @@ import {
     getMatchEntities,
     makeGetMatch,
     makeGetMatches } from '../../../../../src/store/byClubId/byPlayerId/match/selectors';
-
-
-setClubId({data: {club: {id: 1}}});
 
 describe('selectors', () => {
     const propsWithPlayerId = {match: {params: {playerId: 1}}};
@@ -32,7 +26,8 @@ describe('selectors', () => {
                         }
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const expected = [1, 2];
@@ -40,7 +35,8 @@ describe('selectors', () => {
         expect(getIds(state, propsWithPlayerId)).toEqual(expected);
 
         const stateNoByClubId = {
-            byClubId: {}
+            byClubId: {},
+            user: {clubId: 1}
         };
 
         expect(getIds(stateNoByClubId, propsWithPlayerId)).toEqual([]);
@@ -50,7 +46,8 @@ describe('selectors', () => {
                 1: {
                     byPlayerId: {}
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(getIds(stateNoByPlayerId, propsWithPlayerId)).toEqual([]);
@@ -71,13 +68,15 @@ describe('selectors', () => {
                         }
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(getIsFetching(state, propsWithPlayerId)).toBe(true);
 
         const stateNoByClubId = {
-            byClubId: {}
+            byClubId: {},
+            user: {clubId: 1}
         };
 
         expect(getIsFetching(stateNoByClubId, propsWithPlayerId)).toBe(false);
@@ -87,7 +86,8 @@ describe('selectors', () => {
                 1: {
                     byPlayerId: {}
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(getIsFetching(stateNoByPlayerId, propsWithPlayerId)).toBe(false);
@@ -108,7 +108,8 @@ describe('selectors', () => {
                         }
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const expected = 2;
@@ -116,7 +117,8 @@ describe('selectors', () => {
         expect(getPage(state, propsWithPlayerId)).toEqual(expected);
 
         const stateNoByClubId = {
-            byClubId: {}
+            byClubId: {},
+            user: {clubId: 1}
         };
 
         expect(getPage(stateNoByClubId, propsWithPlayerId)).toEqual(1);
@@ -126,7 +128,8 @@ describe('selectors', () => {
                 1: {
                     byPlayerId: {}
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(getPage(stateNoByPlayerId, propsWithPlayerId)).toEqual(1);
@@ -329,7 +332,8 @@ describe('selectors', () => {
                         name: 'Nathan'
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const expected  = [
@@ -405,7 +409,8 @@ describe('selectors', () => {
             byClubId: {},
             entities: {
                 matches: {}
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(makeGetMatches()(stateNoByClubId, propsWithPlayerId)).toEqual([]);
@@ -418,7 +423,8 @@ describe('selectors', () => {
             },
             entities: {
                 matches: {}
-            }
+            },
+            user: {clubId: 1}
         };
 
         expect(makeGetMatches()(stateNoByPlayerId, propsWithPlayerId)).toEqual([]);
