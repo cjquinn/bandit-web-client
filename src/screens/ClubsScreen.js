@@ -10,12 +10,9 @@ import ClubsListContainer from '../containers/lists/ClubsListContainer';
 
 const ClubsScreen = () => (
     <Template>
-
         <header className="o-container u-ph-1bl u-vspace-06r">
-
             <h1 className="u-size-h1 u-color-white">Clubs</h1>
             <h2 className="u-size-h4">Jump into a different tribe.</h2>
-
         </header>
 
         <hr className="c-hr" />

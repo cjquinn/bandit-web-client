@@ -80,7 +80,11 @@ export const instance = () => axios.create({
 
 const CLUB_ID = 'clubId';
 
-export const getClubId = () => window.localStorage.getItem(CLUB_ID);
+export const getClubId = () => {
+    const clubId = window.localStorage.getItem(CLUB_ID);
+
+    return clubId ? +clubId : null;
+};
 
 export const setClubId = response => {
     if (response.data.user || response.data.club) {

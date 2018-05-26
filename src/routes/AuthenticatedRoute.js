@@ -11,14 +11,14 @@ import { getIsAuthenticated } from '../store/user/selectors';
 
 class AuthenticatedRoute extends Component {
     render() {
-        const { isClubRoute, component: Component, isAuthenticated, ...props } = this.props;
+        const { clubId, isClubRoute, component: Component, isAuthenticated, ...props } = this.props;
 
         return (
             <Route
                 {...props}
                 render={props =>
                     isAuthenticated
-                        ? !isClubRoute || getClubId()
+                        ? !isClubRoute || clubId
                             ? <Component {...props} />
                             : <Redirect to="/clubs" />
                         : <Redirect to="/sign-in" />
@@ -29,12 +29,14 @@ class AuthenticatedRoute extends Component {
 }
 
 AuthenticatedRoute.propTypes = {
+    clubId: PropTypes.number,
     isAuthenticated: PropTypes.bool.isRequired,
     isClubRoute: PropTypes.bool,
     component: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
+    clubId: getClubId(),
     isAuthenticated: getIsAuthenticated(state)
 });
 

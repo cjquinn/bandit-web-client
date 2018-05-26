@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 // Actions
 import { fetchClubs } from '../../store/club/actions';
 
+// Api
+import { getClubId } from '../../store/api';
+
 // Components
 import ClubsList from '../../components/lists/ClubsList';
 
@@ -17,18 +20,25 @@ class ClubsListContainer extends Component {
     }
 
     render() {
-        const { clubs } = this.props;
+        const { clubId, clubs } = this.props;
 
-        return <ClubsList clubs={clubs} />;
+        return (
+            <ClubsList
+                clubId={clubId}
+                clubs={clubs}
+            />
+        );
     }
 }
 
 ClubsListContainer.propTypes = {
+    clubId: PropTypes.number,
     clubs: PropTypes.array.isRequired,
     fetchClubs: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
+    clubId: getClubId(),
     clubs: getClubs(state)
 });
 
