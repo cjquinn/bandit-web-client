@@ -3,8 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import PlayerPhoto from '../PlayerPhoto';
-import Svg from '../Svg';
+import UserPhoto from './UserPhoto';
+import Svg from './Svg';
 
 // Sprites
 import logo_head from '../../assets/svg/sprite/logo_head.svg';
@@ -39,7 +39,7 @@ const Header = ({ children, club, user }) => (
                     to="/settings"
                     className="u-flex u-ai-center u-hspace-05bl u-opac-05 u-opac-1@hover"
                 >
-                    <PlayerPhoto />
+                    <UserPhoto user={user} />
                     
                     <span className="u-color-orange u-uppercase u-weight-bold">
                         {user.name}
