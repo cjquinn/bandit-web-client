@@ -10,7 +10,6 @@ import {
     getIsFetching,
     getOrderBy,
     getPlayerEntity,
-    getPlayerEntities,
     makeGetPlayer,
     makeGetPlayers } from '../../../../src/store/byClubId/player/selectors';
 
@@ -109,28 +108,6 @@ describe('selectors', () => {
         };
 
         expect(getPlayerEntity(state, props)).toEqual(expected);
-    });
-
-    it('getPlayerEntities', () => {
-        const state = {
-            entities: {
-                players: {
-                    1: {
-                        id: 1,
-                        rating: 1200
-                    }
-                }
-            }
-        };
-
-        const expected = {
-            1: {
-                id: 1,
-                rating: 1200
-            }
-        };
-
-        expect(getPlayerEntities(state)).toEqual(expected);
     });
 
     it('makeGetPlayer', () => {

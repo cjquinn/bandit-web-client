@@ -6,11 +6,9 @@ import { dispute as disputeSchema } from '../../schema';
 
 // Selectors
 import { getByClubIdState } from '../selectors';
-import { getMatchEntities } from '../byPlayerId/match/selectors';
-import { getPlayerEntities } from '../player/selectors';
+import { getDisputeEntities, getMatchEntities, getPlayerEntities, getUserEntities } from '../../entities/selectors';
 import { getDisputeId } from '../../props/selectors';
 import { makeIsFetchingSelector } from '../../shared/selectors';
-import { getUserEntities } from '../../user/selectors';
 
 export const initialState = {
     ids: [],
@@ -18,9 +16,7 @@ export const initialState = {
 };
 
 // Normalized
-export const getDisputeEntity = (state, props) => state.entities.disputes[getDisputeId(null, props)];
-
-export const getDisputeEntities = state => state.entities.disputes;
+export const getDisputeEntity = (state, props) => getDisputeEntities(state)[getDisputeId(null, props)];
 
 // State
 const getDisputeState = state =>

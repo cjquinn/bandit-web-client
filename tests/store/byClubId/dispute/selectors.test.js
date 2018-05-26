@@ -3,7 +3,6 @@ import {
     getIds,
     getIsFetching,
     getDisputeEntity,
-    getDisputeEntities,
     makeGetDispute,
     makeGetDisputes } from '../../../../src/store/byClubId/dispute/selectors';
 
@@ -75,29 +74,6 @@ describe('selectors', () => {
         };
 
         expect(getDisputeEntity(state, props)).toEqual(expected);
-    });
-
-    it('getDisputeEntities', () => {
-        const state = {
-            entities: {
-                disputes: {
-                    1: {
-                        match_id: 1,
-                        is_resolved: null
-                    }
-                }
-            },
-            user: {clubId: 1}
-        };
-
-        const expected = {
-            1: {
-                match_id: 1,
-                is_resolved: null
-            }
-        };
-
-        expect(getDisputeEntities(state)).toEqual(expected);
     });
 
     it('makeGetDispute', () => {

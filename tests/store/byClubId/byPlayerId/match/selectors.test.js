@@ -4,7 +4,6 @@ import {
     getIsFetching,
     getPage,
     getMatchEntity,
-    getMatchEntities,
     makeGetMatch,
     makeGetMatches } from '../../../../../src/store/byClubId/byPlayerId/match/selectors';
 
@@ -157,32 +156,6 @@ describe('selectors', () => {
         };
 
         expect(getMatchEntity(state, props)).toEqual(expected);
-    });
-
-    it('getMatchEntities', () => {
-        const state = {
-            entities: {
-                matches: {
-                    1: {
-                        id: 1,
-                        player_a_id: 1,
-                        player_b_id: 2
-                    }
-                }
-            }
-        };
-
-        const props = {match: {params: {matchId: 1}}};
-
-        const expected = {
-            1: {
-                id: 1,
-                player_a_id: 1,
-                player_b_id: 2
-            }
-        };
-
-        expect(getMatchEntities(state, props)).toEqual(expected);
     });
 
     it('makeGetMatch', () => {

@@ -1,7 +1,6 @@
 // Selectors
 import {
     getClub,
-    getClubEntities,
     getClubs,
     getIds,
     getIsFetching } from '../../../src/store/club/selectors';
@@ -21,24 +20,6 @@ describe('selectors', () => {
         const expected = {id: 1, name: 'Squash'};
 
         expect(getClub(state)).toEqual(expected);
-    });
-
-    it('getClubEntities', () => {
-        const state = {
-            entities: {
-                clubs: {
-                    1: {id: 1, name: 'Squash'},
-                    2: {id: 2, name: 'Bandit'}
-                }
-            }
-        };
-
-        const expected = {
-            1: {id: 1, name: 'Squash'},
-            2: {id: 2, name: 'Bandit'}
-        };
-
-        expect(getClubEntities(state)).toEqual(expected);
     });
 
     it('getClubs', () => {

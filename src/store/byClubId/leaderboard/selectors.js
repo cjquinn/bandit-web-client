@@ -6,10 +6,9 @@ import { player as playerSchema } from '../../schema';
 
 // Selectors
 import { getByClubIdState } from '../selectors';
+import { getPlayerEntities, getUserEntities } from '../../entities/selectors';
 import { makeIsFetchingSelector } from '../../shared/selectors';
-import { getPlayerEntities } from '../player/selectors';
 import { getLimit, getPlayerId } from '../../props/selectors';
-import { getUserEntities } from '../../user/selectors';
 
 export const initialState = {
     ids: [],

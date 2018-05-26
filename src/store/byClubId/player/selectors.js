@@ -6,9 +6,9 @@ import { player as playerSchema } from '../../schema';
 
 // Selectors
 import { getByClubIdState } from '../selectors';
+import { getPlayerEntities, getUserEntities } from '../../entities/selectors';
 import { getPlayerId } from '../../props/selectors';
 import { makeIsFetchingSelector } from '../../shared/selectors';
-import { getUserEntities } from '../../user/selectors';
 
 export const initialState = {
     ids: [],
@@ -17,9 +17,7 @@ export const initialState = {
 };
 
 // Normalized
-export const getPlayerEntity = (state, props) => state.entities.players[getPlayerId(null, props)];
-
-export const getPlayerEntities = state => state.entities.players;
+export const getPlayerEntity = (state, props) => getPlayerEntities(state)[getPlayerId(null, props)];
 
 // State
 const getPlayerState = state =>

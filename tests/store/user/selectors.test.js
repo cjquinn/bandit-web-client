@@ -12,12 +12,21 @@ describe('selectors', () => {
     it('getUser', () => {
         const state = {
             entities: {
-                users: {1: {id: 1, name: 'Christy'}}
+                players: {1: {id: 1, club_id: 1, level: {name: 'Junior', slug: 'junior'}}},
+                users: {1: {id: 1, name: 'Christy', players: [1]}}
             },
-            user: {id: 1}
+            user: {id: 1, clubId: 1}
         };
 
-        expect(getUser(state)).toEqual({id: 1, name: 'Christy'});
+        expect(getUser(state)).toEqual({
+            id: 1,
+            name: 'Christy',
+            level: {
+                name: 'Junior',
+                slug: 'junior'
+            },
+            players: [1]
+        });
     });
 
     it('getIsAuthenticated', () => {
