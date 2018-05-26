@@ -6,14 +6,15 @@ import { connect } from 'react-redux';
 import Header from '../../components/shared/Header';
 
 // Selectors
-import { getCurrentUser } from '../../store/user/selectors';
+import { getClub } from '../../store/club/selectors';
+import { getUser } from '../../store/user/selectors';
 
 class HeaderContainer extends Component {
     render() {
-        const { children, currentUser } = this.props;
+        const { children, club, user } = this.props;
 
         return (
-            <Header currentUser={currentUser}>
+            <Header club={club} user={user}>
                 {children}
             </Header>
         );
@@ -22,11 +23,13 @@ class HeaderContainer extends Component {
 
 HeaderContainer.propTypes = {
     children: PropTypes.node.isRequired,
-    currentUser: PropTypes.object
+    club: PropTypes.object,
+    user: PropTypes.object
 };
 
 const mapStateToProps = state => ({
-    currentUser: getCurrentUser(state)
+    club: getClub(state),
+    user: getUser(state)
 });
 
 export default connect(mapStateToProps)(HeaderContainer);

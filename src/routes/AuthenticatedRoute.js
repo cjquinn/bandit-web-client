@@ -3,19 +3,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
+// Api
+import { getClubId } from '../store/api';
+
 // Selectors
 import { getIsAuthenticated } from '../store/user/selectors';
 
 class AuthenticatedRoute extends Component {
     render() {
-        const { component: Component, isAuthenticated, ...props } = this.props;
+        const { isClubRoute, component: Component, isAuthenticated, ...props } = this.props;
 
         return (
             <Route
                 {...props}
                 render={props =>
                     isAuthenticated
-                        ? <Component {...props} />
+                        ? !isClubRoute || getClubId()
+                            ? <Component {...props} />
+                            : <Redirect to="/clubs" />
                         : <Redirect to="/sign-in" />
                 }
             />
@@ -25,6 +30,7 @@ class AuthenticatedRoute extends Component {
 
 AuthenticatedRoute.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
+    isClubRoute: PropTypes.bool,
     component: PropTypes.func.isRequired
 };
 

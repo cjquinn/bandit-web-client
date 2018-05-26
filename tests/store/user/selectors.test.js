@@ -1,7 +1,7 @@
-import { getCurrentUser, getIsAuthenticated, getIsLoading } from '../../../src/store/user/selectors';
+import { getUser, getIsAuthenticated, getIsLoading } from '../../../src/store/user/selectors';
 
 describe('selectors', () => {
-    it('getCurrentUser', () => {
+    it('getUser', () => {
         const state = {
             entities: {
                 users: {1: {id: 1, name: 'Christy'}}
@@ -9,7 +9,7 @@ describe('selectors', () => {
             user: {id: 1}
         };
 
-        expect(getCurrentUser(state)).toEqual({id: 1, name: 'Christy'});
+        expect(getUser(state)).toEqual({id: 1, name: 'Christy'});
     });
 
     it('getIsAuthenticated', () => {

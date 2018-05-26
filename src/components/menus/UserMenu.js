@@ -13,12 +13,12 @@ const UserMenu = () => (
             <ul className="u-flex u-ph-1bl u-hspace-1bl">
                 <li>
                     <NavLink
-                        to="/"
+                        to="/profile"
+                        exact
                         className="c-tab c-tab--inactive"
                         activeClassName="c-tab--active"
-                        isActive={(match, location) => location.pathname === '/' || location.pathname === '/clubs'}
                     >
-                        Clubs
+                        Profile
                     </NavLink>
                 </li>
 
@@ -30,6 +30,17 @@ const UserMenu = () => (
                         activeClassName="c-tab--active"
                     >
                         Settings
+                    </NavLink>
+                </li>
+                
+                <li>
+                    <NavLink
+                        to="/clubs"
+                        exact
+                        className="c-tab c-tab--inactive"
+                        activeClassName="c-tab--active"
+                    >
+                        Clubs
                     </NavLink>
                 </li>
                 

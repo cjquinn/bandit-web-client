@@ -6,7 +6,7 @@ export const getIsLoading = state => state.user.isLoading;
 
 export const getUserEntities = state => state.entities.users;
 
-export const getCurrentUser = createSelector(
+export const getUser = createSelector(
     [getId, getUserEntities],
     (id, users) => users[id]
 );

@@ -12,7 +12,7 @@ import Template from '../components/Template';
 import AllTimeLeaderboardPlayer from '../components/AllTimeLeaderboardPlayer';
 import WeeklyLeaderboardPlayer from '../components/WeeklyLeaderboardPlayer';
 
-const ClubScreen = () => (
+const DashboardScreen = () => (
     <Template>
 
         <Disputes />
@@ -57,4 +57,4 @@ const ClubScreen = () => (
     </Template>
 );
 
-export default ClubScreen;
+export default DashboardScreen;

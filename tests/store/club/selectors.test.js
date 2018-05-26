@@ -3,17 +3,16 @@ import { setClubId } from '../../../src/store/api';
 
 // Selectors
 import {
-    getClubEntity,
+    getClub,
     getClubEntities,
     getClubs,
     getIds,
-    getIsFetching,
-    makeGetClub } from '../../../src/store/club/selectors';
+    getIsFetching } from '../../../src/store/club/selectors';
 
 setClubId({data: {club: {id: 1}}});
 
 describe('selectors', () => {
-    it('getClubEntity', () => {
+    it('getClub', () => {
         const state = {
             entities: {
                 clubs: {
@@ -25,7 +24,7 @@ describe('selectors', () => {
 
         const expected = {id: 1, name: 'Squash'};
 
-        expect(getClubEntity(state)).toEqual(expected);
+        expect(getClub(state)).toEqual(expected);
     });
 
     it('getClubEntities', () => {
@@ -77,20 +76,5 @@ describe('selectors', () => {
         const state = {club: {isFetching: false}};
 
         expect(getIsFetching(state)).toBe(false);
-    });
-
-    it('makeGetClub', () => {
-        const state = {
-            club: {
-                ids: [1]
-            },
-            entities: {
-                clubs: {1: {id: 1, name: 'Bandit'}}
-            }
-        };
-
-        const getClub = makeGetClub();
-
-        expect(getClub(state)).toEqual({id: 1, name: 'Bandit'});
     });
 });

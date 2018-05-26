@@ -7,8 +7,6 @@ import { getClubId } from '../api';
 import { makeIsFetchingSelector } from '../shared/selectors';
 
 // Normalized
-export const getClubEntity = state => state.entities.clubs[getClubId()];
-
 export const getClubEntities = state => state.entities.clubs;
 
 // State
@@ -17,6 +15,8 @@ const getClubState = state => state.club;
 export const getIsFetching = makeIsFetchingSelector(getClubState);
 
 export const getIds = state => getClubState(state).ids;
+
+export const getClub = state => state.entities.clubs[getClubId()];
 
 // Memoized
 export const getClubs = createSelector(
@@ -30,9 +30,4 @@ export const getClubs = createSelector(
 
             return a.name > b.name ? 1 : 0;
         })
-);
-
-export const makeGetClub = () => createSelector(
-    getClubEntity,
-    club => club
 );

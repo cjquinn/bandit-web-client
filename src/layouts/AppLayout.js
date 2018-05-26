@@ -16,10 +16,10 @@ import UnauthenticatedRoute from '../routes/UnauthenticatedRoute';
 // Screens
 import ActivateAccountScreen from '../screens/ActivateAccountScreen';
 import AddMatchScreen from '../screens/AddMatchScreen';
-import ClubScreen from '../screens/ClubScreen';
 import ClubSettingsScreen from '../screens/ClubSettingsScreen';
 import ClubsScreen from '../screens/ClubsScreen';
 import CreateClubAuthenticatedScreen from '../screens/CreateClubAuthenticatedScreen';
+import DashboardScreen from '../screens/DashboardScreen';
 import DisputeScreen from '../screens/DisputeScreen';
 import DisputesScreen from '../screens/DisputesScreen';
 import InvitePlayerScreen from '../screens/InvitePlayerScreen';
@@ -43,34 +43,34 @@ const AppLayout = ({ isLoading }) => {
         <div className="o-window">
             <HeaderContainer>
                 <Switch>
-                    <Route path="/clubs/:clubId" component={ClubMenu} />
-                    <Route component={UserMenu} />
+                    <Route path="/(clubs|settings|profile)" component={UserMenu} />
+                    <Route component={ClubMenu} />
                 </Switch>
             </HeaderContainer>
 
             <main className="o-main">
                 <Switch>
                     {/* Authenticated */}
-                    <AuthenticatedRoute exact path="/" component={ClubsScreen} />
                     <AuthenticatedRoute exact path="/clubs" component={ClubsScreen} />
                     <AuthenticatedRoute exact path="/create-club" component={CreateClubAuthenticatedScreen} />
                     <AuthenticatedRoute exact path="/settings" component={UserSettingsScreen} />
 
-                    <AuthenticatedRoute exact path="/clubs/:clubId" component={ClubScreen} />
-                    <AuthenticatedRoute exact path="/clubs/:clubId/settings" component={ClubSettingsScreen} />
-                    <AuthenticatedRoute exact path="/clubs/:clubId/invite-player" component={InvitePlayerScreen} />
+                    <AuthenticatedRoute exact path="/" component={DashboardScreen} isClubRoute={true} />
+                    <AuthenticatedRoute exact path="/club-settings" component={ClubSettingsScreen} isClubRoute={true} />
+                    <AuthenticatedRoute exact path="/invite-player" component={InvitePlayerScreen} isClubRoute={true} />
 
-                    <AuthenticatedRoute exact path="/clubs/:clubId/disputes" component={DisputesScreen} />
-                    <AuthenticatedRoute exact path="/clubs/:clubId/disputes/:disputeId" component={DisputeScreen} />
+                    <AuthenticatedRoute exact path="/disputes" component={DisputesScreen} isClubRoute={true} />
+                    <AuthenticatedRoute exact path="/disputes/:disputeId" component={DisputeScreen} isClubRoute={true} />
 
-                    <AuthenticatedRoute exact path="/clubs/:clubId/leaderboard" component={LeaderboardScreen} />
+                    <AuthenticatedRoute exact path="/leaderboard" component={LeaderboardScreen} isClubRoute={true} />
                     
-                    <AuthenticatedRoute exact path="/clubs/:clubId/players" component={PlayersScreen} />
-                    <AuthenticatedRoute exact path="/clubs/:clubId/players/:playerId" component={PlayerScreen} />
+                    <AuthenticatedRoute exact path="/players" component={PlayersScreen} isClubRoute={true} />
+                    <AuthenticatedRoute exact path="/players/:playerId" component={PlayerScreen} isClubRoute={true} />
+                    <AuthenticatedRoute exact path="/profile" component={PlayerScreen} isClubRoute={true} />
 
-                    <AuthenticatedRoute exact path="/clubs/:clubId/add-match" component={AddMatchScreen} />
-                    <AuthenticatedRoute exact path="/clubs/:clubId/matches" component={MatchesScreen} />
-                    <AuthenticatedRoute exact path="/clubs/:clubId/matches/:matchId" component={MatchScreen} />
+                    <AuthenticatedRoute exact path="/add-match" component={AddMatchScreen} isClubRoute={true} />
+                    <AuthenticatedRoute exact path="/matches" component={MatchesScreen} isClubRoute={true} />
+                    <AuthenticatedRoute exact path="/matches/:matchId" component={MatchScreen} isClubRoute={true} />
 
                     {/* Unauthenticated */}
                     <UnauthenticatedRoute exact path="/activate-account" component={ActivateAccountScreen} />
