@@ -6,6 +6,7 @@ import { player as playerSchema } from '../../schema';
 
 // Selectors
 import { getByClubIdState } from '../selectors';
+import { getPlayerId } from '../../props/selectors';
 import { makeIsFetchingSelector } from '../../shared/selectors';
 import { getUserEntities } from '../../user/selectors';
 
@@ -16,21 +17,21 @@ export const initialState = {
 };
 
 // Normalized
-export const getPlayerEntity = (state, props) => state.entities.players[props.match.params.playerId];
+export const getPlayerEntity = (state, props) => state.entities.players[getPlayerId(null, props)];
 
 export const getPlayerEntities = state => state.entities.players;
 
 // State
-const getPlayerState = (state, props) =>
-    getByClubIdState(state, props)
-        ? getByClubIdState(state, props).player
+const getPlayerState = state =>
+    getByClubIdState(state)
+        ? getByClubIdState(state).player
         : initialState;
 
-export const getIds = (state, props) => getPlayerState(state, props).ids;
+export const getIds = state => getPlayerState(state).ids;
 
 export const getIsFetching = makeIsFetchingSelector(getPlayerState);
 
-export const getOrderBy = (state, props) => getPlayerState(state, props).orderBy;
+export const getOrderBy = state => getPlayerState(state).orderBy;
 
 // Memoized
 export const makeGetPlayer = () => createSelector(

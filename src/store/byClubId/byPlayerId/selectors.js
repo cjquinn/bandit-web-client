@@ -1,6 +1,9 @@
 import { getByClubIdState } from '../selectors';
 
+// Selectors
+import { getPlayerId } from '../../props/selectors';
+
 export const getByPlayerIdState = (state, props) =>
-    getByClubIdState(state, props)
-        ? getByClubIdState(state, props).byPlayerId[props.match.params.playerId]
+    getByClubIdState(state)
+        ? getByClubIdState(state).byPlayerId[getPlayerId(null, props)]
         : undefined;

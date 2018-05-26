@@ -1,3 +1,7 @@
+// Api
+import { setClubId } from '../../../src/store/api';
+
+// Selectors
 import {
     getClubEntity,
     getClubEntities,
@@ -5,6 +9,8 @@ import {
     getIds,
     getIsFetching,
     makeGetClub } from '../../../src/store/club/selectors';
+
+setClubId({data: {club: {id: 1}}});
 
 describe('selectors', () => {
     it('getClubEntity', () => {
@@ -17,11 +23,9 @@ describe('selectors', () => {
             }
         };
 
-        const props = {match: {params: {clubId: 1}}};
-
         const expected = {id: 1, name: 'Squash'};
 
-        expect(getClubEntity(state, props)).toEqual(expected);
+        expect(getClubEntity(state)).toEqual(expected);
     });
 
     it('getClubEntities', () => {
@@ -85,10 +89,8 @@ describe('selectors', () => {
             }
         };
 
-        const props = {match: {params: {clubId: 1}}};
-
         const getClub = makeGetClub();
 
-        expect(getClub(state, props)).toEqual({id: 1, name: 'Bandit'});
+        expect(getClub(state)).toEqual({id: 1, name: 'Bandit'});
     });
 });

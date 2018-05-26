@@ -1,6 +1,5 @@
 import {
     getMatchParams,
-    getClubId,
     getDisputeId,
     getMatchId,
     getPlayerId,
@@ -21,21 +20,6 @@ describe('selectors', () => {
         };
 
         expect(getMatchParams({}, props)).toEqual(expected);
-    });
-
-    it('getClubId', () => {
-        const props = {
-            match: {
-                params: {
-                    clubId: 1
-                }
-            }
-        };
-
-        const expected = 1;
-
-        expect(getClubId({}, props)).toEqual(expected);
-        expect(getClubId({}, {clubId: 1})).toEqual(expected);
     });
 
     it('getDisputeId', () => {

@@ -7,7 +7,7 @@ import { match as matchSchema } from '../../../schema';
 // Selectors
 import { getPlayerEntities } from '../../player/selectors';
 import { getByPlayerIdState } from '../selectors';
-import { getLimit } from '../../../props/selectors';
+import { getLimit, getMatchId } from '../../../props/selectors';
 import { makeIsFetchingSelector } from '../../../shared/selectors';
 import { getUserEntities } from '../../../user/selectors';
 
@@ -19,7 +19,7 @@ export const initialState = {
 };
 
 // Normalized
-export const getMatchEntity = (state, props) => state.entities.matches[props.match.params.matchId];
+export const getMatchEntity = (state, props) => state.entities.matches[getMatchId(null, props)];
 
 export const getMatchEntities = state => state.entities.matches;
 

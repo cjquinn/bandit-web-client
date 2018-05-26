@@ -1,4 +1,10 @@
+// Api
+import { setClubId } from '../../../src/store/api';
+
+// Selectors
 import { getByClubIdState } from '../../../src/store/byClubId/selectors';
+
+setClubId({data: {club: {id: 1}}});
 
 describe('selectors', () => {
     it('getByClubIdState', () => {
@@ -25,8 +31,6 @@ describe('selectors', () => {
             }
         };
 
-        const props = {match: {params: {clubId: 1}}};
-
         const expected = {
             byPlayerId: {
                 1: {
@@ -46,6 +50,6 @@ describe('selectors', () => {
             }
         };
 
-        expect(getByClubIdState(state, props)).toEqual(expected);
+        expect(getByClubIdState(state)).toEqual(expected);
     });
 });

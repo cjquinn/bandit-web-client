@@ -1,10 +1,13 @@
+// Api
+import { setClubId } from '../../../../src/store/api';
+
+// Selectors
 import { getIds, getIsFetching, makeGetLeaderboard } from '../../../../src/store/byClubId/leaderboard/selectors';
 
+setClubId({data: {club: {id: 1}}});
+
 describe('selectors', () => {
-    const propsWithClubId = {
-        period: 'allTime',
-        match: {params: {clubId: 1}}
-    };
+    const props = {period: 'allTime'};
 
     it('getIds', () => {
         const state = {
@@ -24,13 +27,13 @@ describe('selectors', () => {
             }
         };
 
-        expect(getIds(state, propsWithClubId)).toEqual([1, 2, 3]);
+        expect(getIds(state, props)).toEqual([1, 2, 3]);
 
         const stateNoByClubId = {
             byClubId: {}
         };
 
-        expect(getIds(stateNoByClubId, propsWithClubId)).toEqual([]);
+        expect(getIds(stateNoByClubId, props)).toEqual([]);
     });
 
     it('getIsFetching', () => {
@@ -51,13 +54,13 @@ describe('selectors', () => {
             }
         };
 
-        expect(getIsFetching(state, propsWithClubId)).toBe(true);
+        expect(getIsFetching(state, props)).toBe(true);
 
         const stateNoByClubId = {
             byClubId: {}
         };
 
-        expect(getIsFetching(stateNoByClubId, propsWithClubId)).toBe(false);
+        expect(getIsFetching(stateNoByClubId, props)).toBe(false);
     });
 
     it('makeGetLeaderboard', () => {
@@ -171,10 +174,10 @@ describe('selectors', () => {
             }
         ];
 
-        expect(makeGetLeaderboard()(state, propsWithClubId)).toEqual(expected);
+        expect(makeGetLeaderboard()(state, props)).toEqual(expected);
 
         const propsWithLimit = {
-            ...propsWithClubId,
+            ...props,
             limit: 1
         };
 
@@ -194,7 +197,7 @@ describe('selectors', () => {
         expect(makeGetLeaderboard()(state, propsWithLimit)).toEqual(expectedWithLimit);
 
         let propsWithPlayerId = {
-            ...propsWithClubId,
+            ...props,
             limit: 3,
             playerId: 2
         };
@@ -353,6 +356,6 @@ describe('selectors', () => {
             }
         };
 
-        expect(makeGetLeaderboard()(stateNoByClubId, propsWithClubId)).toEqual([]);
+        expect(makeGetLeaderboard()(stateNoByClubId, props)).toEqual([]);
     });
 });

@@ -1,3 +1,6 @@
+// Api
+import { setClubId } from '../../../../../src/store/api';
+
 // Selectors
 import {
     getIds,
@@ -8,8 +11,11 @@ import {
     makeGetMatch,
     makeGetMatches } from '../../../../../src/store/byClubId/byPlayerId/match/selectors';
 
+
+setClubId({data: {club: {id: 1}}});
+
 describe('selectors', () => {
-    const propsWithClubIdPlayerId = {match: {params: {clubId: 1, playerId: 1}}};
+    const propsWithPlayerId = {match: {params: {playerId: 1}}};
 
     it('getIds', () => {
         const state = {
@@ -31,13 +37,13 @@ describe('selectors', () => {
 
         const expected = [1, 2];
 
-        expect(getIds(state, propsWithClubIdPlayerId)).toEqual(expected);
+        expect(getIds(state, propsWithPlayerId)).toEqual(expected);
 
         const stateNoByClubId = {
             byClubId: {}
         };
 
-        expect(getIds(stateNoByClubId, propsWithClubIdPlayerId)).toEqual([]);
+        expect(getIds(stateNoByClubId, propsWithPlayerId)).toEqual([]);
 
         const stateNoByPlayerId = {
             byClubId: {
@@ -47,7 +53,7 @@ describe('selectors', () => {
             }
         };
 
-        expect(getIds(stateNoByPlayerId, propsWithClubIdPlayerId)).toEqual([]);
+        expect(getIds(stateNoByPlayerId, propsWithPlayerId)).toEqual([]);
     });
 
     it('getIsFetching', () => {
@@ -68,13 +74,13 @@ describe('selectors', () => {
             }
         };
 
-        expect(getIsFetching(state, propsWithClubIdPlayerId)).toBe(true);
+        expect(getIsFetching(state, propsWithPlayerId)).toBe(true);
 
         const stateNoByClubId = {
             byClubId: {}
         };
 
-        expect(getIsFetching(stateNoByClubId, propsWithClubIdPlayerId)).toBe(false);
+        expect(getIsFetching(stateNoByClubId, propsWithPlayerId)).toBe(false);
 
         const stateNoByPlayerId = {
             byClubId: {
@@ -84,7 +90,7 @@ describe('selectors', () => {
             }
         };
 
-        expect(getIsFetching(stateNoByPlayerId, propsWithClubIdPlayerId)).toBe(false);
+        expect(getIsFetching(stateNoByPlayerId, propsWithPlayerId)).toBe(false);
     });
 
     it('getPage', () => {
@@ -107,13 +113,13 @@ describe('selectors', () => {
 
         const expected = 2;
         
-        expect(getPage(state, propsWithClubIdPlayerId)).toEqual(expected);
+        expect(getPage(state, propsWithPlayerId)).toEqual(expected);
 
         const stateNoByClubId = {
             byClubId: {}
         };
 
-        expect(getPage(stateNoByClubId, propsWithClubIdPlayerId)).toEqual(1);
+        expect(getPage(stateNoByClubId, propsWithPlayerId)).toEqual(1);
 
         const stateNoByPlayerId = {
             byClubId: {
@@ -123,7 +129,7 @@ describe('selectors', () => {
             }
         };
 
-        expect(getPage(stateNoByPlayerId, propsWithClubIdPlayerId)).toEqual(1);
+        expect(getPage(stateNoByPlayerId, propsWithPlayerId)).toEqual(1);
     });
 
     it('getMatchEntity', () => {
@@ -365,10 +371,10 @@ describe('selectors', () => {
             }
         ];
 
-        expect(makeGetMatches()(state, propsWithClubIdPlayerId)).toEqual(expected);
+        expect(makeGetMatches()(state, propsWithPlayerId)).toEqual(expected);
 
         const propsWithLimit = {
-            ...propsWithClubIdPlayerId,
+            ...propsWithPlayerId,
             limit: 1
         };
 
@@ -402,7 +408,7 @@ describe('selectors', () => {
             }
         };
 
-        expect(makeGetMatches()(stateNoByClubId, propsWithClubIdPlayerId)).toEqual([]);
+        expect(makeGetMatches()(stateNoByClubId, propsWithPlayerId)).toEqual([]);
 
         const stateNoByPlayerId = {
             byClubId: {
@@ -415,6 +421,6 @@ describe('selectors', () => {
             }
         };
 
-        expect(makeGetMatches()(stateNoByPlayerId, propsWithClubIdPlayerId)).toEqual([]);
+        expect(makeGetMatches()(stateNoByPlayerId, propsWithPlayerId)).toEqual([]);
     });
 });

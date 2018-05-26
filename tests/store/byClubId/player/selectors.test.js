@@ -1,6 +1,9 @@
 // Actions
 import { orderPlayersBy } from '../../../../src/store/byClubId/player/actions';
 
+// Api
+import { setClubId } from '../../../../src/store/api';
+
 // Reducers
 import reducers from '../../../../src/store/reducers';
 
@@ -14,9 +17,9 @@ import {
     makeGetPlayer,
     makeGetPlayers } from '../../../../src/store/byClubId/player/selectors';
 
-describe('selectors', () => {
-    const propsWithClubId = {match: {params: {clubId: 1}}};
+setClubId({data: {club: {id: 1}}});
 
+describe('selectors', () => {
     it('getIds', () => {
         const state = {
             byClubId: {
@@ -30,13 +33,13 @@ describe('selectors', () => {
             }
         };
 
-        expect(getIds(state, propsWithClubId)).toEqual([1, 2]);
+        expect(getIds(state)).toEqual([1, 2]);
 
         const stateNoByClubId = {
             byClubId: {}
         };
 
-        expect(getIds(stateNoByClubId, propsWithClubId)).toEqual([]);
+        expect(getIds(stateNoByClubId)).toEqual([]);
     });
 
     it('getIsFetching', () => {
@@ -52,13 +55,13 @@ describe('selectors', () => {
             }
         };
 
-        expect(getIsFetching(state, propsWithClubId)).toBe(true);
+        expect(getIsFetching(state)).toBe(true);
 
         const stateNoByClubId = {
             byClubId: {}
         };
 
-        expect(getIsFetching(stateNoByClubId, propsWithClubId)).toBe(false);
+        expect(getIsFetching(stateNoByClubId)).toBe(false);
     });
 
     it('getOrderBy', () => {
@@ -76,13 +79,13 @@ describe('selectors', () => {
 
         const expected = 'rating';
 
-        expect(getOrderBy(state, propsWithClubId)).toEqual(expected);
+        expect(getOrderBy(state)).toEqual(expected);
 
         const stateNoByClubId = {
             byClubId: {}
         };
 
-        expect(getOrderBy(stateNoByClubId, propsWithClubId)).toEqual('a-z');
+        expect(getOrderBy(stateNoByClubId)).toEqual('a-z');
     });
 
     it('getPlayerEntity', () => {
@@ -242,7 +245,7 @@ describe('selectors', () => {
             }
         };
 
-        expect(makeGetPlayers()(stateNoByClubId, propsWithClubId)).toEqual([]);
+        expect(makeGetPlayers()(stateNoByClubId)).toEqual([]);
     });
 
     it('makeGetPlayers a-z', () => {
@@ -284,7 +287,7 @@ describe('selectors', () => {
             }
         ];
 
-        expect(makeGetPlayers()(state, propsWithClubId)).toEqual(expected);
+        expect(makeGetPlayers()(state)).toEqual(expected);
     });
 
 
@@ -327,7 +330,7 @@ describe('selectors', () => {
             }
         ];
 
-        expect(makeGetPlayers()(state, propsWithClubId)).toEqual(expected);
+        expect(makeGetPlayers()(state)).toEqual(expected);
     });
 
     it('makeGetPlayers rating', () => {
@@ -369,6 +372,6 @@ describe('selectors', () => {
             }
         ];
 
-        expect(makeGetPlayers()(state, propsWithClubId)).toEqual(expected);
+        expect(makeGetPlayers()(state)).toEqual(expected);
     });
 });

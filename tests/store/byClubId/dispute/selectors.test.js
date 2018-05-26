@@ -1,3 +1,6 @@
+// Api
+import { setClubId } from '../../../../src/store/api';
+
 // Selectors
 import {
     getIds,
@@ -7,9 +10,9 @@ import {
     makeGetDispute,
     makeGetDisputes } from '../../../../src/store/byClubId/dispute/selectors';
 
-describe('selectors', () => {
-    const propsWithClubId = {match: {params: {clubId: 1}}};
+setClubId({data: {club: {id: 1}}});
 
+describe('selectors', () => {
     it('getIds', () => {
         const state = {
             byClubId: {
@@ -22,13 +25,13 @@ describe('selectors', () => {
             }
         };
 
-        expect(getIds(state, propsWithClubId)).toEqual([1, 2]);
+        expect(getIds(state)).toEqual([1, 2]);
 
         const stateNoByClubId = {
             byClubId: {}
         };
 
-        expect(getIds(stateNoByClubId, propsWithClubId)).toEqual([]);
+        expect(getIds(stateNoByClubId)).toEqual([]);
     });
 
     it('getIsFetching', () => {
@@ -43,13 +46,13 @@ describe('selectors', () => {
             }
         };
 
-        expect(getIsFetching(state, propsWithClubId)).toBe(true);
+        expect(getIsFetching(state)).toBe(true);
 
         const stateNoByClubId = {
             byClubId: {}
         };
 
-        expect(getIsFetching(stateNoByClubId, propsWithClubId)).toBe(false);
+        expect(getIsFetching(stateNoByClubId)).toBe(false);
     });
 
     it('getDisputeEntity', () => {
@@ -255,7 +258,7 @@ describe('selectors', () => {
             }
         }];
 
-        expect(makeGetDisputes()(state, propsWithClubId)).toEqual(expected);
+        expect(makeGetDisputes()(state)).toEqual(expected);
 
         const stateNoByClubId = {
             byClubId: {},
@@ -267,6 +270,6 @@ describe('selectors', () => {
             }
         };
 
-        expect(makeGetDisputes()(stateNoByClubId, propsWithClubId)).toEqual([]);
+        expect(makeGetDisputes()(stateNoByClubId)).toEqual([]);
     });
 });

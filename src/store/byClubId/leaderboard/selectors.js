@@ -18,8 +18,8 @@ export const initialState = {
 
 // State
 const getLeaderboardState = (state, props) =>
-    getByClubIdState(state, props)
-        ? getByClubIdState(state, props).leaderboard[props.period]
+    getByClubIdState(state)
+        ? getByClubIdState(state).leaderboard[props.period]
         : initialState;
 
 export const getIds = (state, props) => getLeaderboardState(state, props).ids;

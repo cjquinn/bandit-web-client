@@ -1,10 +1,13 @@
 import { createSelector } from 'reselect';
 
+// Api
+import { getClubId } from '../api';
+
 // Selectors
 import { makeIsFetchingSelector } from '../shared/selectors';
 
 // Normalized
-export const getClubEntity = (state, props) => state.entities.clubs[props.match.params.clubId];
+export const getClubEntity = state => state.entities.clubs[getClubId()];
 
 export const getClubEntities = state => state.entities.clubs;
 
