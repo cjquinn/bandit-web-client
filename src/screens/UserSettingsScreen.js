@@ -21,12 +21,12 @@ const UserSettingsScreen = () => (
             <div className="u-ph-1bl u-vspace-3bl">
 
                 <fieldset className="u-pos-relative">
-                    <input type="text" value="Christy Quinn" placeholder="Christy Quinn" required />
+                    <input type="text" value="Christy Quinn" required />
                     <label>Name:</label>
                 </fieldset>
 
                 <fieldset className="u-pos-relative">
-                    <input type="email" value="christyjquinn@gmail.com" placeholder="christyjquinn@gmail.com" required />
+                    <input type="email" value="christyjquinn@gmail.com" required />
                     <label>Email:</label>
                 </fieldset>
 
