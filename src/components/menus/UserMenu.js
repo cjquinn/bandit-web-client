@@ -36,7 +36,6 @@ const UserMenu = () => (
                 <li>
                     <NavLink
                         to="/clubs"
-                        exact
                         className="c-tab c-tab--inactive"
                         activeClassName="c-tab--active"
                     >

@@ -37,7 +37,7 @@ describe('createClub', () => {
             });
     });
 
-    it('success', () => {
+    it('unauthorised success', () => {
         mock
             .onPost('/clubs.json')
             .reply(200, {
@@ -57,7 +57,8 @@ describe('createClub', () => {
                                 clubs: {1: {id: 1, name: 'Bandit'}}
                             }
                         }
-                    }
+                    },
+                    push('/')
                 ];
 
                 expect(store.getActions()).toEqual(expected);

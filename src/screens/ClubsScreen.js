@@ -21,7 +21,7 @@ const ClubsScreen = () => (
             <ClubsListContainer />
 
             <Link
-                to="/create-club"
+                to="/clubs/create"
                 className="c-button c-button--default"
             >
                 Create a club

@@ -24,6 +24,7 @@ export const createClub = data => (dispatch, getState, api) => {
         .then(api.setJwt)
         .then(response => normalize(response.data.club, clubSchema))
         .then(normalizedData => dispatch(createClubSuccess(normalizedData)))
+        .then(() => dispatch(push('/')))
         .catch(api.handleError(dispatch, createClubFailure));
 };
 

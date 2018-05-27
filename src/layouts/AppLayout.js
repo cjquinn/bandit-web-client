@@ -18,7 +18,7 @@ import ActivateAccountScreen from '../screens/ActivateAccountScreen';
 import AddMatchScreen from '../screens/AddMatchScreen';
 import ClubSettingsScreen from '../screens/ClubSettingsScreen';
 import ClubsScreen from '../screens/ClubsScreen';
-import CreateClubAuthenticatedScreen from '../screens/CreateClubAuthenticatedScreen';
+import CreateClubScreen from '../screens/CreateClubScreen';
 import DashboardScreen from '../screens/DashboardScreen';
 import DisputeScreen from '../screens/DisputeScreen';
 import DisputesScreen from '../screens/DisputesScreen';
@@ -54,7 +54,7 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                 <Switch>
                     {/* Authenticated */}
                     <AuthenticatedRoute exact path="/clubs" component={ClubsScreen} />
-                    <AuthenticatedRoute exact path="/create-club" component={CreateClubAuthenticatedScreen} />
+                    <AuthenticatedRoute exact path="/clubs/create" component={CreateClubScreen} />
                     <AuthenticatedRoute exact path="/settings" component={UserSettingsScreen} />
 
                     <AuthenticatedRoute exact path="/" component={DashboardScreen} isClubRoute={true} />
