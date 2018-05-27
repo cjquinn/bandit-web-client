@@ -87,7 +87,11 @@ describe('closeDispute', () => {
     it('success', () => {
         mock
             .onPatch(`/clubs/${clubId}/disputes/${disputeId}.json`)
-            .reply(200, {disputes: [{match_id: 1}]});
+            .reply(200, {
+                club: {id: 1},
+                dispute: {match_id: 1},
+                matches: [{id: 1, player_a_id: 1, player_b_id: 2}]
+            });
 
         return store.dispatch(actions.closeDispute(disputeId))
             .then(() => {
@@ -96,11 +100,19 @@ describe('closeDispute', () => {
                     {
                         type: actions.closeDisputeSuccess.toString(),
                         payload: {
-                            result: [1],
+                            result: 1,
                             entities: {
+                                clubs: {1: {id: 1}},
                                 disputes: {1: {
                                     match_id: 1,
                                     match: 1
+                                }},
+                                matches: {1: {
+                                    id: 1,
+                                    player_a_id: 1,
+                                    player_b_id: 2,
+                                    player_a: 1,
+                                    player_b: 2
                                 }}
                             }
                         }

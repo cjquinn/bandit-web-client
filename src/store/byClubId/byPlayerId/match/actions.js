@@ -2,7 +2,7 @@ import { createAction } from 'redux-actions';
 import { normalize } from 'normalizr';
 
 // Schema
-import { match as matchSchema } from '../../../schema';
+import { club as clubSchema, match as matchSchema } from '../../../schema';
 
 // Selectors
 import { getPage } from './selectors';
@@ -22,9 +22,10 @@ export const addMatch = data => (dispatch, getState, api) => {
 
     return api.addMatch(clubId, data)
         .then(api.checkStatus)
-        .then(response => normalize(response.data.match, matchSchema))
+        .then(response => normalize(response.data, {club: clubSchema, match: matchSchema}))
         .then(normalizedData => dispatch(addMatchSuccess({
             ...normalizedData,
+            result: normalizedData.result.match,
             clubId
         })))
         .catch(api.handleError(dispatch, addMatchFailure));
@@ -44,9 +45,10 @@ export const deleteMatch = matchId => (dispatch, getState, api) => {
 
     return api.deleteMatch(clubId, matchId)
         .then(api.checkStatus)
-        .then(response => normalize(response.data.matches, [matchSchema]))
+        .then(response => normalize(response.data, {club: clubSchema, matches: [matchSchema]}))
         .then(normalizedData => dispatch(deleteMatchSuccess({
             ...normalizedData,
+            result: normalizedData.result.matches,
             clubId,
             matchId
         })))

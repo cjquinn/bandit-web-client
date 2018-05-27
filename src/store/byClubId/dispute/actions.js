@@ -2,7 +2,7 @@ import { createAction } from 'redux-actions';
 import { normalize } from 'normalizr';
 
 // Schema
-import { dispute as disputeSchema } from '../../schema';
+import { club as clubSchema, dispute as disputeSchema, match as matchSchema } from '../../schema';
 
 // Selectors
 import { getClubId } from '../../user/selectors';
@@ -41,8 +41,11 @@ export const closeDispute = (disputeId, data) => (dispatch, getState, api) => {
 
     return api.closeDispute(getClubId(getState()), disputeId, data)
         .then(api.checkStatus)
-        .then(response => normalize(response.data.disputes, [disputeSchema]))
-        .then(normalizedData => dispatch(closeDisputeSuccess(normalizedData)))
+        .then(response => normalize(response.data, {club: clubSchema, dispute: disputeSchema, matches: [matchSchema]}))
+        .then(normalizedData => dispatch(closeDisputeSuccess({
+            ...normalizedData,
+            result: normalizedData.result.dispute
+        })))
         .catch(api.handleError(dispatch, closeDisputeFailure));
 };
 

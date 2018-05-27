@@ -36,7 +36,7 @@ const Header = ({ children, club, user }) => (
                 </Link>
 
                 <Link
-                    to="/settings"
+                    to="/profile"
                     className="u-flex u-ai-center u-hspace-05bl u-opac-05 u-opac-1@hover"
                 >
                     <UserPhoto user={user} />

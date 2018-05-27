@@ -34,7 +34,10 @@ describe('addMatch', () => {
     it('success', () => {
         mock
             .onPost(`/clubs/${clubId}/matches.json`)
-            .reply(200, {match: {id: 1, player_a_id: 1, player_b_id: 2}});
+            .reply(200, {
+                club: {id: 1},
+                match: {id: 1, player_a_id: 1, player_b_id: 2}
+            });
 
         return store.dispatch(actions.addMatch())
             .then(() => {
@@ -46,6 +49,7 @@ describe('addMatch', () => {
                             clubId,
                             result: 1,
                             entities: {
+                                clubs: {1: {id: 1}},
                                 matches: {1: {
                                     id: 1,
                                     player_a_id: 1,
@@ -90,7 +94,10 @@ describe('deleteMatch', () => {
     it('success', () => {
         mock
             .onDelete(`/clubs/${clubId}/matches/${matchId}.json`)
-            .reply(200, {matches: [{id: 1, player_a_id: 1, player_b_id: 2}]});
+            .reply(200, {
+                club: {id: 1},
+                matches: [{id: 1, player_a_id: 1, player_b_id: 2}]
+            });
 
         return store.dispatch(actions.deleteMatch(matchId))
             .then(() => {
@@ -103,6 +110,7 @@ describe('deleteMatch', () => {
                             matchId,
                             result: [1],
                             entities: {
+                                clubs: {1: {id: 1}},
                                 matches: {1: {
                                     id: 1,
                                     player_a_id: 1,
