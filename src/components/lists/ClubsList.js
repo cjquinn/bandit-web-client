@@ -20,8 +20,13 @@ const ClubsList = ({ clubId, clubs }) => (
                         <dt className="u-color-paste u-weight-bold">{club.name}</dt>
 
                         <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                            <span>48 players</span>
-                            <span>11 days since you&apos;ve played</span>
+                            <span>{club.player_count} player{club.player_count !== 1 ? 's' : ''}</span>
+                            <span>
+                                {club.last_played_in_days
+                                    ? `${club.last_played_in_days} day${club.last_played_in_days ? 's' : ''} since you&apos;ve played`
+                                    : 'Get your first match in!'
+                                }
+                            </span>
                         </dd>
                     </div>
                 </Link>

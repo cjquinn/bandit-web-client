@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { createSelector } from 'reselect';
 
 // Selectors
@@ -18,7 +19,12 @@ export const getClub = state => getClubEntities(state)[getClubId(state)];
 export const getClubs = createSelector(
     [getIds, getClubEntities],
     (ids, clubs) => ids
-        .map(id => clubs[id])
+        .map(id => ({
+            ...clubs[id],
+            last_played_in_days: clubs[id].last_played
+                ? moment().diff(moment(clubs[id].last_played), 'days')
+                : null
+        }))
         .sort((a, b) => {
             if (a.name < b.name) {
                 return -1;

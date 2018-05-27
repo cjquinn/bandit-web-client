@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 // Selectors
 import {
     getClub,
@@ -23,21 +25,24 @@ describe('selectors', () => {
     });
 
     it('getClubs', () => {
+        const now = moment();
+        const twoDaysAgo = now.day(-2).format();
+
         const state = {
             club: {
                 ids: [1, 2]
             },
             entities: {
                 clubs: {
-                    1: {id: 1, name: 'Squash'},
-                    2: {id: 2, name: 'Bandit'}
+                    1: {id: 1, name: 'Squash', last_played: twoDaysAgo},
+                    2: {id: 2, name: 'Bandit', last_played: null}
                 }
             }
         };
 
         const expected = [
-            {id: 2, name: 'Bandit'},
-            {id: 1, name: 'Squash'}
+            {id: 2, name: 'Bandit', last_played: null, last_played_in_days: null},
+            {id: 1, name: 'Squash', last_played: twoDaysAgo, last_played_in_days: 2}
         ];
 
         expect(getClubs(state)).toEqual(expected);

@@ -12,6 +12,7 @@ describe('selectors', () => {
     it('getUser', () => {
         const state = {
             entities: {
+                clubs: {1: {id: 1, bandit_id: '1'}},
                 players: {1: {id: 1, club_id: 1, level: {name: 'Junior', slug: 'junior'}}},
                 users: {1: {id: 1, name: 'Christy', players: [1]}}
             },
@@ -21,6 +22,7 @@ describe('selectors', () => {
         expect(getUser(state)).toEqual({
             id: 1,
             name: 'Christy',
+            isBandit: true,
             level: {
                 name: 'Junior',
                 slug: 'junior'
