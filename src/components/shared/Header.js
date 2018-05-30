@@ -12,7 +12,7 @@ import logo_knot from '../../assets/svg/sprite/logo_knot.svg';
 
 const Header = ({ children, club, user }) => (
     <nav>
-        <div className="o-container u-pv-1025bl">
+        <div className="o-container u-pv-105bl">
             <div className="u-ph-1bl u-flex u-jc-between">
                 <Link
                     to="/"
@@ -30,9 +30,18 @@ const Header = ({ children, club, user }) => (
                         />
                     </div>
 
-                    <span className="u-color-orange u-uppercase u-weight-bold">
-                        {club ? club.name : 'Bandit'}
-                    </span>
+                    <h1 className="u-uppercase">
+
+                        <p className="u-weight-bold u-color-orange">
+                            Bandit
+                        </p>
+
+                        <p className="u-size-12px u-color-paste">
+                            {club ? club.name : 'Bandit'}
+                        </p>
+
+                    </h1>
+
                 </Link>
 
                 <Link
