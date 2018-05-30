@@ -25,12 +25,12 @@ const CreateClubAuthenticatedScreen = () => (
                         <label>Club name:</label>
                     </fieldset>
 
-                    <fieldset className="u-pos-relative">
+                    {/* <fieldset className="u-pos-relative">
                         <select>
                             <option>Squash</option>
                         </select>
                         <label>Sport:</label>
-                    </fieldset>
+                    </fieldset> */}
 
                 </div>
 

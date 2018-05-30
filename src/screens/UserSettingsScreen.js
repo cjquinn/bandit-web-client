@@ -20,32 +20,54 @@ const UserSettingsScreen = () => (
 
             <div className="u-ph-1bl u-vspace-3bl">
 
+                {/* Form level validation error */}
+                <div className="c-notification c-notification--error" role="alert">
+                    <p className="u-weight-bold">Sorry champ!</p>
+                    <p>We couldn&rsquo;t update your settings &#8212; please take another look at the errors below.</p>
+                </div>
+
                 <fieldset className="u-pos-relative">
                     <input type="text" value="Christy Quinn" required />
                     <label>Name:</label>
                 </fieldset>
 
-                <fieldset className="u-pos-relative">
-                    <input type="email" value="christyjquinn@gmail.com" required />
-                    <label>Email:</label>
-                </fieldset>
+                <div>
+                    <fieldset className="u-pos-relative">
+                        <input type="email" value="christyjquinn@gmail.com" required />
+                        <label>Email:</label>
+                    </fieldset>
+
+                    {/* Fieldset level validation error */}
+                    <div className="c-notification c-notification--error" role="alert">
+                        <p><span className="u-weight-bold">That email is already in use!</span> How does that even happen?</p>
+                    </div>
+                </div>
 
                 <fieldset className="u-pos-relative">
                     <input type="file" value="" />
                     <label>Photo:</label>
                 </fieldset>
 
-                <div className="u-flex u-hspace-2bl">
+                <div>
 
-                    <fieldset className="u-pos-relative">
-                        <input type="password" />
-                        <label>New password:</label>
-                    </fieldset>
+                    <div className="u-flex u-hspace-2bl">
 
-                    <fieldset className="u-pos-relative">
-                        <input type="password" />
-                        <label>Re-type:</label>
-                    </fieldset>
+                        <fieldset className="u-pos-relative">
+                            <input type="password" />
+                            <label>New password:</label>
+                        </fieldset>
+
+                        <fieldset className="u-pos-relative">
+                            <input type="password" />
+                            <label>Re-type:</label>
+                        </fieldset>
+
+                    </div>
+
+                    {/* Fieldset level validation error */}
+                    <div className="c-notification c-notification--error" role="alert">
+                        <p><span className="u-weight-bold">Your password was weak!</span> Please use at least 7 characters.</p>
+                    </div>
 
                 </div>
 
