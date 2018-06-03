@@ -27,6 +27,8 @@ const PlayersScreen = () => (
 
             <div className="u-flex u-jc-between u-ph-1bl">
 
+                <a href="/invite-player" className="c-go ">Invite player</a>
+
                 <select className="u-color-playdough">
                     <option selected="">A &ndash; Z</option>
                     <optgroup label="Order players:">
@@ -34,8 +36,6 @@ const PlayersScreen = () => (
                         <option>Most Games</option>
                     </optgroup>
                 </select>
-
-                <a href="/invite-player" className="u-color-playdough">Invite player</a>
 
             </div>
 

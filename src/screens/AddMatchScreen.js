@@ -13,7 +13,7 @@ const AddMatchScreen = () => (
 
         <a href="/results" className="c-go">Back</a>
 
-        <header className="o-container">
+        <header className="">
 
             <div className="u-flex u-ai-center u-jc-between">
 
@@ -26,23 +26,16 @@ const AddMatchScreen = () => (
 
         </header>
 
-        <div className="c-info">
-
-            <div className="o-container u-ph-1bl u-pv-2bl u-color-puss u-line-105">
-
-                <h3 className="u-size-h4">What’s the score <em>if</em>&hellip;?</h3>
-
-                <ol className="u-vspace-mt-">
-                    <li>You won <strong className="u-color-white">5 games</strong></li>
-                    <li>Your opponent won <strong className="u-color-white">3 games</strong></li>
-                    <li>Score is <strong className="u-color-white">5 &ndash; 3</strong></li>
-                </ol>
-
-            </div>
-
+        <div className="c-notification c-notification--info" role="alert">
+            <p className="u-weight-bold">What’s the score <em>if</em>&hellip;?</p>
+            <ol className="u-vspace-mt-">
+                <li>You won <strong className="u-color-white">5 games</strong></li>
+                <li>Your lost <strong className="u-color-white">3 games</strong></li>
+                <li>Score is <strong className="u-color-white">5 &ndash; 3</strong></li>
+            </ol>
         </div>
 
-        <section className="o-container u-vspace-3bl">
+        <section className="u-vspace-3bl">
 
             <div className="u-vspace-2bl">
 
@@ -56,7 +49,7 @@ const AddMatchScreen = () => (
                     <span>Monday 11th January 2017</span>
                 </div>
 
-                <a href="#add-result" className="c-button" disabled>Add Result</a>
+                <a href="/add-match" className="c-button" disabled>Add Result</a>
 
             </div>
 

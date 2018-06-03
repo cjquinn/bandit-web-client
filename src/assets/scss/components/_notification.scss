@@ -1,0 +1,35 @@
+/**
+ * .c-notification
+ */
+
+$component: 'notification';
+
+#{'.' + $global-components-namespace + $component} {
+  @extend .u-z-1;
+  @extend .u-pos-relative;
+  @extend .u-vspace-03r;
+  @extend .u-p-1bl;
+  @extend .u-line-error;
+  @extend .u-borrad-0022;
+  
+  &--error {
+    @extend .u-color-salmon;
+    background: rgba($colour-hotmelon, .3);
+    box-shadow: 0 -3px 0 $colour-hotmelon;    
+  }
+
+  &--alert {
+    background: rgba(67,83,255,0.30);
+    box-shadow: 0 -3px 0 0 #51BFFF;
+    color: #85D2FF;
+  }
+
+  &--info {
+    color: #FFF5B7;
+    background: rgba(255,125,74,0.17);
+    box-shadow: 0 -3px 0 0 #FFF5B7;
+  }
+}
+
+.c-note--error {}
+.c-note--message {}
