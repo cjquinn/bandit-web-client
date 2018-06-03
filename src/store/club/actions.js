@@ -35,17 +35,18 @@ export const fetchClubRequest = createAction('FETCH_CLUB_REQUEST');
 export const fetchClubSuccess = createAction('FETCH_CLUB_SUCCESS');
 export const fetchClubFailure = createAction('FETCH_CLUB_FAILURE');
 
-export const fetchClub = () => (dispatch, getState, api) => {
-    const clubId = getClubId(getState());
+export const fetchClub = clubId => (dispatch, getState, api) => {
+    const nextClubId = clubId || getClubId(getState());
 
-    if (!clubId) {
+    if (!nextClubId) {
         return dispatch(push('/clubs'));
     }
 
     dispatch(fetchClubRequest());
 
-    return api.fetchClub(clubId)
+    return api.fetchClub(nextClubId)
         .then(api.checkStatus)
+        .then(api.setClubId)
         .then(response => normalize(response.data.club, clubSchema))
         .then(normalizedData => dispatch(fetchClubSuccess(normalizedData)))
         .catch(api.handleError(dispatch, fetchClubFailure));
@@ -69,16 +70,21 @@ export const fetchClubs = () => (dispatch, getState, api) => {
 };
 
 /**
+ * Switch club
+ */
+export const switchClub = clubId => dispatch => dispatch(fetchClub(clubId)).then(() => dispatch(push('/')));
+
+/**
  * Update club
  */
 export const updateClubRequest = createAction('UPDATE_CLUB_REQUEST');
 export const updateClubSuccess = createAction('UPDATE_CLUB_SUCCESS');
 export const updateClubFailure = createAction('UPDATE_CLUB_FAILURE');
 
-export const updateClub = (id, data) => (dispatch, getState, api) => {
+export const updateClub = data => (dispatch, getState, api) => {
     dispatch(updateClubRequest());
 
-    return api.updateClub(id, data)
+    return api.updateClub(getClubId(getState()), data)
         .then(api.checkStatus)
         .then(response => normalize(response.data.club, clubSchema))
         .then(normalizedData => dispatch(updateClubSuccess(normalizedData)))

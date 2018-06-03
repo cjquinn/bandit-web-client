@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const ClubsList = ({ clubId, clubs }) => (
+const ClubsList = ({ clubId, clubs, handleClick }) => (
     <div className="u-ph-1bl u-vspace-1px">
         {clubs.map(club =>
             <li
@@ -12,9 +11,9 @@ const ClubsList = ({ clubId, clubs }) => (
                 {club.id === clubId &&
                     <div className="o-absfill u-borrad-inherit u-shadow-you u-pointer-none"></div>
                 }
-                <Link
-                    to={`/clubs/${club.id}`}
+                <button
                     className="u-flex u-ai-center u-pv-1bl u-ph-1bl"
+                    onClick={() => handleClick(club.id)}
                 >
                     <div className="u-grow-1 u-vspace-03r">
                         <dt className="u-color-paste u-weight-bold">{club.name}</dt>
@@ -29,7 +28,7 @@ const ClubsList = ({ clubId, clubs }) => (
                             </span>
                         </dd>
                     </div>
-                </Link>
+                </button>
             </li>
         )}
     </div>
@@ -37,7 +36,8 @@ const ClubsList = ({ clubId, clubs }) => (
 
 ClubsList.propTypes = {
     clubId: PropTypes.number,
-    clubs: PropTypes.array.isRequired
+    clubs: PropTypes.array.isRequired,
+    handleClick: PropTypes.func.isRequired
 };
 
 export default ClubsList;

@@ -113,6 +113,7 @@ describe('fetchClub', () => {
                 ];
 
                 expect(store.getActions()).toEqual(expected);
+                expect(getClubId()).toEqual(1);
             });
     });
 
@@ -176,8 +177,41 @@ describe('fetchClubs', () => {
     });
 });
 
+describe('switchClub', () => {
+    beforeEach(() => store = global.configureStore({user: {clubId: 1}}));
+
+    afterEach(() => mock.reset());
+
+    it('success', () => {
+        mock
+            .onGet('/clubs/2.json')
+            .reply(200, {
+                club: {id: 2, name: 'Bandit'}
+            });
+
+        return store.dispatch(actions.switchClub(2))
+            .then(() => {
+                const expected = [
+                    {type: actions.fetchClubRequest.toString()},
+                    {
+                        type: actions.fetchClubSuccess.toString(),
+                        payload: {
+                            result: 2,
+                            entities: {
+                                clubs: {2: {id: 2, name: 'Bandit'}}
+                            }
+                        }
+                    },
+                    push('/')
+                ];
+
+                expect(store.getActions()).toEqual(expected); 
+            });
+    });
+});
+
 describe('updateClub', () => {
-    beforeEach(() => store = global.configureStore());
+    beforeEach(() => store = global.configureStore({user: {clubId: 1}}));
 
     afterEach(() => mock.reset());
 
@@ -186,7 +220,7 @@ describe('updateClub', () => {
             .onPut('/clubs/1.json')
             .reply(403);
 
-        return store.dispatch(actions.updateClub(1))
+        return store.dispatch(actions.updateClub())
             .then(() => {
                 const expected = [
                     {type: actions.updateClubRequest.toString()},
@@ -205,7 +239,7 @@ describe('updateClub', () => {
                 club: {id: 1, name: 'Bandit'}
             });
 
-        return store.dispatch(actions.updateClub(1))
+        return store.dispatch(actions.updateClub())
             .then(() => {
                 const expected = [
                     {type: actions.updateClubRequest.toString()},

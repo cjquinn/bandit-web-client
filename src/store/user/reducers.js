@@ -3,7 +3,7 @@ import { combineActions, handleActions } from 'redux-actions';
 
 // Actions
 import * as actions from './actions';
-import { createClubSuccess } from '../club/actions';
+import { createClubSuccess, fetchClubSuccess } from '../club/actions';
 
 const clubId = handleActions(
     {
@@ -24,7 +24,10 @@ const clubId = handleActions(
 
             return payload.entities.players[playerIds[0]].club_id;
         },
-        [createClubSuccess]: (state, { payload }) => payload.result
+        [combineActions(
+            createClubSuccess,
+            fetchClubSuccess
+        )]: (state, { payload }) => payload.result
     },
     null
 );

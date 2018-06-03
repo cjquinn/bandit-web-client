@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Actions
-import { fetchClubs } from '../../store/club/actions';
+import { fetchClubs, switchClub } from '../../store/club/actions';
 
 // Components
 import ClubsList from '../../components/lists/ClubsList';
@@ -17,6 +17,8 @@ class ClubsListContainer extends Component {
         this.props.fetchClubs();
     }
 
+    handleClick = (clubId) => this.props.switchClub(clubId);
+
     render() {
         const { clubId, clubs } = this.props;
 
@@ -24,6 +26,7 @@ class ClubsListContainer extends Component {
             <ClubsList
                 clubId={clubId}
                 clubs={clubs}
+                handleClick={this.handleClick}
             />
         );
     }
@@ -32,7 +35,8 @@ class ClubsListContainer extends Component {
 ClubsListContainer.propTypes = {
     clubId: PropTypes.number,
     clubs: PropTypes.array.isRequired,
-    fetchClubs: PropTypes.func.isRequired
+    fetchClubs: PropTypes.func.isRequired,
+    switchClub: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -41,7 +45,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchClubs: () => dispatch(fetchClubs())
+    fetchClubs: () => dispatch(fetchClubs()),
+    switchClub: clubId => dispatch(switchClub(clubId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClubsListContainer);

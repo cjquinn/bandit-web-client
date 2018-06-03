@@ -1,5 +1,5 @@
 // Actions
-import { createClubSuccess } from '../../../src/store/club/actions';
+import { createClubSuccess, fetchClubSuccess } from '../../../src/store/club/actions';
 import * as actions from '../../../src/store/user/actions';
 
 // Reducers
@@ -67,6 +67,26 @@ describe('createClub', () => {
         };
 
         expect(reducers(state, createClubSuccess(payload))).toEqual(expected);
+    });
+});
+
+describe('fetchClub', () => {
+    it(fetchClubSuccess.toString(), () => {
+        const state = {
+            clubId: null,
+            id: null,
+            isLoading: false
+        };
+
+        const payload = {result: 1};
+
+        const expected = {
+            clubId: 1,
+            id: null,
+            isLoading: false
+        };
+
+        expect(reducers(state, fetchClubSuccess(payload))).toEqual(expected);
     });
 });
 
