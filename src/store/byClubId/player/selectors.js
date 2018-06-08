@@ -72,7 +72,12 @@ const sortPlayers = {
 
 export const makeGetPlayers = () => createSelector(
     [getIds, getOrderBy, getPlayerEntities, getUserEntities],
-    (ids, orderBy, players, users) =>
+    (ids, orderBy, players, users) => 
         denormalize(ids, [playerSchema], {players, users})
+            .map(player => ({
+                ...player,
+                games: player.wins + player.losses
+                // TODO ADD IN BANDIT - problably should be a selector
+            }))
             .sort(sortPlayers[orderBy])
 );

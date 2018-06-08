@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 
 // Components
 import Footer from '../components/Footer';
-import Player from '../components/Player';
 import Template from '../components/Template';
+
+// Containers
+import PlayersListContainer from '../containers/lists/PlayersListContainer';
 
 const PlayersScreen = () => (
     <Template>
@@ -39,18 +41,7 @@ const PlayersScreen = () => (
 
             </div>
 
-            <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                <Player />
-                <Player />
-                <Player />
-                <Player />
-                <Player />
-                <Player />
-                <Player />
-                <Player />
-                <Player />
-                <Player />
-            </ol>
+            <PlayersListContainer />
 
             <footer className="u-ph-1bl">
                 <a href="/results" className="c-button c-button--default u-mt-1bl">Load more&hellip;</a>

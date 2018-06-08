@@ -2,15 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Components
-import Svg from './Svg';
+import Svg from '../shared/Svg';
 
 // Sprite
 import logo_knot from '../../assets/svg/sprite/logo_knot.svg';
 
-// TODO USE PLAYERPHOTO IDIOT
-const UserPhoto = ({ user }) => (
+const PlayerPhoto = ({ player }) => (
     <div className="u-pos-relative" aria-hidden="true">
-        {user.isBandit &&
+        {player.isBandit &&
             <Svg
                 className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto"
                 sprite={logo_knot}
@@ -18,15 +17,15 @@ const UserPhoto = ({ user }) => (
         }
 
         <div className="c-player-photo c-player-photo--no-photo u-width-2bl">
-            <div className={`c-player-photo__level u-bgcolor-${user.level.slug}`}></div>
+            <div className={`c-player-photo__level u-bgcolor-${player.level.slug}`}></div>
 
-            {user.isBandit && <div className="c-player-photo__level u-bgcolor-bandit"></div>}
+            {player.isBandit && <div className="c-player-photo__level u-bgcolor-bandit"></div>}
         </div>
     </div>
 );
 
-UserPhoto.propTypes = {
-    user: PropTypes.object.isRequired
+PlayerPhoto.propTypes = {
+    player: PropTypes.object.isRequired
 };
 
-export default UserPhoto;
+export default PlayerPhoto;
