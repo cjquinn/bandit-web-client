@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import { normalize } from 'normalizr';
+import { push } from 'react-router-redux';
 
 // Schema
 import { player as playerSchema } from '../../schema';
@@ -65,6 +66,7 @@ export const invitePlayer = data => (dispatch, getState, api) => {
         .then(api.checkStatus)
         .then(response => normalize(response.data.player, playerSchema))
         .then(normalizedData => dispatch(invitePlayerSuccess(normalizedData)))
+        .then(() => dispatch(push('/players')))
         .catch(api.handleError(dispatch, invitePlayerFailure));
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Components
 import Footer from '../components/Footer';
@@ -7,27 +8,26 @@ import Template from '../components/Template';
 
 const PlayersScreen = () => (
     <Template>
-
         <header className="o-container u-ph-1bl">
-
             <div className="u-flex u-ai-center u-jc-between">
-
                 <div className="u-vspace-06r">
                     <h1 className="u-size-h1 u-color-white">Club Players</h1>
+
                     <h2 className="u-size-h4">Who to play ball with?</h2>
                 </div>
-
             </div>
-
         </header>
 
         <hr className="c-hr" />
 
         <section className="o-container u-vspace-2bl">
-
             <div className="u-flex u-jc-between u-ph-1bl">
-
-                <a href="/invite-player" className="c-go ">Invite player</a>
+                <Link
+                    to="/players/invite"
+                    className="c-go"
+                >
+                    Invite player
+                </Link>
 
                 <select className="u-color-playdough">
                     <option selected="">A &ndash; Z</option>

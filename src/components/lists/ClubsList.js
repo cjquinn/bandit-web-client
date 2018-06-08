@@ -12,22 +12,20 @@ const ClubsList = ({ clubId, clubs, handleClick }) => (
                     <div className="o-absfill u-borrad-inherit u-shadow-you u-pointer-none"></div>
                 }
                 <button
-                    className="u-flex u-ai-center u-pv-1bl u-ph-1bl"
+                    className="u-width-100pc u-pv-1bl u-ph-1bl u-vspace-03r"
                     onClick={() => handleClick(club.id)}
                 >
-                    <div className="u-grow-1 u-vspace-03r">
-                        <dt className="u-color-paste u-weight-bold">{club.name}</dt>
+                    <dt className="u-color-paste u-weight-bold">{club.name}</dt>
 
-                        <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                            <span>{club.player_count} player{club.player_count !== 1 ? 's' : ''}</span>
-                            <span>
-                                {club.last_played_in_days
-                                    ? `${club.last_played_in_days} day${club.last_played_in_days ? 's' : ''} since you&apos;ve played`
-                                    : 'Get your first match in!'
-                                }
-                            </span>
-                        </dd>
-                    </div>
+                    <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
+                        <span>{club.player_count} player{club.player_count !== 1 ? 's' : ''}</span>
+                        <span>
+                            {club.last_played_in_days
+                                ? `${club.last_played_in_days} day${club.last_played_in_days ? 's' : ''} since you&apos;ve played`
+                                : 'Get your first match in!'
+                            }
+                        </span>
+                    </dd>
                 </button>
             </li>
         )}

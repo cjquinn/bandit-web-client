@@ -31,17 +31,16 @@ const Header = ({ children, club, user }) => (
                     </div>
 
                     <h1 className="u-uppercase">
-
                         <p className="u-weight-bold u-color-orange">
-                            Bandit
+                            Bandit Match
                         </p>
 
-                        <p className="u-size-12px u-color-paste">
-                            {club ? club.name : 'Bandit'}
-                        </p>
-
+                        {club &&
+                            <p className="u-size-12px u-color-paste">
+                                {club.name}
+                            </p>
+                        }
                     </h1>
-
                 </Link>
 
                 <Link
