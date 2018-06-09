@@ -44,7 +44,7 @@ const PlayersScreen = () => (
             <PlayersListContainer />
 
             <footer className="u-ph-1bl">
-                <a href="/results" className="c-button c-button--default u-mt-1bl">Load more&hellip;</a>
+                <a href="/matches" className="c-button c-button--default u-mt-1bl">Load more&hellip;</a>
             </footer>
 
         </section>

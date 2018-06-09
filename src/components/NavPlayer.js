@@ -12,7 +12,7 @@ const NavPlayer = () => (
         <div className="o-scroll-overflow">
             <ul className="u-flex u-ph-1bl u-hspace-1bl">
                 <li><a href="/leaderboard" className="c-tab c-tab--inactive">Club</a></li>
-                <li><a href="/results" className="c-tab c-tab--inactive">Settings</a></li>
+                <li><a href="/matches" className="c-tab c-tab--inactive">Settings</a></li>
                 <li aria-hidden="true">&nbsp;</li>
             </ul>
         </div>

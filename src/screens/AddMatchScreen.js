@@ -11,7 +11,7 @@ const AddMatchScreen = () => (
 
     <div className="o-container u-ph-1bl u-vspace-2bl">
 
-        <a href="/results" className="c-go">Back</a>
+        <a href="/matches" className="c-go">Back</a>
 
         <header className="">
 

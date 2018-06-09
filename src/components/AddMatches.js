@@ -27,13 +27,14 @@ const AddMatches = () => (
 
             <div className="u-ov-hidden u-grow-1 u-basis-0 u-order-3 u-flex u-ai-center u-jc-end u-align-right u-hspace-1bl">
 
-                <select className="u-color-playdough">
-                    <optgroup label="Find player:">
-                        <option>Andrew Berkheardt</option>
-                        <option>Betty Praline</option>
-                        <option>Charice Melontown</option>
-                    </optgroup>
-                </select>
+                <input list="players" id="opponent" name="opponent" />
+                <datalist id="players">
+                    <option value="Andrew Berkheardt" />
+                    <option value="Betty Praline" />
+                    <option value="Charice Melontown" />
+                    <option value="Christy Quinn" />
+                    <option value="Russell Bishop" />
+                </datalist>
 
                 <PlayerPhoto />
 

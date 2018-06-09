@@ -13,7 +13,7 @@ const MatchScreen = () => (
 
     <div className="o-container u-ph-1bl u-vspace-2bl">
 
-        <a href="/results" className="c-go">Back to Matches</a>
+        <a href="/matches" className="c-go">Back to Matches</a>
 
     </div>
 
