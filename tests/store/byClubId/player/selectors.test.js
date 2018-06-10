@@ -358,16 +358,16 @@ describe('selectors', () => {
 
         const expected  = [
             {
-                id: 3,
-                rating: 1220,
-                wins: 2,
+                id: 2,
+                rating: 1800,
+                wins: 1,
                 losses: 1,
-                games: 3,
+                games: 2,
                 user: {
-                    id: 3,
-                    name: 'Nathan'
+                    id: 2,
+                    name: 'Christy'
                 },
-                isBandit: true
+                isBandit: false
             },
             {
                 id: 1,
@@ -382,16 +382,16 @@ describe('selectors', () => {
                 isBandit: false
             },
             {
-                id: 2,
-                rating: 1800,
-                wins: 1,
+                id: 3,
+                rating: 1220,
+                wins: 2,
                 losses: 1,
-                games: 2,
+                games: 3,
                 user: {
-                    id: 2,
-                    name: 'Christy'
+                    id: 3,
+                    name: 'Nathan'
                 },
-                isBandit: false
+                isBandit: true
             }
         ];
 
