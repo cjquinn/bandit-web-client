@@ -2,13 +2,11 @@ import { createSelector } from 'reselect';
 
 // Selectors
 import { getPlayerEntities, getUserEntities } from '../entities/selectors';
-import { getBanditId, getClubId } from '../shared/selectors';
-
-export const getId = state => state.user.id;
+import { getBanditId, getClubId, getUserId } from '../shared/selectors';
 
 export const getIsLoading = state => state.user.isLoading;
 
-export const getUserEntity = state => getUserEntities(state)[getId(state)];
+export const getUserEntity = state => getUserEntities(state)[getUserId(state)];
 
 export const getUser = createSelector(
     [getBanditId, getClubId, getPlayerEntities, getUserEntity],
@@ -27,6 +25,6 @@ export const getUser = createSelector(
 );
 
 export const getIsAuthenticated = createSelector(
-    [getId],
+    [getUserId],
     id => id !== null
 );

@@ -2,7 +2,7 @@ import React from 'react';
 
 // Components
 import Footer from '../components/Footer';
-import Template from '../components/Template';
+import Template from '../components/shared/Template';
 
 const UserSettingsScreen = () => (
     <Template>

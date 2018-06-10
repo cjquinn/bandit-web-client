@@ -9,7 +9,7 @@ import { player as playerSchema } from '../../schema';
 import { getByClubIdState } from '../selectors';
 import { getPlayerEntities, getUserEntities } from '../../entities/selectors';
 import { getPlayerId } from '../../props/selectors';
-import { getBanditId, makeIsFetchingSelector } from '../../shared/selectors';
+import { getBanditId, getUserId, makeIsFetchingSelector } from '../../shared/selectors';
 
 export const initialState = {
     ids: [],
@@ -30,7 +30,7 @@ export const getIds = state => getPlayerState(state).ids;
 
 export const getIsFetching = makeIsFetchingSelector(getPlayerState);
 
-export const getOrderBy = state => getPlayerState(state).orderBy;
+export const getOrderBy = (state, props) => props && props.orderBy ? props.orderBy : getPlayerState(state).orderBy;
 
 // Memoized
 export const makeGetPlayer = () => createSelector(
@@ -96,4 +96,9 @@ export const getPlayers = createSelector(
                 isBandit: (player.wins > 0 || player.losses > 0) && player.id === banditId
             }))
             .sort(sortPlayers[orderBy])
+);
+
+export const getOpponents = createSelector(
+    [getUserId, getPlayers],
+    (userId, players) => players.filter(player => player.user_id !== userId)
 );

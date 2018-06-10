@@ -7,7 +7,7 @@ import Match from '../components/Match';
 import MiniStats from '../components/MiniStats';
 import PlayerPhoto from '../components/PlayerPhoto';
 import Svg from '../components/Svg';
-import Template from '../components/Template';
+import Template from '../components/shared/Template';
 import WeeklyLeaderboardPlayer from '../components/WeeklyLeaderboardPlayer';
 
 // Sprites

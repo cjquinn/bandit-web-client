@@ -70,8 +70,8 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                     <AuthenticatedRoute exact path="/players/:playerId" component={PlayerScreen} isClubRoute={true} />
                     <AuthenticatedRoute exact path="/profile" component={PlayerScreen} isClubRoute={true} />
 
-                    <AuthenticatedRoute exact path="/add-match" component={AddMatchScreen} isClubRoute={true} />
                     <AuthenticatedRoute exact path="/matches" component={MatchesScreen} isClubRoute={true} />
+                    <AuthenticatedRoute exact path="/matches/add" component={AddMatchScreen} isClubRoute={true} />
                     <AuthenticatedRoute exact path="/matches/:matchId" component={MatchScreen} isClubRoute={true} />
 
                     {/* Unauthenticated */}

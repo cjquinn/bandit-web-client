@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import { normalize } from 'normalizr';
+import { push } from 'react-router-redux';
 
 // Schema
 import { club as clubSchema, match as matchSchema } from '../../../schema';
@@ -28,6 +29,7 @@ export const addMatch = data => (dispatch, getState, api) => {
             result: normalizedData.result.match,
             clubId
         })))
+        .then(() => dispatch(push('/matches')))
         .catch(api.handleError(dispatch, addMatchFailure));
 };
 

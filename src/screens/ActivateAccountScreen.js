@@ -2,7 +2,7 @@ import React from 'react';
 
 // Components
 import Svg from '../components/Svg';
-import Template from '../components/Template';
+import Template from '../components/shared/Template';
 
 // Sprites
 import logo_knot from '../assets/svg/sprite/logo_knot.svg';

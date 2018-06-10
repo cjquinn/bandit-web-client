@@ -1,28 +1,25 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Components
 import Footer from '../components/Footer';
 import Match from '../components/Match';
-import Template from '../components/Template';
+import Template from '../components/shared/Template';
 
 const MatchesScreen = () => (
     <Template>
-
         <header className="o-container u-ph-1bl">
-
             <div className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Club Matches</h1>
                 <h2 className="u-size-h4">Who’s been collecting scalps lately?</h2>
             </div>
 
-            <a href="/add-match" className="c-button c-button--default u-mt-2bl">Add matches</a>
-
+            <Link to="/matches/add" className="c-button c-button--default u-mt-2bl">Add match</Link>
         </header>
 
         <hr className="c-hr" />
 
         <section className="o-container">
-
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">Sunday 18th</h1>
             </header>
@@ -63,11 +60,9 @@ const MatchesScreen = () => (
                 <Match />
                 <Match />
             </ol>
-
         </section>
 
         <Footer />
-
     </Template>
 );
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // Components
 import Footer from '../components/Footer';
 import Svg from '../components/Svg';
-import Template from '../components/Template';
+import Template from '../components/shared/Template';
 
 // Containers
 import SignUpFormContainer from '../containers/forms/SignUpFormContainer';

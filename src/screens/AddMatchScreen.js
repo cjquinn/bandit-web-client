@@ -1,64 +1,36 @@
 import React from 'react';
-
-import Template from '../components/Template';
+import { Link } from 'react-router-dom';
 
 // Components
 import Footer from '../components/Footer';
+import Template from '../components/shared/Template';
 
-import AddMatches from '../components/AddMatches';
+// Containers
+import AddMatchFormContainer from '../containers/forms/AddMatchFormContainer';
 
 const AddMatchScreen = () => (
+    <Template>
+        <div className="o-container u-ph-1bl u-vspace-2bl">
+            <Link
+                to="/matches"
+                className="c-go"
+            >
+                Back
+            </Link>
 
-    <div className="o-container u-ph-1bl u-vspace-2bl">
+            <header className="u-vspace-06r">
+                <h1 className="u-size-h1 u-color-white">Add Match</h1>
 
-        <a href="/results" className="c-go">Back</a>
-
-        <header className="">
-
-            <div className="u-flex u-ai-center u-jc-between">
-
-                <div className="u-vspace-06r">
-                    <h1 className="u-size-h1 u-color-white">Add Matches</h1>
-                    <h2 className="u-size-h4">Get those games in, Stephen!</h2>
-                </div>
-
-            </div>
-
-        </header>
-
-        <div className="c-notification c-notification--info" role="alert">
-            <p className="u-weight-bold">What’s the score <em>if</em>&hellip;?</p>
-            <ol className="u-vspace-mt-">
-                <li>You won <strong className="u-color-white">5 games</strong></li>
-                <li>Your lost <strong className="u-color-white">3 games</strong></li>
-                <li>Score is <strong className="u-color-white">5 &ndash; 3</strong></li>
-            </ol>
+                <h2 className="u-size-h4">Get those games in, Stephen!</h2>
+            </header>
         </div>
 
-        <section className="u-vspace-3bl">
+        <hr className="c-hr" />
 
-            <div className="u-vspace-2bl">
-
-                <div className="u-vspace-1px">
-                    <div title>
-                        <AddMatches />
-                    </div>
-                </div>
-
-                <div className="u-flex u-ai-center u-ph-1bl u-hspace-05bl u-size-14px">
-                    <span>Monday 11th January 2017</span>
-                </div>
-
-                <a href="/add-match" className="c-button" disabled>Add Result</a>
-
-            </div>
-
-        </section>
+        <AddMatchFormContainer />
 
         <Footer />
-    
-    </div>
-            
+    </Template>
 );
 
 export default AddMatchScreen;

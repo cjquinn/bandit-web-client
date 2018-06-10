@@ -3,7 +3,7 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
-import Input from '../shared/Input';
+import InputField from '../fields/InputField';
 
 const SignUpForm = ({ handleSubmit, error, submitting }) => (
     <form
@@ -14,28 +14,28 @@ const SignUpForm = ({ handleSubmit, error, submitting }) => (
         
         <div className="u-ph-1bl u-vspace-3bl">
             <Field
-                component={Input}
+                component={InputField}
                 name="name"
                 label="Club name:"
                 type="text"
             />
 
             <Field
-                component={Input}
+                component={InputField}
                 name="founder[name]"
                 label="Your name:"
                 type="text"
             />
 
             <Field
-                component={Input}
+                component={InputField}
                 name="founder[email]"
                 label="Email:"
                 type="email"
             />
 
             <Field
-                component={Input}
+                component={InputField}
                 name="founder[password]"
                 label="Password:"
                 type="password"

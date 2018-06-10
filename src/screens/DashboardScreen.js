@@ -7,7 +7,7 @@ import Disputes from '../components/Disputes';
 import DashboardMatches from '../components/DashboardMatches';
 
 import Match from '../components/Match';
-import Template from '../components/Template';
+import Template from '../components/shared/Template';
 
 import AllTimeLeaderboardPlayer from '../components/AllTimeLeaderboardPlayer';
 import WeeklyLeaderboardPlayer from '../components/WeeklyLeaderboardPlayer';

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import { push } from 'react-router-redux';
 
 // Actions
 import * as actions from '../../../../../src/store/byClubId/byPlayerId/match/actions';
@@ -59,7 +60,8 @@ describe('addMatch', () => {
                                 }}
                             }
                         }
-                    }
+                    },
+                    push('/matches')
                 ];
 
                 expect(store.getActions()).toEqual(expected);

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 // Components
 import Footer from '../components/Footer';
-import Template from '../components/Template';
+import Template from '../components/shared/Template';
 
 // Containers
 import OrderPlayersControlContainer from '../containers/controls/OrderPlayersControlContainer';

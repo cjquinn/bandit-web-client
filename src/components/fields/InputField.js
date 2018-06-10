@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Input = ({ input, label, meta, placeholder = '', type }) => (
+const InputField = ({ input, label, meta, placeholder = '', type }) => (
     <fieldset className="u-pos-relative">
         <input
             {...input}
@@ -15,7 +15,7 @@ const Input = ({ input, label, meta, placeholder = '', type }) => (
     </fieldset>
 );
 
-Input.propTypes = {
+InputField.propTypes = {
     input: PropTypes.object.isRequired,
     label: PropTypes.string.isRequired,
     meta: PropTypes.object.isRequired,
@@ -23,4 +23,4 @@ Input.propTypes = {
     type: PropTypes.string.isRequired
 };
 
-export default Input;
+export default InputField;

@@ -3,7 +3,7 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
-import Input from '../shared/Input';
+import InputField from '../fields/InputField';
 
 const SignInForm = ({ handleSubmit, error, submitting }) => (
     <form
@@ -14,14 +14,14 @@ const SignInForm = ({ handleSubmit, error, submitting }) => (
         
         <div className="u-ph-1bl u-vspace-3bl">
             <Field
-                component={Input}
+                component={InputField}
                 name="email"
                 label="Email:"
                 type="email"
             />
 
             <Field
-                component={Input}
+                component={InputField}
                 name="password"
                 label="Password:"
                 type="password"

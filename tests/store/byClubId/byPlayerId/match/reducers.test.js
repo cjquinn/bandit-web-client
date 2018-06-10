@@ -17,54 +17,6 @@ describe('initial state', () => {
     });
 });
 
-describe('addMatch', () => {
-    it(actions.addMatchSuccess.toString(), () => {
-        const state = {
-            ids: [4, 5],
-            isFetching: false,
-            page: 1,
-            total: 50
-        };
-
-        const payload = {
-            result: 1
-        };
-
-        const expected = {
-            ids: [1, 4, 5],
-            isFetching: false,
-            page: 1,
-            total: 51
-        };
-
-        expect(reducers(state, actions.addMatchSuccess(payload))).toEqual(expected);
-    });
-});
-
-describe('deleteMatch', () => {
-    it(actions.deleteMatchSuccess.toString(), () => {
-        const state = {
-            ids: [1, 2, 3],
-            isFetching: false,
-            page: 1,
-            total: 50
-        };
-
-        const payload = {
-            matchId: 1
-        };
-
-        const expected = {
-            ids: [2, 3],
-            isFetching: false,
-            page: 1,
-            total: 49
-        };
-
-        expect(reducers(state, actions.deleteMatchSuccess(payload))).toEqual(expected);
-    });
-});
-
 describe('fetchMatches', () => {
     it(actions.fetchMatchesRequest.toString(), () => {
         const state = {

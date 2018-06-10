@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import Match from '../components/Match';
 import PlayerPhoto from '../components/PlayerPhoto';
 import Scoresheet from '../components/Scoresheet';
-import Template from '../components/Template';
+import Template from '../components/shared/Template';
 
 const MatchScreen = () => (
 

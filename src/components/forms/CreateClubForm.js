@@ -3,7 +3,7 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
-import Input from '../shared/Input';
+import InputField from '../fields/InputField';
 
 const CreateClubForm = ({ handleSubmit, error, submitting }) => (
     <form
@@ -14,7 +14,7 @@ const CreateClubForm = ({ handleSubmit, error, submitting }) => (
         
         <div className="u-ph-1bl u-vspace-3bl">
             <Field
-                component={Input}
+                component={InputField}
                 name="name"
                 label="Name:"
                 type="text"
