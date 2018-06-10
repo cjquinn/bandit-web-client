@@ -1,9 +1,8 @@
 import { createSelector } from 'reselect';
 
 // Selectors
-import { getClubEntities, getPlayerEntities, getUserEntities } from '../entities/selectors';
-
-export const getClubId = state => state.user.clubId;
+import { getPlayerEntities, getUserEntities } from '../entities/selectors';
+import { getBanditId, getClubId } from '../shared/selectors';
 
 export const getId = state => state.user.id;
 
@@ -12,14 +11,17 @@ export const getIsLoading = state => state.user.isLoading;
 export const getUserEntity = state => getUserEntities(state)[getId(state)];
 
 export const getUser = createSelector(
-    [getClubId, getClubEntities, getPlayerEntities, getUserEntity],
-    (clubId, clubs, players, user) => {
+    [getBanditId, getClubId, getPlayerEntities, getUserEntity],
+    (banditId, clubId, players, user) => {
         const playerId = user.players.find(playerId => players[playerId].club_id === clubId);
+        const player = playerId && players[playerId] ? players[playerId] : {};
 
         return {
             ...user,
-            isBandit: clubs && clubs[clubId] && +clubs[clubId].bandit_id === playerId,
-            level: playerId ? players[playerId].level : {name: 'Unknown', slug: 'unknown'}
+            player: {
+                ...player,
+                isBandit: banditId === playerId
+            }
         };
     }
 );

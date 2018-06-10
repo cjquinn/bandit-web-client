@@ -17,7 +17,7 @@ const PlayerPhoto = ({ player }) => (
         }
 
         <div className="c-player-photo c-player-photo--no-photo u-width-2bl">
-            <div className={`c-player-photo__level u-bgcolor-${player.level.slug}`}></div>
+            {player.level && <div className={`c-player-photo__level u-bgcolor-${player.level.slug}`}></div>}
 
             {player.isBandit && <div className="c-player-photo__level u-bgcolor-bandit"></div>}
         </div>

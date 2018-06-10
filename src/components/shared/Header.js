@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import UserPhoto from './UserPhoto';
+import PlayerPhoto from './PlayerPhoto';
 import Svg from './Svg';
 
 // Sprites
@@ -47,7 +47,7 @@ const Header = ({ children, club, user }) => (
                     to="/profile"
                     className="u-flex u-ai-center u-hspace-05bl u-opac-05 u-opac-1@hover"
                 >
-                    <UserPhoto user={user} />
+                    <PlayerPhoto player={user.player} />
                     
                     <span className="u-color-orange u-uppercase u-weight-bold">
                         {user.name}

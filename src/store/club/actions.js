@@ -6,7 +6,7 @@ import { push } from 'react-router-redux';
 import { club as clubSchema } from '../schema';
 
 // Selectors
-import { getClubId } from '../user/selectors';
+import { getClubId } from '../shared/selectors';
 
 /**
  * Create club

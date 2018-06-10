@@ -5,7 +5,7 @@ import { normalize } from 'normalizr';
 import { club as clubSchema, dispute as disputeSchema, match as matchSchema } from '../../schema';
 
 // Selectors
-import { getClubId } from '../../user/selectors';
+import { getClubId } from '../../shared/selectors';
 
 /**
  * Add dispute

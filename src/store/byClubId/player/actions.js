@@ -6,7 +6,7 @@ import { push } from 'react-router-redux';
 import { player as playerSchema } from '../../schema';
 
 // Selectors
-import { getClubId } from '../../user/selectors';
+import { getClubId } from '../../shared/selectors';
 
 /**
  * Fetch player

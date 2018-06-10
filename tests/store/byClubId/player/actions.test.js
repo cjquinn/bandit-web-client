@@ -1,5 +1,6 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import { push } from 'react-router-redux';
 
 // Actions
 import * as actions from '../../../../src/store/byClubId/player/actions';
@@ -146,7 +147,8 @@ describe('invitePlayer', () => {
                                 players: {1: {id: 1, rating: 1200}}
                             }
                         }
-                    }
+                    },
+                    push('/players')
                 ];
 
                 expect(store.getActions()).toEqual(expected);

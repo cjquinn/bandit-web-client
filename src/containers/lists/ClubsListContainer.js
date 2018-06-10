@@ -10,7 +10,7 @@ import ClubsList from '../../components/lists/ClubsList';
 
 // Selectors
 import { getClubs } from '../../store/club/selectors';
-import { getClubId } from '../../store/user/selectors';
+import { getClubId } from '../../store/shared/selectors';
 
 class ClubsListContainer extends Component {
     componentDidMount() {

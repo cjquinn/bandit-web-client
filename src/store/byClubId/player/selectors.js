@@ -8,7 +8,7 @@ import { player as playerSchema } from '../../schema';
 import { getByClubIdState } from '../selectors';
 import { getPlayerEntities, getUserEntities } from '../../entities/selectors';
 import { getPlayerId } from '../../props/selectors';
-import { makeIsFetchingSelector } from '../../shared/selectors';
+import { getBanditId, makeIsFetchingSelector } from '../../shared/selectors';
 
 export const initialState = {
     ids: [],
@@ -33,13 +33,16 @@ export const getOrderBy = state => getPlayerState(state).orderBy;
 
 // Memoized
 export const makeGetPlayer = () => createSelector(
-    [getPlayerEntity, getUserEntities],
-    (player, users) =>
+    [getBanditId, getPlayerEntity, getUserEntities],
+    (banditId, player, users) =>
         player
-            ? denormalize(player.id, playerSchema, {
-                players: {[player.id]: player},
-                users
-            })
+            ? {
+                ...denormalize(player.id, playerSchema, {
+                    players: {[player.id]: player},
+                    users
+                }),
+                isBandit: player.id === banditId
+            }
             : undefined
 );
 
@@ -66,18 +69,26 @@ const sortPlayers = {
             return -1;
         }
 
+        if (a.rating === b.rating) {
+            if (a.wins === b.wins) {
+                return a.wins > b.wins;
+            }
+
+            return a.losses < b.losses;
+        }
+
         return a.rating > b.rating ? 1 : 0;
     }
 };
 
 export const makeGetPlayers = () => createSelector(
-    [getIds, getOrderBy, getPlayerEntities, getUserEntities],
-    (ids, orderBy, players, users) => 
+    [getIds, getOrderBy, getBanditId, getPlayerEntities, getUserEntities],
+    (ids, orderBy, banditId, players, users) => 
         denormalize(ids, [playerSchema], {players, users})
             .map(player => ({
                 ...player,
-                games: player.wins + player.losses
-                // TODO ADD IN BANDIT - problably should be a selector
+                games: player.wins + player.losses,
+                isBandit: player.id ===banditId
             }))
             .sort(sortPlayers[orderBy])
 );

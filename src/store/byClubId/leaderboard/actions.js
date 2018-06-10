@@ -5,7 +5,7 @@ import { normalize } from 'normalizr';
 import { player as playerSchema } from '../../schema';
 
 // Selectors
-import { getClubId } from '../../user/selectors';
+import { getClubId } from '../../shared/selectors';
 
 /**
  * Fetch leaderboard

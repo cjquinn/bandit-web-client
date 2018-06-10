@@ -3,8 +3,7 @@ import { createSelector } from 'reselect';
 
 // Selectors
 import { getClubEntities } from '../entities/selectors';
-import { makeIsFetchingSelector } from '../shared/selectors';
-import { getClubId } from '../user/selectors';
+import { getClubId, makeIsFetchingSelector } from '../shared/selectors';
 
 // State
 const getClubState = state => state.club;

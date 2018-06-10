@@ -113,6 +113,12 @@ describe('selectors', () => {
     it('makeGetPlayer', () => {
         const state = {
             entities: {
+                clubs: {
+                    1: {
+                        id: 1,
+                        bandit_id: '1'
+                    }
+                },
                 players: {
                     1: {
                         id: 1,
@@ -128,7 +134,8 @@ describe('selectors', () => {
                         name: 'Russell'
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const props = {match: {params: {playerId: 1}}};
@@ -141,7 +148,8 @@ describe('selectors', () => {
             user: {
                 id: 1,
                 name: 'Russell'
-            }
+            },
+            isBandit: true
         };
 
         expect(makeGetPlayer()(state, props)).toEqual(expected);
@@ -155,7 +163,8 @@ describe('selectors', () => {
                         name: 'Russell'
                     }
                 }
-            }
+            },
+            user: {}
         };
 
         const expectedNoPlayer = undefined;
@@ -174,6 +183,12 @@ describe('selectors', () => {
             }
         },
         entities: {
+            clubs: {
+                1: {
+                    id: 1,
+                    bandit_id: '3'
+                }
+            },
             players: {
                 1: {
                     id: 1,
@@ -219,6 +234,7 @@ describe('selectors', () => {
         const stateNoByClubId = {
             byClubId: {},
             entities: {
+                clubs: {},
                 players: {},
                 users: {}
             },
@@ -240,30 +256,36 @@ describe('selectors', () => {
                 rating: 1800,
                 wins: 1,
                 losses: 1,
+                games: 2,
                 user: {
                     id: 2,
                     name: 'Christy'
-                }
+                },
+                isBandit: false
             },
             {
                 id: 3,
                 rating: 1220,
                 wins: 2,
                 losses: 1,
+                games: 3,
                 user: {
                     id: 3,
                     name: 'Nathan'
-                }
+                },
+                isBandit: true
             },
             {
                 id: 1,
                 rating: 1600,
                 wins: 1,
                 losses: 3,
+                games: 4,
                 user: {
                     id: 1,
                     name: 'Russell'  
-                }
+                },
+                isBandit: false
             }
         ];
 
@@ -283,30 +305,36 @@ describe('selectors', () => {
                 rating: 1600,
                 wins: 1,
                 losses: 3,
+                games: 4,
                 user: {
                     id: 1,
                     name: 'Russell'  
-                }
+                },
+                isBandit: false
             },
             {
                 id: 3,
                 rating: 1220,
                 wins: 2,
                 losses: 1,
+                games: 3,
                 user: {
                     id: 3,
                     name: 'Nathan'
-                }
+                },
+                isBandit: true
             },
             {
                 id: 2,
                 rating: 1800,
                 wins: 1,
                 losses: 1,
+                games: 2,
                 user: {
                     id: 2,
                     name: 'Christy'
-                }
+                },
+                isBandit: false
             }
         ];
 
@@ -325,30 +353,36 @@ describe('selectors', () => {
                 rating: 1220,
                 wins: 2,
                 losses: 1,
+                games: 3,
                 user: {
                     id: 3,
                     name: 'Nathan'
-                }
+                },
+                isBandit: true
             },
             {
                 id: 1,
                 rating: 1600,
                 wins: 1,
                 losses: 3,
+                games: 4,
                 user: {
                     id: 1,
                     name: 'Russell'  
-                }
+                },
+                isBandit: false
             },
             {
                 id: 2,
                 rating: 1800,
                 wins: 1,
                 losses: 1,
+                games: 2,
                 user: {
                     id: 2,
                     name: 'Christy'
-                }
+                },
+                isBandit: false
             }
         ];
 

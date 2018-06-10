@@ -6,8 +6,25 @@ import {
     getClubs,
     getIds,
     getIsFetching } from '../../../src/store/club/selectors';
+import { getBanditId } from '../../../src/store/shared/selectors';
 
 describe('selectors', () => {
+    it('getBanditId', () => {
+        const state = {
+            entities: {
+                clubs: {
+                    1: {id: 1, name: 'Squash', bandit_id: '4'},
+                    2: {id: 2, name: 'Bandit', bandit_id: '3'}
+                }
+            },
+            user: {clubId: 1}
+        };
+
+        const expected = 4;
+
+        expect(getBanditId(state)).toEqual(expected);
+    });
+
     it('getClub', () => {
         const state = {
             entities: {

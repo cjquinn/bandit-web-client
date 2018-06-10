@@ -6,7 +6,7 @@ import { club as clubSchema, match as matchSchema } from '../../../schema';
 
 // Selectors
 import { getPage } from './selectors';
-import { getClubId } from '../../../user/selectors';
+import { getClubId } from '../../../shared/selectors';
 
 /**
  * Add match

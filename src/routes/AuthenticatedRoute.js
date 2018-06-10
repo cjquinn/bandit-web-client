@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
 // Selectors
-import { getClubId, getIsAuthenticated } from '../store/user/selectors';
+import { getClubId } from '../store/shared/selectors';
+import { getIsAuthenticated } from '../store/user/selectors';
 
 class AuthenticatedRoute extends Component {
     render() {

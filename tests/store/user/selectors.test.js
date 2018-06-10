@@ -1,4 +1,5 @@
-import { getClubId, getUser, getIsAuthenticated, getIsLoading } from '../../../src/store/user/selectors';
+import { getUser, getIsAuthenticated, getIsLoading } from '../../../src/store/user/selectors';
+import { getClubId } from '../../../src/store/shared/selectors';
 
 describe('selectors', () => {
     it('getClubId', () => {
@@ -22,10 +23,14 @@ describe('selectors', () => {
         expect(getUser(state)).toEqual({
             id: 1,
             name: 'Christy',
-            isBandit: true,
-            level: {
-                name: 'Junior',
-                slug: 'junior'
+            player: {
+                id: 1,
+                club_id: 1,
+                level: {
+                    name: 'Junior',
+                    slug: 'junior'
+                },
+                isBandit: true,
             },
             players: [1]
         });
