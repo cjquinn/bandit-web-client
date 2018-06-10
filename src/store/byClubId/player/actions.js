@@ -74,4 +74,13 @@ export const invitePlayer = data => (dispatch, getState, api) => {
 /**
  * Order players by...
  */
-export const orderPlayersBy = createAction('ORDER_PLAYERS_BY');
+export const ORDER_PLAYERS_BY = 'ORDER_PLAYERS_BY';
+
+export const orderPlayersBy = orderBy => (dispatch, getState) =>
+    dispatch({
+        type: ORDER_PLAYERS_BY,
+        payload: {
+            clubId: getClubId(getState()),
+            orderBy
+        }
+    });

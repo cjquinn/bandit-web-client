@@ -1,5 +1,5 @@
 // Actions
-import { orderPlayersBy } from '../../../../src/store/byClubId/player/actions';
+import { ORDER_PLAYERS_BY } from '../../../../src/store/byClubId/player/actions';
 
 // Reducers
 import reducers from '../../../../src/store/reducers';
@@ -11,7 +11,7 @@ import {
     getOrderBy,
     getPlayerEntity,
     makeGetPlayer,
-    makeGetPlayers } from '../../../../src/store/byClubId/player/selectors';
+    getPlayers } from '../../../../src/store/byClubId/player/selectors';
 
 describe('selectors', () => {
     it('getIds', () => {
@@ -230,7 +230,7 @@ describe('selectors', () => {
         user: {clubId: 1}
     };
 
-    it('makeGetPlayers noByClubId', () => {
+    it('getPlayers noByClubId', () => {
         const stateNoByClubId = {
             byClubId: {},
             entities: {
@@ -241,14 +241,17 @@ describe('selectors', () => {
             user: {clubId: 1}
         };
 
-        expect(makeGetPlayers()(stateNoByClubId)).toEqual([]);
+        expect(getPlayers(stateNoByClubId)).toEqual([]);
     });
 
-    it('makeGetPlayers a-z', () => {
-        const state = reducers(stateForGetPlayers, orderPlayersBy({
-            clubId: 1,
-            orderBy: 'a-z'
-        }));
+    it('getPlayers a-z', () => {
+        const state = reducers(stateForGetPlayers, {
+            type: ORDER_PLAYERS_BY,
+            payload: {
+                clubId: 1,
+                orderBy: 'a-z'
+            }
+        });
 
         const expected  = [
             {
@@ -289,15 +292,18 @@ describe('selectors', () => {
             }
         ];
 
-        expect(makeGetPlayers()(state)).toEqual(expected);
+        expect(getPlayers(state)).toEqual(expected);
     });
 
 
-    it('makeGetPlayers games', () => {
-        const state = reducers(stateForGetPlayers, orderPlayersBy({
-            clubId: 1,
-            orderBy: 'games'
-        }));
+    it('getPlayers games', () => {
+        const state = reducers(stateForGetPlayers, {
+            type: ORDER_PLAYERS_BY,
+            payload: {
+                clubId: 1,
+                orderBy: 'games'
+            }
+        });
 
         const expected  = [
             {
@@ -338,14 +344,17 @@ describe('selectors', () => {
             }
         ];
 
-        expect(makeGetPlayers()(state)).toEqual(expected);
+        expect(getPlayers(state)).toEqual(expected);
     });
 
-    it('makeGetPlayers rating', () => {
-        const state = reducers(stateForGetPlayers, orderPlayersBy({
-            clubId: 1,
-            orderBy: 'rating'
-        }));
+    it('getPlayers rating', () => {
+        const state = reducers(stateForGetPlayers, {
+            type: ORDER_PLAYERS_BY,
+            payload: {
+                clubId: 1,
+                orderBy: 'rating'
+            }
+        });
 
         const expected  = [
             {
@@ -386,6 +395,6 @@ describe('selectors', () => {
             }
         ];
 
-        expect(makeGetPlayers()(state)).toEqual(expected);
+        expect(getPlayers(state)).toEqual(expected);
     });
 });

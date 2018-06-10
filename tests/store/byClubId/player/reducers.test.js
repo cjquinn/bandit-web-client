@@ -91,7 +91,7 @@ describe('fetchPlayers', () => {
 });
 
 describe('orderPlayersBy', () => {
-    it(actions.orderPlayersBy.toString(), () => {
+    it(actions.ORDER_PLAYERS_BY, () => {
         const state = {
             ids: [],
             isFetching: false,
@@ -108,6 +108,6 @@ describe('orderPlayersBy', () => {
             orderBy: 'rating'
         };
 
-        expect(reducers(state, actions.orderPlayersBy(payload))).toEqual(expected);
+        expect(reducers(state, {type: actions.ORDER_PLAYERS_BY, payload})).toEqual(expected);
     });
 });

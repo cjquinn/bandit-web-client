@@ -9,7 +9,7 @@ import { fetchPlayers } from '../../store/byClubId/player/actions';
 import PlayersList from '../../components/lists/PlayersList';
 
 // Selectors
-import { makeGetPlayers } from '../../store/byClubId/player/selectors';
+import { getPlayers } from '../../store/byClubId/player/selectors';
 
 class PlayersListContainer extends Component {
     componentDidMount() {
@@ -28,16 +28,12 @@ PlayersListContainer.propTypes = {
     fetchPlayers: PropTypes.func.isRequired
 };
 
-const makeMapStateToProps = () => {
-    const getPlayers = makeGetPlayers();
-
-    return (state, props) => ({
-        players: getPlayers(state, props)
-    });
-};
+const mapStateToProps = state => ({
+    players: getPlayers(state)
+});
 
 const mapDispatchToProps = dispatch => ({
     fetchPlayers: () => dispatch(fetchPlayers())
 });
 
-export default connect(makeMapStateToProps, mapDispatchToProps)(PlayersListContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PlayersListContainer);

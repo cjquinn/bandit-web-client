@@ -86,7 +86,7 @@ const sortPlayers = {
     }
 };
 
-export const makeGetPlayers = () => createSelector(
+export const getPlayers = createSelector(
     [getIds, getOrderBy, getBanditId, getPlayerEntities, getUserEntities],
     (ids, orderBy, banditId, players, users) => 
         denormalize(ids, [playerSchema], {players, users})

@@ -28,7 +28,7 @@ const isFetching = makeIsFetchingReducer(
 );
 
 const orderBy = handleAction(
-    actions.orderPlayersBy,
+    actions.ORDER_PLAYERS_BY,
     (state, { payload }) => payload.orderBy,
     initialState.orderBy
 );

@@ -17,7 +17,7 @@ class ClubsListContainer extends Component {
         this.props.fetchClubs();
     }
 
-    handleClick = (clubId) => this.props.switchClub(clubId);
+    handleClick = clubId => this.props.switchClub(clubId);
 
     render() {
         const { clubId, clubs } = this.props;

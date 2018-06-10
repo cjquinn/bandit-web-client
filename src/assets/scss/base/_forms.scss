@@ -93,7 +93,6 @@ textarea {
 
 select {
   @extend .u-width-100pc;
-  max-width: 160px; // too generic
 
   &[disabled] {
     color: inherit;
