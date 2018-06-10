@@ -1,5 +1,6 @@
-import { createSelector } from 'reselect';
+import moment from 'moment';
 import { denormalize } from 'normalizr';
+import { createSelector } from 'reselect';
 
 // Schema
 import { player as playerSchema } from '../../schema';
@@ -41,7 +42,7 @@ export const makeGetPlayer = () => createSelector(
                     players: {[player.id]: player},
                     users
                 }),
-                isBandit: player.id === banditId
+                isBandit: (player.wins > 0 || player.losses > 0) && player.id === banditId
             }
             : undefined
 );
@@ -69,15 +70,19 @@ const sortPlayers = {
             return -1;
         }
 
-        if (a.rating === b.rating) {
-            if (a.wins === b.wins) {
-                return a.wins > b.wins;
-            }
+        if (a.rating !== b.rating) {
+            return a.rating > b.rating;
+        }
 
+        if (a.wins !== b.wins) {
+            return a.wins > b.wins;
+        }
+
+        if (!a.losses !== b.losses) {
             return a.losses < b.losses;
         }
 
-        return a.rating > b.rating ? 1 : 0;
+        return moment(a.modified).isAfter(b.modified);
     }
 };
 
@@ -88,7 +93,7 @@ export const makeGetPlayers = () => createSelector(
             .map(player => ({
                 ...player,
                 games: player.wins + player.losses,
-                isBandit: player.id ===banditId
+                isBandit: (player.wins > 0 || player.losses > 0) && player.id === banditId
             }))
             .sort(sortPlayers[orderBy])
 );

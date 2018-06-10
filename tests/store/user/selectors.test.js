@@ -14,7 +14,7 @@ describe('selectors', () => {
         const state = {
             entities: {
                 clubs: {1: {id: 1, bandit_id: '1'}},
-                players: {1: {id: 1, club_id: 1, level: {name: 'Junior', slug: 'junior'}}},
+                players: {1: {id: 1, club_id: 1, level: {name: 'Junior', slug: 'junior'}, wins: 1, losses: 0}},
                 users: {1: {id: 1, name: 'Christy', players: [1]}}
             },
             user: {id: 1, clubId: 1}
@@ -30,6 +30,8 @@ describe('selectors', () => {
                     name: 'Junior',
                     slug: 'junior'
                 },
+                wins: 1,
+                losses: 0,
                 isBandit: true,
             },
             players: [1]

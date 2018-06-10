@@ -20,7 +20,7 @@ export const getUser = createSelector(
             ...user,
             player: {
                 ...player,
-                isBandit: banditId === playerId
+                isBandit: (player.wins > 0 || player.losses > 0) && player.id === banditId
             }
         };
     }
