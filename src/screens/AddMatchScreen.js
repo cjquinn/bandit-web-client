@@ -21,7 +21,7 @@ const AddMatchScreen = () => (
             <header className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Add Match</h1>
 
-                <h2 className="u-size-h4">Get those games in, Stephen!</h2>
+                <h2 className="u-size-h4">Get those games in!</h2>
             </header>
         </div>
 

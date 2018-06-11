@@ -21,7 +21,7 @@ const ClubsList = ({ clubId, clubs, handleClick }) => (
                         <span>{club.player_count} player{club.player_count !== 1 ? 's' : ''}</span>
                         <span>
                             {club.last_played_in_days
-                                ? `${club.last_played_in_days} day${club.last_played_in_days ? 's' : ''} since you&apos;ve played`
+                                ? `${club.last_played_in_days} day${club.last_played_in_days !== 1 ? 's' : ''} since you've played`
                                 : 'Get your first match in!'
                             }
                         </span>

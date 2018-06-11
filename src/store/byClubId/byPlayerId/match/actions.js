@@ -89,9 +89,9 @@ export const fetchMatches = (playerId, page) => (dispatch, getState, api) => {
 
     return api.fetchMatches(clubId, playerId, page)
         .then(api.checkStatus)  
-        .then(response => normalize(response.data.matches, [matchSchema]))
-        .then(normalizedData => dispatch(fetchMatchesSuccess({
-            ...normalizedData,
+        .then(response => dispatch(fetchMatchesSuccess({
+            ...normalize(response.data.matches, [matchSchema]),
+            total: response.data.total,
             clubId,
             page,
             playerId

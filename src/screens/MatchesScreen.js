@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 
 // Components
 import Footer from '../components/Footer';
-import Match from '../components/Match';
+import DatedMatchesList from '../components/lists/DatedMatchesList';
 import Template from '../components/shared/Template';
+
+// Containers
+import MatchesListContainer from '../containers/lists/MatchesListContainer';
 
 const MatchesScreen = () => (
     <Template>
@@ -19,48 +22,10 @@ const MatchesScreen = () => (
 
         <hr className="c-hr" />
 
-        <section className="o-container">
-            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">Sunday 18th</h1>
-            </header>
-
-            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                <Match />
-                <Match />
-                <Match />
-            </ol>
-
-        </section>
-
-        <section className="o-container">
-
-            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">Saturday 17th</h1>
-            </header>
-
-            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                <Match />
-                <Match />
-                <Match />
-            </ol>
-
-        </section>
-
-        <section className="o-container">
-
-            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">Thursday 14th</h1>
-            </header>
-
-            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                <Match />
-                <Match />
-                <Match />
-                <Match />
-                <Match />
-                <Match />
-            </ol>
-        </section>
+        <MatchesListContainer
+            component={DatedMatchesList}
+            playerId="all"
+        />
 
         <Footer />
     </Template>

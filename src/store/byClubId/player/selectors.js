@@ -11,6 +11,9 @@ import { getPlayerEntities, getUserEntities } from '../../entities/selectors';
 import { getPlayerId } from '../../props/selectors';
 import { getBanditId, getUserId, makeIsFetchingSelector } from '../../shared/selectors';
 
+// Utilities
+import { withIsBandit } from '../../utilities';
+
 export const initialState = {
     ids: [],
     isFetching: false,
@@ -37,13 +40,10 @@ export const makeGetPlayer = () => createSelector(
     [getBanditId, getPlayerEntity, getUserEntities],
     (banditId, player, users) =>
         player
-            ? {
-                ...denormalize(player.id, playerSchema, {
-                    players: {[player.id]: player},
-                    users
-                }),
-                isBandit: (player.wins > 0 || player.losses > 0) && player.id === banditId
-            }
+            ? withIsBandit(
+                denormalize(player.id, playerSchema, {players: {[player.id]: player}, users}),
+                banditId
+            )
             : undefined
 );
 
@@ -82,9 +82,8 @@ export const getPlayers = createSelector(
     [getIds, getOrderBy, getBanditId, getPlayerEntities, getUserEntities],
     (ids, orderBy, banditId, players, users) => {
         const denormalizedPlayers = denormalize(ids, [playerSchema], {players, users}).map(player => ({
-            ...player,
-            games: player.wins + player.losses,
-            isBandit: (player.wins > 0 || player.losses > 0) && player.id === banditId
+            ...withIsBandit(player, banditId),
+            games: player.wins + player.losses
         }));
         
         return denormalizedPlayers.sort(sortPlayers[orderBy]);

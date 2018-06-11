@@ -161,6 +161,12 @@ describe('selectors', () => {
     it('makeGetMatch', () => {
         const state = {
             entities: {
+                clubs: {
+                    1: {
+                        id: 1,
+                        bandit_id: '1'
+                    }
+                },
                 matches: {
                     1: {
                         id: 1,
@@ -172,11 +178,15 @@ describe('selectors', () => {
                 players: {
                     1: {
                         id: 1,
-                        user: 1
+                        user: 1,
+                        wins: 1,
+                        losses: 0
                     },
                     2: {
                         id: 2,
-                        user: 2
+                        user: 2,
+                        wins: 1,
+                        losses: 0
                     }
                 },
                 users: {
@@ -189,7 +199,8 @@ describe('selectors', () => {
                         name: 'Christy'
                     }
                 }
-            }
+            },
+            user: {clubId: 1}
         };
 
         const props = {match: {params: {matchId: 1}}};
@@ -201,14 +212,20 @@ describe('selectors', () => {
                 user: {
                     id: 1,
                     name: 'Russell'  
-                }
+                },
+                wins: 1,
+                losses: 0,
+                isBandit: true
             },
             player_b: {
                 id: 2,
                 user: {
                     id: 2,
                     name: 'Christy'
-                }
+                },
+                wins: 1,
+                losses: 0,
+                isBandit: false
             },
             dispute: null
         };
@@ -237,7 +254,13 @@ describe('selectors', () => {
                         id: 2,
                         name: 'Christy'
                     }
+                },
+                clubs: {
+                    1: {bandit_id: '1'}
                 }
+            },
+            user: {
+                clubId: 1
             }
         };
 
@@ -263,24 +286,32 @@ describe('selectors', () => {
                 }
             },
             entities: {
+                clubs: {
+                    1: {
+                        bandit_id: '1'
+                    }
+                },
                 matches: {
                     1: {
                         id: 1,
                         player_a: 1,
                         player_b: 2,
-                        dispute: null
+                        dispute: null,
+                        created: '2018-06-10 12:00:00'
                     },
                     2: {
                         id: 2,
                         player_a: 2,
                         player_b: 3,
-                        dispute: null
+                        dispute: null,
+                        created: '2018-06-11 12:00:00'
                     }
                 },
                 players: {
                     1: {
                         id: 1,
-                        user: 1
+                        user: 1,
+                        wins: 1
                     },
                     2: {
                         id: 2,
@@ -311,40 +342,57 @@ describe('selectors', () => {
 
         const expected  = [
             {
-                id: 1,
-                player_a: {
-                    id: 1,
-                    user: {
+                date: 'Sunday 10th',
+                matches: [
+                    {
                         id: 1,
-                        name: 'Russell'  
+                        player_a: {
+                            id: 1,
+                            user: {
+                                id: 1,
+                                name: 'Russell'  
+                            },
+                            wins: 1,
+                            isBandit: true
+                        },
+                        player_b: {
+                            id: 2,
+                            user: {
+                                id: 2,
+                                name: 'Christy'
+                            },
+                            isBandit: false
+                        },
+                        dispute: null,
+                        created: '2018-06-10 12:00:00'
                     }
-                },
-                player_b: {
-                    id: 2,
-                    user: {
-                        id: 2,
-                        name: 'Christy'
-                    }
-                },
-                dispute: null
+                ]
             },
             {
-                id: 2,
-                player_a: {
-                    id: 2,
-                    user: {
+                date: 'Monday 11th',
+                matches: [
+                    {
                         id: 2,
-                        name: 'Christy'
+                        player_a: {
+                            id: 2,
+                            user: {
+                                id: 2,
+                                name: 'Christy'
+                            },
+                            isBandit: false
+                        },
+                        player_b: {
+                            id: 3,
+                            user: {
+                                id: 3,
+                                name: 'Nathan'
+                            },
+                            isBandit: false
+                        },
+                        dispute: null,
+                        created: '2018-06-11 12:00:00'
                     }
-                },
-                player_b: {
-                    id: 3,
-                    user: {
-                        id: 3,
-                        name: 'Nathan'
-                    }
-                },
-                dispute: null
+                ]
             }
         ];
 
@@ -363,16 +411,20 @@ describe('selectors', () => {
                     user: {
                         id: 1,
                         name: 'Russell'  
-                    }
+                    },
+                    wins: 1,
+                    isBandit: true
                 },
                 player_b: {
                     id: 2,
                     user: {
                         id: 2,
                         name: 'Christy'
-                    }
+                    },
+                    isBandit: false
                 },
-                dispute: null
+                dispute: null,
+                created: '2018-06-10 12:00:00'
             }
         ];
 

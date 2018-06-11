@@ -285,7 +285,10 @@ describe('fetchMoreMatches', () => {
     it('success', () => {
         mock
             .onGet(`/clubs/${clubId}/matches.json?page=${page}&player_id=${playerId}`)
-            .reply(200, {matches: [{id: 1, player_a_id: 1, player_b_id: 2}]});
+            .reply(200, {
+                matches: [{id: 1, player_a_id: 1, player_b_id: 2}],
+                total: 2
+            });
 
         return store.dispatch(actions.fetchMoreMatches(playerId))
             .then(() => {
@@ -306,7 +309,8 @@ describe('fetchMoreMatches', () => {
                                     player_a: 1,
                                     player_b: 2
                                 }}
-                            }
+                            },
+                            total: 2
                         }
                     }
                 ];

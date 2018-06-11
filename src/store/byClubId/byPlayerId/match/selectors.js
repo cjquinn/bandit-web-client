@@ -1,5 +1,6 @@
-import { createSelector } from 'reselect';
+import moment from 'moment';
 import { denormalize } from 'normalizr';
+import { createSelector } from 'reselect';
 
 // Schema
 import { match as matchSchema } from '../../../schema';
@@ -8,7 +9,10 @@ import { match as matchSchema } from '../../../schema';
 import { getMatchEntities, getPlayerEntities, getUserEntities } from '../../../entities/selectors';
 import { getByPlayerIdState } from '../selectors';
 import { getLimit, getMatchId } from '../../../props/selectors';
-import { makeIsFetchingSelector } from '../../../shared/selectors';
+import { getBanditId, makeIsFetchingSelector } from '../../../shared/selectors';
+
+// Utilities
+import { withIsBandit } from '../../../utilities';
 
 export const initialState = {
     ids: [],
@@ -34,32 +38,63 @@ export const getPage = (state, props) => getMatchState(state, props).page;
 
 // Memoized
 export const makeGetMatch = () => createSelector(
-    [getMatchEntity, getPlayerEntities, getUserEntities],
-    (match, players, users) =>
-        match
-            ? denormalize(
-                match.id,
-                matchSchema,
-                {
-                    disputes: {},
-                    matches: {[match.id]: match},
-                    players,
-                    users
-                }
-            )
-            : undefined
+    [getBanditId, getMatchEntity, getPlayerEntities, getUserEntities],
+    (banditId, match, players, users) => {
+        if (!match) {
+            return undefined;
+        }
+
+        const denormalizedMatch = denormalize(
+            match.id,
+            matchSchema,
+            {disputes: {}, matches: {[match.id]: match}, players, users}
+        );
+
+        return {
+            ...denormalizedMatch,
+            player_a: withIsBandit(denormalizedMatch.player_a, banditId),
+            player_b: withIsBandit(denormalizedMatch.player_b, banditId)
+        };
+    }
 );  
 
 export const makeGetMatches = () => createSelector(
-    [getIds, getLimit, getMatchEntities, getPlayerEntities, getUserEntities],
-    (ids, limit, matches, players, users) => denormalize(
-        limit ? ids.slice(0, limit) : ids,
-        [matchSchema],
-        {
-            disputes: {},
-            matches,
-            players,
-            users
+    [getIds, getLimit, getBanditId, getMatchEntities, getPlayerEntities, getUserEntities],
+    (ids, limit, banditId, matches, players, users) => {
+        const denormalizedMatches = denormalize(
+            limit ? ids.slice(0, limit) : ids,
+            [matchSchema],
+            {disputes: {}, matches, players, users}
+        );
+
+        if (limit) {
+            return denormalizedMatches.map(match => ({
+                ...match,
+                player_a: withIsBandit(match.player_a, banditId),
+                player_b: withIsBandit(match.player_b, banditId)
+            }));
         }
-    )
+
+        const matchesByDate = denormalizedMatches.reduce((acc, match) => {
+            const date = moment(match.created).format('dddd Do');
+            const matches = acc[date] ? acc[date]['matches'] : []; 
+
+            return {
+                ...acc,
+                [date]: {
+                    date,
+                    matches: [
+                        ...matches,
+                        {
+                            ...match,
+                            player_a: withIsBandit(match.player_a, banditId),
+                            player_b: withIsBandit(match.player_b, banditId)
+                        }
+                    ]
+                }
+            };
+        }, {});
+
+        return Object.keys(matchesByDate).map(date => matchesByDate[date]);
+    }
 );
