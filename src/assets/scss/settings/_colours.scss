@@ -59,6 +59,54 @@ $shared-colours: (
   ($colour-rookie, 'rookie'),
 );
 
+
+
+
+$colour-level1: #F7F5BC;
+$colour-level2: #EBE66E;
+$colour-level3: #DECD3A;
+
+$colour-level4: #97F7CE;
+$colour-level5: #6EEBA0;
+$colour-level6: #24E25D;
+
+$colour-level7: #C7F7B2;
+$colour-level8: #A8EB6E;
+$colour-level9: #87CF0C;
+
+$colour-level10: #BEDCF7;
+$colour-level11: #78D4FF;
+$colour-level12: #00BDDE;
+
+$colour-level13: #BF97F7;
+$colour-level14: #9A78FF;
+$colour-level15: #3424E0;
+
+
+
+$colour-beginner: $colour-level1;
+$colour-starter: $colour-level2;
+$colour-amateur: $colour-level3;
+
+$colour-rookie: $colour-level4;
+$colour-learner: $colour-level5;
+$colour-novice: $colour-level6;
+
+$colour-student: $colour-level7;
+$colour-apprentice: $colour-level8;
+$colour-trainee: $colour-level9;
+
+$colour-recruit: $colour-level10;
+$colour-junior: $colour-level11;
+$colour-scout: $colour-level12; // 1200
+
+$colour-fighter: $colour-level13;
+$colour-gladiator: $colour-level14;
+$colour-warrior: $colour-level5; // 1200
+
+
+
+
 // greys
 // $colour-newcomer //Newcomer (<10 games played)
 
