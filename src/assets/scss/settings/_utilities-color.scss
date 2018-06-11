@@ -4,20 +4,6 @@ $utilities-color-settings: (
 
     values: (
       (
-        // Levels
-        ($colour-bandit, 'bandit'),
-        ($colour-god, 'god'),
-        ($colour-legendary, 'legendary'),
-        ($colour-monster, 'monster'),
-        ($colour-warrior, 'warrior'),
-        ($colour-ninja, 'legendary'),
-        ($colour-assassin, 'assassin'),
-        ($colour-knight, 'knight'),
-        ($colour-fighter, 'fighter'),
-        ($colour-scout, 'scout'),
-        ($colour-junior, 'junior'),
-        ($colour-rookie, 'rookie'),
-        
         ($colour-blanket, 'blanket'),
         ($colour-paste, 'paste'),
         ($colour-steam, 'steam'),
@@ -28,6 +14,46 @@ $utilities-color-settings: (
         ($colour-loss, 'loss'),
         ($colour-orange, 'orange'),
         ($colour-puss, 'puss'),
+
+        // Levels
+        ($colour-bandit, 'bandit'),
+        ($colour-newcomer, 'newcomer'),
+
+        ($colour-beginner, 'beginner'),
+        ($colour-starter, 'starter'),
+        ($colour-amateur, 'amateur'),
+
+        ($colour-rookie, 'rookie'),
+        ($colour-learner, 'learner'),
+        ($colour-novice, 'novice'),
+
+        ($colour-student, 'student'),
+        ($colour-apprentice, 'apprentice'),
+        ($colour-trainee, 'trainee'),
+
+        ($colour-recruit, 'recruit'),
+        ($colour-junior, 'junior'),
+        ($colour-scout, 'scout'),
+
+        ($colour-fighter, 'fighter'),
+        ($colour-gladiator, 'gladiator'),
+        ($colour-warrior, 'warrior'),
+
+        ($colour-assassin, 'assassin'),
+        ($colour-samurai, 'samurai'),
+        ($colour-ninja, 'ninja'),
+
+        ($colour-monster, 'monster'),
+        ($colour-mammoth, 'mammoth'),
+        ($colour-beast, 'beast'),
+
+        ($colour-oracle, 'oracle'),
+        ($colour-ultra, 'ultra'),
+        ($colour-mega, 'mega'),
+
+        ($colour-mythical, 'mythical'),
+        ($colour-legendary, 'legendary'),
+        ($colour-god, 'god'),
       ),
       (
         value: ($colour-white, 'white'),
