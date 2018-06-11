@@ -8,9 +8,10 @@ $colour-playdough: #3CB1FF;
 $colour-blanket: #ADC8FA;
 $colour-paste: #DCE4F7;
 $colour-deepblue: #1F3A83;
-$colour-mariana: #1E2D59;
 
+$colour-whale: #9EB6BA;
 $colour-steam: #626F94;
+$colour-mariana: #1E2D59;
 
 $colour-orange: #FF7048;
 $colour-satsuma: #F29E44;
@@ -26,41 +27,10 @@ $colour-loss: $colour-hotmelon;
 
 $colour-white: #FFFFFF;
 
-// oranges
-$colour-bandit: $colour-orange;
-$colour-god: #F7B874;
-$colour-legendary: #F7E094;
-$colour-monster: #FCFBD7;
 
-// greens
-$colour-warrior: #24E25D;
-$colour-ninja: #9CEB6E;
-$colour-assassin: #BDF896;
-$colour-knight: #E5FCD7;
-
-// blues
-$colour-fighter: #0DC4E0;
-$colour-scout: #6EEBE9;
-$colour-junior: #97F7E6;
-$colour-rookie: #D7F3FC;
-
-$shared-colours: (
-  ($colour-bandit, 'bandit'),
-  ($colour-god, 'god'),
-  ($colour-legendary, 'legendary'),
-  ($colour-monster, 'monster'),
-  ($colour-warrior, 'warrior'),
-  ($colour-ninja, 'legendary'),
-  ($colour-assassin, 'assassin'),
-  ($colour-knight, 'knight'),
-  ($colour-fighter, 'fighter'),
-  ($colour-scout, 'scout'),
-  ($colour-junior, 'junior'),
-  ($colour-rookie, 'rookie'),
-);
-
-
-
+// levels in coloured groups
+$colour-level0: $colour-whale; // unranked
+$colour-level100: $colour-orange; // top ranked
 
 $colour-level1: #F7F5BC;
 $colour-level2: #EBE66E;
@@ -82,7 +52,26 @@ $colour-level13: #BF97F7;
 $colour-level14: #9A78FF;
 $colour-level15: #3424E0;
 
+$colour-level16: #E197F7;
+$colour-level17: #C978FF;
+$colour-level18: #7624E0;
 
+$colour-level19: #F797E9;
+$colour-level20: #E96EEB;
+$colour-level21: #BF24E2;
+
+$colour-level22: #FCA2B2;
+$colour-level23: #FF7081;
+$colour-level24: #FF4769;
+
+$colour-level25: #F7E094;
+$colour-level26: #F7952D;
+$colour-level27: #E8360E;
+
+
+// levels named with classname slugs
+$colour-newcomer: $colour-level0;
+$colour-bandit: $colour-level100;
 
 $colour-beginner: $colour-level1;
 $colour-starter: $colour-level2;
@@ -102,25 +91,20 @@ $colour-scout: $colour-level12; // 1200
 
 $colour-fighter: $colour-level13;
 $colour-gladiator: $colour-level14;
-$colour-warrior: $colour-level5; // 1200
+$colour-warrior: $colour-level15;
 
+$colour-assassin: $colour-level16;
+$colour-samurai: $colour-level17;
+$colour-ninja: $colour-level18;
 
+$colour-monster: $colour-level19;
+$colour-mammoth: $colour-level20;
+$colour-beast: $colour-level21;
 
+$colour-oracle: $colour-level22;
+$colour-ultra: $colour-level23;
+$colour-mega: $colour-level24;
 
-// greys
-// $colour-newcomer //Newcomer (<10 games played)
-
-// Junior <= 849
-// Rookie <= 1099
-// Scout <= 1199
-// Intermediate <= 1299 "for a level of knowledge or skill between basic and advanced"
-// Fighter <= 1399
-// Knight <= 1499
-// Assassin <= 1599
-// Ninja <= 1699
-// Warrior <= 1799
-// Mega <= 1899
-// Monster <= 1999
-// Legendary<= 2099
-// Lord <= 2199
-// God >
+$colour-mythical: $colour-level25;
+$colour-legendary: $colour-level26;
+$colour-god: $colour-level27; // 2550+
