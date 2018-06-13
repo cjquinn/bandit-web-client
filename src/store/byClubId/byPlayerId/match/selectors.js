@@ -36,7 +36,14 @@ export const getIsFetching = makeIsFetchingSelector(getMatchState);
 
 export const getPage = (state, props) => getMatchState(state, props).page;
 
+export const getTotal = (state, props) => getMatchState(state, props).total;
+
 // Memoized
+export const makeGetHasMore = () => createSelector(
+    [getIds, getTotal],
+    (ids, total) => ids.length < total
+);
+
 export const makeGetMatch = () => createSelector(
     [getBanditId, getMatchEntity, getPlayerEntities, getUserEntities],
     (banditId, match, players, users) => {

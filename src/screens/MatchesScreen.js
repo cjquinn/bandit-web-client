@@ -8,6 +8,7 @@ import Template from '../components/shared/Template';
 
 // Containers
 import MatchesListContainer from '../containers/lists/MatchesListContainer';
+import LoadMoreMatchesControlContainer from '../containers/controls/LoadMoreMatchesControlContainer';
 
 const MatchesScreen = () => (
     <Template>
@@ -26,6 +27,10 @@ const MatchesScreen = () => (
             component={DatedMatchesList}
             playerId="all"
         />
+
+        <div className="o-container">
+            <LoadMoreMatchesControlContainer playerId="all" />
+        </div>
 
         <Footer />
     </Template>
