@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 
 // Components
 import ClubMenu from '../components/menus/ClubMenu';
@@ -63,7 +63,8 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                     <AuthenticatedRoute exact path="/disputes" component={DisputesScreen} isClubRoute={true} />
                     <AuthenticatedRoute exact path="/disputes/:disputeId" component={DisputeScreen} isClubRoute={true} />
 
-                    <AuthenticatedRoute exact path="/leaderboard" component={LeaderboardScreen} isClubRoute={true} />
+                    <Redirect exact path="/leaderboard" to="/leaderboard/weekly" />
+                    <AuthenticatedRoute path="/leaderboard" component={LeaderboardScreen} isClubRoute={true} />
                     
                     <AuthenticatedRoute exact path="/players" component={PlayersScreen} isClubRoute={true} />
                     <AuthenticatedRoute exact path="/players/invite" component={InvitePlayerScreen} isClubRoute={true} />

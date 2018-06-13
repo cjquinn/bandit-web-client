@@ -4,6 +4,10 @@ $utilities-background-settings: (
 
     values: (
       (
+        value: ($colour-floor05, 'floor05'),
+        pseudos: ('hover', 'focus'),
+      ),
+      (
         ($colour-basement, 'basement'),
         ($colour-fold, 'fold'),
         ($colour-fold05, 'fold05'),
@@ -50,10 +54,6 @@ $utilities-background-settings: (
         ($colour-mythical, 'mythical'),
         ($colour-legendary, 'legendary'),
         ($colour-god, 'god'),
-      ),
-      (
-        value: ($colour-floor05, 'floor05'),
-        pseudos: ('hover', 'focus'),
       ),
     ),
   ),
