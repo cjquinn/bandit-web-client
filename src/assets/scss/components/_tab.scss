@@ -5,23 +5,41 @@
 $component: 'tab';
 
 #{'.' + $global-components-namespace + $component} {
-  @extend .u-size-h4; // is this global?
+  @extend .u-block;
+  @extend .u-borrad-3300;
+  transition: all .2s ease;
 
-  &--active,
-  &--inactive {
-    @extend .u-block;
-    @extend .u-pv-1bl;
-    @extend .u-ph-1bl;
-    @extend .u-borrad-3300;
-
+  &:not(&--active) {
+    &:hover,
+    &:focus {
+      @extend .u-color-playdough\@hover;
+    }
   }
+
   &--active {
     @extend .u-color-white;
     @extend .u-bgcolor-floor;
   }
 
-  &--inactive {
-    @extend .u-color-playdough\@hover;
-    @extend .u-bgcolor-floor05\@hover;
+  // .c-tab--header
+  &--header {
+    @extend .u-pv-1bl;
+    @extend .u-ph-1bl;
+    @extend .u-size-h4;
+  }
+
+  &--header:not(&--active) {
+    @extend .u-bgcolor-floor05\@hover;    
+  }
+
+  // .c-tab--main
+  &--main {
+    @extend .u-pv-105bl;
+    @extend .u-ph-1bl;
+    @extend .u-size-h3;
+  }
+
+  &--main:not(&--active) {
+    @extend .u-bgcolor-floor05;
   }
 }
