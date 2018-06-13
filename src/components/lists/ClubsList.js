@@ -19,9 +19,12 @@ const ClubsList = ({ clubId, clubs, handleClick }) => (
 
                     <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
                         <span>{club.player_count} player{club.player_count !== 1 ? 's' : ''}</span>
+
                         <span>
-                            {club.last_played_in_days
-                                ? `${club.last_played_in_days} day${club.last_played_in_days !== 1 ? 's' : ''} since you've played`
+                            {club.last_played_in_days !== null
+                                ? club.last_played_in_days > 0
+                                    ? `${club.last_played_in_days} day${club.last_played_in_days !== 1 ? 's' : ''} since you've played`
+                                    : 'You played today'
                                 : 'Get your first match in!'
                             }
                         </span>
