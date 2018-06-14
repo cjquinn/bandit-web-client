@@ -1,0 +1,15 @@
+/**
+ * .o-fade-inactive
+ */
+
+$object: 'fade-inactive';
+
+#{'.' + $global-objects-namespace + $object} {
+
+  // works for now
+  // might need to get specific later e.g. .o-fade-inactive:not(.o-fade-inactive--active)
+  &:not([class*='--active']) {
+    @extend .u-opac-05;
+    @extend .u-opac-1\@hover;
+  }
+}
