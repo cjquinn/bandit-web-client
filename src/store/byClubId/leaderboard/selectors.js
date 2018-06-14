@@ -7,8 +7,11 @@ import { player as playerSchema } from '../../schema';
 // Selectors
 import { getByClubIdState } from '../selectors';
 import { getPlayerEntities, getUserEntities } from '../../entities/selectors';
-import { makeIsFetchingSelector } from '../../shared/selectors';
 import { getLimit, getPlayerId } from '../../props/selectors';
+import { getBanditId, makeIsFetchingSelector } from '../../shared/selectors';
+
+// Utilities
+import { withIsBandit } from '../../utilities';
 
 export const initialState = {
     ids: [],
@@ -27,8 +30,8 @@ export const getIsFetching = makeIsFetchingSelector(getLeaderboardState);
 
 // Memoized
 export const makeGetLeaderboard = () => createSelector(
-    [getIds, getLimit, getPlayerId, getPlayerEntities, getUserEntities],
-    (ids, limit, playerId, players, users) => {
+    [getIds, getLimit, getPlayerId, getBanditId, getPlayerEntities, getUserEntities],
+    (ids, limit, playerId, banditId, players, users) => {
         let idsToUse = ids;
 
         if (limit) {
@@ -49,6 +52,6 @@ export const makeGetLeaderboard = () => createSelector(
             idsToUse = ids.slice(startIndex, startIndex + limit);
         }
 
-        return denormalize(idsToUse, [playerSchema], {players, users});
+        return denormalize(idsToUse, [playerSchema], {players, users}).map(player => withIsBandit(player, banditId));
     }
 );

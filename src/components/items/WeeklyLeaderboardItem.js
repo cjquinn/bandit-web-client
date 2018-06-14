@@ -1,0 +1,47 @@
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+// Components
+import PlayerPhoto from '../shared/PlayerPhoto';
+
+const WeeklyLeaderboardItem = ({ player, position, userId }) => (
+    <li className="u-pos-relative u-bgcolor-fold">
+        {player.user_id === userId &&
+            <div className="o-absfill u-borrad-inherit u-shadow-you u-pointer-none"></div>
+        }
+
+        <Link
+            to={`/players/${player.id}`}
+            className="u-flex u-ai-center u-pv-1bl u-ph-1bl"
+        >
+            <div className="u-mr-1bl">
+                <PlayerPhoto player={player} />
+            </div>
+
+            <dl className="u-flex u-jc-between u-ai-center u-width-100pc">
+                <div className="u-grow-1 u-vspace-03r">
+                    <dt className="u-color-paste">{player.user.name}</dt>
+
+                    <dd className="u-flex u-ai-center u-hspace-4px u-size-13px">
+                        <span className={`u-color-${player.rating_change > 0 ? 'win' : 'loss'}`}>{player.rating_change > 0 && '+'}{player.rating_change} <abbr title="rating points">pts.</abbr></span>
+
+                        <span><span className="o-dictate">from</span> {player.wins_change} wins</span>
+
+                        <span><span className="o-dictate">and</span> {player.losses_change} losses</span>
+                    </dd>
+                </div>
+
+                <dd className="u-color-paste u-size-h4 u-weight-bold u-ws-no">#{position}</dd>
+            </dl>
+        </Link>
+    </li>
+);
+
+WeeklyLeaderboardItem.propTypes = {
+    player: PropTypes.object.isRequired,
+    position: PropTypes.number.isRequired,
+    userId: PropTypes.number.isRequired
+};
+
+export default WeeklyLeaderboardItem;

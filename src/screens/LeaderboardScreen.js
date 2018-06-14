@@ -1,11 +1,15 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import moment from 'moment';
 
 // Components
+import AllTimeLeaderboardList from '../components/lists/AllTimeLeaderboardList';
 import Footer from '../components/Footer';
 import Template from '../components/shared/Template';
-import WeeklyLeaderboardPlayer from '../components/WeeklyLeaderboardPlayer';
+import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
+
+// Containers
+import LeaderboardListContainer from '../containers/lists/LeaderboardListContainer';
 
 const LeaderboardScreen = () => (
     <Template>
@@ -43,29 +47,27 @@ const LeaderboardScreen = () => (
             </ul>
         </nav>
 
-        <section id="weekly-leaderboard" className="o-container">
-            <dl className="u-vspace-3bl">
-                <dd>
-                    <li>
-                        <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                            <div className="c-notification c-notification--alert">
-                                <p className="u-weight-bold">Weekly Leaderboard has reset!</p>
-                                
-                                <p>Play a match to open up this week’s rankings.</p>
-                            </div>
-
-                            <WeeklyLeaderboardPlayer/>
-                            <WeeklyLeaderboardPlayer/>
-                            <WeeklyLeaderboardPlayer/>
-                            <WeeklyLeaderboardPlayer/>       
-                        </ol>
-                    </li>
-                </dd>
-            </dl>
-        </section>
+        <Switch>
+            <Route exact path="/leaderboard/all-time" render={props => (
+                <LeaderboardListContainer
+                    component={AllTimeLeaderboardList}
+                    period="allTime"
+                    {...props}
+                />
+            )} />
+            <Route exact path="/leaderboard/weekly" render={props => (
+                <LeaderboardListContainer
+                    component={WeeklyLeaderboardList}
+                    period="weekly"
+                    {...props}
+                />
+            )} />
+        </Switch>
 
         <Footer>
-            <p>{moment().startOf('isoWeek').format('dddd Do')} - {moment().endOf('isoWeek').format('dddd Do MMMM')}</p>
+            <Route exact path="/leaderboard/weekly" render={() => (
+                <p>{moment().startOf('isoWeek').format('dddd Do')} - {moment().endOf('isoWeek').format('dddd Do MMMM')}</p>
+            )} />
         </Footer>
     </Template>
 );
