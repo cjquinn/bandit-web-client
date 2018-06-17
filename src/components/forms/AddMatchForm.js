@@ -14,7 +14,7 @@ const AddMatchForm = ({ handleSubmit, error, players, submitting, user }) => (
         {error && ''}
 
         <div className="c-notification c-notification--info" role="alert">
-            <p className="u-weight-bold">What’s the score <em>if</em>&hellip;?</p>
+            <p className="u-weight-bold">What’s the score?</p>
 
             <ol className="u-vspace-mt-">
                 <li>You won <strong className="u-color-white">5 games</strong></li>
