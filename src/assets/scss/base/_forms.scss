@@ -1,17 +1,17 @@
 ::-webkit-input-placeholder {
-  color: $colour-steam;
+  color: rgba($colour-steam, .3);
 }
 
 ::-moz-placeholder {
-  color: $colour-steam;
+  color: rgba($colour-steam, .3);
 }
 
 :-ms-input-placeholder {
-  color: $colour-steam;
+  color: rgba($colour-steam, .3);
 }
 
 :-moz-placeholder {
-  color: $colour-steam;
+  color: rgba($colour-steam, .3);
 }
 
 [disabled] {
