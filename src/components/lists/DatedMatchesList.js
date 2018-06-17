@@ -21,16 +21,20 @@ const DatedMatchesList = ({ matches }) => matches.map(({ date, matches }, i) => 
                         to={`/matches/${match.id}`}
                         className="u-flex u-ai-center u-pv-1bl u-ph-1bl u-color-paste"
                     >
-                        <div className="u-grow-1 u-basis-0 u-flex u-ai-center u-jc-center u-order-2 u-align-center u-hspace-1bl">
+                        <div className="u-grow-1 u-basis-0 u-flex u-ai-center u-jc-center u-order-2 u-align-center">
                             <PlayerPhoto player={match.player_a} />
 
                             <dt className="u-size-h4 u-weight-bold u-ws-no">
-                                <span className="o-dictate">{match.player_a.user.name}</span> {match.player_a_score}
-                                 &ndash; 
-                                <span className="o-dictate">{match.player_b.user.name}</span> {match.player_b_score}
+                                <span className="o-dictate">{match.player_a.user.name}</span>
+                                <span className="u-inline-block u-width-2ch u-align-right u-ml-1bl">{match.player_a_score}</span>
+                                <span className="u-inline-block u-width-2ch u-align-center">&ndash;</span>
+                                <span className="o-dictate">{match.player_b.user.name}</span>
+                                <span className="u-inline-block u-width-2ch u-align-left">{match.player_b_score}</span>
                             </dt>
 
-                            <PlayerPhoto player={match.player_b} />
+                            <div className="u-ml-1bl">
+                                <PlayerPhoto player={match.player_b} />
+                            </div>
                         </div>
 
                         <div className="u-grow-1 u-basis-0 u-order-1 u-align-left o-ellipsis">
@@ -38,7 +42,7 @@ const DatedMatchesList = ({ matches }) => matches.map(({ date, matches }, i) => 
                         </div>
 
 
-                        <div className="u-grow-1 u-basis-0 u-order-3 u-align-right o-ellipsis">
+                        <div className="u-grow-1 u-basis-0 u-order-3 u-ml-1bl o-ellipsis">
                             <span aria-hidden="true">{match.player_b.user.name}</span>
                         </div>
                     </Link>
