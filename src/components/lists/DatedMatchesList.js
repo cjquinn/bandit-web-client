@@ -42,7 +42,7 @@ const DatedMatchesList = ({ matches }) => matches.map(({ date, matches }, i) => 
                         </div>
 
 
-                        <div className="u-grow-1 u-basis-0 u-order-3 u-ml-1bl o-ellipsis">
+                        <div className="u-grow-1 u-basis-0 u-order-3 u-ml-1bl u-align-right o-ellipsis">
                             <span aria-hidden="true">{match.player_b.user.name}</span>
                         </div>
                     </Link>
