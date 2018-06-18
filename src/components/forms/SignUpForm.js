@@ -13,17 +13,33 @@ const SignUpForm = ({ handleSubmit, error, submitting }) => (
         {error && ''}
         
         <div className="u-ph-1bl u-vspace-3bl">
+
+            <div>
+
+                <div className="u-flex u-hspace-2bl">
+
+                    <Field
+                        component={InputField}
+                        name="founder[firstname]"
+                        label="First name:"
+                        type="text"
+                    />
+                    
+                    <Field
+                        component={InputField}
+                        name="founder[lastname]"
+                        label="Last name:"
+                        type="text"
+                    />
+
+                </div>
+
+            </div>
+
             <Field
                 component={InputField}
                 name="name"
                 label="Club name:"
-                type="text"
-            />
-
-            <Field
-                component={InputField}
-                name="founder[name]"
-                label="Your name:"
                 type="text"
             />
 

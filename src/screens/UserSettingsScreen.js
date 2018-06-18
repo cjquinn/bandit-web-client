@@ -26,10 +26,23 @@ const UserSettingsScreen = () => (
                     <p>We couldn&rsquo;t update your settings &#8212; please take another look at the errors below.</p>
                 </div>
 
-                <fieldset className="u-pos-relative">
-                    <input type="text" value="Christy Quinn" required />
-                    <label>Name:</label>
-                </fieldset>
+                <div>
+
+                    <div className="u-flex u-hspace-2bl">
+
+                        <fieldset className="u-pos-relative">
+                            <input type="text" value="Christy" required />
+                            <label>First name:</label>
+                        </fieldset>
+                        
+                        <fieldset className="u-pos-relative">
+                            <input type="text" value="Quinn" required />
+                            <label>Last name:</label>
+                        </fieldset>
+                    
+                    </div>
+
+                </div>
 
                 <div>
                     <fieldset className="u-pos-relative">
