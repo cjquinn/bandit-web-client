@@ -15,7 +15,7 @@ const ClubMenu = () => (
                     <NavLink
                         to="/"
                         exact
-                        className="c-tab c-tab--inactive"
+                        className="c-tab c-tab--header"
                         activeClassName="c-tab--active"
                     >
                         Dashboard
@@ -25,7 +25,7 @@ const ClubMenu = () => (
                 <li>
                     <NavLink
                         to="/matches"
-                        className="c-tab c-tab--inactive"
+                        className="c-tab c-tab--header"
                         activeClassName="c-tab--active"
                     >
                         Matches
@@ -35,7 +35,7 @@ const ClubMenu = () => (
                 <li>
                     <NavLink
                         to="/leaderboard"
-                        className="c-tab c-tab--inactive"
+                        className="c-tab c-tab--header"
                         activeClassName="c-tab--active"
                     >
                         Leaderboard
@@ -45,7 +45,7 @@ const ClubMenu = () => (
                 <li>
                     <NavLink
                         to="/players"
-                        className="c-tab c-tab--inactive"
+                        className="c-tab c-tab--header"
                         activeClassName="c-tab--active"
                     >
                         Players

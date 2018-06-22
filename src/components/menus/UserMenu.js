@@ -15,7 +15,7 @@ const UserMenu = () => (
                     <NavLink
                         to="/profile"
                         exact
-                        className="c-tab c-tab--inactive"
+                        className="c-tab c-tab--header"
                         activeClassName="c-tab--active"
                     >
                         Profile
@@ -26,7 +26,7 @@ const UserMenu = () => (
                     <NavLink
                         to="/settings"
                         exact
-                        className="c-tab c-tab--inactive"
+                        className="c-tab c-tab--header"
                         activeClassName="c-tab--active"
                     >
                         Settings
@@ -36,7 +36,7 @@ const UserMenu = () => (
                 <li>
                     <NavLink
                         to="/clubs"
-                        className="c-tab c-tab--inactive"
+                        className="c-tab c-tab--header"
                         activeClassName="c-tab--active"
                     >
                         Clubs

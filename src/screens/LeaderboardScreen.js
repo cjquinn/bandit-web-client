@@ -27,8 +27,8 @@ const LeaderboardScreen = () => (
                     <NavLink
                         to="/leaderboard/weekly"
                         exact
-                        className="u-block u-pv-105bl u-ph-1bl u-borrad-3300 u-size-h3 u-color-white u-bgcolor-floor05"
-                        activeClassName="u-bgcolor-floor"
+                        className="c-tab c-tab--main"
+                        activeClassName="c-tab--active"
                     >
                         Weekly
                     </NavLink>
@@ -38,8 +38,8 @@ const LeaderboardScreen = () => (
                     <NavLink
                         to="/leaderboard/all-time"
                         exact
-                        className="u-block u-pv-105bl u-ph-1bl u-borrad-3300 u-size-h3 u-color-white u-bgcolor-floor05"
-                        activeClassName="u-bgcolor-floor"
+                        className="c-tab c-tab--main"
+                        activeClassName="c-tab--active"
                     >
                         All-time
                     </NavLink>

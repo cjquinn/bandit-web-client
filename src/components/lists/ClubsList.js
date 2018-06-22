@@ -6,7 +6,7 @@ const ClubsList = ({ clubId, clubs, handleClick }) => (
         {clubs.map(club =>
             <li
                 key={club.id}
-                className={`u-bgcolor-fold u-pos-relative ${club.id !== clubId && 'u-opac-05 u-opac-1@hover'}`}
+                className={`o-fade-inactive u-bgcolor-fold u-pos-relative ${club.id == clubId && 'o-fade-inactive--active'}`}
             >
                 {club.id === clubId &&
                     <div className="o-absfill u-borrad-inherit u-shadow-you u-pointer-none"></div>

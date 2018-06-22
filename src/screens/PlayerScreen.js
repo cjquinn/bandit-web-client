@@ -58,7 +58,7 @@ const PlayerScreen = () => (
 
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">Matches</h1>
-                <a href="/results" className="c-go">See all</a>
+                {/* <a href="/results" className="c-go">See all</a> */}
             </header>
 
             <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">

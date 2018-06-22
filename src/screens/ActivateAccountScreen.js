@@ -31,10 +31,23 @@ const ActivateAccountScreen = () => (
 
             <div className="u-ph-1bl u-vspace-3bl">
 
-                <fieldset className="u-pos-relative">
-                    <input type="text" />
-                    <label>Name:</label>
-                </fieldset>
+                <div>
+
+                    <div className="u-flex u-hspace-2bl">
+
+                        <fieldset className="u-pos-relative">
+                            <input type="text" />
+                            <label>First name:</label>
+                        </fieldset>
+                        
+                        <fieldset className="u-pos-relative">
+                            <input type="text" />
+                            <label>Last name:</label>
+                        </fieldset>
+
+                    </div>
+
+                </div>
 
                 <fieldset className="u-pos-relative">
                     <input type="email" value="alreadyhere@gmail.com" />

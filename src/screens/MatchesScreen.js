@@ -15,7 +15,7 @@ const MatchesScreen = () => (
         <header className="o-container u-ph-1bl">
             <div className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Club Matches</h1>
-                <h2 className="u-size-h4">Who’s been collecting scalps lately?</h2>
+                <h2 className="u-size-h4 u-line-error">Who’s been collecting scalps lately?</h2>
             </div>
 
             <Link to="/matches/add" className="c-button c-button--default u-mt-2bl">Add match</Link>
