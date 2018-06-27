@@ -1,59 +1,92 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Components
+import AllTimeLeaderboardList from '../components/lists/AllTimeLeaderboardList';
 import Footer from '../components/Footer';
+import MatchesList from '../components/lists/MatchesList';
+import Template from '../components/shared/Template';
+import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
 
 import Disputes from '../components/Disputes';
 import DashboardMatches from '../components/DashboardMatches';
 
-import Match from '../components/Match';
-import Template from '../components/shared/Template';
-
-import AllTimeLeaderboardPlayer from '../components/AllTimeLeaderboardPlayer';
-import WeeklyLeaderboardPlayer from '../components/WeeklyLeaderboardPlayer';
+// Containers
+import LeaderboardListContainer from '../containers/lists/LeaderboardListContainer';
+import MatchesListContainer from '../containers/lists/MatchesListContainer';
 
 const DashboardScreen = () => (
     <Template>
 
         <Disputes />
 
-        <DashboardMatches />
-
-        <section id="weekly-leaderboard" className="o-container">
-
+        <section id="matches" className="o-container">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">Weekly <span className="u-color-steam">leaderboard</span></h1>
-                <a href="/leaderboard" className="c-go">Go</a>
+                <h1 className="u-size-h2 u-color-white">Matches</h1>
+
+                <Link
+                    to="/matches"
+                    className="c-go"
+                >
+                    Go
+                </Link>
             </header>
 
-            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+            <MatchesListContainer
+                component={MatchesList}
+                limit="3"
+                playerId="all"
+            />
 
-                <WeeklyLeaderboardPlayer />
-                <WeeklyLeaderboardPlayer />
-                <WeeklyLeaderboardPlayer />
-            </ol>
+            <footer className="u-ph-1bl">
+                <Link
+                    to="/matches/add"
+                    className="c-button c-button--default u-mt-2bl"
+                >
+                    Add match
+                </Link>
+            </footer>
+        </section>
 
+        <section id="weekly-leaderboard" className="o-container">
+            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                <h1 className="u-size-h2 u-color-white">Weekly <span className="u-color-steam">leaderboard</span></h1>
+
+                <Link
+                    to="/leaderboard/weekly"
+                    className="c-go"
+                >
+                    Go
+                </Link>
+            </header>
+
+            <LeaderboardListContainer
+                component={WeeklyLeaderboardList}
+                period="weekly"
+                limit="3"
+            />
         </section>
 
         <section id="alltime-leaderboard" className="o-container">
-
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">All time <span className="u-color-steam">leaderboard</span></h1>
-                <a href="/leaderboard" className="c-go">Go</a>
+
+                <Link
+                    to="/leaderboard/all-time"
+                    className="c-go"
+                >
+                    Go
+                </Link>
             </header>
 
-            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-
-                <AllTimeLeaderboardPlayer />
-                <AllTimeLeaderboardPlayer />
-                <AllTimeLeaderboardPlayer />
-
-            </ol>
-
+            <LeaderboardListContainer
+                component={AllTimeLeaderboardList}
+                period="allTime"
+                limit="3"
+            />
         </section>
 
         <Footer />
-
     </Template>
 );
 

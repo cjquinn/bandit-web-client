@@ -10,6 +10,7 @@ import PlayersList from '../../components/lists/PlayersList';
 
 // Selectors
 import { getPlayers } from '../../store/byClubId/player/selectors';
+import { getUserId } from '../../store/shared/selectors';
 
 class PlayersListContainer extends Component {
     componentDidMount() {
@@ -17,19 +18,26 @@ class PlayersListContainer extends Component {
     }
 
     render() {
-        const { players } = this.props;
+        const { players, userId } = this.props;
 
-        return <PlayersList players={players} />;
+        return (
+            <PlayersList
+                players={players}
+                userId={userId}
+            />
+        );
     }
 }
 
 PlayersListContainer.propTypes = {
     players: PropTypes.array.isRequired,
-    fetchPlayers: PropTypes.func.isRequired
+    fetchPlayers: PropTypes.func.isRequired,
+    userId: PropTypes.number.isRequired
 };
 
 const mapStateToProps = state => ({
-    players: getPlayers(state)
+    players: getPlayers(state),
+    userId: getUserId(state)
 });
 
 const mapDispatchToProps = dispatch => ({

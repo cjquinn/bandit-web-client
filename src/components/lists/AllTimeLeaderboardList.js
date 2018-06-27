@@ -9,12 +9,16 @@ const AllTimeLeaderboardList = ({ players, userId }) => (
         {players.length > 0 &&
             <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
                 {players.map((player, i) => (
-                    <AllTimeLeaderboardItem
+                    <li
                         key={player.id}
-                        player={player}
-                        position={i + 1}
-                        userId={userId}
-                    />
+                        className="u-pos-relative u-bgcolor-fold"
+                    >
+                        <AllTimeLeaderboardItem
+                            player={player}
+                            position={i + 1}
+                            userId={userId}
+                        />
+                    </li>
                 ))}
             </ol>
         }

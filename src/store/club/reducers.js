@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { combineActions, handleActions } from 'redux-actions';
+import { handleActions } from 'redux-actions';
 
 // Actions
 import * as actions from './actions';
@@ -9,10 +9,7 @@ import { makeIsFetchingReducer } from '../shared/reducers';
 
 const ids = handleActions(
     {
-        [combineActions(
-            actions.createClubSuccess,
-            actions.fetchClubSuccess
-        )]: (state, { payload }) => ([
+        [actions.createClubSuccess]: (state, { payload }) => ([
             ...state,
             payload.result
         ]),
