@@ -9,7 +9,6 @@ import Template from '../components/shared/Template';
 import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
 
 import Disputes from '../components/Disputes';
-import DashboardMatches from '../components/DashboardMatches';
 
 // Containers
 import LeaderboardListContainer from '../containers/lists/LeaderboardListContainer';
