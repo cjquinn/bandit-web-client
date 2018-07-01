@@ -1,107 +1,84 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Components
-import AllTimeLeaderboardPlayer from '../components/AllTimeLeaderboardPlayer';
+import AllTimeLeaderboardList from '../components/lists/AllTimeLeaderboardList';
 import Footer from '../components/Footer';
-import Match from '../components/Match';
-import MiniStats from '../components/MiniStats';
-import PlayerPhoto from '../components/PlayerPhoto';
-import Svg from '../components/Svg';
+import MatchesList from '../components/lists/MatchesList';
 import Template from '../components/shared/Template';
-import WeeklyLeaderboardPlayer from '../components/WeeklyLeaderboardPlayer';
+import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
 
-// Sprites
-import rating from '../assets/svg/sprite/rating.svg';
+// Containers
+import LeaderboardListContainer from '../containers/lists/LeaderboardListContainer';
+import MatchesListContainer from '../containers/lists/MatchesListContainer';
+import PlayerHeaderContainer from '../containers/player/PlayerHeaderContainer';
 
-const PlayerScreen = () => (
+const PlayerScreen = ({ match, user }) => (
     <Template>
-
-        <div className="o-container u-vspace-3bl">
-
-            <header className="u-flex u-ai-center u-ph-1bl">
-
-                <div className="u-mr-1bl">
-                    <PlayerPhoto />
-                </div>
-
-                <dl className="u-flex u-jc-between u-ai-center u-width-100pc">
-                    <div className="u-grow-1 u-vspace-06r">
-                        <dt><h1 className="u-size-h1 u-color-white">Stephen Haynult</h1></dt>
-                        <dd className="u-flex u-ai-center u-hspace-8px u-size-15px">
-                            <span className="u-flex u-ai-center u-hspace-8px">
-                                <span className="u-flex u-ai-center u-hspace-4px">
-                                    <Svg
-                                        className="u-width-1bl u-height-auto"
-                                        sprite={rating}
-                                    />
-
-                                    <span className="u-color-paste">1865 <span className="o-dictate">rating</span></span>
-                                </span>
-
-                                <span className="u-uppercase u-color-ninja">ninja</span>
-
-                                <span><span className="o-dictate">from</span> 153 games</span>
-                            </span>
-                        </dd>
-                    </div>
-                </dl>
-
-            </header>
-
-            <MiniStats />
-
-        </div>
+        <PlayerHeaderContainer playerId={match.params.playerId ? +match.params.playerId : user.player.id} />
 
         <hr className="c-hr" />
 
-        <section id="results" className="o-container">
-
-            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+        <section className="o-container">
+            <header className="u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">Matches</h1>
-                {/* <a href="/results" className="c-go">See all</a> */}
             </header>
 
-            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                <Match />
-                <Match />
-                <Match />
-            </ol>
-
+            <MatchesListContainer
+                component={MatchesList}
+                limit="3"
+                playerId={match.params.playerId ? +match.params.playerId : user.player.id}
+            />
         </section>
 
-        <section id="weekly-leaderboard" className="o-container">
-
+        <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">Weekly <span className="u-color-steam">leaderboard</span></h1>
-                <a href="/leaderboard" className="c-go">See all</a>
+
+                <Link
+                    to="/leaderboard/weekly"
+                    className="c-go"
+                >
+                    Go
+                </Link>
             </header>
 
-            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                <WeeklyLeaderboardPlayer />
-                <WeeklyLeaderboardPlayer />
-                <WeeklyLeaderboardPlayer />
-            </ol>
-
+            <LeaderboardListContainer
+                component={WeeklyLeaderboardList}
+                limit="3"
+                period="weekly"
+                playerId={match.params.playerId ? +match.params.playerId : user.player.id}
+            />
         </section>
 
-        <section id="alltime-leaderboard" className="o-container">
-
+        <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">All time <span className="u-color-steam">leaderboard</span></h1>
-                <a href="/leaderboard" className="c-go">See all</a>
+
+                <Link
+                    to="/leaderboard/all-time"
+                    className="c-go"
+                >
+                    Go
+                </Link>
             </header>
 
-            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                <AllTimeLeaderboardPlayer />
-                <AllTimeLeaderboardPlayer />
-                <AllTimeLeaderboardPlayer />
-            </ol>
-
+            <LeaderboardListContainer
+                component={AllTimeLeaderboardList}
+                limit="3"
+                period="allTime"
+                playerId={match.params.playerId ? +match.params.playerId : user.player.id}
+            />
         </section>
 
         <Footer />
-
     </Template>
 );
+
+PlayerScreen.propTypes = {
+    match: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
+};
 
 export default PlayerScreen;

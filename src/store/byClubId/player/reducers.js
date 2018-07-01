@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { handleAction, handleActions } from 'redux-actions';
+import { handleAction } from 'redux-actions';
 
 // Actions
 import * as actions from './actions';
@@ -10,14 +10,9 @@ import { makeIsFetchingReducer } from '../../shared/reducers';
 // Selectors
 import { initialState } from './selectors';
 
-const ids = handleActions(
-    {
-        [actions.fetchPlayerSuccess]: (state, { payload }) => ([
-            ...state,
-            payload.result
-        ]),
-        [actions.fetchPlayersSuccess]: (state, { payload }) => payload.result
-    },
+const ids = handleAction(
+    actions.fetchPlayersSuccess,
+    (state, { payload }) => payload.result,
     initialState.ids
 );
 

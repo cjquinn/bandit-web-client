@@ -15,7 +15,7 @@ const WeeklyLeaderboardList = ({ isFetching, players, userId }) => (
         }
 
         {players.length > 0 &&
-            <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+            <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
                 {players.map((player, i) => (
                     <li
                         key={player.id}

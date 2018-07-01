@@ -4,6 +4,9 @@ import { createSelector } from 'reselect';
 import { getPlayerEntities, getUserEntities } from '../entities/selectors';
 import { getBanditId, getClubId, getUserId } from '../shared/selectors';
 
+// Utilities
+import { withIsBandit } from '../utilities';
+
 export const getIsLoading = state => state.user.isLoading;
 
 export const getUserEntity = state => getUserEntities(state)[getUserId(state)];
@@ -16,10 +19,7 @@ export const getUser = createSelector(
 
         return {
             ...user,
-            player: {
-                ...player,
-                isBandit: (player.wins > 0 || player.losses > 0) && player.id === banditId
-            }
+            player: withIsBandit(player, banditId)
         };
     }
 );

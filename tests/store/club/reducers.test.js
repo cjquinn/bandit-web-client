@@ -33,24 +33,6 @@ describe('createClub', () => {
     });
 });
 
-describe('fetchClub', () => {
-    it(actions.fetchClubSuccess.toString(), () => {
-        const state = {
-            ids: [1, 2],
-            isFetching: false
-        };
-
-        const payload  = {result: 3};
-
-        const expected = {
-            ids: [1, 2, 3],
-            isFetching: false
-        };
-
-        expect(reducers(state, actions.fetchClubSuccess(payload))).toEqual(expected);
-    });
-});
-
 describe('fetchClubs', () => {
     it(actions.fetchClubsRequest.toString(), () => {
         const state = {

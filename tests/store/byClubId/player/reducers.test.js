@@ -16,26 +16,6 @@ describe('initial state', () => {
     });
 });
 
-describe('fetchPlayer', () => {
-    it(actions.fetchPlayerSuccess.toString(), () => {
-        const state = {
-            ids: [1, 2],
-            isFetching: false,
-            orderBy: 'a-z'
-        };
-
-        const payload  = {result: 3};
-
-        const expected = {
-            ids: [1, 2, 3],
-            isFetching: false,
-            orderBy: 'a-z'
-        };
-
-        expect(reducers(state, actions.fetchPlayerSuccess(payload))).toEqual(expected);
-    });
-});
-
 describe('fetchPlayers', () => {
     it(actions.fetchPlayersRequest.toString(), () => {
         const state = {

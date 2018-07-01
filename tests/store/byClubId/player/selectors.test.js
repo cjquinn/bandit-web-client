@@ -149,7 +149,8 @@ describe('selectors', () => {
                 id: 1,
                 name: 'Russell'
             },
-            isBandit: true
+            isBandit: true,
+            winRatio: '0.33'
         };
 
         expect(makeGetPlayer()(state, props)).toEqual(expected);

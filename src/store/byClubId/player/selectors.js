@@ -40,10 +40,13 @@ export const makeGetPlayer = () => createSelector(
     [getBanditId, getPlayerEntity, getUserEntities],
     (banditId, player, users) =>
         player
-            ? withIsBandit(
-                denormalize(player.id, playerSchema, {players: {[player.id]: player}, users}),
-                banditId
-            )
+            ? {
+                ...withIsBandit(
+                    denormalize(player.id, playerSchema, {players: {[player.id]: player}, users}),
+                    banditId
+                ),
+                winRatio: (player.wins / player.losses).toFixed(2)
+            }
             : undefined
 );
 

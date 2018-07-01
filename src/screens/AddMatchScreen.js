@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +9,7 @@ import Template from '../components/shared/Template';
 // Containers
 import AddMatchFormContainer from '../containers/forms/AddMatchFormContainer';
 
-const AddMatchScreen = () => (
+const AddMatchScreen = ({ user }) => (
     <Template>
         <div className="o-container u-ph-1bl u-vspace-2bl">
             <Link
@@ -21,7 +22,7 @@ const AddMatchScreen = () => (
             <header className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Add Match</h1>
 
-                <h2 className="u-size-h4">Get those games in!</h2>
+                <h2 className="u-size-h4">Get those games in, {user.name}!</h2>
             </header>
         </div>
 
@@ -32,5 +33,9 @@ const AddMatchScreen = () => (
         <Footer />
     </Template>
 );
+
+AddMatchScreen.propTypes = {
+    user: PropTypes.object.isRequired
+};
 
 export default AddMatchScreen;

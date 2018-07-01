@@ -5,11 +5,11 @@ import { Redirect, Route } from 'react-router-dom';
 
 // Selectors
 import { getClubId } from '../store/shared/selectors';
-import { getIsAuthenticated } from '../store/user/selectors';
+import { getIsAuthenticated, getUser } from '../store/user/selectors';
 
 class AuthenticatedRoute extends Component {
     render() {
-        const { clubId, isClubRoute, component: Component, isAuthenticated, ...props } = this.props;
+        const { clubId, component: Component, isAuthenticated, isClubRoute, user, ...props } = this.props;
 
         return (
             <Route
@@ -17,7 +17,7 @@ class AuthenticatedRoute extends Component {
                 render={props =>
                     isAuthenticated
                         ? !isClubRoute || clubId
-                            ? <Component {...props} />
+                            ? <Component {...props} user={user} />
                             : <Redirect to="/clubs" />
                         : <Redirect to="/sign-in" />
                 }
@@ -28,14 +28,16 @@ class AuthenticatedRoute extends Component {
 
 AuthenticatedRoute.propTypes = {
     clubId: PropTypes.number,
+    component: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     isClubRoute: PropTypes.bool,
-    component: PropTypes.func.isRequired
+    user: PropTypes.object
 };
 
 const mapStateToProps = state => ({
     clubId: getClubId(state),
-    isAuthenticated: getIsAuthenticated(state)
+    isAuthenticated: getIsAuthenticated(state),
+    user: getUser(state)
 });
 
 export default connect(mapStateToProps)(AuthenticatedRoute);

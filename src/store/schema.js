@@ -18,7 +18,12 @@ export const match = new schema.Entity('matches', {}, {
     })
 });
 
-export const player = new schema.Entity('players');
+export const player = new schema.Entity('players', {}, {
+    processStrategy: entity => ({
+        ...entity,
+        user: entity.user || entity.user_id
+    })
+});
 
 export const user = new schema.Entity('users');
 

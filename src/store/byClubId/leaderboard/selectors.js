@@ -44,7 +44,7 @@ export const makeGetLeaderboard = () => createSelector(
                     startIndex = playerIdIndex === 0
                         ? playerIdIndex
                         : playerIdIndex === ids.length - 1
-                            ? ids.length - limit
+                            ? Math.max(0, ids.length - limit)
                             : playerIdIndex - 1;
                 }
             }

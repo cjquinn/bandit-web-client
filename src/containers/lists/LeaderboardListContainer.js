@@ -39,6 +39,7 @@ LeaderboardListContainer.propTypes = {
     isFetching: PropTypes.bool.isRequired,
     limit: PropTypes.string,
     period: PropTypes.string.isRequired,
+    playerId: PropTypes.number,
     players: PropTypes.array.isRequired,
     userId: PropTypes.number.isRequired
 };

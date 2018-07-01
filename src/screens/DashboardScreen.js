@@ -16,10 +16,9 @@ import MatchesListContainer from '../containers/lists/MatchesListContainer';
 
 const DashboardScreen = () => (
     <Template>
-
         <Disputes />
 
-        <section id="matches" className="o-container">
+        <section className="o-container">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">Matches</h1>
 
@@ -47,7 +46,7 @@ const DashboardScreen = () => (
             </footer>
         </section>
 
-        <section id="weekly-leaderboard" className="o-container">
+        <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">Weekly <span className="u-color-steam">leaderboard</span></h1>
 
@@ -61,12 +60,12 @@ const DashboardScreen = () => (
 
             <LeaderboardListContainer
                 component={WeeklyLeaderboardList}
-                period="weekly"
                 limit="3"
+                period="weekly"
             />
         </section>
 
-        <section id="alltime-leaderboard" className="o-container">
+        <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">All time <span className="u-color-steam">leaderboard</span></h1>
 
@@ -80,8 +79,8 @@ const DashboardScreen = () => (
 
             <LeaderboardListContainer
                 component={AllTimeLeaderboardList}
-                period="allTime"
                 limit="3"
+                period="allTime"
             />
         </section>
 

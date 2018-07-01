@@ -79,6 +79,12 @@ describe('selectors', () => {
                 }
             },
             entities: {
+                clubs: {
+                    1: {
+                        id: 1,
+                        bandit_id: '3'
+                    }
+                },
                 players: {
                     1: {
                         id: 1,
@@ -140,7 +146,8 @@ describe('selectors', () => {
                 user: {
                     id: 2,
                     name: 'Christy'
-                }
+                },
+                isBandit: false
             },
             {
                 id: 1,
@@ -150,7 +157,8 @@ describe('selectors', () => {
                 user: {
                     id: 1,
                     name: 'Russell'  
-                }
+                },
+                isBandit: false
             },
             {
                 id: 3,
@@ -160,7 +168,8 @@ describe('selectors', () => {
                 user: {
                     id: 3,
                     name: 'Nathan'
-                }
+                },
+                isBandit: true
             },
             {
                 id: 4,
@@ -170,7 +179,8 @@ describe('selectors', () => {
                 user: {
                     id: 4,
                     name: 'Tom'
-                }
+                },
+                isBandit: false
             }
         ];
 
@@ -190,7 +200,8 @@ describe('selectors', () => {
                 user: {
                     id: 2,
                     name: 'Christy'
-                }
+                },
+                isBandit: false
             }
         ];
 
@@ -211,7 +222,8 @@ describe('selectors', () => {
                 user: {
                     id: 2,
                     name: 'Christy'
-                }
+                },
+                isBandit: false
             },
             {
                 id: 1,
@@ -221,7 +233,8 @@ describe('selectors', () => {
                 user: {
                     id: 1,
                     name: 'Russell'  
-                }
+                },
+                isBandit: false
             },
             {
                 id: 3,
@@ -231,7 +244,8 @@ describe('selectors', () => {
                 user: {
                     id: 3,
                     name: 'Nathan'
-                }
+                },
+                isBandit: true
             }
         ];
 
@@ -248,7 +262,8 @@ describe('selectors', () => {
                 user: {
                     id: 2,
                     name: 'Christy'
-                }
+                },
+                isBandit: false
             },
             {
                 id: 1,
@@ -258,7 +273,8 @@ describe('selectors', () => {
                 user: {
                     id: 1,
                     name: 'Russell'  
-                }
+                },
+                isBandit: false
             },
             {
                 id: 3,
@@ -268,7 +284,8 @@ describe('selectors', () => {
                 user: {
                     id: 3,
                     name: 'Nathan'
-                }
+                },
+                isBandit: true
             }
         ];
 
@@ -285,7 +302,8 @@ describe('selectors', () => {
                 user: {
                     id: 1,
                     name: 'Russell'  
-                }
+                },
+                isBandit: false
             },
             {
                 id: 3,
@@ -295,7 +313,8 @@ describe('selectors', () => {
                 user: {
                     id: 3,
                     name: 'Nathan'
-                }
+                },
+                isBandit: true
             },
             {
                 id: 4,
@@ -305,7 +324,8 @@ describe('selectors', () => {
                 user: {
                     id: 4,
                     name: 'Tom'
-                }
+                },
+                isBandit: false
             }
         ];
 
@@ -322,7 +342,8 @@ describe('selectors', () => {
                 user: {
                     id: 1,
                     name: 'Russell'  
-                }
+                },
+                isBandit: false
             },
             {
                 id: 3,
@@ -332,7 +353,8 @@ describe('selectors', () => {
                 user: {
                     id: 3,
                     name: 'Nathan'
-                }
+                },
+                isBandit: true
             },
             {
                 id: 4,
@@ -342,7 +364,8 @@ describe('selectors', () => {
                 user: {
                     id: 4,
                     name: 'Tom'
-                }
+                },
+                isBandit: false
             }
         ];
 

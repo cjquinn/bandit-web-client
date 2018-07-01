@@ -13,6 +13,12 @@ class MatchesListContainer extends Component {
         this.props.fetchMatches();
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.playerId !== this.props.playerId) {
+            this.props.fetchMatches();
+        }
+    }
+
     render() {
         const { component: Component, matches } = this.props;
 
@@ -35,7 +41,6 @@ const makeMapStateToProps = () => {
         matches: getMatches(state, props)
     });
 };
-
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     fetchMatches: () => dispatch(fetchMatches(ownProps.playerId)),
