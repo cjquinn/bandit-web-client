@@ -14,20 +14,20 @@ $component: 'notification';
   
   &--error {
     @extend .u-color-salmon;
-    background: rgba($colour-hotmelon, .3);
-    box-shadow: 0 -3px 0 $colour-hotmelon;    
+    background: rgba($colour-hotmelon, .25);
+    box-shadow: 0 -3px 0 rgba($colour-hotmelon, .5);    
   }
 
   &--alert {
-    background: rgba(67,83,255,0.30);
-    box-shadow: 0 -3px 0 0 #51BFFF;
+    background: rgba(67,83,255, .25);
+    box-shadow: 0 -3px 0 0 rgba(#51BFFF, .5);
     color: #85D2FF;
   }
 
   &--info {
     color: #FFF5B7;
-    background: rgba(255,125,74,0.17);
-    box-shadow: 0 -3px 0 0 #FFF5B7;
+    background: rgba(#ffa64d, 0.17);
+    box-shadow: 0 -3px 0 0 rgba(#FFF5B7, .5);
   }
 }
 
