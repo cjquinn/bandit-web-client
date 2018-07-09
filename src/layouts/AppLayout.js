@@ -32,7 +32,7 @@ import MatchScreen from '../screens/MatchScreen';
 import MatchesScreen from '../screens/MatchesScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
-import UserSettingsScreen from '../screens/UserSettingsScreen';
+import UpdateSettingsScreen from '../screens/UpdateSettingsScreen';
 
 const AppLayout = ({ isAuthenticated, isLoading }) => {
     if (isLoading) {
@@ -55,7 +55,7 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                     {/* Authenticated */}
                     <AuthenticatedRoute exact path="/clubs" component={ClubsScreen} />
                     <AuthenticatedRoute exact path="/clubs/create" component={CreateClubScreen} />
-                    <AuthenticatedRoute exact path="/settings" component={UserSettingsScreen} />
+                    <AuthenticatedRoute exact path="/settings" component={UpdateSettingsScreen} />
 
                     <AuthenticatedRoute exact path="/" component={DashboardScreen} isClubRoute={true} />
                     <AuthenticatedRoute exact path="/club-settings" component={ClubSettingsScreen} isClubRoute={true} />

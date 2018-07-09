@@ -6,22 +6,22 @@ import { Field } from 'redux-form';
 import Form from './Form';
 import InputField from '../fields/InputField';
 
-const SignUpForm = props => (
+const UpdateSettingsForm = props => (
     <Form
-        buttonText="Sign up"
+        buttonText="Update settings"
         {...props}
-    >   
+    >
         <div className="u-flex u-hspace-2bl">
             <Field
                 component={InputField}
-                name="founder[first_name]"
+                name="first_name"
                 label="First name:"
                 type="text"
             />
             
             <Field
                 component={InputField}
-                name="founder[last_name]"
+                name="last_name"
                 label="Last name:"
                 type="text"
             />
@@ -29,31 +29,33 @@ const SignUpForm = props => (
 
         <Field
             component={InputField}
-            name="name"
-            label="Club name:"
+            name="email"
+            label="Email name:"
             type="text"
         />
 
-        <Field
-            component={InputField}
-            name="founder[email]"
-            label="Email:"
-            type="email"
-        />
-
-        <Field
-            component={InputField}
-            name="founder[password]"
-            label="Password:"
-            type="password"
-        />
+        <div className="u-flex u-hspace-2bl">
+            <Field
+                component={InputField}
+                name="current_password"
+                label="Current password:"
+                type="password"
+            />
+            
+            <Field
+                component={InputField}
+                name="new_password"
+                label="New password:"
+                type="password"
+            />
+        </div>
     </Form>
 );
 
-SignUpForm.propTypes = {
+UpdateSettingsForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     error: PropTypes.string,
     submitting: PropTypes.bool.isRequired
 };
 
-export default SignUpForm;
+export default UpdateSettingsForm;

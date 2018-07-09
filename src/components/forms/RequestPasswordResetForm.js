@@ -3,32 +3,21 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
+import Form from './Form';
 import InputField from '../fields/InputField';
 
-const RequestPasswordResetForm = ({ handleSubmit, error, submitting }) => (
-    <form
-        className="o-container u-vspace-3bl"
-        onSubmit={handleSubmit}
+const RequestPasswordResetForm = props => (
+    <Form
+        buttonText="Reset password"
+        {...props}
     >
-        {error && ''}
-        
-        <div className="u-ph-1bl u-vspace-3bl">
-            <Field
-                component={InputField}
-                name="email"
-                label="Email:"
-                type="email"
-            />
-        </div>
-
-        <button
-            className="c-button c-button--default"
-            type="submit"
-            disabled={submitting}
-        >
-            Reset password
-        </button>
-    </form>
+        <Field
+            component={InputField}
+            name="email"
+            label="Email:"
+            type="email"
+        />
+    </Form>
 );
 
 RequestPasswordResetForm.propTypes = {

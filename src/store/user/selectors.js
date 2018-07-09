@@ -14,6 +14,10 @@ export const getUserEntity = state => getUserEntities(state)[getUserId(state)];
 export const getUser = createSelector(
     [getBanditId, getClubId, getPlayerEntities, getUserEntity],
     (banditId, clubId, players, user) => {
+        if (!user) {
+            return undefined;
+        }
+
         const playerId = user.players.find(playerId => players[playerId].club_id === clubId);
         const player = playerId && players[playerId] ? players[playerId] : {};
 

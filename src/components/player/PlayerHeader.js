@@ -19,7 +19,7 @@ const PlayerHeader = ({ player }) => (
                 <div className="u-grow-1 u-vspace-06r">
                     <dt>
                         <h1 className="u-size-h1 u-color-white">
-                            {player.user.name}
+                            {player.user.first_name} {player.user.last_name}
                         </h1>
                     </dt>
 

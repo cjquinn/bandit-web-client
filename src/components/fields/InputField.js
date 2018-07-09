@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// Components
+import Notification from '../shared/Notification';
+
 const InputField = ({ input, label, meta, placeholder = '', type }) => (
     <fieldset className="u-pos-relative">
         <input
@@ -11,7 +14,12 @@ const InputField = ({ input, label, meta, placeholder = '', type }) => (
 
         <label>{label}</label>
 
-        {meta && meta.error && ''}
+        {meta && meta.error &&
+            <Notification
+                message={meta.error}
+                type="error"
+            />
+        }
     </fieldset>
 );
 

@@ -50,7 +50,7 @@ const Header = ({ children, club, user }) => (
                     <PlayerPhoto player={user.player} />
                     
                     <span className="u-color-orange u-uppercase u-weight-bold">
-                        {user.name}
+                        {user.display_name}
                     </span>
                 </Link>
             </div>

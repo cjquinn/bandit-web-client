@@ -3,32 +3,21 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
+import Form from './Form';
 import InputField from '../fields/InputField';
 
-const InvitePlayerForm = ({ handleSubmit, error, submitting }) => (
-    <form
-        className="o-container u-vspace-3bl"
-        onSubmit={handleSubmit}
+const InvitePlayerForm = props => (
+    <Form
+        buttonText="Invite player"
+        {...props}
     >
-        {error && ''}
-        
-        <div className="u-ph-1bl u-vspace-3bl">
-            <Field
-                component={InputField}
-                name="user[email]"
-                label="Email:"
-                type="email"
-            />
-        </div>
-
-        <button
-            className="c-button c-button--default"
-            type="submit"
-            disabled={submitting}
-        >
-            Invite player
-        </button>
-    </form>
+        <Field
+            component={InputField}
+            name="user[email]"
+            label="Email:"
+            type="email"
+        />
+    </Form>
 );
 
 InvitePlayerForm.propTypes = {

@@ -1,6 +1,6 @@
+import moment from 'moment';
 import React from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
-import moment from 'moment';
 
 // Components
 import AllTimeLeaderboardList from '../components/lists/AllTimeLeaderboardList';

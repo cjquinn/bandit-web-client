@@ -3,32 +3,21 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
+import Form from './Form';
 import InputField from '../fields/InputField';
 
-const CreateClubForm = ({ handleSubmit, error, submitting }) => (
-    <form
-        className="o-container u-vspace-3bl"
-        onSubmit={handleSubmit}
+const CreateClubForm = props => (
+    <Form
+        buttonText="Create club"
+        {...props}
     >
-        {error && ''}
-        
-        <div className="u-ph-1bl u-vspace-3bl">
-            <Field
-                component={InputField}
-                name="name"
-                label="Name:"
-                type="text"
-            />
-        </div>
-
-        <button
-            className="c-button c-button--default"
-            type="submit"
-            disabled={submitting}
-        >
-            Create club
-        </button>
-    </form>
+        <Field
+            component={InputField}
+            name="name"
+            label="Name:"
+            type="text"
+        />
+    </Form>
 );
 
 CreateClubForm.propTypes = {

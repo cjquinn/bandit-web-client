@@ -1,18 +1,18 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
+import Form from './Form';
 import PlayerPhoto from '../shared/PlayerPhoto';
 import PlayerSelectField from '../fields/PlayerSelectField';
 
-const AddMatchForm = ({ handleSubmit, error, players, submitting, user }) => (
-    <form
-        className="o-container u-vspace-3bl"
-        onSubmit={handleSubmit}
+const AddMatchForm = ({ players, user, ...props }) => (
+    <Form
+        buttonText="Add match"
+        {...props}
     >
-        {error && ''}
-
         <div className="c-notification c-notification--info" role="alert">
             <p className="u-weight-bold">What’s the score?</p>
 
@@ -50,7 +50,7 @@ const AddMatchForm = ({ handleSubmit, error, players, submitting, user }) => (
                 <div className="u-ov-hidden u-grow-1 u-basis-0 u-order-1 u-flex u-ai-center u-align-left u-hspace-1bl">
                     <PlayerPhoto player={user.player} />
 
-                    <span className="o-ellipsis" aria-hidden="true">{user.name}</span>
+                    <span className="o-ellipsis" aria-hidden="true">{user.display_name}</span>
                 </div>
 
                 <Field
@@ -61,18 +61,12 @@ const AddMatchForm = ({ handleSubmit, error, players, submitting, user }) => (
             </div>
 
             <div className="u-flex u-ai-center u-ph-1bl u-hspace-05bl u-size-14px">
-                <span>Monday 11th January 2017</span>
+                <span>
+                    {moment().format('dddd Do MMMM YYYY')}
+                </span>
             </div>
         </div>
-
-        <button
-            className="c-button c-button--default"
-            type="submit"
-            disabled={submitting}
-        >
-            Add match
-        </button>
-    </form>
+    </Form>
 );
 
 AddMatchForm.propTypes = {
