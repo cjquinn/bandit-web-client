@@ -6,12 +6,12 @@ import { connect } from 'react-redux';
 import { fetchPlayer } from '../../store/byClubId/player/actions';
 
 // Components
-import PlayerHeader from '../../components/player/PlayerHeader';
+import Player from '../../components/player/Player';
 
 // Selectors
 import { makeGetPlayer } from '../../store/byClubId/player/selectors';
 
-class PlayerHeaderContainer extends Component {
+class PlayerContainer extends Component {
     componentDidMount() {
         this.props.fetchPlayer();
     }
@@ -25,11 +25,11 @@ class PlayerHeaderContainer extends Component {
     render() {
         const { player } = this.props;
 
-        return <PlayerHeader player={player} />;
+        return <Player player={player} />;
     }
 }
 
-PlayerHeaderContainer.propTypes = {
+PlayerContainer.propTypes = {
     fetchPlayer: PropTypes.func.isRequired,
     player: PropTypes.object.isRequired,
     playerId: PropTypes.number.isRequired
@@ -47,4 +47,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     fetchPlayer: () => dispatch(fetchPlayer(ownProps.playerId))
 });
 
-export default connect(makeMapStateToProps, mapDispatchToProps)(PlayerHeaderContainer);
+export default connect(makeMapStateToProps, mapDispatchToProps)(PlayerContainer);

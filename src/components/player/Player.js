@@ -8,7 +8,7 @@ import Svg from '../shared/Svg';
 // Sprites
 import rating from '../../assets/svg/sprite/rating.svg';
 
-const PlayerHeader = ({ player }) => (
+const Player = ({ player }) => (
     <div className="o-container u-vspace-3bl">
         <header className="u-flex u-ai-center u-ph-1bl">
             <div className="u-mr-1bl">
@@ -132,8 +132,8 @@ const PlayerHeader = ({ player }) => (
     </div>
 );
 
-PlayerHeader.propTypes = {
+Player.propTypes = {
     player: PropTypes.object.isRequired
 };
 
-export default PlayerHeader;
+export default Player;

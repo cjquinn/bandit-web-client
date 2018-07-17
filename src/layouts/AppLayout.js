@@ -20,8 +20,6 @@ import ClubSettingsScreen from '../screens/ClubSettingsScreen';
 import ClubsScreen from '../screens/ClubsScreen';
 import CreateClubScreen from '../screens/CreateClubScreen';
 import DashboardScreen from '../screens/DashboardScreen';
-import DisputeScreen from '../screens/DisputeScreen';
-import DisputesScreen from '../screens/DisputesScreen';
 import InvitePlayerScreen from '../screens/InvitePlayerScreen';
 import LeaderboardScreen from '../screens/LeaderboardScreen';
 import PlayerScreen from '../screens/PlayerScreen';
@@ -59,9 +57,6 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
 
                     <AuthenticatedRoute exact path="/" component={DashboardScreen} isClubRoute={true} />
                     <AuthenticatedRoute exact path="/club-settings" component={ClubSettingsScreen} isClubRoute={true} />
-
-                    <AuthenticatedRoute exact path="/disputes" component={DisputesScreen} isClubRoute={true} />
-                    <AuthenticatedRoute exact path="/disputes/:disputeId" component={DisputeScreen} isClubRoute={true} />
 
                     <Redirect exact path="/leaderboard" to="/leaderboard/weekly" />
                     <AuthenticatedRoute path="/leaderboard" component={LeaderboardScreen} isClubRoute={true} />

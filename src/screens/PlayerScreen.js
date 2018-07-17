@@ -12,11 +12,11 @@ import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
 // Containers
 import LeaderboardListContainer from '../containers/lists/LeaderboardListContainer';
 import MatchesListContainer from '../containers/lists/MatchesListContainer';
-import PlayerHeaderContainer from '../containers/player/PlayerHeaderContainer';
+import PlayerContainer from '../containers/player/PlayerContainer';
 
 const PlayerScreen = ({ match, user }) => (
     <Template>
-        <PlayerHeaderContainer playerId={match.params.playerId ? +match.params.playerId : user.player.id} />
+        <PlayerContainer playerId={match.params.playerId ? +match.params.playerId : user.player.id} />
 
         <hr className="c-hr" />
 

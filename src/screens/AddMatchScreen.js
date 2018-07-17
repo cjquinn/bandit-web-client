@@ -16,7 +16,7 @@ const AddMatchScreen = ({ user }) => (
                 to="/matches"
                 className="c-go"
             >
-                Back
+                Back to matches
             </Link>
 
             <header className="u-vspace-06r">
