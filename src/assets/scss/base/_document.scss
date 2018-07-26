@@ -1,0 +1,11 @@
+details {
+  summary {
+    @extend %u-flex;
+    @extend %u-ai-center;
+    @extend %u-cursor-pointer;
+  }
+
+  &[open] {
+    
+  }
+}

@@ -19,15 +19,21 @@ $component: 'notification';
   }
 
   &--alert {
-    background: rgba(67,83,255, .25);
+    background: rgba(67, 83, 255, .25);
     box-shadow: 0 -3px 0 0 rgba(#51BFFF, .5);
     color: #85D2FF;
   }
 
   &--info {
     color: #FFF5B7;
-    background: rgba(#ffa64d, 0.17);
+    background: rgba(#ffa64d, .17);
     box-shadow: 0 -3px 0 0 rgba(#FFF5B7, .5);
+  }
+
+  &--success {
+    color: #A8EB6E;
+    background: #1D2438, rgba(#C7F7B2, .17);
+    box-shadow: 0 -3px 0 0 #A8EB6E;
   }
 }
 

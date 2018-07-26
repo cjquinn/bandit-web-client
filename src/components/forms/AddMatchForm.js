@@ -13,15 +13,15 @@ const AddMatchForm = ({ players, user, ...props }) => (
         buttonText="Add match"
         {...props}
     >
-        <div className="c-notification c-notification--info" role="alert">
-            <p className="u-weight-bold">What’s the score?</p>
+        <details className="c-notification c-notification--info" role="alert">
+            <summary><p className="u-weight-bold">What’s the score?</p></summary>
 
             <ol className="u-vspace-mt-">
                 <li>You won <strong className="u-color-white">5 games</strong></li>
                 <li>Your lost <strong className="u-color-white">3 games</strong></li>
                 <li>Score is <strong className="u-color-white">5 &ndash; 3</strong></li>
             </ol>
-        </div>
+        </details>
 
         <div className="u-vspace-2bl">
             <div className="u-flex u-ai-center u-pv-1bl u-ph-1bl u-color-paste u-bgcolor-fold">

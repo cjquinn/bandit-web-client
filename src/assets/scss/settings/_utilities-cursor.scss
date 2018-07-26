@@ -1,0 +1,13 @@
+$utilities-cursor-settings: (
+  (
+    property: 'cursor',
+
+    values: (
+      (
+        'pointer',
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-cursor-settings);
