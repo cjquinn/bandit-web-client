@@ -13,11 +13,24 @@ import logo_knot from '../../assets/svg/sprite/logo_knot.svg';
 const Header = ({ children, club, user }) => (
     <nav>
 
-        <div class="c-notification c-notification--success u-pos-fixed u-top-0 u-left-0 u-width-100pc" role="alert">
-            <summary><p class="u-weight-bold">Your match was added</p></summary>
-            
-            <p class="u-vspace-mt-"></p>
-        </div>
+        <button type="button" class="c-notification c-notification--success c-notification--global" role="alert">
+            <div class="o-container">
+                <p class="u-weight-bold">Your settings were updated</p>
+            </div>
+        </button>
+
+        <button type="button" class="c-notification c-notification--error c-notification--global" role="alert">
+            <div class="o-container">
+                <p class="u-weight-bold">Your match was deleted</p>
+            </div>
+        </button>
+
+        <a href="/blog" class="c-notification c-notification--alert c-notification--global" role="alert">
+            <div class="o-container">
+                <p class="u-weight-bold">We have just updated to Bandit 2.0</p>
+                <p>Find out what's new on the Bandit HQ blog</p>
+            </div>
+        </a>
         
         <div className="o-container u-pv-105bl">
             <div className="u-ph-1bl u-flex u-jc-between">

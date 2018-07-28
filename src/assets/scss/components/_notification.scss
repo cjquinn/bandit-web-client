@@ -7,33 +7,48 @@ $component: 'notification';
 #{'.' + $global-components-namespace + $component} {
   @extend .u-z-1;
   @extend .u-pos-relative;
+  @extend .u-block;
   @extend .u-vspace-03r;
   @extend .u-p-1bl;
   @extend .u-line-error;
-  @extend .u-borrad-0022;
+  --NotificationBorderColor: #FFF5B7; // info == default
+  border-top: 3px solid var(--NotificationBorderColor);
+  
+  &:not(#{&}--global) {
+    @extend .u-borrad-0022;
+  }
+
+  &--global {
+    @extend .u-borrad-2266;
+    margin-bottom: var(--WindowGap);
+    animation: fadeUpInReveal .3s ease-out;
+    animation-fill-mode: forwards;
+  }
   
   &--error {
     @extend .u-color-salmon;
+    --NotificationBorderColor: #{rgba($colour-hotmelon, .5)};
     background: rgba($colour-hotmelon, .25);
-    box-shadow: 0 -3px 0 rgba($colour-hotmelon, .5);    
   }
 
   &--alert {
+    --NotificationBorderColor: #{rgba(#51BFFF, .5)};
     background: rgba(67, 83, 255, .25);
-    box-shadow: 0 -3px 0 0 rgba(#51BFFF, .5);
     color: #85D2FF;
   }
 
   &--info {
+    --NotificationBorderColor: #{rgba(#FFF5B7, .5)};
     color: #FFF5B7;
     background: rgba(#ffa64d, .17);
-    box-shadow: 0 -3px 0 0 rgba(#FFF5B7, .5);
   }
 
   &--success {
-    color: #A8EB6E;
-    background: #1D2438, rgba(#C7F7B2, .17);
-    box-shadow: 0 -3px 0 0 #A8EB6E;
+    --NotificationBorderColor: #A8EB6E;
+    color: var(--NotificationBorderColor);
+    background-image:
+      linear-gradient(to right, rgba(#C7F7B2, .17), rgba(#C7F7B2, .17)),
+      linear-gradient(to right, #1D2438, #1D2438);
   }
 }
 
