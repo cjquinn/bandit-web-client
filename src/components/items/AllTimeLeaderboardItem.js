@@ -13,7 +13,7 @@ import rating from '../../assets/svg/sprite/rating.svg';
 const AllTimeLeaderboardItem = ({ player, position, userId }) => (
     <Template>
         {player.user_id === userId &&
-            <div className="o-absfill u-borrad-inherit u-shadow-you u-pointer-none"></div>
+            <div className="o-absfill u-shadow-you u-pointer-none"></div>
         }
 
         <Link

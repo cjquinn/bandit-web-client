@@ -6,7 +6,7 @@ import Template from '../shared/Template';
 const ClubItem = ({ club, clubId, handleClick }) => (
     <Template>
         {club.id === clubId &&
-            <div className="o-absfill u-borrad-inherit u-shadow-you u-pointer-none"></div>
+            <div className="o-absfill u-shadow-you u-pointer-none"></div>
         }
         <button
             className="u-width-100pc u-pv-1bl u-ph-1bl u-vspace-03r"
