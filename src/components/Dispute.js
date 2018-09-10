@@ -6,7 +6,7 @@ import PlayerPhoto from './PlayerPhoto';
 
 const Dispute = () => (
     <li className="u-bgcolor-fold u-pos-relative">
-        <div className="o-absolute-fill u-borrad-inherit u-shadow-dispute u-pointer-none"></div>
+        <div className="o-absolute-fill u-shadow-dispute u-pointer-none"></div>
         <a href="/result" className="u-flex u-ai-center u-pv-1bl u-ph-1bl">
             <div className="u-vspace-03r">
                 <dt className="u-color-paste"><span className="o-dictate">Dispute with </span>Rebekah Reeves</dt>
