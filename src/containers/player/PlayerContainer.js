@@ -25,13 +25,17 @@ class PlayerContainer extends Component {
     render() {
         const { player } = this.props;
 
+        if (!player) {
+            return null;
+        }
+
         return <Player player={player} />;
     }
 }
 
 PlayerContainer.propTypes = {
     fetchPlayer: PropTypes.func.isRequired,
-    player: PropTypes.object.isRequired,
+    player: PropTypes.object,
     playerId: PropTypes.number.isRequired
 };
 

@@ -7,7 +7,7 @@ import Svg from '../shared/Svg';
 // Sprite
 import logo_knot from '../../assets/svg/sprite/logo_knot.svg';
 
-const PlayerPhoto = ({ player }) => (
+const PlayerPhoto = ({ player, width }) => (
     <div className="u-pos-relative" aria-hidden="true">
         {player.isBandit &&
             <Svg
@@ -16,7 +16,7 @@ const PlayerPhoto = ({ player }) => (
             />
         }
 
-        <div className="c-player-photo c-player-photo--no-photo u-width-2bl">
+        <div className={`c-player-photo c-player-photo--no-photo u-width-${width || '2bl'}`}>
             {player.level && <div className={`c-player-photo__level u-bgcolor-${player.level.slug}`}></div>}
 
             {player.isBandit && <div className="c-player-photo__level u-bgcolor-bandit"></div>}
@@ -25,7 +25,8 @@ const PlayerPhoto = ({ player }) => (
 );
 
 PlayerPhoto.propTypes = {
-    player: PropTypes.object.isRequired
+    player: PropTypes.object.isRequired,
+    width: PropTypes.string
 };
 
 export default PlayerPhoto;

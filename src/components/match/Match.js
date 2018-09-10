@@ -12,8 +12,10 @@ const Match = ({ match }) => (
             <dl className="u-flex u-hspace-1px u-borrad-first-2002 u-borrad-last-0220">
                 <li className="u-flex u-fd-col u-grow-1 u-basis-0 u-ai-center u-pv-2bl u-bgcolor-fold u-vspace-1bl">
                     <Link to={`/players/${match.player_a_id}`}>
-                        {/* 4bl */}
-                        <PlayerPhoto player={match.player_a} />
+                        <PlayerPhoto
+                            player={match.player_a}
+                            width="4bl"
+                        />
                     </Link>
 
                     <dt>
@@ -37,8 +39,10 @@ const Match = ({ match }) => (
 
                 <li className="u-flex u-fd-col u-grow-1 u-basis-0 u-ai-center u-pv-2bl u-bgcolor-fold05 u-vspace-1bl">
                     <Link to={`/players/${match.player_b_id}`}>
-                        {/* 4bl */}
-                        <PlayerPhoto player={match.player_b} />
+                        <PlayerPhoto
+                            player={match.player_b}
+                            width="4bl"
+                        />
                     </Link>
 
                     <dt>
@@ -65,7 +69,7 @@ const Match = ({ match }) => (
                 <li className="u-flex u-ai-center u-hspace-05bl">
                     <dt>Submitted by </dt>
                     <dd>
-                        <PlayerPhoto player={match.player_a} /> <span>{match.player_a.user.name}</span>
+                        <PlayerPhoto player={match.player_a} /> <span className="o-dictate">{match.player_a.user.first_name} {match.player_a.user.last_name}</span>
                     </dd>
                 </li>
 
