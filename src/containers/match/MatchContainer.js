@@ -26,6 +26,7 @@ class MatchContainer extends Component {
         const { match } = this.props;
 
         if (!match) {
+            // TODO: Russell test loading here
             return null;
         }
 

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // Components
 import PlayerPhoto from './PlayerPhoto';
@@ -34,14 +34,17 @@ const Header = ({ children, club, user }) => (
         
         <div className="o-container u-pv-105bl">
             <div className="u-ph-1bl u-flex u-jc-between">
-                <Link
+                <NavLink
                     to="/"
                     className="u-flex u-ai-center u-hspace-05bl"
+                    activeClassName="u-opac-05 u-opac-1@hover"
+                    isActive={(_, location) => /(clubs|settings|profile)/.test(location.pathname)}
                 >
                     <div className="u-pos-relative">
                         <Svg
                             sprite={logo_head}
                             className="u-width-2bl u-height-auto"
+                            activeClassName=""
                         />
                         
                         <Svg
@@ -61,18 +64,20 @@ const Header = ({ children, club, user }) => (
                             </p>
                         }
                     </h1>
-                </Link>
+                </NavLink>
 
-                <Link
+                <NavLink
                     to="/profile"
-                    className="u-flex u-ai-center u-hspace-05bl u-opac-05 u-opac-1@hover"
+                    className="u-flex u-ai-center u-hspace-05bl"
+                    activeClassName="u-opac-05 u-opac-1@hover"
+                    isActive={(_, location) => !/(clubs|settings|profile)/.test(location.pathname)}
                 >
                     <PlayerPhoto player={user.player} />
                     
                     <span className="u-color-orange u-uppercase u-weight-bold">
                         {user.display_name}
                     </span>
-                </Link>
+                </NavLink>
             </div>
         </div>
 
