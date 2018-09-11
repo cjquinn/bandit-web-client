@@ -29,7 +29,10 @@ const PlayerSelectField = ({ input, players }) => {
                 </optgroup>
             </select>
 
-            <PlayerPhoto player={player} />
+            <PlayerPhoto 
+                player={player} 
+                width="2bl" 
+            />
         </div>
     );
 };

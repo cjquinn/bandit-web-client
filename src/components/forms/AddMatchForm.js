@@ -48,7 +48,10 @@ const AddMatchForm = ({ players, user, ...props }) => (
                 </div>
 
                 <div className="u-ov-hidden u-grow-1 u-basis-0 u-order-1 u-flex u-ai-center u-align-left u-hspace-1bl">
-                    <PlayerPhoto player={user.player} />
+                    <PlayerPhoto 
+                        player={user.player} 
+                        width="2bl"
+                    />
 
                     <span className="o-ellipsis" aria-hidden="true">{user.display_name}</span>
                 </div>

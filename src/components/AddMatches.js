@@ -19,7 +19,9 @@ const AddMatches = () => (
 
             <div className="u-ov-hidden u-grow-1 u-basis-0 u-order-1 u-flex u-ai-center u-align-left u-hspace-1bl">
 
-                <PlayerPhoto />
+                <PlayerPhoto 
+                    width="2bl"
+                />
 
                 <span className="o-ellipsis" aria-hidden="true">Stephen</span>
 
@@ -35,7 +37,9 @@ const AddMatches = () => (
                     </optgroup>
                 </select>
 
-                <PlayerPhoto />
+                <PlayerPhoto 
+                    width="2bl"
+                />
 
             </div>
 

@@ -21,7 +21,10 @@ const PlayerItem = ({ player, userId }) => (
             to={`/players/${player.id}`}
         >
             <div className="u-mr-1bl">
-                <PlayerPhoto player={player} />
+                <PlayerPhoto 
+                    player={player} 
+                    width="3bl"
+                />
             </div>
 
             <dl className="u-flex u-jc-between u-ai-center u-width-100pc">

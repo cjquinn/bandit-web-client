@@ -13,7 +13,7 @@ import logo_knot from '../../assets/svg/sprite/logo_knot.svg';
 const Header = ({ children, club, user }) => (
     <nav>
 
-        <button type="button" class="c-notification c-notification--success c-notification--global" role="alert">
+        {/*<button type="button" class="c-notification c-notification--success c-notification--global" role="alert">
             <div class="o-container">
                 <p class="u-weight-bold">Your settings were updated</p>
             </div>
@@ -30,7 +30,7 @@ const Header = ({ children, club, user }) => (
                 <p class="u-weight-bold">We have just updated to Bandit 2.0</p>
                 <p>Find out what's new on the Bandit HQ blog</p>
             </div>
-        </a>
+        </a>*/}
         
         <div className="o-container u-pv-105bl">
             <div className="u-ph-1bl u-flex u-jc-between">
@@ -67,7 +67,10 @@ const Header = ({ children, club, user }) => (
                     to="/profile"
                     className="u-flex u-ai-center u-hspace-05bl u-opac-05 u-opac-1@hover"
                 >
-                    <PlayerPhoto player={user.player} />
+                    <PlayerPhoto 
+                        player={user.player} 
+                        width="2bl"
+                    />
                     
                     <span className="u-color-orange u-uppercase u-weight-bold">
                         {user.display_name}

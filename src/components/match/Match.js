@@ -65,11 +65,14 @@ const Match = ({ match }) => (
                 </li>
             </dl>
 
-            <dl className="u-flex u-ai-center u-jc-between u-ph-1bl">
-                <li className="u-flex u-ai-center u-hspace-05bl">
+            <dl className="u-flex u-ai-center u-jc-between u-ph-1bl u-fw-wrap">
+                <li className="u-flex u-ai-center u-hspace-05bl u-fw-wrap">
                     <dt>Submitted by </dt>
-                    <dd>
-                        <PlayerPhoto player={match.player_a} /> <span className="o-dictate">{match.player_a.user.first_name} {match.player_a.user.last_name}</span>
+                    <dd className="u-flex u-ai-center u-hspace-05bl">
+                        <PlayerPhoto 
+                            player={match.player_a} 
+                            width="2bl"
+                        /> <span className="">{match.player_a.user.first_name} {match.player_a.user.last_name}</span>
                     </dd>
                 </li>
 
