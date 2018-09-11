@@ -7,6 +7,7 @@ import { fetchMatch } from '../../store/byClubId/byPlayerId/match/actions';
 
 // Components
 import Match from '../../components/match/Match';
+import Loading from '../../components/Loading';
 
 // Selectors
 import { makeGetMatch } from '../../store/byClubId/byPlayerId/match/selectors';
@@ -26,10 +27,10 @@ class MatchContainer extends Component {
         const { match } = this.props;
 
         if (!match) {
-            return null;
+            return <Loading />;
         }
 
-        return <Match match={match} />;
+        return  <Match match={match} />;
     }
 }
 

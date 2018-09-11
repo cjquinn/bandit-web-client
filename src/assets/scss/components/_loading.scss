@@ -5,6 +5,11 @@
 $component: 'loading';
 
 #{'.' + $global-components-namespace + $component} {
+  // Default Settings
+  --loadingWidth: 2rem; 
+  --lineWidth: 20%; 
+  --cycleTime: 0.4s;
+
   animation: loadingRotateSteps calc(var(--cycleTime) * 4) infinite ease-in-out;
 
   &__hexagon {
@@ -46,7 +51,7 @@ $component: 'loading';
       $i: index($loadingLineColours, $colour);
 
       &:nth-child(#{$i}) {
-        --lineColour: $colour;
+        --lineColour: #{$colour};
       }
     }
   }
