@@ -7,6 +7,7 @@ import { deleteMatch, fetchMatch } from '../../store/byClubId/byPlayerId/match/a
 
 // Components
 import Match from '../../components/match/Match';
+import Loading from '../../components/Loading';
 
 // Selectors
 import { getIsDeleting, makeGetMatch } from '../../store/byClubId/byPlayerId/match/selectors';
@@ -27,7 +28,7 @@ class MatchContainer extends Component {
         const { deleteMatch, isDeleting, match, userId } = this.props;
 
         if (!match) {
-            return null;
+            return <Loading />;
         }
 
         return (

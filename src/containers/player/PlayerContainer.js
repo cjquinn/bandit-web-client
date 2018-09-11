@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { fetchPlayer } from '../../store/byClubId/player/actions';
 
 // Components
+import Loading from '../../components/Loading';
 import Player from '../../components/player/Player';
 
 // Selectors
@@ -26,7 +27,7 @@ class PlayerContainer extends Component {
         const { player } = this.props;
 
         if (!player) {
-            return null;
+            return <Loading />;
         }
 
         return <Player player={player} />;

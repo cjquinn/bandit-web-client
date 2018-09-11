@@ -22,7 +22,9 @@ const AllTimeLeaderboardPlayer = () => (
         <a href="/player" className="u-flex u-ai-center u-pv-1bl u-ph-1bl">
 
             <div className="u-mr-1bl">
-                <PlayerPhoto />
+                <PlayerPhoto 
+                    width="3bl"
+                />
             </div>
 
             <dl className="u-flex u-jc-between u-ai-center u-width-100pc">

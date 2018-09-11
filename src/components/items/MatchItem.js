@@ -11,7 +11,10 @@ const MatchItem = ({ match }) => (
         className="u-flex u-ai-center u-pv-1bl u-ph-1bl u-color-paste"
     >
         <div className="u-grow-1 u-basis-0 u-flex u-ai-center u-jc-center u-order-2 u-align-center">
-            <PlayerPhoto player={match.player_a} />
+            <PlayerPhoto 
+                player={match.player_a} 
+                width="3bl"
+            />
 
             <dt className="u-size-h4 u-weight-bold u-ws-no">
                 <span className="o-dictate">{match.player_a.user.display_name}</span>
@@ -22,7 +25,10 @@ const MatchItem = ({ match }) => (
             </dt>
 
             <div className="u-ml-1bl">
-                <PlayerPhoto player={match.player_b} />
+                <PlayerPhoto 
+                    player={match.player_b} 
+                    width="3bl"
+                />
             </div>
         </div>
 

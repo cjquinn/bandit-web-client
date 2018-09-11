@@ -12,7 +12,10 @@ const Player = ({ player }) => (
     <div className="o-container u-vspace-3bl">
         <header className="u-flex u-ai-center u-ph-1bl">
             <div className="u-mr-1bl">
-                <PlayerPhoto player={player} />
+                <PlayerPhoto 
+                    player={player}
+                    width="4bl"
+                />
             </div>
 
             <dl className="u-flex u-jc-between u-ai-center u-width-100pc">

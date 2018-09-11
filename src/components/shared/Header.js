@@ -72,7 +72,10 @@ const Header = ({ children, club, user }) => (
                     activeClassName="u-opac-05 u-opac-1@hover"
                     isActive={(_, location) => !/(clubs|settings|profile)/.test(location.pathname)}
                 >
-                    <PlayerPhoto player={user.player} />
+                    <PlayerPhoto 
+                        player={user.player} 
+                        width="2bl"
+                    />
                     
                     <span className="u-color-orange u-uppercase u-weight-bold">
                         {user.display_name}

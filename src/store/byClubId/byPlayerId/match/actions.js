@@ -29,7 +29,7 @@ export const addMatch = data => (dispatch, getState, api) => {
             result: normalizedData.result.match,
             clubId
         })))
-        .then(() => dispatch(push('/matches')))
+        .then(action => dispatch(push(`/matches/${action.payload.result}`)))
         .catch(api.handleError(dispatch, addMatchFailure));
 };
 
