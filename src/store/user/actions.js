@@ -24,6 +24,7 @@ export const activateAccount = data => (dispatch, getState, api) => {
         .then(api.setJwt)
         .then(response => normalize(response.data.user, userSchema))
         .then(normalizedData => dispatch(activateAccountSuccess(normalizedData)))
+        .then(() => dispatch(push('/')))
         .catch(api.handleError(dispatch, activateAccountFailure));
 };
 
