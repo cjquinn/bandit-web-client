@@ -16,6 +16,7 @@ import { withIsBandit } from '../../../utilities';
 
 export const initialState = {
     ids: [],
+    isDeleting: false,
     isFetching: false,
     page: 1,
     total: 0
@@ -31,6 +32,8 @@ const getMatchState = (state, props) =>
         : initialState;
 
 export const getIds = (state, props) => getMatchState(state, props).ids;
+
+export const getIsDeleting = (state, props) => getMatchState(state, props).isDeleting;
 
 export const getIsFetching = makeIsFetchingSelector(getMatchState);
 

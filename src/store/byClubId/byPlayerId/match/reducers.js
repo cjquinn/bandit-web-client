@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { handleAction } from 'redux-actions';
+import { combineActions, handleAction, handleActions } from 'redux-actions';
 
 // Actions
 import * as actions from './actions';
@@ -16,6 +16,14 @@ const ids = handleAction(
         ? payload.result
         : [...state, ...payload.result],
     initialState.ids
+);
+
+const isDeleting = handleActions(
+    {
+        [actions.deleteMatchRequest]: () => true,
+        [combineActions(actions.deleteMatchFailure, actions.deleteMatchSuccess)]: () => false
+    },
+    false
 );
 
 const isFetching = makeIsFetchingReducer(
@@ -38,6 +46,7 @@ const total = handleAction(
 
 const reducers = combineReducers({
     ids,
+    isDeleting,
     isFetching,
     page,
     total

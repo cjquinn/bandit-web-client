@@ -6,8 +6,14 @@ import { Link } from 'react-router-dom';
 // Components
 import PlayerPhoto from '../shared/PlayerPhoto';
 
-const Match = ({ match }) => (
+const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
     <section className="o-container u-vspace-3bl">
+        {match.deleted &&
+            <p className="u-flex u-ai-center u-weight-bold u-color-hotmelon">
+                This match was removed.
+            </p>
+        }
+
         <div className="u-vspace-2bl">
             <dl className="u-flex u-hspace-1px u-borrad-first-2002 u-borrad-last-0220">
                 <li className="u-flex u-fd-col u-grow-1 u-basis-0 u-ai-center u-pv-2bl u-bgcolor-fold u-vspace-1bl">
@@ -32,9 +38,11 @@ const Match = ({ match }) => (
                         </p>
                     </dd>
 
-                    <dd className={`u-color-${match.player_a_snapshot.difference >= 0 ? 'win' : 'loss'}`}>
-                        {match.player_a_snapshot.difference} <abbr title="rating points">pts.</abbr>
-                    </dd>
+                    {match.player_a_snapshot &&
+                        <dd className={`u-color-${match.player_a_snapshot.difference >= 0 ? 'win' : 'loss'}`}>
+                            {match.player_a_snapshot.difference} <abbr title="rating points">pts.</abbr>
+                        </dd>
+                    }
                 </li>
 
                 <li className="u-flex u-fd-col u-grow-1 u-basis-0 u-ai-center u-pv-2bl u-bgcolor-fold05 u-vspace-1bl">
@@ -59,9 +67,11 @@ const Match = ({ match }) => (
                         </p>
                     </dd>
 
-                    <dd className={`u-color-${match.player_b_snapshot.difference >= 0 ? 'win' : 'loss'}`}>
-                        {match.player_b_snapshot.difference} <abbr title="rating points">pts.</abbr>
-                    </dd>
+                    {match.player_b_snapshot &&
+                        <dd className={`u-color-${match.player_b_snapshot.difference >= 0 ? 'win' : 'loss'}`}>
+                            {match.player_b_snapshot.difference} <abbr title="rating points">pts.</abbr>
+                        </dd>
+                    }
                 </li>
             </dl>
 
@@ -81,11 +91,24 @@ const Match = ({ match }) => (
                 </li>
             </dl>
         </div>
+
+        {match.was_within24_hours && match.player_a.user_id === userId && !match.dispute && !match.deleted &&
+            <button
+                className="c-button c-button--warning u-mt-1bl"
+                disabled={isDeleting}
+                onClick={handleClickCancel}
+            >
+                Cancel match
+            </button>
+        }
     </section>
 );
 
 Match.propTypes = {
-    match: PropTypes.object.isRequired
+    handleClickCancel: PropTypes.func.isRequired,
+    isDeleting: PropTypes.bool.isRequired,
+    match: PropTypes.object.isRequired,
+    userId: PropTypes.number.isRequired
 };
 
 export default Match;
