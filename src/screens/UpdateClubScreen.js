@@ -3,10 +3,10 @@ import React from 'react';
 // Components
 import Template from '../components/shared/Template';
 
-const ClubSettingsScreen = () => (
+const UpdateClubSettingsScreen = () => (
     <Template>
-        ClubSettingsScreen
+        UpdateClubSettingsScreen
     </Template>
 );
 
-export default ClubSettingsScreen;
+export default UpdateClubSettingsScreen;

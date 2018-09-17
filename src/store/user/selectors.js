@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 
 // Selectors
+import { getClub } from '../club/selectors';
 import { getPlayerEntities, getUserEntities } from '../entities/selectors';
 import { getBanditId, getClubId, getUserId } from '../shared/selectors';
 
@@ -31,4 +32,9 @@ export const getUser = createSelector(
 export const getIsAuthenticated = createSelector(
     [getUserId],
     id => id !== null
+);
+
+export const getIsClubOwner = createSelector(
+    [getUserId, getClub],
+    (userId, club) => club !== undefined && club.founder_id === userId
 );

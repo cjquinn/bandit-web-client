@@ -3,10 +3,10 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 // Components
-import ClubMenu from '../components/menus/ClubMenu';
 import UserMenu from '../components/menus/UserMenu';
 
 // Containers
+import ClubMenuContainer from '../containers/menus/ClubMenuContainer';
 import HeaderContainer from '../containers/shared/HeaderContainer';
 
 // Routes
@@ -16,7 +16,6 @@ import UnauthenticatedRoute from '../routes/UnauthenticatedRoute';
 // Screens
 import ActivateAccountScreen from '../screens/ActivateAccountScreen';
 import AddMatchScreen from '../screens/AddMatchScreen';
-import ClubSettingsScreen from '../screens/ClubSettingsScreen';
 import ClubsScreen from '../screens/ClubsScreen';
 import CreateClubScreen from '../screens/CreateClubScreen';
 import DashboardScreen from '../screens/DashboardScreen';
@@ -30,6 +29,7 @@ import MatchScreen from '../screens/MatchScreen';
 import MatchesScreen from '../screens/MatchesScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
+import UpdateClubScreen from '../screens/UpdateClubScreen';
 import UpdateSettingsScreen from '../screens/UpdateSettingsScreen';
 
 const AppLayout = ({ isAuthenticated, isLoading }) => {
@@ -43,7 +43,7 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                 <HeaderContainer>
                     <Switch>
                         <Route path="/(clubs|settings|profile)" component={UserMenu} />
-                        <Route component={ClubMenu} />
+                        <Route component={ClubMenuContainer} isClubOwner={false} />
                     </Switch>
                 </HeaderContainer>
             }
@@ -56,7 +56,7 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                     <AuthenticatedRoute exact path="/settings" component={UpdateSettingsScreen} />
 
                     <AuthenticatedRoute exact path="/" component={DashboardScreen} isClubRoute={true} />
-                    <AuthenticatedRoute exact path="/club-settings" component={ClubSettingsScreen} isClubRoute={true} />
+                    <AuthenticatedRoute exact path="/club" component={UpdateClubScreen} isClubRoute={true} />
 
                     <Redirect exact path="/leaderboard" to="/leaderboard/weekly" />
                     <AuthenticatedRoute path="/leaderboard" component={LeaderboardScreen} isClubRoute={true} />

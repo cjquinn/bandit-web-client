@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const navFadeInactive = {width: '0'};
 
-const ClubMenu = () => (
+const ClubMenu = ({ isClubOwner }) => (
     <div className="u-pos-relative">
         <div className="c-fade c-fade--left" style={navFadeInactive}></div>
 
@@ -52,10 +53,26 @@ const ClubMenu = () => (
                     </NavLink>
                 </li>
 
+                {isClubOwner &&
+                    <li>
+                        <NavLink
+                            to="/club"
+                            className="c-tab c-tab--header"
+                            activeClassName="c-tab--active"
+                        >
+                            Club
+                        </NavLink>
+                    </li>
+                }
+
                 <li aria-hidden="true">&nbsp;</li>
             </ul>
         </div>
     </div>
 );
+
+ClubMenu.propTypes = {
+    isClubOwner: PropTypes.bool.isRequired
+};
 
 export default ClubMenu;
