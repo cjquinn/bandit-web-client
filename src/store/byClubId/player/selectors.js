@@ -45,6 +45,7 @@ export const makeGetPlayer = () => createSelector(
                     denormalize(player.id, playerSchema, {players: {[player.id]: player}, users}),
                     banditId
                 ),
+                games: player.wins + player.losses,
                 winRatio: (player.wins / player.losses).toFixed(2)
             }
             : undefined
