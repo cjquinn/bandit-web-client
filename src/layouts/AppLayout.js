@@ -31,6 +31,8 @@ import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import UpdateClubScreen from '../screens/UpdateClubScreen';
 import UpdateSettingsScreen from '../screens/UpdateSettingsScreen';
+import Error404Screen from '../screens/Error404Screen';
+import Error500Screen from '../screens/Error500Screen';
 
 const AppLayout = ({ isAuthenticated, isLoading }) => {
     if (isLoading) {
@@ -76,6 +78,9 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                     <UnauthenticatedRoute exact path="/reset-password" component={ResetPasswordScreen} />
                     <UnauthenticatedRoute exact path="/sign-in" component={SignInScreen} />
                     <UnauthenticatedRoute exact path="/sign-up" component={SignUpScreen} />
+
+                    <AuthenticatedRoute exact path="/404" component={Error404Screen} />
+                    <AuthenticatedRoute exact path="/500" component={Error500Screen} />
                 </Switch>
             </main>
         </div>
