@@ -12,6 +12,7 @@ $component: 'notification';
   @extend .u-p-1bl;
   @extend .u-line-error;
   --NotificationBorderColor: #FFF5B7; // info == default
+  width: 100%;
   border-top: 3px solid var(--NotificationBorderColor);
   
   &:not(#{&}--global) {
@@ -20,7 +21,6 @@ $component: 'notification';
 
   &--global {
     @extend .u-borrad-2266;
-    margin-bottom: var(--WindowGap);
     animation: fadeUpInReveal .3s ease-out;
     animation-fill-mode: forwards;
   }

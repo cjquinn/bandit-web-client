@@ -9,11 +9,13 @@ import { SIGN_OUT } from './user/actions';
 import byClubId from './byClubId/reducers';
 import club from './club/reducers';
 import entities from './entities/reducers';
+import flash from './flash/reducers';
 import user from './user/reducers';
 
 const appReducers = combineReducers({
     byClubId,
     club,
+    flash,
     form,
     entities,
     router,
@@ -26,6 +28,7 @@ const reducers = (state, action) => {
         state.byClubId = undefined;
         state.club = undefined;
         state.entities = undefined;
+        state.flash = undefined;
         state.user = {isLoading: false};
     }
 

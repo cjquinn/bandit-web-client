@@ -2,6 +2,9 @@ import { createAction } from 'redux-actions';
 import { normalize } from 'normalizr';
 import { push } from 'react-router-redux';
 
+// Actions
+import { setFlash } from '../../../flash/actions';
+
 // Schema
 import { club as clubSchema, match as matchSchema } from '../../../schema';
 
@@ -54,6 +57,7 @@ export const deleteMatch = matchId => (dispatch, getState, api) => {
             clubId,
             matchId
         })))
+        .then(() => dispatch(setFlash({message: 'Your match was deleted', type: 'info'})))
         .catch(api.handleError(dispatch, deleteMatchFailure));
 };
 

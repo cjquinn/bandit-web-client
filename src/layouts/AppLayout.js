@@ -7,6 +7,7 @@ import UserMenu from '../components/menus/UserMenu';
 
 // Containers
 import ClubMenuContainer from '../containers/menus/ClubMenuContainer';
+import FlashContainer from '../containers/shared/FlashContainer';
 import HeaderContainer from '../containers/shared/HeaderContainer';
 
 // Routes
@@ -51,6 +52,8 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
             }
 
             <main className="o-main">
+                <FlashContainer />
+
                 <Switch>
                     {/* Authenticated */}
                     <AuthenticatedRoute exact path="/clubs" component={ClubsScreen} />

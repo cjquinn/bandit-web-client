@@ -10,7 +10,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
     <section className="o-container u-vspace-3bl">
         {match.deleted &&
             <p className="u-flex u-ai-center u-weight-bold u-color-hotmelon">
-                This match was removed.
+                This match was deleted.
             </p>
         }
 
@@ -101,7 +101,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
                 disabled={isDeleting}
                 onClick={handleClickCancel}
             >
-                Cancel match
+                Delete match
             </button>
         }
     </section>

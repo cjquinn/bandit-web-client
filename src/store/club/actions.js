@@ -2,6 +2,9 @@ import { normalize } from 'normalizr';
 import { createAction } from 'redux-actions';
 import { push } from 'react-router-redux';
 
+// Actions
+import { setFlash } from '../flash/actions';
+
 // Schema
 import { club as clubSchema } from '../schema';
 
@@ -88,5 +91,6 @@ export const updateClub = data => (dispatch, getState, api) => {
         .then(api.checkStatus)
         .then(response => normalize(response.data.club, clubSchema))
         .then(normalizedData => dispatch(updateClubSuccess(normalizedData)))
+        .then(() => dispatch(setFlash({message: 'Your club settings were updated', type: 'success'})))
         .catch(api.handleError(dispatch, updateClubFailure));
 };

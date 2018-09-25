@@ -2,6 +2,9 @@ import { createAction } from 'redux-actions';
 import { normalize } from 'normalizr';
 import { push } from 'react-router-redux';
 
+// Actions
+import { setFlash } from '../../flash/actions';
+
 // Schema
 import { player as playerSchema } from '../../schema';
 
@@ -66,6 +69,7 @@ export const invitePlayer = data => (dispatch, getState, api) => {
         .then(api.checkStatus)
         .then(response => normalize(response.data.player, playerSchema))
         .then(normalizedData => dispatch(invitePlayerSuccess(normalizedData)))
+        .then(() => dispatch(setFlash({message: 'Invite sent', type: 'success'})))
         .then(() => dispatch(push('/players')))
         .catch(api.handleError(dispatch, invitePlayerFailure));
 };
