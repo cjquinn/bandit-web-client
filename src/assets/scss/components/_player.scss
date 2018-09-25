@@ -1,0 +1,36 @@
+/**
+ * .c-player
+ */
+
+$component: 'player';
+
+#{'.' + $global-components-namespace + $component} {
+
+  &__info {
+    flex-direction: column;
+  }
+
+  @include iota-breakpoint('uptomax') {
+    justify-content: center;
+
+    > * + * {
+      margin-top: 1rem;
+    }
+
+    &__info {
+      width: 100%;
+      align-items: center;
+    }
+  }
+
+ @include iota-breakpoint('frommax') {
+
+    &__photo {
+      @extend .u-mr-1bl;
+    }
+
+    &__challenge {
+      margin-left: auto;
+    }
+  }
+}

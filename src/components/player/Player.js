@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Components
 import PlayerPhoto from '../shared/PlayerPhoto';
@@ -10,46 +11,45 @@ import rating from '../../assets/svg/sprite/rating.svg';
 
 const Player = ({ player }) => (
     <div className="o-container u-vspace-3bl">
-        <header className="u-flex u-ai-center u-ph-1bl">
-            <div className="u-mr-1bl">
+
+        <header className="c-player u-flex u-fw-wrap u-ai-center u-ph-1bl">
+            <div className="c-player__photo">
                 <PlayerPhoto 
                     player={player}
                     width="4bl"
                 />
             </div>
 
-            <dl className="u-flex u-jc-between u-ai-center u-width-100pc">
-                <div className="u-grow-1 u-vspace-06r">
-                    <dt>
-                        <h1 className="u-size-h1 u-color-white">
-                            {player.user.first_name} {player.user.last_name}
-                        </h1>
-                    </dt>
+            <dl className="c-player__info u-flex u-vspace-06r">
+                <dt>
+                    <h1 className="u-size-h1 u-color-white">
+                        {player.user.first_name} {player.user.last_name}
+                    </h1>
+                </dt>
 
-                    <dd className="u-flex u-ai-center u-hspace-8px u-size-15px">
-                        <span className="u-flex u-ai-center u-hspace-8px">
-                            <span className="u-flex u-ai-center u-hspace-4px">
-                                <Svg
-                                    className="u-width-1bl u-height-auto"
-                                    sprite={rating}
-                                />
+                <dd className="u-flex u-ai-center u-hspace-8px u-size-15px">
+                    <span className="u-flex u-ai-center u-hspace-4px">
+                        <Svg
+                            className="u-width-1bl u-height-auto"
+                            sprite={rating}
+                        />
 
-                                <span className="u-color-paste">
-                                    {player.rating} <span className="o-dictate">rating</span>
-                                </span>
-                            </span>
-
-                            <span className={`u-uppercase u-color-${player.level.slug}`}>
-                                {player.level.name}
-                            </span>
-
-                            <span>
-                                <span className="o-dictate">from</span> {player.games} game{player.games !== 1 ? 's' : ''}
-                            </span>
+                        <span className="u-color-paste">
+                            {player.rating} <span className="o-dictate">rating</span>
                         </span>
-                    </dd>
-                </div>
+                    </span>
+
+                    <span className={`u-uppercase u-color-${player.level.slug}`}>
+                        {player.level.name}
+                    </span>
+
+                    <span>
+                        <span className="o-dictate">from</span> {player.games} game{player.games !== 1 ? 's' : ''}
+                    </span>
+                </dd>
             </dl>
+
+            <a href="mailto:player@player.com" className="c-player__challenge c-go">Challenge</a>
 
         </header>
 
