@@ -19,6 +19,7 @@ import AddMatchScreen from '../screens/AddMatchScreen';
 import ClubsScreen from '../screens/ClubsScreen';
 import CreateClubScreen from '../screens/CreateClubScreen';
 import DashboardScreen from '../screens/DashboardScreen';
+import ErrorScreen from '../screens/ErrorScreen';
 import InvitePlayerScreen from '../screens/InvitePlayerScreen';
 import LeaderboardScreen from '../screens/LeaderboardScreen';
 import PlayerScreen from '../screens/PlayerScreen';
@@ -27,12 +28,11 @@ import RequestPasswordResetScreen from '../screens/RequestPasswordResetScreen';
 import ResetPasswordScreen from '../screens/ResetPasswordScreen';
 import MatchScreen from '../screens/MatchScreen';
 import MatchesScreen from '../screens/MatchesScreen';
+import NotFoundScreen from '../screens/NotFoundScreen';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import UpdateClubScreen from '../screens/UpdateClubScreen';
 import UpdateSettingsScreen from '../screens/UpdateSettingsScreen';
-import Error404Screen from '../screens/Error404Screen';
-import Error500Screen from '../screens/Error500Screen';
 
 const AppLayout = ({ isAuthenticated, isLoading }) => {
     if (isLoading) {
@@ -79,8 +79,10 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                     <UnauthenticatedRoute exact path="/sign-in" component={SignInScreen} />
                     <UnauthenticatedRoute exact path="/sign-up" component={SignUpScreen} />
 
-                    <AuthenticatedRoute exact path="/404" component={Error404Screen} />
-                    <AuthenticatedRoute exact path="/500" component={Error500Screen} />
+                    <Route exact path="/error" component={ErrorScreen} />
+
+                    <Route exact path="/not-found" component={NotFoundScreen} />
+                    <Redirect to="/not-found" />
                 </Switch>
             </main>
         </div>
