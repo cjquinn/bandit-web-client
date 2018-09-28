@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // Components
 import PlayerPhoto from '../shared/PlayerPhoto';
@@ -49,7 +48,7 @@ const Player = ({ player }) => (
                 </dd>
             </dl>
 
-            <a href="mailto:player@player.com" className="c-player__challenge c-go">Challenge</a>
+            <a href={`mailto:${player.user.email}`} className="c-player__challenge c-go">Challenge</a>
 
         </header>
 

@@ -8,7 +8,7 @@ import MatchesList from '../components/lists/MatchesList';
 import Template from '../components/shared/Template';
 import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
 
-import Disputes from '../components/Disputes';
+// import Disputes from '../components/Disputes';
 
 // Containers
 import LeaderboardListContainer from '../containers/lists/LeaderboardListContainer';
@@ -16,7 +16,7 @@ import MatchesListContainer from '../containers/lists/MatchesListContainer';
 
 const DashboardScreen = () => (
     <Template>
-        <Disputes />
+        {/*<Disputes />*/}
 
         <section className="o-container">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
