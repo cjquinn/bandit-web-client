@@ -32,6 +32,7 @@ const SignUpForm = props => (
             name="name"
             label="Club name:"
             type="text"
+            autocomplete="nope"
         />
 
         <Field
