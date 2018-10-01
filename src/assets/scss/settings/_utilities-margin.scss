@@ -7,6 +7,8 @@ $utilities-margin-settings: (
         'auto',
         (calc(var(--Baseline) * 1), '1bl'),
         (calc(var(--Baseline) * 2), '2bl'),
+        (calc(var(--Baseline) * 3), '3bl'),
+        (calc(var(--Baseline) * 4), '4bl'),
       ),
     ),
   ),
