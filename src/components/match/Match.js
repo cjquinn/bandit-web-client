@@ -5,9 +5,13 @@ import { Link } from 'react-router-dom';
 
 // Components
 import PlayerPhoto from '../shared/PlayerPhoto';
+import Svg from '../shared/Svg';
+
+// Sprite
+import rating from '../../assets/svg/sprite/rating.svg';
 
 const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
-    <section className="o-container u-vspace-3bl">
+    <section className="o-container">
         {match.deleted &&
             <p className="u-flex u-ai-center u-weight-bold u-color-hotmelon">
                 This match was deleted.
@@ -16,66 +20,111 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
 
         <div className="u-vspace-2bl">
             <dl className="u-flex u-hspace-1px u-borrad-first-2002 u-borrad-last-0220">
-                <li className="u-flex u-fd-col u-grow-1 u-basis-0 u-ai-center u-pv-2bl u-bgcolor-fold u-vspace-1bl">
-                    <Link to={`/players/${match.player_a_id}`}>
-                        <PlayerPhoto
-                            player={match.player_a}
-                            width="4bl"
-                        />
-                    </Link>
+                <li className="u-flex u-fd-col u-grow-1 u-basis-0 u-ai-center u-pv-3bl u-bgcolor-fold">
 
-                    <dt>
-                        <h2 className="u-color-paste">
-                            <Link to={`/players/${match.player_a_id}`}>
-                                {match.player_a.user.first_name} {match.player_a.user.last_name}
-                            </Link>
-                        </h2>
-                    </dt>
+                    <div className="u-flex u-fd-col u-ai-center u-vspace-1bl">
+                        <Link to={`/players/${match.player_a_id}`}>
+                            <PlayerPhoto
+                                player={match.player_a}
+                                width="4bl"
+                            />
+                        </Link>
 
-                    <dd>
-                        <p className="u-size-h1 u-color-white">
-                            {match.player_a_score}
-                        </p>
-                    </dd>
+                        <dt>
+                            <h2 className="u-color-paste">
+                                <Link to={`/players/${match.player_a_id}`}>
+                                    {match.player_a.user.first_name} {match.player_a.user.last_name}
+                                </Link>
+                            </h2>
+                        </dt>
 
-                    {match.player_a_snapshot &&
-                        <dd className={`u-color-${match.player_a_snapshot.difference >= 0 ? 'win' : 'loss'}`}>
-                            {match.player_a_snapshot.difference} <abbr title="rating points">pts.</abbr>
+                        <dd>
+                            <p className="u-size-h1 u-color-white">
+                                {match.player_a_score}
+                            </p>
                         </dd>
-                    }
+                    </div>
+
+                    <div className="u-flex u-ai-center u-hspace-4px u-mt-3bl">
+                        <Svg
+                            sprite={rating}
+                            className="u-width-1bl u-height-auto"
+                        />
+
+                        <span className="u-color-paste">{match.player_a.rating} <span className="o-dictate">rating</span></span>&nbsp;
+                    
+                        {match.player_a_snapshot &&
+                            <dd className={`u-color-${match.player_a_snapshot.difference >= 0 ? 'win' : 'loss'}`}>
+                                {match.player_a_snapshot.difference >= 0 ? '+' : ''}
+                                {match.player_a_snapshot.difference} <abbr title="rating points">pts.</abbr>
+                            </dd>
+                        }
+                    </div>
                 </li>
 
-                <li className="u-flex u-fd-col u-grow-1 u-basis-0 u-ai-center u-pv-2bl u-bgcolor-fold05 u-vspace-1bl">
-                    <Link to={`/players/${match.player_b_id}`}>
-                        <PlayerPhoto
-                            player={match.player_b}
-                            width="4bl"
-                        />
-                    </Link>
+                <li className="u-flex u-fd-col u-grow-1 u-basis-0 u-ai-center u-pv-3bl u-bgcolor-fold05">
 
-                    <dt>
-                        <h2 className="u-color-paste">
-                            <Link to={`/players/${match.player_b_id}`}>
-                                {match.player_b.user.first_name} {match.player_b.user.last_name}
-                            </Link>
-                        </h2>
-                    </dt>
+                    <div className="u-flex u-fd-col u-ai-center u-vspace-1bl">
+                        <Link to={`/players/${match.player_b_id}`}>
+                            <PlayerPhoto
+                                player={match.player_b}
+                                width="4bl"
+                            />
+                        </Link>
 
-                    <dd>
-                        <p className="u-size-h1 u-color-white">
-                            {match.player_b_score}
-                        </p>
-                    </dd>
+                        <dt>
+                            <h2 className="u-color-paste">
+                                <Link to={`/players/${match.player_b_id}`}>
+                                    {match.player_b.user.first_name} {match.player_b.user.last_name}
+                                </Link>
+                            </h2>
+                        </dt>
 
-                    {match.player_b_snapshot &&
-                        <dd className={`u-color-${match.player_b_snapshot.difference >= 0 ? 'win' : 'loss'}`}>
-                            {match.player_b_snapshot.difference} <abbr title="rating points">pts.</abbr>
+                        <dd>
+                            <p className="u-size-h1 u-color-white">
+                                {match.player_b_score}
+                            </p>
                         </dd>
-                    }
+                    </div>
+
+                    <div className="u-flex u-ai-center u-hspace-4px u-mt-3bl">
+                        <Svg
+                            sprite={rating}
+                            className="u-width-1bl u-height-auto"
+                        />
+
+                        <span className="u-color-paste">{match.player_b.rating} <span className="o-dictate">rating</span></span>&nbsp;
+
+                        {match.player_b_snapshot &&
+                            <dd className={`u-color-${match.player_b_snapshot.difference >= 0 ? 'win' : 'loss'}`}>
+                                {match.player_b_snapshot.difference >= 0 ? '+' : ''}
+                                {match.player_b_snapshot.difference} <abbr title="rating points">pts.</abbr>
+                            </dd>
+                        }
+                    </div>
                 </li>
             </dl>
 
-            <dl className="u-flex u-ai-center u-jc-between u-ph-1bl u-fw-wrap">
+            <details className="c-notification c-notification--info" role="alert">
+                <summary><p className="u-weight-bold">Ratings explained</p></summary>
+
+                <div className=" u-pv-1bl u-vspace-1bl">
+                    <p>Points are calculated for a game based on the two player's ratings.</p>
+
+                    <p>When a higher rated player loses to a lower rated player, this creates the biggest shift in ratings:</p>
+                    
+                    <ul>
+                        <li>The <strong className="u-color-white">higher rated</strong> player loses the maximum points.</li>
+                        <li>The <strong className="u-color-white">lower rated</strong> player wins the maximum points</li>
+                    </ul>
+
+                    <p>When two equally rated players draw, their ratings will stay equal.</p>
+
+                    <p>There are a few scenarios where the points awarded are less straightforward &mdash; we're working on a full FAQ to make this easier to understand.</p>
+                </div>
+            </details>
+
+            <dl className="u-ph-1bl u-vspace-1bl">
                 <li className="u-flex u-ai-center u-hspace-05bl u-fw-wrap">
                     <dt>Submitted by </dt>
                     <dd className="u-flex u-ai-center u-hspace-05bl">
@@ -97,7 +146,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
 
         {match.was_within24_hours && match.player_a.user_id === userId && !match.dispute && !match.deleted &&
             <button
-                className="c-button c-button--warning u-mt-1bl"
+                className="c-button c-button--warning u-mt-3bl"
                 disabled={isDeleting}
                 onClick={handleClickCancel}
             >

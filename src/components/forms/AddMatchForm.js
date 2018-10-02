@@ -16,10 +16,10 @@ const AddMatchForm = ({ players, user, ...props }) => (
         <details className="c-notification c-notification--info" role="alert">
             <summary><p className="u-weight-bold">What’s the score?</p></summary>
 
-            <ol className="u-vspace-mt-">
+            <ol className="u-pv-1bl u-line-105">
                 <li>You won <strong className="u-color-white">5 games</strong></li>
-                <li>Your lost <strong className="u-color-white">3 games</strong></li>
-                <li>Score is <strong className="u-color-white">5 &ndash; 3</strong></li>
+                <li>You lost <strong className="u-color-white">3 games</strong></li>
+                <li>Match score is <strong className="u-color-white">5 &ndash; 3</strong></li>
             </ol>
         </details>
 

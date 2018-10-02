@@ -12,7 +12,7 @@ const MiniStats = () => (
     <section className="u-vspace-1bl">
 
         <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-            <h1 className="u-size-h2 u-color-white">Stats <span className="u-color-steam">mini</span></h1>
+            <h1 className="u-size-h2 u-color-white">Stats <span className="u-weight-normal u-color-steam">mini</span></h1>
         </header>
 
         <dl className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">

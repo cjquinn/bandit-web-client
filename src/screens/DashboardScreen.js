@@ -20,7 +20,7 @@ const DashboardScreen = () => (
 
         <section className="o-container">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">Matches</h1>
+                <h1 className="u-size-h2 u-color-white">Matches <span className="u-weight-normal u-color-steam">recent</span></h1>
 
                 <Link
                     to="/matches"
@@ -48,7 +48,7 @@ const DashboardScreen = () => (
 
         <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">Weekly <span className="u-color-steam">leaderboard</span></h1>
+                <h1 className="u-size-h2 u-color-white">Weekly <span className="u-weight-normal u-color-steam">leaderboard</span></h1>
 
                 <Link
                     to="/leaderboard/weekly"
@@ -67,7 +67,7 @@ const DashboardScreen = () => (
 
         <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">All time <span className="u-color-steam">leaderboard</span></h1>
+                <h1 className="u-size-h2 u-color-white">All time <span className="u-weight-normal u-color-steam">leaderboard</span></h1>
 
                 <Link
                     to="/leaderboard/all-time"
