@@ -4,13 +4,13 @@ import React from 'react';
 // Components
 import Notification from '../shared/Notification';
 
-const InputField = ({ input, label, meta, placeholder = '', autocomplete = '', type }) => (
+const InputField = ({ input, label, meta, placeholder = '', autoComplete = '', type }) => (
     <fieldset className="u-pos-relative">
         <input
             {...input}
             type={type}
             placeholder={placeholder}
-            autocomplete={autocomplete}
+            autoComplete={autoComplete}
         />
 
         <label>{label}</label>
@@ -29,7 +29,7 @@ InputField.propTypes = {
     label: PropTypes.string.isRequired,
     meta: PropTypes.object.isRequired,
     placeholder: PropTypes.string,
-    autocomplete: PropTypes.string,
+    autoComplete: PropTypes.string,
     type: PropTypes.string.isRequired
 };
 

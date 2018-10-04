@@ -4,6 +4,7 @@ import { SubmissionError } from 'redux-form';
 import { push } from 'react-router-redux';
 
 // Actions
+import { setFlash } from './flash/actions';
 import { signOut } from './user/actions';
 
 // Endpoints
@@ -52,6 +53,14 @@ export const handleError = (dispatch, failure) => response => {
     switch (response.status) {
         case 400:
             throw new SubmissionError(formatErrors(response.data.errors));
+
+        case 401:
+            dispatch(setFlash({
+                message: response.data.message,
+                type: 'info'
+            }));
+
+            return dispatch(push('/sign-in'));
 
         case 403:
             // Handle this for unauthed users

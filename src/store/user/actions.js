@@ -62,6 +62,7 @@ export const requestPasswordReset = data => (dispatch, getState, api) => {
     return api.requestPasswordReset(data)
         .then(api.checkStatus)
         .then(() => dispatch(requestPasswordResetSuccess()))
+        .then(() => dispatch(setFlash({message: 'Check your email for your reset password link.', type: 'info'})))
         .then(() => dispatch(push('/sign-in')))
         .catch(api.handleError(dispatch, requestPasswordResetFailure));
 };

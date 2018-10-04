@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 // Actions
-import { activateAccount } from '../../store/user/actions';
+import { activateAccount, validateActivateAccountToken } from '../../store/user/actions';
 
 // Components
 import ActivateAccountForm from '../../components/forms/ActivateAccountForm';
@@ -14,17 +14,23 @@ const ActivateAccountReduxForm = reduxForm({form: 'activateAccount'})(ActivateAc
 class ActivateAccountFormContainer extends Component {
     handleSubmit = data => this.props.activateAccount(data);
 
+    componentDidMount() {
+        this.props.validateActivateAccountToken();
+    }
+
     render() {
         return <ActivateAccountReduxForm onSubmit={this.handleSubmit} />;
     }
 }
 
 ActivateAccountFormContainer.propTypes = {
-    activateAccount: PropTypes.func.isRequired
+    activateAccount: PropTypes.func.isRequired,
+    validateActivateAccountToken: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
-    activateAccount: data => dispatch(activateAccount(data))
+    activateAccount: data => dispatch(activateAccount(data)),
+    validateActivateAccountToken: () => dispatch(validateActivateAccountToken())
 });
 
 export default connect(null, mapDispatchToProps)(ActivateAccountFormContainer);
