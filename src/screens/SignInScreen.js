@@ -28,9 +28,9 @@ const SignInScreen = () => (
                 />
             </div>
 
-            <h1 className="u-size-h2 u-color-orange u-uppercase u-weight-bold">Bandit</h1>
+            <h1 className="u-size-h2 u-color-orange u-uppercase u-weight-bold">Bandit Match</h1>
 
-            <p>Play, match, bandit.</p>
+            <p className="u-size-h4 u-color-white">Play better matches</p>
         </header>
 
         <hr className="c-hr" />

@@ -11,12 +11,14 @@ const UpdateClubForm = props => (
         buttonText="Update club"
         {...props}
     >       
-        <Field
-            component={InputField}
-            name="name"
-            label="Name:"
-            type="text"
-        />
+        <div className="u-ph-1bl u-vspace-3bl">
+            <Field
+                component={InputField}
+                name="name"
+                label="Name:"
+                type="text"
+            />
+        </div>
     </Form>
 );
 

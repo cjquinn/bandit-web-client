@@ -87,18 +87,6 @@ $utilities-margin-settings: (
 
     values: (
       (
-        start: 1,
-        end: 8,
-        unit: 'px',
-        combinator: $combinator-child-siblings,
-      ),
-    ),
-  ),
-  (
-    property: ('margin-left', 'hspace'),
-
-    values: (
-      (
         value: (calc(var(--Baseline) * .5), '05bl'),
         combinator: $combinator-child-siblings,
       ),
@@ -108,6 +96,12 @@ $utilities-margin-settings: (
       ),
       (
         value: (calc(var(--Baseline) * 2), '2bl'),
+        combinator: $combinator-child-siblings,
+      ),
+      (
+        start: 1,
+        end: 8,
+        unit: 'px',
         combinator: $combinator-child-siblings,
       ),
     ),

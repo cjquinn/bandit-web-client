@@ -25,11 +25,8 @@ $component: 'tab';
   &--header {
     @extend .u-pv-1bl;
     @extend .u-ph-1bl;
-    @extend .u-size-h4;
-  }
-
-  &--header:not(&--active) {
-    @extend .u-bgcolor-floor05\@hover;    
+    @extend .u-size-h5;
+    @extend .u-bgcolor-floor05;
   }
 
   // .c-tab--main

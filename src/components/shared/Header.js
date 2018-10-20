@@ -12,7 +12,7 @@ import logo_knot from '../../assets/svg/sprite/logo_knot.svg';
 
 const Header = ({ children, club, user }) => (
     <nav>
-        <div className="o-container u-pv-105bl">
+        <div className="o-container u-pv-175bl">
             <div className="u-ph-1bl u-flex u-jc-between">
                 <NavLink
                     to="/"
@@ -57,7 +57,7 @@ const Header = ({ children, club, user }) => (
                         width="2bl"
                     />
                     
-                    <span className="u-color-orange u-uppercase u-weight-bold">
+                    <span className="u-ws-no u-color-orange u-uppercase u-weight-bold">
                         {user.display_name}
                     </span>
                 </NavLink>

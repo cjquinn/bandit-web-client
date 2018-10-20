@@ -3,14 +3,11 @@
   --ContainerWidth: calc(var(--WindowWidth) - (var(--Baseline) * 2));
 
   @include iota-breakpoint(uptowindowgap) {
-    --Baseline: 10px;
+    --Baseline: 9px;
   }
 
   @include iota-breakpoint(fromwindowgap) {
     --Baseline: 12px;
-  }
-
-  @include iota-breakpoint(fromwindowgap) {
     --WindowWidth: calc(var(--ViewportWidth) - (var(--Baseline) * 2));
   }
 

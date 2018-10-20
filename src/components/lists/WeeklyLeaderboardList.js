@@ -8,7 +8,7 @@ const WeeklyLeaderboardList = ({ isFetching, players, userId }) => (
     <section className="o-container">
         {!isFetching && players.length === 0 &&
             <div className="c-notification c-notification--alert">
-                <p className="u-weight-bold">Weekly Leaderboard has reset!</p>
+                <p className="u-weight-bold">Weekly Leaderboard has reset</p>
             
                 <p>Play a match to open up this week’s rankings.</p>
             </div>

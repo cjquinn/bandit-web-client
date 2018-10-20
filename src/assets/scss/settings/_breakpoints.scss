@@ -1,6 +1,9 @@
 $breakpoint-window-gap: 360px;
 $breakpoint-max: 456px;
 
+$breakpoint-smallest-font: 320px;
+$breakpoint-largest-font: $breakpoint-max;
+
 $global-breakpoints: (
 
   uptowindowgap:

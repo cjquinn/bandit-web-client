@@ -15,7 +15,7 @@ const LeaderboardScreen = () => (
     <Template>
         <header className="o-container u-ph-1bl">
             <div className="u-vspace-06r">
-                <h1 className="u-size-h1 u-color-white">Club Leaderboards</h1>
+                <h1 className="u-size-h1 u-color-white">Leaderboards</h1>
 
                 <h2 className="u-size-h4">Where competition trumps friendship.</h2>
             </div>

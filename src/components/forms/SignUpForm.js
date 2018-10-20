@@ -11,43 +11,46 @@ const SignUpForm = props => (
         buttonText="Sign up"
         {...props}
     >   
-        <div className="u-flex u-hspace-2bl">
+
+        <div className="u-ph-1bl u-vspace-3bl">
+            <div className="u-flex u-hspace-2bl">
+                <Field
+                    component={InputField}
+                    name="founder[first_name]"
+                    label="First name:"
+                    type="text"
+                />
+                
+                <Field
+                    component={InputField}
+                    name="founder[last_name]"
+                    label="Last name:"
+                    type="text"
+                />
+            </div>
+
             <Field
                 component={InputField}
-                name="founder[first_name]"
-                label="First name:"
+                name="name"
+                label="Club name:"
                 type="text"
+                autocomplete="nope"
             />
-            
+
             <Field
                 component={InputField}
-                name="founder[last_name]"
-                label="Last name:"
-                type="text"
+                name="founder[email]"
+                label="Email:"
+                type="email"
+            />
+
+            <Field
+                component={InputField}
+                name="founder[password]"
+                label="Password:"
+                type="password"
             />
         </div>
-
-        <Field
-            component={InputField}
-            name="name"
-            label="Club name:"
-            type="text"
-            autocomplete="nope"
-        />
-
-        <Field
-            component={InputField}
-            name="founder[email]"
-            label="Email:"
-            type="email"
-        />
-
-        <Field
-            component={InputField}
-            name="founder[password]"
-            label="Password:"
-            type="password"
-        />
     </Form>
 );
 

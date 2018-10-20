@@ -11,19 +11,21 @@ const SignInForm = props => (
         buttonText="Sign in"
         {...props}
     >
-        <Field
-            component={InputField}
-            name="email"
-            label="Email:"
-            type="email"
-        />
+        <div className="u-ph-1bl u-vspace-3bl">
+            <Field
+                component={InputField}
+                name="email"
+                label="Email:"
+                type="email"
+            />
 
-        <Field
-            component={InputField}
-            name="password"
-            label="Password:"
-            type="password"
-        />
+            <Field
+                component={InputField}
+                name="password"
+                label="Password:"
+                type="password"
+            />
+        </div>
     </Form>
 );
 

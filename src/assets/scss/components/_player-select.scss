@@ -1,0 +1,22 @@
+/**
+ * .c-add-match
+ */
+
+$component: 'add-match';
+
+#{'.' + $global-components-namespace + $component} {
+
+  &__photo {
+    @media (max-width: 470px) {
+      display: none;
+    }
+
+    &--opponent {
+  
+    }
+
+    &--you {
+      
+    }
+  }
+}

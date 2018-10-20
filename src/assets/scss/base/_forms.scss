@@ -93,9 +93,17 @@ textarea {
 
 select {
   @extend .u-width-100pc;
+  height: 2em;
+  padding: 0 .2em;
+  border-top: 1px solid rgba(98,111,148, .4);
+  background: rgba(98, 111, 148, .3);
 
   &[disabled] {
     color: inherit;
+  }
+
+  &:not([disabled]):focus {
+    border-top: 1px solid white;
   }
 }
 
@@ -125,6 +133,22 @@ select {
   &:not(:placeholder-shown) {
     ~ label {
       // opacity: .5;
+    }
+  }
+}
+
+.c-score-input {
+  border-bottom-color: rgba($colour-paste, .7);
+  
+  &:placeholder-shown {
+    background-color: rgba($colour-deepblue, .3);
+  }
+
+  &:focus {
+    border-bottom-color: $colour-white;
+    
+    &:placeholder-shown {
+      box-shadow: 0 4px 3px rgba($colour-deepblue, .7);
     }
   }
 }

@@ -12,7 +12,7 @@ const PlayerSelectField = ({ input, players }) => {
     }
 
     return (
-        <div className="u-ov-hidden u-grow-1 u-basis-0 u-order-3 u-flex u-ai-center u-jc-end u-align-right u-hspace-1bl">
+        <div className="c-add-match u-ov-hidden u-grow-1 u-basis-0 u-order-3 u-flex u-ai-center u-jc-end u-align-right u-hspace-1bl">
             <select
                 {...input}
                 className="u-color-playdough"
@@ -29,10 +29,12 @@ const PlayerSelectField = ({ input, players }) => {
                 </optgroup>
             </select>
 
-            <PlayerPhoto 
-                player={player} 
-                width="2bl" 
-            />
+            <div className="c-add-match__photo c-add-match__photo--opponent">
+                <PlayerPhoto 
+                    player={player} 
+                    width="2bl" 
+                />
+            </div>
         </div>
     );
 };

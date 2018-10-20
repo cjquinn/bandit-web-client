@@ -11,43 +11,45 @@ const UpdateSettingsForm = props => (
         buttonText="Update settings"
         {...props}
     >
-        <div className="u-flex u-hspace-2bl">
+        <div className="u-ph-1bl u-vspace-3bl">
+            <div className="u-flex u-hspace-2bl">
+                <Field
+                    component={InputField}
+                    name="first_name"
+                    label="First name:"
+                    type="text"
+                />
+                
+                <Field
+                    component={InputField}
+                    name="last_name"
+                    label="Last name:"
+                    type="text"
+                />
+            </div>
+
             <Field
                 component={InputField}
-                name="first_name"
-                label="First name:"
+                name="email"
+                label="Email name:"
                 type="text"
             />
-            
-            <Field
-                component={InputField}
-                name="last_name"
-                label="Last name:"
-                type="text"
-            />
-        </div>
 
-        <Field
-            component={InputField}
-            name="email"
-            label="Email name:"
-            type="text"
-        />
-
-        <div className="u-flex u-hspace-2bl">
-            <Field
-                component={InputField}
-                name="current_password"
-                label="Current password:"
-                type="password"
-            />
-            
-            <Field
-                component={InputField}
-                name="new_password"
-                label="New password:"
-                type="password"
-            />
+            <div className="u-flex u-hspace-2bl">
+                <Field
+                    component={InputField}
+                    name="current_password"
+                    label="Current password:"
+                    type="password"
+                />
+                
+                <Field
+                    component={InputField}
+                    name="new_password"
+                    label="New password:"
+                    type="password"
+                />
+            </div>
         </div>
     </Form>
 );
