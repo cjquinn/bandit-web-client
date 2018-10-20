@@ -12,12 +12,12 @@ import AddMatchFormContainer from '../containers/forms/AddMatchFormContainer';
 const AddMatchScreen = ({ user }) => (
     <Template>
         <div className="o-container u-ph-1bl u-vspace-2bl">
-            <Link
+            {/* <Link
                 to="/matches"
                 className="c-go"
             >
                 Back to matches
-            </Link>
+            </Link> */}
 
             <header className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Add Match</h1>

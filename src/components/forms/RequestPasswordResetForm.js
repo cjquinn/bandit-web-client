@@ -11,12 +11,15 @@ const RequestPasswordResetForm = props => (
         buttonText="Reset password"
         {...props}
     >
-        <Field
-            component={InputField}
-            name="email"
-            label="Email:"
-            type="email"
-        />
+
+        <div className="u-ph-1bl u-vspace-3bl">
+            <Field
+                component={InputField}
+                name="email"
+                label="Email:"
+                type="email"
+            />
+        </div>
     </Form>
 );
 

@@ -11,12 +11,14 @@ const InvitePlayerForm = props => (
         buttonText="Invite player"
         {...props}
     >
-        <Field
-            component={InputField}
-            name="user[email]"
-            label="Email:"
-            type="email"
-        />
+        <div className="u-ph-1bl">
+            <Field
+                component={InputField}
+                name="user[email]"
+                label="Email:"
+                type="email"
+            />
+        </div>
     </Form>
 );
 

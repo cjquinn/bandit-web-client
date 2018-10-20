@@ -12,7 +12,7 @@ const AddMatches = () => (
             <div className="u-grow-1 u-basis-0 u-flex u-ai-center u-jc-center u-order-2 u-align-center u-hspace-1bl">
 
                 <dt className="u-size-h4 u-weight-bold u-ws-no">
-                    <span className="o-dictate">Teddy Austin </span> <input className="u-width-205bl u-line-2 u-align-center" type="number" placeholder="0" min="0" max="14" /> &ndash; <span className="o-dictate">Angelica Hamlet </span><input className="u-width-205bl u-line-2 u-align-center" type="number" placeholder="0" min="0" max="14" />
+                    <span className="o-dictate">Teddy Austin </span> <input className="c-score-input u-width-205bl u-line-2 u-align-center" type="number" placeholder="0" min="0" max="14" /> &ndash; <span className="o-dictate">Angelica Hamlet </span><input className="c-score-input u-width-205bl u-line-2 u-align-center" type="number" placeholder="0" min="0" max="14" />
                 </dt>
 
             </div>

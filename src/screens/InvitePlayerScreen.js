@@ -11,12 +11,12 @@ import InvitePlayerFormContainer from '../containers/forms/InvitePlayerFormConta
 const InvitePlayerScreen = () => (
     <Template>
         <div className="o-container u-ph-1bl u-vspace-2bl">
-            <Link
+            {/* <Link
                 to="/players"
                 className="c-go"
             >
                 Back to players
-            </Link>
+            </Link> */}
 
             <header className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Invite Player</h1>

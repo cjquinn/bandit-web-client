@@ -14,7 +14,7 @@ const MatchesScreen = () => (
     <Template>
         <header className="o-container u-ph-1bl">
             <div className="u-vspace-06r">
-                <h1 className="u-size-h1 u-color-white">Club Matches</h1>
+                <h1 className="u-size-h1 u-color-white">Matches</h1>
                 <h2 className="u-size-h4 u-line-error">Who’s been collecting scalps lately?</h2>
             </div>
 

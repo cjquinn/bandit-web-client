@@ -13,7 +13,7 @@ const PlayersScreen = () => (
     <Template>
         <header className="o-container u-ph-1bl">
             <div className="u-vspace-06r">
-                <h1 className="u-size-h1 u-color-white">Club Players</h1>
+                <h1 className="u-size-h1 u-color-white">Players</h1>
 
                 <h2 className="u-size-h4">Who to play ball with?</h2>
             </div>

@@ -18,13 +18,15 @@ const Form = ({ buttonText, children, error, handleSubmit, submitting }) => (
         
         {children}
 
-        <button
-            className="c-button c-button--default"
-            type="submit"
-            disabled={submitting}
-        >
-            {buttonText}
-        </button>
+        <div className="u-ph-1bl">
+            <button
+                className="c-button c-button--default"
+                type="submit"
+                disabled={submitting}
+            >
+                {buttonText}
+            </button>
+        </div>
     </form>
 );
 

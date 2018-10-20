@@ -11,28 +11,30 @@ const ActivateAccountForm = props => (
         buttonText="Activate account"
         {...props}
     >   
-        <div className="u-flex u-hspace-2bl">
+        <div className="u-ph-1bl u-vspace-3bl">
+            <div className="u-flex u-hspace-2bl">
+                <Field
+                    component={InputField}
+                    name="first_name"
+                    label="First name:"
+                    type="text"
+                />
+                
+                <Field
+                    component={InputField}
+                    name="last_name"
+                    label="Last name:"
+                    type="text"
+                />
+            </div>
+
             <Field
                 component={InputField}
-                name="first_name"
-                label="First name:"
-                type="text"
-            />
-            
-            <Field
-                component={InputField}
-                name="last_name"
-                label="Last name:"
-                type="text"
+                name="password"
+                label="Password:"
+                type="password"
             />
         </div>
-
-        <Field
-            component={InputField}
-            name="password"
-            label="Password:"
-            type="password"
-        />
     </Form>
 );
 
