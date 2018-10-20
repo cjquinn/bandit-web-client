@@ -10,7 +10,7 @@ const UserMenu = () => (
         <div className="c-fade c-fade--right"></div>
 
         <div className="o-scroll-overflow">
-            <ul className="u-flex u-ph-1bl u-hspace-1bl">
+            <ul className="u-flex u-ph-1bl u-hspace-05bl">
                 <li>
                     <NavLink
                         to="/profile"
