@@ -52,12 +52,27 @@ const Player = ({ player }) => (
 
         </header>
 
-        <section className="u-vspace-1bl">
+        <section className="u-vspace-2bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">
                     Stats <span className="u-weight-normal u-color-steam">mini</span>
                 </h1>
             </header>
+
+            <div className="u-ph-1bl u-vspace-1bl">
+
+                <div className="u-flex u-jc-between u-uppercase">
+                    <span className="u-size-13px u-color-paste">Gladiator<br/><span className="u-color-steam">1250</span></span>
+                    <span className="u-align-center u-size-13px u-color-paste">Warrior<br/><span className="u-color-steam">1350</span></span>
+                    <span className="u-align-right u-size-13px u-color-paste">Assassin<br/><span className="u-color-steam">1450</span></span>
+                </div>
+
+                <div className="u-bgcolor-fold">
+                    <div className="c-level-progress">
+                    </div>
+                </div>
+
+            </div>
 
             <dl className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
                 <li className="u-bgcolor-fold">
@@ -131,6 +146,8 @@ const Player = ({ player }) => (
                 </li>
             </dl>
         </section>
+
+        
     </div>
 );
 

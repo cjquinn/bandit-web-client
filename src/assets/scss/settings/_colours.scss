@@ -108,3 +108,77 @@ $colour-mega: $colour-level24;
 $colour-mythical: $colour-level25;
 $colour-legendary: $colour-level26;
 $colour-god: $colour-level27; // 2550+
+
+$colour-levels: (
+
+  1: $colour-level1,
+  2: $colour-level2,
+  3: $colour-level3,
+  4: $colour-level4,
+  5: $colour-level5,
+  6: $colour-level6,
+  7: $colour-level7,
+  8: $colour-level8,
+  9: $colour-level9,
+  10: $colour-level10,
+  11: $colour-level11,
+  12: $colour-level12,
+  13: $colour-level13,
+  14: $colour-level14,
+  15: $colour-level15,
+  16: $colour-level16,
+  17: $colour-level17,
+  18: $colour-level18,
+  19: $colour-level19,
+  20: $colour-level20,
+  21: $colour-level21,
+  22: $colour-level22,
+  23: $colour-level23,
+  24: $colour-level24,
+  25: $colour-level25,
+  26: $colour-level26,
+  27: $colour-level27
+
+);
+
+:root {
+  @each $colour in $colour-levels {
+    $level-number: first($colour);
+    $level-colour: last($colour);
+
+    --colour-level#{$level-number}: #{$level-colour};
+  }
+}
+
+.c-level-progress {
+  --previous-level-colour: var(--colour-level14);
+  --current-level-colour: var(--colour-level15);
+  --next-level-colour: var(--colour-level16);
+
+  --progress: 94%;
+  --height: 5px;
+  
+  background-image: linear-gradient(to right, 
+    var(--previous-level-colour) 00%, 
+    var(--previous-level-colour) 20%, 
+
+    var(--current-level-colour) 40%, 
+    var(--current-level-colour) 60%, 
+
+    var(--next-level-colour) 80%,
+    var(--next-level-colour) 100%
+    );
+  border-radius: 4px;
+
+  clip-path: polygon(0 0, var(--progress) 0, calc(var(--progress) + (var(--height) / 2)) 50%, var(--progress) 100%, 0 100%);
+  animation: scaleProgress .6s;
+  animation-delay: .6s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+@keyframes scaleProgress {
+  0% {
+    clip-path: polygon(0 0, var(--progress) 0, calc(var(--progress) + (var(--height) / 2)) 50%, var(--progress) 100%, 0 100%);
+  }
+}
