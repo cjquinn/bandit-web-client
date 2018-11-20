@@ -33,25 +33,31 @@ export const makeGetLeaderboard = () => createSelector(
     [getIds, getLimit, getPlayerId, getBanditId, getPlayerEntities, getUserEntities],
     (ids, limit, playerId, banditId, players, users) => {
         let idsToUse = ids;
+        let startIndex = 0;
 
-        if (limit) {
-            let startIndex = 0;
-                
+        if (limit) {        
             if (playerId) {
                 let playerIdIndex = ids.indexOf(playerId);
 
-                if (playerIdIndex !== -1) {
-                    startIndex = playerIdIndex === 0
-                        ? playerIdIndex
-                        : playerIdIndex === ids.length - 1
-                            ? Math.max(0, ids.length - limit)
-                            : playerIdIndex - 1;
+                if (playerIdIndex === -1) {
+                    return [];
                 }
+
+                startIndex = playerIdIndex === 0
+                    ? playerIdIndex
+                    : playerIdIndex === ids.length - 1
+                        ? Math.max(0, ids.length - +limit)
+                        : playerIdIndex - 1;
             }
 
-            idsToUse = ids.slice(startIndex, startIndex + limit);
+            idsToUse = ids.slice(startIndex, startIndex + +limit);
         }
 
-        return denormalize(idsToUse, [playerSchema], {players, users}).map(player => withIsBandit(player, banditId));
+        let position = startIndex;
+
+        return denormalize(idsToUse, [playerSchema], {players, users}).map(player => ({
+            ...withIsBandit(player, banditId),
+            position: ++position
+        }));
     }
 );

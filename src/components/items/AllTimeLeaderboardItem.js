@@ -45,7 +45,7 @@ const AllTimeLeaderboardItem = ({ player, position, userId }) => (
                     </dd>
                 </div>
 
-                <dd className="u-color-paste u-size-h4 u-weight-bold u-ws-no">#{position}</dd>
+                <dd className="u-color-paste u-size-h4 u-weight-bold u-ws-no">#{position || player.position}</dd>
             </dl>
         </Link>
     </Template>
@@ -53,7 +53,7 @@ const AllTimeLeaderboardItem = ({ player, position, userId }) => (
 
 AllTimeLeaderboardItem.propTypes = {
     player: PropTypes.object.isRequired,
-    position: PropTypes.number.isRequired,
+    position: PropTypes.number,
     userId: PropTypes.number.isRequired
 };
 

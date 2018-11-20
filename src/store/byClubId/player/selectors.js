@@ -46,18 +46,18 @@ export const makeGetPlayer = () => createSelector(
                     banditId
                 ),
                 games: player.wins + player.losses,
-                winRatio: (player.wins / player.losses).toFixed(2)
+                winRatio: player.losses === 0 ? 0 : (player.wins / player.losses).toFixed(2)
             }
             : undefined
 );
 
 const sortPlayers = {
     'a-z': (a, b) => {
-        if (a.user.name < b.user.name) {
+        if (a.user.display_name < b.user.display_name) {
             return -1;
         }
 
-        return a.user.name > b.user.name ? 1 : 0;
+        return a.user.display_name > b.user.display_name ? 1 : 0;
     },
     games: (a, b) => {
         const aGames = a.wins + a.losses;

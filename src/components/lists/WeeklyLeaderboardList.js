@@ -16,14 +16,13 @@ const WeeklyLeaderboardList = ({ isFetching, players, userId }) => (
 
         {players.length > 0 &&
             <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                {players.map((player, i) => (
+                {players.map(player => (
                     <li
                         key={player.id}
                         className="u-pos-relative u-bgcolor-fold"
                     >
                         <WeeklyLeaderboardItem
                             player={player}
-                            position={i + 1}
                             userId={userId}
                         />
                     </li>
