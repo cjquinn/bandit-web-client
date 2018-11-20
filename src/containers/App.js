@@ -6,6 +6,9 @@ import { ConnectedRouter } from 'react-router-redux';
 // Actions
 import { fetchCurrentUser } from '../store/user/actions';
 
+// Containers
+import ScrollToTop from './ScrollToTop';
+
 // Layouts
 import AppLayout from '../layouts/AppLayout';
 
@@ -23,7 +26,9 @@ class App extends Component {
 
         return (
             <ConnectedRouter history={history}>
-                <AppLayout isAuthenticated={isAuthenticated} isLoading={isLoading} />
+                <ScrollToTop>
+                    <AppLayout isAuthenticated={isAuthenticated} isLoading={isLoading} />
+                </ScrollToTop>
             </ConnectedRouter>
         );
     }
