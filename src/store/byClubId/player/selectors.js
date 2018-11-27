@@ -53,11 +53,14 @@ export const makeGetPlayer = () => createSelector(
 
 const sortPlayers = {
     'a-z': (a, b) => {
-        if (a.user.display_name < b.user.display_name) {
+        const lowerCaseA = a.user.display_name.toLowerCase();
+        const lowerCaseB = b.user.display_name.toLowerCase();
+
+        if (lowerCaseA < lowerCaseB) {
             return -1;
         }
 
-        return a.user.display_name > b.user.display_name ? 1 : 0;
+        return lowerCaseA > lowerCaseB ? 1 : 0;
     },
     games: (a, b) => {
         const aGames = a.wins + a.losses;
