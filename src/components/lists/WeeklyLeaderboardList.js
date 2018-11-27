@@ -15,8 +15,8 @@ const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players,
                 <p>
                     {playerId
                         ? playerId === currentPlayerId
-                            ? 'Current player copy'
-                            : 'Other player copy'
+                            ? 'Play a match to join this week’s leaderboard.'
+                            : 'This player hasn\'t played a match this week.'
                         : 'Play a match to open up this week’s leaderboard.'
                     }
                 </p>

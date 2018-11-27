@@ -9,15 +9,15 @@ const MatchesList = ({ currentPlayerId, isFetching, matches, playerId }) => {
         return (
             <div className="c-notification c-notification--alert">
                 <p className="u-weight-bold">
-                    No Matches
+                    No matches
                 </p>
             
                 <p>
                     {playerId !== 'all'
                         ? playerId === currentPlayerId
-                            ? 'Current player copy'
-                            : 'Other player copy'
-                        : 'Dashboard/matches screen copy'
+                            ? 'You haven\'t played any matches yet.'
+                            : 'This player hasn\'t played any matches yet.'
+                        : 'This club hasn\'t had any matches yet.'
                     }
                 </p>
             </div>

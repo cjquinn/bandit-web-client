@@ -32,18 +32,24 @@ const PlayerItem = ({ player, userId }) => (
                     <dt className="u-color-paste">{player.user.display_name}</dt>
 
                     <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                        <span className="u-flex u-ai-center u-hspace-8px">
-                            <span className="u-flex u-ai-center u-hspace-4px">
-                                <Svg
-                                    className="u-width-1bl u-height-auto"
-                                    sprite={rating}
-                                />
+                        {player.games > 0 &&
+                            (
+                                <span className="u-flex u-ai-center u-hspace-8px">
+                                    <span className="u-flex u-ai-center u-hspace-4px">
+                                        <Svg
+                                            className="u-width-1bl u-height-auto"
+                                            sprite={rating}
+                                        />
 
-                                <span className="u-color-paste">{player.rating} <span className="o-dictate">rating</span></span>
-                            </span>
+                                        <span className="u-color-paste">{player.rating} <span className="o-dictate">rating</span></span>
+                                    </span>
 
-                            <span><span className="o-dictate">from</span> {player.games} games</span>
-                        </span>
+                                    <span><span className="o-dictate">from</span> {player.games} games</span>
+                                </span>
+                            )
+                        }
+
+                        {player.games === 0 && <span className="u-uppercase u-color-level0">{player.level.name}</span>}
                     </dd>
                 </div>
             </dl>

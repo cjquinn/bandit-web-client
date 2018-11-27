@@ -51,7 +51,7 @@ const LeaderboardScreen = () => (
         <div className="o-container">
             <Switch>
                 <Route exact path="/leaderboard/all-time" render={props => (
-                    <div className="u-vspace-1bl">
+                    <div className="u-vspace-3bl">
                         <LeaderboardListContainer
                             component={AllTimeLeaderboardList}
                             period="allTime"

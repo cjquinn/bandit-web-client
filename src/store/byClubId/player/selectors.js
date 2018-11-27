@@ -45,7 +45,6 @@ export const makeGetPlayer = () => createSelector(
                     denormalize(player.id, playerSchema, {players: {[player.id]: player}, users}),
                     banditId
                 ),
-                games: player.wins + player.losses,
                 winRatio: player.losses === 0 ? 0 : (player.wins / player.losses).toFixed(2)
             }
             : undefined
@@ -62,13 +61,16 @@ const sortPlayers = {
 
         return lowerCaseA > lowerCaseB ? 1 : 0;
     },
-    games: (a, b) => {
-        const aGames = a.wins + a.losses;
-        const bGames = b.wins + b.losses;
-
-        return bGames - aGames;
-    },
+    games: (a, b) => b.games - a.games,
     rating: (a, b) => {
+        if (a.games === 0) {
+            return 1;
+        }
+
+        if (b.games === 0) {
+            return -1;
+        }
+
         if (a.rating !== b.rating) {
             return b.rating - a.rating;
         }
@@ -89,8 +91,7 @@ export const getPlayers = createSelector(
     [getIds, getOrderBy, getBanditId, getPlayerEntities, getUserEntities],
     (ids, orderBy, banditId, players, users) => {
         const denormalizedPlayers = denormalize(ids, [playerSchema], {players, users}).map(player => ({
-            ...withIsBandit(player, banditId),
-            games: player.wins + player.losses
+            ...withIsBandit(player, banditId)
         }));
         
         return denormalizedPlayers.sort(sortPlayers[orderBy]);

@@ -4,7 +4,7 @@ import React from 'react';
 // Components
 import AllTimeLeaderboardItem from '../items/AllTimeLeaderboardItem';
 
-const AllTimeLeaderboardList = ({ currentPlayerId, isFetching, playerId, players, userId }) => {
+const AllTimeLeaderboardList = ({ isFetching, players, userId }) => {
     if (!isFetching && players.length === 0) {
         return (
             <div className="c-notification c-notification--alert">
@@ -12,14 +12,7 @@ const AllTimeLeaderboardList = ({ currentPlayerId, isFetching, playerId, players
                     No all time leaderboard
                 </p>
             
-                <p>
-                    {playerId
-                        ? playerId === currentPlayerId
-                            ? 'Current player copy'
-                            : 'Other player copy'
-                        : 'Leaderboard/dashboard screen copy'
-                    }
-                </p>
+                <p>Challenge an opponent and add the first match.</p>
             </div>
         );
     }
@@ -46,9 +39,7 @@ const AllTimeLeaderboardList = ({ currentPlayerId, isFetching, playerId, players
 };
 
 AllTimeLeaderboardList.propTypes = {
-    currentPlayerId: PropTypes.number.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    playerId: PropTypes.number,
     players: PropTypes.array.isRequired,
     userId: PropTypes.number.isRequired
 };

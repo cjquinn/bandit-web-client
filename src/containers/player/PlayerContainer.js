@@ -11,6 +11,7 @@ import Player from '../../components/player/Player';
 
 // Selectors
 import { makeGetPlayer } from '../../store/byClubId/player/selectors';
+import { getCurrentPlayerId } from '../../store/user/selectors';
 
 class PlayerContainer extends Component {
     componentDidMount() {
@@ -24,17 +25,23 @@ class PlayerContainer extends Component {
     }
 
     render() {
-        const { player } = this.props;
+        const { currentPlayerId, player } = this.props;
 
         if (!player) {
             return <Loading />;
         }
 
-        return <Player player={player} />;
+        return (
+            <Player
+                currentPlayerId={currentPlayerId}
+                player={player}
+            />
+        );
     }
 }
 
 PlayerContainer.propTypes = {
+    currentPlayerId: PropTypes.number.isRequired,
     fetchPlayer: PropTypes.func.isRequired,
     player: PropTypes.object,
     playerId: PropTypes.number.isRequired
@@ -44,6 +51,7 @@ const makeMapStateToProps = () => {
     const getPlayer = makeGetPlayer();
 
     return (state, props) => ({
+        currentPlayerId: getCurrentPlayerId(state, props),
         player: getPlayer(state, props)
     });
 };
