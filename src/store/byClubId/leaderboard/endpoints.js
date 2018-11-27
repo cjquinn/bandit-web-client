@@ -2,6 +2,7 @@ import { instance } from '../../api';
 
 const PERIOD_MAP = {
     allTime: 'all-time',
+    unranked: 'unranked',
     weekly: 'weekly'
 };
 

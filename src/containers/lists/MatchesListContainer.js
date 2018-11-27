@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import { fetchMatches } from '../../store/byClubId/byPlayerId/match/actions';
 
 // Selectors
-import { makeGetMatches } from '../../store/byClubId/byPlayerId/match/selectors';
+import { getIsFetching, makeGetMatches } from '../../store/byClubId/byPlayerId/match/selectors';
+import { getCurrentPlayerId } from '../../store/user/selectors';
 
 class MatchesListContainer extends Component {
     componentDidMount() {
@@ -20,15 +21,24 @@ class MatchesListContainer extends Component {
     }
 
     render() {
-        const { component: Component, matches } = this.props;
+        const { component: Component, currentPlayerId, isFetching, matches, playerId } = this.props;
 
-        return <Component matches={matches} />;
+        return (
+            <Component
+                currentPlayerId={currentPlayerId}
+                isFetching={isFetching}
+                matches={matches}
+                playerId={playerId}
+            />
+        );
     }
 }
 
 MatchesListContainer.propTypes = {
     component: PropTypes.func.isRequired,
+    currentPlayerId: PropTypes.number.isRequired,
     fetchMatches: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
     limit: PropTypes.string,
     matches: PropTypes.array.isRequired,
     playerId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
@@ -38,6 +48,8 @@ const makeMapStateToProps = () => {
     const getMatches = makeGetMatches();
 
     return (state, props) => ({
+        currentPlayerId: getCurrentPlayerId(state, props),
+        isFetching: getIsFetching(state, props),
         matches: getMatches(state, props)
     });
 };

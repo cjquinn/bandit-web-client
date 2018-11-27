@@ -18,7 +18,7 @@ const DashboardScreen = () => (
     <Template>
         {/*<Disputes />*/}
 
-        <section className="o-container">
+        <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">Matches <span className="u-weight-normal u-color-steam">recent</span></h1>
 

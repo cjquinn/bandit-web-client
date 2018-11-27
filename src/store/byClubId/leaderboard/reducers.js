@@ -34,10 +34,12 @@ const makeLeaderboardReducers = period => {
 };
 
 const allTime = makeLeaderboardReducers('allTime');
+const unranked = makeLeaderboardReducers('unranked');
 const weekly = makeLeaderboardReducers('weekly');
 
 const reducers = combineReducers({
     allTime,
+    unranked,
     weekly
 });
 

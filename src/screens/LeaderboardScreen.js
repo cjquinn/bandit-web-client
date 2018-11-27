@@ -6,6 +6,7 @@ import { NavLink, Route, Switch } from 'react-router-dom';
 import AllTimeLeaderboardList from '../components/lists/AllTimeLeaderboardList';
 import Footer from '../components/Footer';
 import Template from '../components/shared/Template';
+import UnrankedList from '../components/lists/UnrankedList';
 import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
 
 // Containers
@@ -47,22 +48,32 @@ const LeaderboardScreen = () => (
             </ul>
         </nav>
 
-        <Switch>
-            <Route exact path="/leaderboard/all-time" render={props => (
-                <LeaderboardListContainer
-                    component={AllTimeLeaderboardList}
-                    period="allTime"
-                    {...props}
-                />
-            )} />
-            <Route exact path="/leaderboard/weekly" render={props => (
-                <LeaderboardListContainer
-                    component={WeeklyLeaderboardList}
-                    period="weekly"
-                    {...props}
-                />
-            )} />
-        </Switch>
+        <div className="o-container">
+            <Switch>
+                <Route exact path="/leaderboard/all-time" render={props => (
+                    <div className="u-vspace-1bl">
+                        <LeaderboardListContainer
+                            component={AllTimeLeaderboardList}
+                            period="allTime"
+                            {...props}
+                        />
+
+                        <LeaderboardListContainer
+                            component={UnrankedList}
+                            period="unranked"
+                            {...props}
+                        />
+                    </div>
+                )} />
+                <Route exact path="/leaderboard/weekly" render={props => (
+                    <LeaderboardListContainer
+                        component={WeeklyLeaderboardList}
+                        period="weekly"
+                        {...props}
+                    />
+                )} />
+            </Switch>
+        </div>
 
         <Footer>
             <Route exact path="/leaderboard/weekly" render={() => (

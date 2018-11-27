@@ -23,12 +23,12 @@ const MatchesScreen = () => (
 
         <hr className="c-hr" />
 
-        <MatchesListContainer
-            component={DatedMatchesList}
-            playerId="all"
-        />
+        <div className="o-container u-vspace-1bl">
+            <MatchesListContainer
+                component={DatedMatchesList}
+                playerId="all"
+            />
 
-        <div className="o-container">
             <LoadMoreMatchesControlContainer playerId="all" />
         </div>
 

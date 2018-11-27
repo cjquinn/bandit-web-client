@@ -20,7 +20,7 @@ const PlayerScreen = ({ match, user }) => (
 
         <hr className="c-hr" />
 
-        <section className="o-container">
+        <section className="o-container u-vspace-1bl">
             <header className="u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">Matches <span className="u-weight-normal u-color-steam">recent</span></h1>
             </header>

@@ -4,36 +4,47 @@ import React from 'react';
 // Components
 import WeeklyLeaderboardItem from '../items/WeeklyLeaderboardItem';
 
-const WeeklyLeaderboardList = ({ isFetching, players, userId }) => (
-    <section className="o-container">
-        {!isFetching && players.length === 0 &&
+const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players, userId }) => {
+    if (!isFetching && players.length === 0) {
+        return (
             <div className="c-notification c-notification--alert">
-                <p className="u-weight-bold">Weekly Leaderboard has reset</p>
+                <p className="u-weight-bold">
+                    No weely leaderboard
+                </p>
             
-                <p>Play a match to open up this week’s rankings.</p>
+                <p>
+                    {playerId
+                        ? playerId === currentPlayerId
+                            ? 'Current player copy'
+                            : 'Other player copy'
+                        : 'Leaderboard/dashboard screen copy'
+                    }
+                </p>
             </div>
-        }
+        );
+    }
 
-        {players.length > 0 &&
-            <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                {players.map(player => (
-                    <li
-                        key={player.id}
-                        className="u-pos-relative u-bgcolor-fold"
-                    >
-                        <WeeklyLeaderboardItem
-                            player={player}
-                            userId={userId}
-                        />
-                    </li>
-                ))}
-            </ol>
-        }
-    </section>
-);
+    return (
+        <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+            {players.map(player => (
+                <li
+                    key={player.id}
+                    className="u-pos-relative u-bgcolor-fold"
+                >
+                    <WeeklyLeaderboardItem
+                        player={player}
+                        userId={userId}
+                    />
+                </li>
+            ))}
+        </ol>
+    );
+};
 
 WeeklyLeaderboardList.propTypes = {
+    currentPlayerId: PropTypes.number.isRequired,
     isFetching: PropTypes.bool.isRequired,
+    playerId: PropTypes.number,
     players: PropTypes.array.isRequired,
     userId: PropTypes.number.isRequired
 };

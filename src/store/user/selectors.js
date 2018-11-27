@@ -38,3 +38,8 @@ export const getIsClubOwner = createSelector(
     [getUserId, getClub],
     (userId, club) => club !== undefined && club.founder_id === userId
 );
+
+export const getCurrentPlayerId = createSelector(
+    [getClubId, getUserId, getPlayerEntities, getUserEntity],
+    (clubId, userId, players, user) => user.players.find(playerId => players[playerId].club_id === clubId)
+);

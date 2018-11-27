@@ -8,6 +8,7 @@ import { fetchLeaderboard } from '../../store/byClubId/leaderboard/actions';
 // Selectors
 import { getIsFetching, makeGetLeaderboard } from '../../store/byClubId/leaderboard/selectors';
 import { getUserId } from '../../store/shared/selectors';
+import { getCurrentPlayerId } from '../../store/user/selectors';
 
 class LeaderboardListContainer extends Component {
     componentDidMount() {
@@ -21,11 +22,13 @@ class LeaderboardListContainer extends Component {
     }
 
     render() {
-        const { component: Component, isFetching, players, userId } = this.props;
+        const { component: Component, currentPlayerId, isFetching, playerId, players, userId } = this.props;
 
         return (
             <Component
+                currentPlayerId={currentPlayerId}
                 isFetching={isFetching}
+                playerId={playerId}
                 players={players}
                 userId={userId}
             />
@@ -35,6 +38,7 @@ class LeaderboardListContainer extends Component {
 
 LeaderboardListContainer.propTypes = {
     component: PropTypes.func.isRequired,
+    currentPlayerId: PropTypes.number.isRequired,
     fetchLeaderboard: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
     limit: PropTypes.string,
@@ -48,6 +52,7 @@ const makeMapStateToProps = () => {
     const getLeaderboard = makeGetLeaderboard();
 
     return (state, props) => ({
+        currentPlayerId: getCurrentPlayerId(state, props),
         isFetching: getIsFetching(state, props),
         players: getLeaderboard(state, props),
         userId: getUserId(state)
