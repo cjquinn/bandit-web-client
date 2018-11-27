@@ -53,6 +53,21 @@ const Player = ({ player }) => (
         </header>
 
         <section className="u-vspace-1bl">
+
+            {/* Waiting Area Player */}
+
+            <div className="c-notification c-notification--alert">
+                <p className="u-weight-bold">You haven't played a match yet</p>
+            
+                <p>Challenge your first opponent to start your career</p>
+            </div>
+
+            <div className="c-notification c-notification--alert">
+                <p className="u-weight-bold">Playername *hasn't* played a match yet</p>
+            
+                <p>Challenge Playername to their first match</p>
+            </div>
+
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">
                     Stats <span className="u-weight-normal u-color-steam">mini</span>

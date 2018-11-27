@@ -10,9 +10,71 @@ const WeeklyLeaderboardList = ({ isFetching, players, userId }) => (
             <div className="c-notification c-notification--alert">
                 <p className="u-weight-bold">Weekly Leaderboard has reset</p>
             
-                <p>Play a match to open up this week’s rankings.</p>
+                <p>Play a match to open up this week’s leaderboard.</p>
             </div>
         }
+
+        {players.length > 0 &&
+            <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+                {players.map(player => (
+                    <li
+                        key={player.id}
+                        className="u-pos-relative u-bgcolor-fold"
+                    >
+                        <WeeklyLeaderboardItem
+                            player={player}
+                            userId={userId}
+                        />
+                    </li>
+                ))}
+            </ol>
+        }
+
+
+
+
+
+
+
+        
+
+        {/* 
+            Dashboard
+            - No matches - copy 
+        */}
+
+        {!isFetching && players.length === 0 &&
+            <div className="c-notification c-notification--alert">
+                <p className="u-weight-bold">None of the club members have played yet</p>
+            
+                <p>Challenge an opponent and add the first match.</p>
+            </div>
+        }
+
+        {/* 
+            Dashboard
+            - all time leaderboard - copy
+        */}
+
+        {!isFetching && players.length === 0 &&
+            <div className="c-notification c-notification--alert">
+                <p className="u-weight-bold">None of the club members are rated yet</p>
+            
+                <p>Play matches, escape the Waiting Area and join the Leaderboard.</p>
+            </div>
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         {players.length > 0 &&
             <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
