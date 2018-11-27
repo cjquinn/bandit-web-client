@@ -48,6 +48,31 @@ const AllTimeLeaderboardItem = ({ player, position, userId }) => (
                 <dd className="u-color-paste u-size-h4 u-weight-bold u-ws-no">#{position || player.position}</dd>
             </dl>
         </Link>
+
+        {/* Unrated players */}
+        <Link
+            to={`/players/${player.id}`}
+            className="u-flex u-ai-center u-pv-1bl u-ph-1bl"
+        >
+            <div className="u-mr-1bl">
+                <PlayerPhoto 
+                    player={player} 
+                    width="3bl"
+                />
+            </div>
+
+            <dl className="u-flex u-jc-between u-ai-center u-width-100pc">
+                <div className="u-grow-1 u-vspace-03r">
+                    <dt className="u-color-paste">{player.user.display_name}</dt>
+
+                    <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
+
+                        <span className={`u-uppercase u-color-level0`}>Unrated</span>
+                        
+                    </dd>
+                </div>
+            </dl>
+        </Link>
     </Template>
 );
 

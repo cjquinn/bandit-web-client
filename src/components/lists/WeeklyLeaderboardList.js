@@ -9,7 +9,7 @@ const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players,
         return (
             <div className="c-notification c-notification--alert">
                 <p className="u-weight-bold">
-                    No weely leaderboard
+                    No weekly leaderboard
                 </p>
             
                 <p>
@@ -17,7 +17,7 @@ const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players,
                         ? playerId === currentPlayerId
                             ? 'Current player copy'
                             : 'Other player copy'
-                        : 'Leaderboard/dashboard screen copy'
+                        : 'Play a match to open up this week’s leaderboard.'
                     }
                 </p>
             </div>
