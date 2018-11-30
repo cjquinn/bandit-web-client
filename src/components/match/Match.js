@@ -18,7 +18,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
             </p>
         }
 
-        <div className="u-vspace-2bl">
+        <div className="u-vspace-3bl">
             <dl className="u-flex u-hspace-1px u-borrad-first-2002 u-borrad-last-0220">
                 <li className="u-flex u-fd-col u-grow-1 u-basis-0 u-ai-center u-pv-3bl u-bgcolor-fold">
 

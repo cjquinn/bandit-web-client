@@ -27,7 +27,7 @@ const DatedMatchesList = ({ currentPlayerId, isFetching, matches, playerId }) =>
     return matches.map(({ date, matches }, i) => (
         <section key={i} className="o-container">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">{date}</h1>
+                <h1 className="u-size-h3 u-color-white">{date}</h1>
             </header>
 
             <ol className="u-mt-1bl u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
