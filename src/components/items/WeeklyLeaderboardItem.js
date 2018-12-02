@@ -25,7 +25,7 @@ const WeeklyLeaderboardItem = ({ player, position, userId }) => (
 
             <dl className="u-flex u-jc-between u-ai-center u-width-100pc">
                 <div className="u-grow-1 u-vspace-03r">
-                    <dt className="u-color-paste">{player.user.display_name}</dt>
+                    <dt className="u-color-paste u-capitalize">{player.user.first_name} {player.user.last_name}</dt>
 
                     <dd className="u-flex u-ai-center u-hspace-4px u-size-13px">
                         <span className={`u-color-${player.rating_change > 0 ? 'win' : 'loss'}`}>{player.rating_change > 0 && '+'}{player.rating_change} <abbr title="rating points">pts.</abbr></span>

@@ -15,7 +15,7 @@ const PlayerSelectField = ({ input, players }) => {
         <div className="c-add-match u-ov-hidden u-grow-1 u-basis-0 u-order-3 u-flex u-ai-center u-jc-end u-align-right u-hspace-1bl">
             <select
                 {...input}
-                className="u-color-playdough"
+                className="u-color-playdough u-capitalize"
             >
                 <optgroup label="Find player:">
                     {players.map(player =>

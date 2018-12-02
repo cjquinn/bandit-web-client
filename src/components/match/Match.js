@@ -31,7 +31,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
                         </Link>
 
                         <dt>
-                            <h2 className="u-color-paste">
+                            <h2 className="u-color-paste u-capitalize">
                                 <Link to={`/players/${match.player_a_id}`}>
                                     {match.player_a.user.first_name} {match.player_a.user.last_name}
                                 </Link>
@@ -73,7 +73,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
                         </Link>
 
                         <dt>
-                            <h2 className="u-color-paste">
+                            <h2 className="u-color-paste u-capitalize">
                                 <Link to={`/players/${match.player_b_id}`}>
                                     {match.player_b.user.first_name} {match.player_b.user.last_name}
                                 </Link>
@@ -131,7 +131,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
                         <PlayerPhoto 
                             player={match.player_a} 
                             width="2bl"
-                        /> <span className="">{match.player_a.user.first_name} {match.player_a.user.last_name}</span>
+                        /> <span className="u-capitalize">{match.player_a.user.first_name} {match.player_a.user.last_name}</span>
                     </dd>
                 </li>
 

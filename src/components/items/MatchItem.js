@@ -17,10 +17,10 @@ const MatchItem = ({ match }) => (
             />
 
             <dt className="u-size-h4 u-weight-bold u-ws-no">
-                <span className="o-dictate">{match.player_a.user.display_name}</span>
+                <span className="o-dictate u-capitalize">{match.player_a.user.display_name}</span>
                 <span className="u-inline-block u-width-2ch u-align-right u-ml-1bl">{match.player_a_score}</span>
                 <span className="u-inline-block u-width-2ch u-align-center">&ndash;</span>
-                <span className="o-dictate">{match.player_b.user.display_name}</span>
+                <span className="o-dictate u-capitalize">{match.player_b.user.display_name}</span>
                 <span className="u-inline-block u-width-2ch u-align-left">{match.player_b_score}</span>
             </dt>
 
@@ -32,12 +32,11 @@ const MatchItem = ({ match }) => (
             </div>
         </div>
 
-        <div className="u-grow-1 u-basis-0 u-order-1 u-align-left o-ellipsis">
+        <div className="u-grow-1 u-basis-0 u-order-1 u-align-left o-ellipsis u-capitalize">
             <span aria-hidden="true">{match.player_a.user.display_name}</span>
         </div>
 
-
-        <div className="u-grow-1 u-basis-0 u-order-3 u-ml-1bl u-align-right o-ellipsis">
+        <div className="u-grow-1 u-basis-0 u-order-3 u-ml-1bl u-align-right o-ellipsis u-capitalize">
             <span aria-hidden="true">{match.player_b.user.display_name}</span>
         </div>
     </Link>

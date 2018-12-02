@@ -22,7 +22,7 @@ const Player = ({ currentPlayerId, player }) => (
 
             <dl className="c-player__info u-flex u-vspace-06r">
                 <dt>
-                    <h1 className="u-size-h1 u-color-white">
+                    <h1 className="u-size-h1 u-color-white u-capitalize">
                         {player.user.first_name} {player.user.last_name}
                     </h1>
                 </dt>
