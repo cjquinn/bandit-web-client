@@ -1,0 +1,13 @@
+/**
+ * .c-level
+ */
+
+$component: 'level';
+
+#{'.' + $global-components-namespace + $component} {
+  @extend %u-uppercase;
+  font-size: 13px;
+  padding: 2px 4px;
+  border-radius: 2px;
+  color: $colour-basement;
+}

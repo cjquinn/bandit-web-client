@@ -40,16 +40,17 @@ const Player = ({ currentPlayerId, player }) => (
                             </span>
                         </span>
                     }
+                    
+                    <span className={`c-levels u-flex u-ai-center`}>
+                        {player.isBandit && 
+                        <span className={`c-level u-bgcolor-bandit`}>
+                            Bandit
+                        </span>}
 
-                    <span className={`u-uppercase u-color-${player.level.slug}`}>
-                        {player.level.name}
-                    </span>
-
-                    {player.games > 0 &&
-                        <span>
-                            <span className="o-dictate">from</span> {player.games} game{player.games !== 1 ? 's' : ''}
+                        <span className={`c-level u-bgcolor-${player.level.slug}`}>
+                            {player.level.name}
                         </span>
-                    }
+                    </span>
                 </dd>
             </dl>
 
@@ -86,6 +87,15 @@ const Player = ({ currentPlayerId, player }) => (
                     <dl className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
                         <li className="u-bgcolor-fold">
                             <dl className="u-flex u-jc-between u-ai-center u-fw-wrap u-width-100pc">
+
+                                <div className="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
+                                    <dt className="u-color-paste u-weight-bold">Games</dt>
+
+                                    <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
+                                        <span className="u-color-paste">{player.games}</span>
+                                    </dd>
+                                </div>
+
                                 <div className="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
                                     <dt className="u-color-paste u-weight-bold">Wins</dt>
 
@@ -103,7 +113,7 @@ const Player = ({ currentPlayerId, player }) => (
                                 </div>
 
                                 <div className="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
-                                    <dt className="u-color-paste u-weight-bold">Win Ratio</dt>
+                                    <dt className="u-color-paste u-weight-bold">Ratio</dt>
 
                                     <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
                                         <span className="u-color-paste">{player.winRatio}</span>
@@ -131,26 +141,12 @@ const Player = ({ currentPlayerId, player }) => (
                                         <dt className="u-color-paste u-weight-bold">Highest Level</dt>
 
                                         <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                                            <div className="u-pos-relative" aria-hidden="true">
-                                                <div className="c-player-photo u-width-1bl">
-                                                    <div className={`c-player-photo__level c-player-photo__level--only u-bgcolor-${player.highest_level.slug}`}></div>
-                                                </div>
-                                            </div>
-
-                                            <span className={`u-uppercase u-color-${player.highest_level.slug}`}>
+                                            <span className={`c-level u-uppercase u-bgcolor-${player.highest_level.slug}`}>
                                                 {player.highest_level.name}
                                             </span>
                                         </dd>
                                     </div>
                                 }
-
-                                <div className="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
-                                    <dt className="u-color-paste u-weight-bold"></dt>
-                                    
-                                    <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                                        <span className="u-color-paste"></span>
-                                    </dd>
-                                </div>
                             </dl>
                         </li>
                     </dl>
