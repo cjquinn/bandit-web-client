@@ -8,16 +8,12 @@ import MatchesList from '../components/lists/MatchesList';
 import Template from '../components/shared/Template';
 import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
 
-// import Disputes from '../components/Disputes';
-
 // Containers
 import LeaderboardListContainer from '../containers/lists/LeaderboardListContainer';
 import MatchesListContainer from '../containers/lists/MatchesListContainer';
 
 const DashboardScreen = () => (
     <Template>
-        {/*<Disputes />*/}
-
         <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">Matches <span className="u-weight-normal u-color-steam">recent</span></h1>
@@ -36,14 +32,14 @@ const DashboardScreen = () => (
                 playerId="all"
             />
 
-            <FooterContainer className="u-ph-1bl">
+            <div className="u-ph-1bl">
                 <Link
                     to="/matches/add"
                     className="c-button c-button--default u-mt-2bl"
                 >
                     Add match
                 </Link>
-            </FooterContainer>
+            </div>
         </section>
 
         <section className="o-container u-vspace-1bl">
