@@ -10,8 +10,9 @@ import Loading from '../../components/Loading';
 import Player from '../../components/player/Player';
 
 // Selectors
+import { getClub } from '../../store/club/selectors';
 import { makeGetPlayer } from '../../store/byClubId/player/selectors';
-import { getCurrentPlayerId } from '../../store/user/selectors';
+import { getUser } from '../../store/user/selectors';
 
 class PlayerContainer extends Component {
     componentDidMount() {
@@ -25,7 +26,7 @@ class PlayerContainer extends Component {
     }
 
     render() {
-        const { currentPlayerId, player } = this.props;
+        const { club, player, user } = this.props;
 
         if (!player) {
             return <Loading />;
@@ -33,26 +34,29 @@ class PlayerContainer extends Component {
 
         return (
             <Player
-                currentPlayerId={currentPlayerId}
+                club={club}
                 player={player}
+                user={user}
             />
         );
     }
 }
 
 PlayerContainer.propTypes = {
-    currentPlayerId: PropTypes.number.isRequired,
+    club: PropTypes.object,
     fetchPlayer: PropTypes.func.isRequired,
     player: PropTypes.object,
-    playerId: PropTypes.number.isRequired
+    playerId: PropTypes.number.isRequired,
+    user: PropTypes.object.isRequired
 };
 
 const makeMapStateToProps = () => {
     const getPlayer = makeGetPlayer();
 
     return (state, props) => ({
-        currentPlayerId: getCurrentPlayerId(state, props),
-        player: getPlayer(state, props)
+        club: getClub(state),
+        player: getPlayer(state, props),
+        user: getUser(state)
     });
 };
 
