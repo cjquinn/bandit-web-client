@@ -4,7 +4,7 @@ import { NavLink, Route, Switch } from 'react-router-dom';
 
 // Components
 import AllTimeLeaderboardList from '../components/lists/AllTimeLeaderboardList';
-import Footer from '../components/Footer';
+import FooterContainer from '../containers/shared/FooterContainer';
 import Template from '../components/shared/Template';
 import UnrankedList from '../components/lists/UnrankedList';
 import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
@@ -75,11 +75,15 @@ const LeaderboardScreen = () => (
             </Switch>
         </div>
 
-        <Footer>
+        <FooterContainer>
             <Route exact path="/leaderboard/weekly" render={() => (
                 <p>{moment().startOf('isoWeek').format('dddd Do')} - {moment().endOf('isoWeek').format('dddd Do MMMM')}</p>
             )} />
-        </Footer>
+
+            <Route exact path="/leaderboard/all-time" render={() => (
+                <p>&nbsp;</p>
+            )} />
+        </FooterContainer>
     </Template>
 );
 

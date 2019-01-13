@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 // Components
 import AllTimeLeaderboardList from '../components/lists/AllTimeLeaderboardList';
-import Footer from '../components/Footer';
+import FooterContainer from '../containers/shared/FooterContainer';
 import MatchesList from '../components/lists/MatchesList';
 import Template from '../components/shared/Template';
 import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
@@ -36,14 +36,14 @@ const DashboardScreen = () => (
                 playerId="all"
             />
 
-            <footer className="u-ph-1bl">
+            <FooterContainer className="u-ph-1bl">
                 <Link
                     to="/matches/add"
                     className="c-button c-button--default u-mt-2bl"
                 >
                     Add match
                 </Link>
-            </footer>
+            </FooterContainer>
         </section>
 
         <section className="o-container u-vspace-1bl">
@@ -84,7 +84,7 @@ const DashboardScreen = () => (
             />
         </section>
 
-        <Footer />
+        <FooterContainer />
     </Template>
 );
 

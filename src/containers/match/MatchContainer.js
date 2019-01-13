@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { deleteMatch, fetchMatch } from '../../store/byClubId/byPlayerId/match/actions';
 
 // Components
+import Loading from '../../components/shared/Loading';
 import Match from '../../components/match/Match';
-import Loading from '../../components/Loading';
 
 // Selectors
 import { getIsDeleting, makeGetMatch } from '../../store/byClubId/byPlayerId/match/selectors';

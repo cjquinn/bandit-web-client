@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import Footer from '../components/Footer';
-import Svg from '../components/Svg';
+import FooterContainer from '../containers/shared/FooterContainer';
+import Svg from '../components/shared/Svg';
 import Template from '../components/shared/Template';
 
 // Containers
@@ -33,14 +33,14 @@ const RequestPasswordResetScreen = () => (
 
         <RequestPasswordResetFormContainer />
 
-        <Footer>
+        <FooterContainer>
             <Link
                 className="u-color-playdough"
                 to="/sign-in"
             >
                 Sign in
             </Link>
-        </Footer>
+        </FooterContainer>
     </Template>
 );
 

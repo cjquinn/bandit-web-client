@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Components
-import Footer from '../components/Footer';
+import FooterContainer from '../containers/shared/FooterContainer';
 import Template from '../components/shared/Template';
 
 // Containers
@@ -19,7 +19,7 @@ const UpdateClubScreen = () => (
 
         <UpdateClubFormContainer />
 
-        <Footer />    
+        <FooterContainer />    
     </Template>
 );
 
