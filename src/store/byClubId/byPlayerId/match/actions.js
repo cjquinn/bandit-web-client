@@ -20,9 +20,9 @@ export const addMatchSuccess = createAction('ADD_MATCH_SUCCESS');
 export const addMatchFailure = createAction('ADD_MATCH_FAILURE');
 
 export const addMatch = data => (dispatch, getState, api) => {
-    dispatch(addMatchRequest());
-
     const clubId = getClubId(getState());
+
+    dispatch(addMatchRequest({clubId}));
 
     return api.addMatch(clubId, data)
         .then(api.checkStatus)
@@ -44,9 +44,9 @@ export const deleteMatchSuccess = createAction('DELETE_MATCH_SUCCESS');
 export const deleteMatchFailure = createAction('DELETE_MATCH_FAILURE');
 
 export const deleteMatch = matchId => (dispatch, getState, api) => {
-    dispatch(deleteMatchRequest());
-
     const clubId = getClubId(getState());
+    
+    dispatch(deleteMatchRequest({clubId}));
 
     return api.deleteMatch(clubId, matchId)
         .then(api.checkStatus)
@@ -69,9 +69,11 @@ export const fetchMatchSuccess = createAction('FETCH_MATCH_SUCCESS');
 export const fetchMatchFailure = createAction('FETCH_MATCH_FAILURE');
 
 export const fetchMatch = matchId => (dispatch, getState, api) => {
-    dispatch(fetchMatchRequest());
+    const clubId = getClubId(getState());
 
-    return api.fetchMatch(getClubId(getState()), matchId)
+    dispatch(fetchMatchRequest({clubId, matchId}));
+
+    return api.fetchMatch(clubId, matchId)
         .then(api.checkStatus)
         .then(response => normalize(response.data.match, matchSchema))
         .then(normalizedData => dispatch(fetchMatchSuccess(normalizedData)))
@@ -86,10 +88,10 @@ export const fetchMatchesSuccess = createAction('FETCH_MATCHES_SUCCESS');
 export const fetchMatchesFailure = createAction('FETCH_MATCHES_FAILURE');
 
 export const fetchMatches = (playerId, page) => (dispatch, getState, api) => {
-    dispatch(fetchMatchesRequest());
-
     const clubId = getClubId(getState());
     page = page || 1;
+    
+    dispatch(fetchMatchesRequest({clubId, playerId}));
 
     return api.fetchMatches(clubId, playerId, page)
         .then(api.checkStatus)  
