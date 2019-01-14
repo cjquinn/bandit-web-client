@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 // Components
 import AllTimeLeaderboardList from '../components/lists/AllTimeLeaderboardList';
-import Footer from '../components/Footer';
+import FooterContainer from '../containers/shared/FooterContainer';
 import MatchesList from '../components/lists/MatchesList';
 import Template from '../components/shared/Template';
 import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
@@ -72,7 +72,7 @@ const PlayerScreen = ({ match, user }) => (
             />
         </section>
 
-        <Footer />
+        <FooterContainer />
     </Template>
 );
 

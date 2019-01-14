@@ -15,9 +15,9 @@ export const addDisputeSuccess = createAction('ADD_DISPUTE_SUCCESS');
 export const addDisputeFailure = createAction('ADD_DISPUTE_FAILURE');
 
 export const addDispute = data => (dispatch, getState, api) => {
-    dispatch(addDisputeRequest());
-
     const clubId = getClubId(getState());
+    
+    dispatch(addDisputeRequest({clubId}));
 
     return api.addDispute(clubId, data)
         .then(api.checkStatus)
@@ -37,9 +37,11 @@ export const closeDisputeSuccess = createAction('CLOSE_DISPUTE_SUCCESS');
 export const closeDisputeFailure = createAction('CLOSE_DISPUTE_FAILURE');
 
 export const closeDispute = (disputeId, data) => (dispatch, getState, api) => {
-    dispatch(closeDisputeRequest());
+    const clubId = getClubId(getState());
 
-    return api.closeDispute(getClubId(getState()), disputeId, data)
+    dispatch(closeDisputeRequest({clubId}));
+
+    return api.closeDispute(clubId, disputeId, data)
         .then(api.checkStatus)
         .then(response => normalize(response.data, {club: clubSchema, dispute: disputeSchema, matches: [matchSchema]}))
         .then(normalizedData => dispatch(closeDisputeSuccess({
@@ -57,9 +59,9 @@ export const deleteDisputeSuccess = createAction('DELETE_DISPUTE_SUCCESS');
 export const deleteDisputeFailure = createAction('DELETE_DISPUTE_FAILURE');
 
 export const deleteDispute = disputeId => (dispatch, getState, api) => {
-    dispatch(deleteDisputeRequest());
-
     const clubId = getClubId(getState());
+
+    dispatch(deleteDisputeRequest({clubId, disputeId}));
 
     return api.deleteDispute(clubId, disputeId)
         .then(api.checkStatus)
@@ -80,9 +82,9 @@ export const fetchDisputesSuccess = createAction('FETCH_DISPUTES_SUCCESS');
 export const fetchDisputesFailure = createAction('FETCH_DISPUTES_FAILURE');
 
 export const fetchDisputes = disputeId => (dispatch, getState, api) => {
-    dispatch(fetchDisputesRequest());
-
     const clubId = getClubId(getState());
+
+    dispatch(fetchDisputesRequest({clubId, disputeId}));
 
     return api.fetchDisputes(clubId, disputeId)
         .then(api.checkStatus)

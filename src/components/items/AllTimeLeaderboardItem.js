@@ -41,7 +41,16 @@ const AllTimeLeaderboardItem = ({ player, position, userId }) => (
                             <span className="u-color-paste">{player.rating} <span className="o-dictate">rating</span></span>
                         </span>
 
-                        <span className={`u-uppercase u-color-${player.level.slug}`}>{player.level.name}</span>
+                        <span className={`c-levels u-flex u-ai-center`}>
+                        {player.isBandit && 
+                            <span className={`c-level u-bgcolor-bandit`}>
+                                Bandit
+                            </span>}
+
+                            <span className={`c-level u-bgcolor-${player.level.slug}`}>
+                                {player.level.name}
+                            </span>
+                        </span>
                     </dd>
                 </div>
 
