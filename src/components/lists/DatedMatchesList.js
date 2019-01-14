@@ -15,9 +15,9 @@ const DatedMatchesList = ({ currentPlayerId, isFetching, matches, playerId }) =>
                 <p>
                     {playerId !== 'all'
                         ? playerId === currentPlayerId
-                            ? 'Current player copy'
-                            : 'Other player copy'
-                        : 'Dashboard/matches screen copy'
+                            ? 'You haven\'t played any matches yet.'
+                            : 'This player hasn\'t played any matches yet.'
+                        : 'This club hasn\'t had any matches yet.'
                     }
                 </p>
             </div>
