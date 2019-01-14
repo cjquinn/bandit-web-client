@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import Footer from '../components/Footer';
+import FooterContainer from '../containers/shared/FooterContainer';
 import DatedMatchesList from '../components/lists/DatedMatchesList';
 import Template from '../components/shared/Template';
 
@@ -32,7 +32,7 @@ const MatchesScreen = () => (
             <LoadMoreMatchesControlContainer playerId="all" />
         </div>
 
-        <Footer />
+        <FooterContainer />
     </Template>
 );
 

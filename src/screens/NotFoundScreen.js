@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import Footer from '../components/Footer';
-import Svg from '../components/Svg';
+import FooterContainer from '../containers/shared/FooterContainer';
+import Svg from '../components/shared/Svg';
 import Template from '../components/shared/Template';
 
 // Sprites
@@ -29,8 +29,8 @@ const NotFoundScreen = () => (
             <Link to="/" className="c-button c-button--default">Go home</Link>
         </section>
 
-        <Footer>
-        </Footer>
+        <FooterContainer>
+        </FooterContainer>
     </Template>
 );
 

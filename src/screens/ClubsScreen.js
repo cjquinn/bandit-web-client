@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import Footer from '../components/Footer';
+import FooterContainer from '../containers/shared/FooterContainer';
 import Template from '../components/shared/Template';
 
 // Containers
@@ -28,7 +28,7 @@ const ClubsScreen = () => (
             </Link>
         </section>
 
-        <Footer/>
+        <FooterContainer/>
     </Template>
 );
 

@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { fetchPlayer } from '../../store/byClubId/player/actions';
 
 // Components
-import Loading from '../../components/Loading';
 import Player from '../../components/player/Player';
+import Loading from '../../components/shared/Loading';
 
 // Selectors
 import { getClub } from '../../store/club/selectors';

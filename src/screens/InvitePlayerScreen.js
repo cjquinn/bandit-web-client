@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // Components
-import Footer from '../components/Footer';
+import FooterContainer from '../containers/shared/FooterContainer';
 import Template from '../components/shared/Template';
 
 // Containers
@@ -11,13 +10,6 @@ import InvitePlayerFormContainer from '../containers/forms/InvitePlayerFormConta
 const InvitePlayerScreen = () => (
     <Template>
         <div className="o-container u-ph-1bl u-vspace-2bl">
-            {/* <Link
-                to="/players"
-                className="c-go"
-            >
-                Back to players
-            </Link> */}
-
             <header className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Invite Player</h1>
 
@@ -29,7 +21,7 @@ const InvitePlayerScreen = () => (
 
         <InvitePlayerFormContainer />
 
-        <Footer/>
+        <FooterContainer/>
     </Template>
 );
 

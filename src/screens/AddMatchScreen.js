@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 // Components
-import Footer from '../components/Footer';
+import FooterContainer from '../containers/shared/FooterContainer';
 import Template from '../components/shared/Template';
 
 // Containers
@@ -12,13 +11,6 @@ import AddMatchFormContainer from '../containers/forms/AddMatchFormContainer';
 const AddMatchScreen = ({ user }) => (
     <Template>
         <div className="o-container u-ph-1bl u-vspace-2bl">
-            {/* <Link
-                to="/matches"
-                className="c-go"
-            >
-                Back to matches
-            </Link> */}
-
             <header className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Add Match</h1>
 
@@ -30,7 +22,7 @@ const AddMatchScreen = ({ user }) => (
 
         <AddMatchFormContainer />
 
-        <Footer />
+        <FooterContainer />
     </Template>
 );
 

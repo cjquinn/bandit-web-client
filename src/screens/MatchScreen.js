@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import Footer from '../components/shared/Footer';
+import FooterContainer from '../containers/shared/FooterContainer';
 import Template from '../components/shared/Template';
 
 // Containers
@@ -24,7 +24,7 @@ const MatchScreen = ({ match }) => (
 
         <MatchContainer matchId={+match.params.matchId} />
 
-        <Footer />
+        <FooterContainer />
     </Template>
 );
 

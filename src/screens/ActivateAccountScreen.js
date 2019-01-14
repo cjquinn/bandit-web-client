@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
-import Footer from '../components/shared/Footer';
+import FooterContainer from '../containers/shared/FooterContainer';
 import Svg from '../components/shared/Svg';
 import Template from '../components/shared/Template';
 
@@ -33,14 +33,14 @@ const ActivateAccountScreen = () => (
 
         <ActivateAccountFormContainer />
 
-        <Footer>
+        <FooterContainer>
             <Link
                 className="u-color-playdough"
                 to="/sign-in"
             >
                 Sign in
             </Link>
-        </Footer>
+        </FooterContainer>
     </Template>
 );
 
