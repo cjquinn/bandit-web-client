@@ -12,11 +12,12 @@ import rating from '../../assets/svg/sprite/rating.svg';
 
 const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
     <section className="o-container">
-        {match.deleted &&
+    
+        {/* {match.deleted &&
             <p className="u-flex u-ai-center u-weight-bold u-color-hotmelon">
                 This match was deleted.
             </p>
-        }
+        } */}
 
         <div className="u-vspace-3bl">
             <dl className="u-flex u-hspace-1px u-borrad-first-2002 u-borrad-last-0220">
