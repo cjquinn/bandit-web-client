@@ -72,6 +72,9 @@ module.exports = {
                 screw_ie8: true
             },
             comments: false
+        }),
+        new webpack.DefinePlugin({
+            API: JSON.stringify(process.env.API)
         })
     ],
 };
