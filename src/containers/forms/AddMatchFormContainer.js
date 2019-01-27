@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { initialize, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 
 // Actions
 import { addMatch } from '../../store/byClubId/byPlayerId/match/actions';
@@ -18,9 +18,7 @@ const AddMatchReduxForm = reduxForm({form: 'addMatch'})(AddMatchForm);
 
 class AddMatchFormContainer extends Component {
     componentDidMount() {
-        this.props.fetchPlayers().then(() =>
-            this.props.players.length > 0 && this.props.initialize({player_b_id: this.props.players[0].id})
-        );
+        this.props.fetchPlayers();
     }
 
     handleSubmit = data => this.props.addMatch(data);
@@ -41,7 +39,6 @@ class AddMatchFormContainer extends Component {
 AddMatchFormContainer.propTypes = {
     addMatch: PropTypes.func.isRequired,
     fetchPlayers: PropTypes.func.isRequired,
-    initialize: PropTypes.func.isRequired,
     players: PropTypes.array.isRequired,
     user: PropTypes.object.isRequired
 };
@@ -53,8 +50,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     addMatch: data => dispatch(addMatch(data)),
-    fetchPlayers: () => dispatch(fetchPlayers()),
-    initialize: values => dispatch(initialize('addMatch', values))
+    fetchPlayers: () => dispatch(fetchPlayers())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddMatchFormContainer);

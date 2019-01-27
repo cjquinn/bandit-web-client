@@ -14,19 +14,21 @@ const PlayerSelectField = ({ input, players }) => {
     return (
         <div className="c-add-match u-ov-hidden u-grow-1 u-basis-0 u-order-3 u-flex u-ai-center u-jc-end u-align-right u-hspace-1bl">
             <select
-                {...input}
                 className="u-color-playdough u-capitalize"
+                {...input}
             >
-                <optgroup label="Find player:">
-                    {players.map(player =>
-                        <option
-                            key={player.id}
-                            value={player.id}
-                        >
-                            {player.user.display_name}
-                        </option>
-                    )}
-                </optgroup>
+                <option value={null}>
+                    Find player:
+                </option>
+
+                {players.map(player =>
+                    <option
+                        key={player.id}
+                        value={player.id}
+                    >
+                        {player.user.display_name}
+                    </option>
+                )}
             </select>
 
             <div className="c-add-match__photo c-add-match__photo--opponent">
