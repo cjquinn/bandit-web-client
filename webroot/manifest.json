@@ -1,0 +1,21 @@
+{
+    "short_name": "Bandit",
+    "name": "Bandit Match",
+    "icons": [
+        {
+            "src": "/img/icon/192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/img/icon/512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "/?utm_source=a2hs",
+    "background_color": "#151828",
+    "display": "standalone",
+    "theme_color": "#24306C",
+    "orientation": "portrait"
+}
