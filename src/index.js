@@ -32,3 +32,9 @@ render(Root);
 if (module.hot) {
     module.hot.accept('./containers/Root', () => render(Root));
 }
+
+(function() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js');
+    }
+})();

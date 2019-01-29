@@ -1,4 +1,5 @@
 const { resolve } = require('path');
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -75,6 +76,14 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             API: JSON.stringify(process.env.API)
+        }),
+        new SWPrecacheWebpackPlugin({
+            cacheId: 'banditmatch',
+            minify: true,
+            mergeStaticsConfig: true,
+            staticFileGlobs: ['webroot/**/**.*'],
+            stripPrefix: 'webroot/',
+            verbose: true
         })
     ],
 };
