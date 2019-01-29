@@ -13,14 +13,15 @@ import rating from '../../assets/svg/sprite/rating.svg';
 const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
     <section className="o-container">
     
-        {/* {match.deleted &&
-            <p className="u-flex u-ai-center u-weight-bold u-color-hotmelon">
-                This match was deleted.
-            </p>
-        } */}
 
         <div className="u-vspace-3bl">
-            <dl className="u-flex u-hspace-1px u-borrad-first-2002 u-borrad-last-0220">
+            {match.deleted &&
+                <p className="u-ph-1bl u-flex u-ai-center u-weight-bold u-color-hotmelon">
+                    This match was deleted.
+                </p>
+            }
+
+            <dl className={`u-flex u-hspace-1px u-borrad-first-2002 u-borrad-last-0220 ${match.deleted && 'u-opac-05'}`}>
                 <li className="u-flex u-fd-col u-grow-1 u-basis-0 u-ai-center u-pv-3bl u-bgcolor-fold">
 
                     <div className="u-flex u-fd-col u-ai-center u-vspace-1bl">
