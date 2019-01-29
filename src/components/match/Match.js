@@ -12,8 +12,6 @@ import rating from '../../assets/svg/sprite/rating.svg';
 
 const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
     <section className="o-container">
-    
-
         <div className="u-vspace-3bl">
             {match.deleted &&
                 <p className="u-ph-1bl u-flex u-ai-center u-weight-bold u-color-hotmelon">
@@ -111,7 +109,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
                 <summary><p className="u-weight-bold">Ratings explained</p></summary>
 
                 <div className=" u-pv-1bl u-vspace-1bl">
-                    <p>Points are calculated for a game based on the two player's ratings.</p>
+                    <p>Points are calculated for a game based on the two player&apos;s ratings.</p>
 
                     <p>When a higher rated player loses to a lower rated player, this creates the biggest shift in ratings:</p>
                     
@@ -122,7 +120,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
 
                     <p>When two equally rated players draw, their ratings will stay equal.</p>
 
-                    <p>There are a few scenarios where the points awarded are less straightforward &mdash; we're working on a full FAQ to make this easier to understand.</p>
+                    <p>There are a few scenarios where the points awarded are less straightforward &mdash; we&apos;re working on a full FAQ to make this easier to understand.</p>
                 </div>
             </details>
 
