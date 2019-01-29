@@ -1,6 +1,8 @@
 $breakpoint-window-gap: 360px;
 $breakpoint-max: 456px;
 
+$breakpoint-app-gap: 490px;
+
 $breakpoint-smallest-font: 320px;
 $breakpoint-largest-font: $breakpoint-max;
 
@@ -17,5 +19,8 @@ $global-breakpoints: (
 
   frommax:
   'screen and (min-width: '$breakpoint-max')',
+
+  fromappgap:
+  'screen and (min-width: '$breakpoint-app-gap')',
 
 );

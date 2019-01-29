@@ -9,7 +9,6 @@
 $object: 'window';
 
 #{'.' + $global-objects-namespace + $object} {
-  $windowGap: 3vw;
   @extend .u-mh-auto;
   @extend .u-minh-90vh;
   @extend .u-flex;
@@ -19,6 +18,10 @@ $object: 'window';
   @extend .u-font-europa;
   @extend .u-color-blanket;
   @extend .u-width-window;
-  @extend .u-mv-window;
-  box-shadow: inset 0 1px 0 rgba($colour-blanket, .2);
+
+  @include iota-breakpoint(fromappgap) {
+    margin-top: var(--WindowGap);
+    margin-bottom: var(--WindowGap);
+    box-shadow: inset 0 1px 0 rgba($colour-blanket, .2);
+  }
 }
