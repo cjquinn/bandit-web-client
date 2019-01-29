@@ -1,4 +1,3 @@
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Field } from 'redux-form';
@@ -13,9 +12,7 @@ const AddMatchForm = ({ players, user, ...props }) => (
         buttonText="Add match"
         {...props}
     >
-
         <div className="u-vspace-3bl">
-
             <div className="u-vspace-2bl">
                 <div className="c-add-match u-flex u-ai-center u-pv-1bl u-ph-1bl u-color-paste u-bgcolor-fold">
                     <div className="c-add-match__player c-add-match__player--you u-grow-1 u-basis-0 u-flex u-ai-center u-jc-center u-order-2 u-align-center">
@@ -62,7 +59,6 @@ const AddMatchForm = ({ players, user, ...props }) => (
                 <hr className="c-hr" />
 
                 <div className="u-ph-1bl">
-
                     <details className="c-notification c-notification--info" role="alert">
                         <summary><p className="u-weight-bold">How is a match scored?</p></summary>
 
@@ -74,17 +70,8 @@ const AddMatchForm = ({ players, user, ...props }) => (
                             <li>Match score is <strong className="u-color-white">5 &ndash; 3</strong></li>
                         </ol>
                     </details>
-
                 </div>
-
             </div>
-
-            {/* <div className="u-flex u-ai-center u-ph-1bl u-hspace-05bl u-size-14px">
-                <span>
-                    {moment().format('dddd Do MMMM YYYY')}
-                </span>
-            </div> */}
-
         </div>
     </Form>
 );
