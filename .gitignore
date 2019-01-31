@@ -3,5 +3,6 @@
 npm-debug.log
 node_modules
 
-bundle.js
+webroot/service-worker.js
+webroot/bundle.js
 webroot/img/*.png
