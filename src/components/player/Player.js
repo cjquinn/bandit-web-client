@@ -37,7 +37,7 @@ const Player = ({ club, player, user }) => (
                 />
             </div>
 
-            <dl className="c-player__info u-flex u-vspace-06r">
+            <dl className="c-player__info u-flex u-vspace-03r">
                 <dt>
                     <h1 className="u-size-h1 u-color-white u-capitalize">
                         {player.user.first_name} {player.user.last_name}
