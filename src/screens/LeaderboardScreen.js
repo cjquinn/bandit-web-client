@@ -76,6 +76,10 @@ const LeaderboardScreen = () => (
         </div>
 
         <FooterContainer>
+            
+        </FooterContainer>
+
+        {/* <FooterContainer>
             <Route exact path="/leaderboard/weekly" render={() => (
                 <p>{moment().startOf('isoWeek').format('dddd Do')} - {moment().endOf('isoWeek').format('dddd Do MMMM')}</p>
             )} />
@@ -83,7 +87,7 @@ const LeaderboardScreen = () => (
             <Route exact path="/leaderboard/all-time" render={() => (
                 <p>&nbsp;</p>
             )} />
-        </FooterContainer>
+        </FooterContainer> */}
     </Template>
 );
 

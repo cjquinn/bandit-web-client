@@ -24,19 +24,22 @@ const WeeklyLeaderboardItem = ({ player, position, userId }) => (
             </div>
 
             <dl className="u-flex u-jc-between u-ai-center u-width-100pc">
-                <div className="u-grow-1 u-vspace-03r">
+
+                <dt className="u-color-paste u-size-h4 u-weight-bold u-ws-no u-order-2">#{position || player.position}</dt>
+
+                <dd className="u-grow-1 u-vspace-03r u-order-1">
                     <dt className="u-color-paste u-capitalize">{player.user.first_name} {player.user.last_name}</dt>
 
                     <dd className="u-flex u-ai-center u-hspace-4px u-size-13px">
-                        <span className={`u-color-${player.rating_change > 0 ? 'win' : 'loss'}`}>{player.rating_change > 0 && '+'}{player.rating_change} <abbr title="rating points">pts.</abbr></span>
+                        <span className={`u-color-${player.rating_change > 0 ? 'win' : 'loss'}`}>{player.rating_change > 0 && '+'}{player.rating_change} <span className="o-dictate">points</span><span title="rating points" aria-hidden="true">pts.</span></span>
 
-                        <span><span className="o-dictate">from</span> {player.wins_change} wins</span>
+                        <span><span className="o-dictate">with </span> {player.wins_change} wins</span>
 
-                        <span><span className="o-dictate">and</span> {player.losses_change} losses</span>
+                        <span><span className="o-dictate">and </span> {player.losses_change} losses</span>
                     </dd>
-                </div>
+                </dd>
 
-                <dd className="u-color-paste u-size-h4 u-weight-bold u-ws-no">#{position || player.position}</dd>
+                
             </dl>
         </Link>
     </Template>
