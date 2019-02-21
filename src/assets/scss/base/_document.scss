@@ -3,9 +3,22 @@ details {
     @extend %u-flex;
     @extend %u-ai-center;
     @extend %u-cursor-pointer;
+
+    &::-webkit-details-marker {
+    }
   }
 
   &[open] {
     
+  }
+}
+
+select {
+  &:focus {
+    color: $colour-white;
+  }
+
+  &::-ms-expand { 
+    display: none; /* remove default arrow on ie10 and ie11 */
   }
 }

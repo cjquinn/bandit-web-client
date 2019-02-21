@@ -12,24 +12,26 @@ const PlayerSelectField = ({ input, players }) => {
     }
 
     return (
-        <div className="c-add-match u-ov-hidden u-grow-1 u-basis-0 u-order-3 u-flex u-ai-center u-jc-end u-align-right u-hspace-1bl">
-            <select
-                className="u-color-playdough u-capitalize"
-                {...input}
-            >
-                <option value={null}>
-                    Find player:
-                </option>
-
-                {players.map(player =>
-                    <option
-                        key={player.id}
-                        value={player.id}
-                    >
-                        {player.user.display_name}
+        <div className="c-add-match__player--opponent">
+            <div className="c-add-match__player-select">
+                <select
+                    className="c-add-match__player-select__select u-color-playdough u-capitalize"
+                    {...input}
+                >
+                    <option value={null}>
+                        Select player
                     </option>
-                )}
-            </select>
+
+                    {players.map(player =>
+                        <option
+                            key={player.id}
+                            value={player.id}
+                        >
+                            {player.user.display_name}
+                        </option>
+                    )}
+                </select>
+            </div>
 
             <div className="c-add-match__photo c-add-match__photo--opponent">
                 <PlayerPhoto 

@@ -25,12 +25,12 @@ body {
 }
 
 html {
-  overflow-x: hidden;
-  overflow-y: scroll;
 }
 
 body {
   // line-height: 1;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 article,
@@ -156,6 +156,10 @@ input[type=number]::-webkit-outer-spin-button {
   // remove spinners
   -webkit-appearance: none;
   margin: 0;
+}
+
+select {
+  appearance: none;
 }
 
 *,

@@ -1,0 +1,52 @@
+/**
+ * .c-add-match
+**/
+
+$component: 'add-match';
+
+#{'.' + $global-components-namespace + $component} {
+  // Default Settings
+
+  &__player {
+    &--you {
+
+    }
+
+    &--opponent {
+      @extend .u-grow-1; 
+      @extend .u-basis-0; 
+      @extend .u-order-3; 
+      @extend .u-flex; 
+      @extend .u-ai-center;
+      @extend .u-jc-end; 
+      @extend .u-align-right; 
+      @extend .u-hspace-1bl;
+    }
+  }
+
+  &__photo {
+    &--you {
+
+    }
+  }
+
+  &__player-select {
+    position: relative;
+    
+    &:after {
+      position: absolute;
+      top: calc(50% + 1px);
+      transform: translateY(-50%);
+      right: 0;
+      width: 1em;
+      text-align: center;
+      content: '\2195';
+      color: $colour-playdough;
+    }
+
+    &__select {
+      padding-left: .3em;
+      padding-right: 1em;
+    }
+  }
+}
