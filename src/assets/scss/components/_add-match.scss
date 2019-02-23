@@ -29,24 +29,4 @@ $component: 'add-match';
 
     }
   }
-
-  &__player-select {
-    position: relative;
-    
-    &:after {
-      position: absolute;
-      top: calc(50% + 1px);
-      transform: translateY(-50%);
-      right: 0;
-      width: 1em;
-      text-align: center;
-      content: '\2195';
-      color: $colour-playdough;
-    }
-
-    &__select {
-      padding-left: .3em;
-      padding-right: 1em;
-    }
-  }
 }

@@ -12,13 +12,3 @@ details {
     
   }
 }
-
-select {
-  &:focus {
-    color: $colour-white;
-  }
-
-  &::-ms-expand { 
-    display: none; /* remove default arrow on ie10 and ie11 */
-  }
-}

@@ -13,9 +13,9 @@ const PlayerSelectField = ({ input, players }) => {
 
     return (
         <div className="c-add-match__player--opponent">
-            <div className="c-add-match__player-select">
+            <div className="c-select">
                 <select
-                    className="c-add-match__player-select__select u-color-playdough u-capitalize"
+                    className="c-select__select u-color-playdough u-capitalize"
                     {...input}
                 >
                     <option value={null}>
