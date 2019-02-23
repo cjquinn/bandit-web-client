@@ -29,8 +29,9 @@ const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players,
             {players.map(player => (
                 <li
                     key={player.id}
-                    className="u-pos-relative u-bgcolor-fold"
+                    className={`u-pos-relative u-bgcolor-fold ${player.id !== playerId && 'u-blur1px u-blur0@hover u-opac-05 u-opac-1@hover'}`}
                 >
+
                     <WeeklyLeaderboardItem
                         player={player}
                         userId={userId}

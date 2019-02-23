@@ -1,0 +1,18 @@
+$utilities-flex-settings: (
+  (
+    property: ('filter', ''),
+
+    values: (
+      (
+        ('blur(1px)', 'blur1px'),
+        ('blur(0)', 'blur0'),
+      ),
+      (
+        value: ('blur(0)', 'blur0'),
+        pseudos: ('hover'),
+      ),
+    ),
+  ),
+);
+
+$make-utilities: append($make-utilities, $utilities-flex-settings);
