@@ -26,6 +26,7 @@ export const addDispute = data => (dispatch, getState, api) => {
             ...normalizedData,
             clubId
         })))
+        .then(() => api.trackEvent('disputeAdded'))
         .catch(api.handleError(dispatch, addDisputeFailure));
 };
 
@@ -48,6 +49,7 @@ export const closeDispute = (disputeId, data) => (dispatch, getState, api) => {
             ...normalizedData,
             result: normalizedData.result.dispute
         })))
+        .then(() => api.trackEvent('disputeClosed'))
         .catch(api.handleError(dispatch, closeDisputeFailure));
 };
 
@@ -70,6 +72,7 @@ export const deleteDispute = disputeId => (dispatch, getState, api) => {
             ...normalizedData,
             clubId
         })))
+        .then(() => api.trackEvent('disputeDeleted'))
         .catch(api.handleError(dispatch, deleteDisputeFailure));
 };
 

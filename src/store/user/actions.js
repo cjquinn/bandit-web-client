@@ -28,6 +28,7 @@ export const activateAccount = data => (dispatch, getState, api) => {
         .then(response => normalize(response.data.user, userSchema))
         .then(normalizedData => dispatch(activateAccountSuccess(normalizedData)))
         .then(() => dispatch(push('/')))
+        .then(() => api.trackEvent('userActivated'))
         .catch(api.handleError(dispatch, activateAccountFailure));
 };
 
@@ -64,6 +65,7 @@ export const requestPasswordReset = data => (dispatch, getState, api) => {
         .then(() => dispatch(requestPasswordResetSuccess()))
         .then(() => dispatch(setFlash({message: 'Check your email for your reset password link.', type: 'info'})))
         .then(() => dispatch(push('/sign-in')))
+        .then(() => api.trackEvent('userRequestedPasswordReset'))
         .catch(api.handleError(dispatch, requestPasswordResetFailure));
 };
 
@@ -81,6 +83,7 @@ export const resetPassword = data => (dispatch, getState, api) => {
         .then(api.checkStatus)
         .then(() => dispatch(resetPasswordSuccess()))
         .then(() => dispatch(push('/sign-in')))
+        .then(() => api.trackEvent('userResetPassword'))
         .catch(api.handleError(dispatch, resetPasswordFailure));
 };
 
