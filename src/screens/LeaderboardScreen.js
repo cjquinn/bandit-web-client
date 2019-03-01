@@ -1,4 +1,3 @@
-import moment from 'moment';
 import React from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
 
@@ -75,15 +74,7 @@ const LeaderboardScreen = () => (
             </Switch>
         </div>
 
-        <FooterContainer>
-            <Route exact path="/leaderboard/weekly" render={() => (
-                <p>{moment().startOf('isoWeek').format('dddd Do')} - {moment().endOf('isoWeek').format('dddd Do MMMM')}</p>
-            )} />
-
-            <Route exact path="/leaderboard/all-time" render={() => (
-                <p>&nbsp;</p>
-            )} />
-        </FooterContainer>
+        <FooterContainer />
     </Template>
 );
 
