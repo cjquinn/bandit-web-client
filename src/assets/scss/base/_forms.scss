@@ -91,22 +91,6 @@ textarea {
   }
 }
 
-select {
-  @extend .u-width-100pc;
-  height: 2em;
-  padding: 0 .2em;
-  border-top: 1px solid rgba(98,111,148, .4);
-  background: rgba(98, 111, 148, .3);
-
-  &[disabled] {
-    color: inherit;
-  }
-
-  &:not([disabled]):focus {
-    border-top: 1px solid white;
-  }
-}
-
 [type="text"],
 [type="email"],
 [type="password"],
