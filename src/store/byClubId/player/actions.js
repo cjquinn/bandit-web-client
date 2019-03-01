@@ -73,6 +73,7 @@ export const invitePlayer = data => (dispatch, getState, api) => {
         .then(normalizedData => dispatch(invitePlayerSuccess(normalizedData)))
         .then(() => dispatch(setFlash({message: 'Invite sent', type: 'success'})))
         .then(() => dispatch(push('/players')))
+        .then(() => api.trackEvent('playerInvited'))
         .catch(api.handleError(dispatch, invitePlayerFailure));
 };
 
@@ -81,11 +82,14 @@ export const invitePlayer = data => (dispatch, getState, api) => {
  */
 export const ORDER_PLAYERS_BY = 'ORDER_PLAYERS_BY';
 
-export const orderPlayersBy = orderBy => (dispatch, getState) =>
-    dispatch({
+export const orderPlayersBy = orderBy => (dispatch, getState, api) => {
+    api.trackEvent('playerOrdered');
+
+    return dispatch({
         type: ORDER_PLAYERS_BY,
         payload: {
             clubId: getClubId(getState()),
             orderBy
         }
     });
+};

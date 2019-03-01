@@ -16,6 +16,17 @@ export * from './byClubId/player/endpoints';
 export * from './user/endpoints';
 
 /**
+ * Google tag stuff
+ */
+export const trackEvent = (event, data = {}) => {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        event,
+        ...data
+    });
+};
+
+/**
  * Function to flattern cakephp error format
  */
 const formatErrors = errors => {
