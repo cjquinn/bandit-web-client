@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+// Components
+import Template from './Template';
+
 const Footer = ({ children, isAuthenticated, signOut }) => (
     <footer>
         <hr className="c-hr" />
@@ -8,16 +11,25 @@ const Footer = ({ children, isAuthenticated, signOut }) => (
         <div className="o-container u-flex u-jc-between u-ai-center u-ph-1bl u-pv-2bl">
             {children 
                 ? children
-                : <p>&nbsp;</p>
-            }
+                : (
+                    <Template>
+                        <a
+                            className="u-color-playdough"
+                            href="mailto:referee@banditmatch.com"
+                        >
+                            Feedback &amp; Support
+                        </a>
 
-            {isAuthenticated &&
-                <button
-                    className="u-color-playdough"
-                    onClick={signOut}
-                >
-                    Sign out
-                </button>
+                        {isAuthenticated &&
+                            <button
+                                className="u-color-playdough"
+                                onClick={signOut}
+                            >
+                                Sign out
+                            </button>
+                        }
+                    </Template>
+                )
             }
         </div>
     </footer>
