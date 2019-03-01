@@ -17,9 +17,9 @@ const PlayerPhoto = ({ player, width }) => (
         }
 
         <div className={`c-player-photo c-player-photo--no-photo u-width-${width || '2bl'}`}>
-            {player.level && <div className={`c-player-photo__level u-bgcolor-${player.level.slug}`}></div>}
+            {player.level && <div className="c-player-photo__level"><div className={`c-player-photo__stripe u-bgcolor-${player.level.slug}`}></div></div>}
 
-            {player.isBandit && <div className="c-player-photo__level u-bgcolor-bandit"></div>}
+            {player.isBandit && <div className="c-player-photo__level"><div className="c-player-photo__stripe u-bgcolor-bandit"></div></div>}
         </div>
     </div>
 );
