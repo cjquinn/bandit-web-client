@@ -1,3 +1,4 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -5,9 +6,6 @@ import React from 'react';
 import WeeklyLeaderboardItem from '../items/WeeklyLeaderboardItem';
 
 const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players, userId }) => {
-
-    <p>Monday 18th - Sunday 24th February</p>
-
     if (!isFetching && players.length === 0) {
         return (
             <div className="c-notification c-notification--alert">
@@ -27,21 +25,26 @@ const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players,
         );
     }
 
+    const momentToday = moment();
+    const day = (+momentToday.format('d') - 1) % 6;
+
     return (
         <div className="u-vspace-2bl">
 
             <dl className="c-weekly-progress u-ph-1bl">
                 <dt className="c-weekly-progress__status">
-                    <span className="o-dictate">This week's leaderboard is 1 day in.</span>
-                    <progress className="c-weekly-progress__bar" value="1" max="7">14%</progress>
+                    <span className="o-dictate">{`This week's leaderboard is ${day + 1} day${day !== 0 ? 's' : ''} in.`}</span>
+                    <progress className="c-weekly-progress__bar" value={day} max="6">
+                        {`${(day / 6 * 100).toFixed(2)}%`}
+                    </progress>
                 </dt>
 
                 <dd className="c-weekly-progress__start u-ws-no">
-                    <span className="o-dictate">It started on </span>Monday 18th
+                    <span className="o-dictate">It started on </span>{momentToday.startOf('isoWeek').format('dddd Do')}
                 </dd>
                 
                 <dd className="c-weekly-progress__end u-ws-no">
-                    <span className="o-dictate">It ends on </span>Sunday 24th
+                    <span className="o-dictate">It ends on </span>{momentToday.endOf('isoWeek').format('dddd Do')}
                 </dd>
             </dl>
 

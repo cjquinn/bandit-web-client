@@ -1,4 +1,3 @@
-import moment from 'moment';
 import React from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
 
@@ -75,9 +74,7 @@ const LeaderboardScreen = () => (
             </Switch>
         </div>
 
-        <FooterContainer>
-            
-        </FooterContainer>
+        <FooterContainer />
 
         {/* <FooterContainer>
             <Route exact path="/leaderboard/weekly" render={() => (
