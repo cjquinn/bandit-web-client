@@ -10,7 +10,8 @@
         "plugin:react/recommended"
     ],
     "globals": {
-        "API": true
+        "API": true,
+        "IS_DEV": true
     },
     "parser": "babel-eslint",
     "parserOptions": {

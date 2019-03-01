@@ -24,8 +24,7 @@ const AllTimeLeaderboardList = ({ isFetching, players, playerId, userId }) => {
                     {players.map(player => (
                         <li
                             key={player.id}
-                            className={`u-pos-relative u-bgcolor-fold 
-                                ${player.id !== playerId && 'u-blur1px u-blur0@hover u-opac-05 u-opac-1@hover'}`}
+                            className={`u-pos-relative u-bgcolor-fold ${playerId && player.id !== playerId && 'u-blur1px u-blur0@hover u-opac-05 u-opac-1@hover'}`}
                         >
                             <AllTimeLeaderboardItem
                                 player={player}
@@ -41,6 +40,7 @@ const AllTimeLeaderboardList = ({ isFetching, players, playerId, userId }) => {
 
 AllTimeLeaderboardList.propTypes = {
     isFetching: PropTypes.bool.isRequired,
+    playerId: PropTypes.number,
     players: PropTypes.array.isRequired,
     userId: PropTypes.number.isRequired
 };
