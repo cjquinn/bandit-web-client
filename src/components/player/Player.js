@@ -9,22 +9,9 @@ import Template from '../shared/Template';
 // Sprites
 import rating from '../../assets/svg/sprite/rating.svg';
 
-const createChallengeEmailSubject = clubName => {
-    return encodeURIComponent(`Are you free for a match?${clubName ? ` - ${clubName}` : ''}`);
-};
+const createChallengeEmailSubject = clubName => encodeURIComponent(`Are you free for a match?${clubName ? ` - ${clubName}` : ''}`);
 
-const createChallengeEmailBody = (challengerFirstName, opponentFirstName) => {
-    return encodeURIComponent(`Hi ${opponentFirstName},
-
-Are you free to play a match?
-
-Location: 
-Time: 
-
-Thanks,
-${challengerFirstName}
-`);
-};
+const createChallengeEmailBody = (challengerFirstName, opponentFirstName) => `Hi ${opponentFirstName},%0D%0A%0D%0AAre you free to play a match?%0D%0A%0D%0ALocation: %0D%0ATime: %0D%0A%0D%0AThanks,%0D%0A${challengerFirstName}`;
 
 const Player = ({ club, player, user }) => (
     <div className="o-container u-vspace-3bl">
@@ -58,11 +45,12 @@ const Player = ({ club, player, user }) => (
                         </span>
                     }
                     
-                    <span className={`c-levels u-flex u-ai-center`}>
+                    <span className='c-levels u-flex u-ai-center'>
                         {player.isBandit && 
-                        <span className={`c-level u-bgcolor-bandit`}>
-                            Bandit
-                        </span>}
+                            <span className='c-level u-bgcolor-bandit'>
+                                Bandit
+                            </span>
+                        }
 
                         <span className={`c-level u-bgcolor-${player.level.slug}`}>
                             {player.level.name}
