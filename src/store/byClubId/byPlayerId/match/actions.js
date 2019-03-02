@@ -33,6 +33,7 @@ export const addMatch = data => (dispatch, getState, api) => {
             clubId
         })))
         .then(action => dispatch(push(`/matches/${action.payload.result}`)))
+        .then(() => api.trackEvent('matchAdded'))
         .catch(api.handleError(dispatch, addMatchFailure));
 };
 
@@ -58,6 +59,7 @@ export const deleteMatch = matchId => (dispatch, getState, api) => {
             matchId
         })))
         .then(() => dispatch(setFlash({message: 'Your match was deleted', type: 'info'})))
+        .then(() => api.trackEvent('matchDeleted'))
         .catch(api.handleError(dispatch, deleteMatchFailure));
 };
 

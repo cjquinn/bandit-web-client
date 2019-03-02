@@ -1,15 +1,15 @@
-@import 'player-photo';
-@import 'player';
+@import 'add-match';
 @import 'button';
-@import 'go';
-@import 'tab';
 @import 'fade';
+@import 'go';
 @import 'hr';
-@import 'loading';
 @import 'level';
 @import 'levels';
-@import 'player-select';
+@import 'loading';
 @import 'notification';
-
-// Notice? 
-// Merge 'error' and 'info'?
+@import 'player';
+@import 'player-photo';
+@import 'player-select';
+@import 'select';
+@import 'tab';
+@import 'weekly-progress';

@@ -14,13 +14,24 @@ $component: 'player-photo';
     background-image: url('../img/empty.png');
   }
 
-  &__level {
-    --levelThickness: 25%;
+  &__level,
+  &__stripe {
     @extend .u-pos-absolute;
     @extend .u-top-0;
     @extend .u-width-100pc;
     @extend .u-height-100pc;
+  }
+
+  &__level {
+    @extend .u-left-0;
+    /* Why does &__stripe need a parent?
+    Some mobile browsers throw a fit and hit the whole stripe when you have `filter:` and transform:
+    */
     filter: drop-shadow(-1px -1px 3px rgba($colour-basement, 0.5));
+  }
+
+  &__stripe {
+    --levelThickness: 25%;
 
     &--only {
       --levelThickness: 60%;

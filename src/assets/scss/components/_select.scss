@@ -1,0 +1,48 @@
+/**
+ * .c-select
+**/
+
+$component: 'select';
+
+#{'.' + $global-components-namespace + $component} {
+
+  position: relative;
+  color: $colour-playdough;
+
+  &:focus,
+  &:focus-within {
+    color: $colour-white;
+  }
+
+  &::-ms-expand { 
+    display: none; /* remove default arrow on ie10 and ie11 */
+  }
+
+  &:after {
+    position: absolute;
+    top: calc(50% + 1px);
+    right: 0;
+    width: 1em;
+    text-align: center;
+    color: currentColor;
+    content: '\2195';
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  &__select {
+    @extend .u-width-100pc;
+    appearance: none;
+    padding-top: .3em;
+    padding-right: 1em;
+    padding-bottom: .5em;
+    padding-left: .3em;
+    background: rgba(98, 111, 148, .3);
+    border-top: 1px solid rgba(98,111,148, .4);
+    color: currentColor;
+
+    &:not([disabled]):focus {
+      border-top-color: rgba(98,111,148, 1);
+    }
+  }
+}

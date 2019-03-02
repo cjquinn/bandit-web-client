@@ -4,7 +4,7 @@ import React from 'react';
 // Components
 import AllTimeLeaderboardItem from '../items/AllTimeLeaderboardItem';
 
-const AllTimeLeaderboardList = ({ isFetching, players, userId }) => {
+const AllTimeLeaderboardList = ({ isFetching, players, playerId, userId }) => {
     if (!isFetching && players.length === 0) {
         return (
             <div className="c-notification c-notification--alert">
@@ -24,7 +24,7 @@ const AllTimeLeaderboardList = ({ isFetching, players, userId }) => {
                     {players.map(player => (
                         <li
                             key={player.id}
-                            className="u-pos-relative u-bgcolor-fold"
+                            className={`u-pos-relative u-bgcolor-fold ${playerId && player.id !== playerId && 'u-blur1px u-blur0@hover u-opac-05 u-opac-1@hover'}`}
                         >
                             <AllTimeLeaderboardItem
                                 player={player}
@@ -40,6 +40,7 @@ const AllTimeLeaderboardList = ({ isFetching, players, userId }) => {
 
 AllTimeLeaderboardList.propTypes = {
     isFetching: PropTypes.bool.isRequired,
+    playerId: PropTypes.number,
     players: PropTypes.array.isRequired,
     userId: PropTypes.number.isRequired
 };

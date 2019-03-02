@@ -35,7 +35,7 @@ const ClubMenu = ({ isClubOwner }) => (
 
                 <li>
                     <NavLink
-                        to="/leaderboard"
+                        to="/leaderboard/all-time"
                         className="c-tab c-tab--header"
                         activeClassName="c-tab--active"
                     >

@@ -44,25 +44,6 @@ const DashboardScreen = () => (
 
         <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">Weekly <span className="u-weight-normal u-color-steam">leaderboard</span></h1>
-
-                <Link
-                    to="/leaderboard/weekly"
-                    className="c-go"
-                >
-                    Go
-                </Link>
-            </header>
-
-            <LeaderboardListContainer
-                component={WeeklyLeaderboardList}
-                limit="3"
-                period="weekly"
-            />
-        </section>
-
-        <section className="o-container u-vspace-1bl">
-            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">All time <span className="u-weight-normal u-color-steam">leaderboard</span></h1>
 
                 <Link
@@ -77,6 +58,25 @@ const DashboardScreen = () => (
                 component={AllTimeLeaderboardList}
                 limit="3"
                 period="allTime"
+            />
+        </section>
+
+        <section className="o-container u-vspace-1bl">
+            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                <h1 className="u-size-h2 u-color-white">Weekly <span className="u-weight-normal u-color-steam">leaderboard</span></h1>
+
+                <Link
+                    to="/leaderboard/weekly"
+                    className="c-go"
+                >
+                    Go
+                </Link>
+            </header>
+
+            <LeaderboardListContainer
+                component={WeeklyLeaderboardList}
+                limit="3"
+                period="weekly"
             />
         </section>
 

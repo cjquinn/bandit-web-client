@@ -34,26 +34,6 @@ const PlayerScreen = ({ match, user }) => (
 
         <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">Weekly <span className="u-weight-normal u-color-steam">leaderboard</span></h1>
-
-                <Link
-                    to="/leaderboard/weekly"
-                    className="c-go"
-                >
-                    Go
-                </Link>
-            </header>
-
-            <LeaderboardListContainer
-                component={WeeklyLeaderboardList}
-                limit="3"
-                period="weekly"
-                playerId={match.params.playerId ? +match.params.playerId : user.player.id}
-            />
-        </section>
-
-        <section className="o-container u-vspace-1bl">
-            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">All time <span className="u-weight-normal u-color-steam">leaderboard</span></h1>
 
                 <Link
@@ -68,6 +48,26 @@ const PlayerScreen = ({ match, user }) => (
                 component={AllTimeLeaderboardList}
                 limit="3"
                 period="allTime"
+                playerId={match.params.playerId ? +match.params.playerId : user.player.id}
+            />
+        </section>
+
+        <section className="o-container u-vspace-1bl">
+            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                <h1 className="u-size-h2 u-color-white">Weekly <span className="u-weight-normal u-color-steam">leaderboard</span></h1>
+
+                <Link
+                    to="/leaderboard/weekly"
+                    className="c-go"
+                >
+                    Go
+                </Link>
+            </header>
+
+            <LeaderboardListContainer
+                component={WeeklyLeaderboardList}
+                limit="3"
+                period="weekly"
                 playerId={match.params.playerId ? +match.params.playerId : user.player.id}
             />
         </section>

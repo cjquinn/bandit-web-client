@@ -1,4 +1,3 @@
-import moment from 'moment';
 import React from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
 
@@ -26,23 +25,23 @@ const LeaderboardScreen = () => (
             <ul className="u-flex u-ph-1bl u-hspace-1bl">
                 <li className="u-grow-1">
                     <NavLink
-                        to="/leaderboard/weekly"
-                        exact
-                        className="c-tab c-tab--main"
-                        activeClassName="c-tab--active"
-                    >
-                        Weekly
-                    </NavLink>
-                </li>
-
-                <li className="u-grow-1">
-                    <NavLink
                         to="/leaderboard/all-time"
                         exact
                         className="c-tab c-tab--main"
                         activeClassName="c-tab--active"
                     >
                         All-time
+                    </NavLink>
+                </li>
+
+                <li className="u-grow-1">
+                    <NavLink
+                        to="/leaderboard/weekly"
+                        exact
+                        className="c-tab c-tab--main"
+                        activeClassName="c-tab--active"
+                    >
+                        Weekly
                     </NavLink>
                 </li>
             </ul>
@@ -75,15 +74,7 @@ const LeaderboardScreen = () => (
             </Switch>
         </div>
 
-        <FooterContainer>
-            <Route exact path="/leaderboard/weekly" render={() => (
-                <p>{moment().startOf('isoWeek').format('dddd Do')} - {moment().endOf('isoWeek').format('dddd Do MMMM')}</p>
-            )} />
-
-            <Route exact path="/leaderboard/all-time" render={() => (
-                <p>&nbsp;</p>
-            )} />
-        </FooterContainer>
+        <FooterContainer />
     </Template>
 );
 

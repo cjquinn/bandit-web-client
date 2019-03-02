@@ -28,6 +28,7 @@ export const createClub = data => (dispatch, getState, api) => {
         .then(response => normalize(response.data.club, clubSchema))
         .then(normalizedData => dispatch(createClubSuccess(normalizedData)))
         .then(() => dispatch(push('/')))
+        .then(() => api.trackEvent('clubCreated', {clubName: data.name}))
         .catch(api.handleError(dispatch, createClubFailure));
 };
 
@@ -50,7 +51,13 @@ export const fetchClub = clubId => (dispatch, getState, api) => {
     return api.fetchClub(nextClubId)
         .then(api.checkStatus)
         .then(api.setClubId)
-        .then(response => normalize(response.data.club, clubSchema))
+        .then(({ data }) => {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({clubName: data.club.name});
+
+            return data;
+        })
+        .then(({ club }) => normalize(club, clubSchema))
         .then(normalizedData => dispatch(fetchClubSuccess(normalizedData)))
         .catch(api.handleError(dispatch, fetchClubFailure));
 };

@@ -60,7 +60,7 @@ const AddMatchForm = ({ players, user, ...props }) => (
 
                 <div className="u-ph-1bl">
                     <details className="c-notification c-notification--info" role="alert">
-                        <summary><p className="u-weight-bold">How is a match scored?</p></summary>
+                        <summary><span className="u-weight-bold">How is a match scored?</span></summary>
 
                         <p>Each game won by a player makes up their score.</p>
 

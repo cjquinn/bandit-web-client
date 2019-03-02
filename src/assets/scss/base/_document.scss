@@ -3,6 +3,9 @@ details {
     @extend %u-flex;
     @extend %u-ai-center;
     @extend %u-cursor-pointer;
+
+    &::-webkit-details-marker {
+    }
   }
 
   &[open] {

@@ -106,7 +106,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
             </dl>
 
             <details className="c-notification c-notification--info" role="alert">
-                <summary><p className="u-weight-bold">Ratings explained</p></summary>
+                <summary><span className="u-weight-bold">Ratings explained</span></summary>
 
                 <div className=" u-pv-1bl u-vspace-1bl">
                     <p>Points are calculated for a game based on the two player&apos;s ratings.</p>

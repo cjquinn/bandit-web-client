@@ -1,3 +1,4 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -24,20 +25,43 @@ const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players,
         );
     }
 
+    const momentToday = moment();
+    const day = (+momentToday.format('d') - 1) % 6;
+
     return (
-        <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-            {players.map(player => (
-                <li
-                    key={player.id}
-                    className="u-pos-relative u-bgcolor-fold"
-                >
-                    <WeeklyLeaderboardItem
-                        player={player}
-                        userId={userId}
-                    />
-                </li>
-            ))}
-        </ol>
+        <div className="u-vspace-2bl">
+
+            <dl className="c-weekly-progress u-ph-1bl">
+                <dt className="c-weekly-progress__status">
+                    <span className="o-dictate">{`This week's leaderboard is ${day + 1} day${day !== 0 ? 's' : ''} in.`}</span>
+                    <progress className="c-weekly-progress__bar" value={day} max="6">
+                        {`${(day / 6 * 100).toFixed(2)}%`}
+                    </progress>
+                </dt>
+
+                <dd className="c-weekly-progress__start u-ws-no">
+                    <span className="o-dictate">It started on </span>{momentToday.startOf('isoWeek').format('dddd Do')}
+                </dd>
+                
+                <dd className="c-weekly-progress__end u-ws-no">
+                    <span className="o-dictate">It ends on </span>{momentToday.endOf('isoWeek').format('dddd Do')}
+                </dd>
+            </dl>
+
+            <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+                {players.map(player => (
+                    <li
+                        key={player.id}
+                        className={`u-pos-relative u-bgcolor-fold ${playerId && player.id !== playerId && 'u-blur1px u-blur0@hover u-opac-05 u-opac-1@hover'}`}
+                    >
+                        <WeeklyLeaderboardItem
+                            player={player}
+                            userId={userId}
+                        />
+                    </li>
+                ))}
+            </ol>
+        </div>
     );
 };
 
