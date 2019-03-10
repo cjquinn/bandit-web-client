@@ -36,17 +36,21 @@ $component: 'player-photo';
     &--only {
       --levelThickness: 60%;
     }
+  }
 
-    &:first-of-type {
-      left: calc(-1 * var(--levelThickness));
-      transform: skew(-60deg) translateX(150%);
-    }
+  &__level:first-of-type {
+    z-index: 1;
+  }
 
-    &:nth-of-type(2) {
-      // bandit level
-      right: calc(-1 * var(--levelThickness));
-      transform: skew(60deg) translateX(-150%);
-    }
+  &__level:first-of-type &__stripe {
+    left: calc(-1 * var(--levelThickness));
+    transform: skew(-60deg) translateX(150%);
+  }
+
+  &__level:nth-of-type(2n) &__stripe {
+    // bandit level
+    right: calc(-1 * var(--levelThickness));
+    transform: skew(60deg) translateX(-150%);
   }
 
   &__knot {

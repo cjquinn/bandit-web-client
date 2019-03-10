@@ -32,6 +32,7 @@ const Footer = ({ children, isAuthenticated, signOut }) => (
                 )
             }
         </div>
+
     </footer>
 );
 

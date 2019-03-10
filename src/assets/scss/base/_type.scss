@@ -5,6 +5,11 @@
   @include fontScale($font-size-smallest-body, $font-size-largest-body);
 }
 
+body {
+  @extend .u-font-europa;
+  @extend .u-color-blanket;
+}
+
 h1,
 h2,
 h3,

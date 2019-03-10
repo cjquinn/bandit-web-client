@@ -15,8 +15,6 @@ $object: 'window';
   @extend .u-fd-col;
   @extend .u-bgcolor-fold;
   @extend .u-borrad-6;
-  @extend .u-font-europa;
-  @extend .u-color-blanket;
   @extend .u-width-window;
 
   @include iota-breakpoint(fromappgap) {

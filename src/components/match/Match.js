@@ -45,7 +45,13 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
                         </dd>
                     </div>
 
-                    <div className="u-flex u-ai-center u-hspace-4px u-mt-3bl">
+                    <span className={`c-levels u-flex u-ai-center`}>
+                        <span className={`c-level u-bgcolor-warrior`}>
+                            Warrior
+                        </span>
+                    </span>
+
+                    <div className="u-flex u-ai-center u-hspace-4px">
                         <Svg
                             sprite={rating}
                             className="u-width-1bl u-height-auto"
@@ -87,7 +93,15 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
                         </dd>
                     </div>
 
-                    <div className="u-flex u-ai-center u-hspace-4px u-mt-3bl">
+                        
+
+                    <span className={`c-levels u-flex u-ai-center`}>
+                        <span className={`c-level u-bgcolor-warrior`}>
+                            Warrior
+                        </span>
+                    </span>
+
+                    <div className="u-flex u-ai-center u-hspace-4px">
                         <Svg
                             sprite={rating}
                             className="u-width-1bl u-height-auto"
@@ -105,7 +119,20 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
                 </li>
             </dl>
 
-            <details className="c-notification c-notification--info" role="alert">
+            <section>
+
+                <div className="u-ph-1bl">
+                    <h3 className="u-size-h4 u-color-white">Match</h3>
+                </div>
+
+                <table>
+                    
+                </table>
+
+                
+            </section>
+
+            {/* <details className="c-notification c-notification--info" role="alert">
                 <summary><span className="u-weight-bold">Ratings explained</span></summary>
 
                 <div className=" u-pv-1bl u-vspace-1bl">
@@ -122,7 +149,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
 
                     <p>There are a few scenarios where the points awarded are less straightforward &mdash; we&apos;re working on a full FAQ to make this easier to understand.</p>
                 </div>
-            </details>
+            </details> */}
 
             <dl className="u-ph-1bl u-vspace-1bl">
                 <li className="u-flex u-ai-center u-hspace-05bl u-fw-wrap">
@@ -146,7 +173,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
 
         {match.was_within24_hours && match.player_a.user_id === userId && !match.dispute && !match.deleted &&
             <button
-                className="c-button c-button--warning u-mt-3bl"
+                className="c-button c-button--warning"
                 disabled={isDeleting}
                 onClick={handleClickCancel}
             >
