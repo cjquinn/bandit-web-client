@@ -1,7 +1,5 @@
 import { instance } from '../api';
 
-export const activateAccount = (token, data) => instance().patch(`/users/activate-account.json?token=${token}`, data);
-
 export const fetchCurrentUser = () => instance().get('/users/current.json');
 
 export const signIn = data => instance().post('/users/login.json', data);

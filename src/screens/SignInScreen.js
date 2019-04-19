@@ -40,7 +40,7 @@ const SignInScreen = () => (
         <FooterContainer>
             <Link
                 className="u-color-playdough"
-                to="/sign-up"
+                to="/create-club"
             >
                 Create a Club
             </Link>

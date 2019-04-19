@@ -8,7 +8,6 @@ import { createClubSuccess, fetchClubSuccess } from '../club/actions';
 const clubId = handleActions(
     {
         [combineActions(
-            actions.activateAccountSuccess,
             actions.fetchCurrentUserSuccess,
             actions.signInSuccess
         )]: (state, { payload }) => {
@@ -35,7 +34,6 @@ const clubId = handleActions(
 const id = handleActions(
     {
         [combineActions(
-            actions.activateAccountSuccess,
             actions.fetchCurrentUserSuccess,
             actions.signInSuccess
         )]: (state, { payload }) => payload.result,

@@ -7,12 +7,12 @@ import Svg from '../components/shared/Svg';
 import Template from '../components/shared/Template';
 
 // Containers
-import SignUpFormContainer from '../containers/forms/SignUpFormContainer';
+import CreateClubUnauthenticatedFormContainer from '../containers/forms/CreateClubUnauthenticatedFormContainer';
 
 // Sprites
 import logo_knot from '../assets/svg/sprite/logo_knot.svg';
 
-const SignUpScreen = () => (
+const CreateClubUnauthenticatedScreen = () => (
     <Template>
         <header className="o-container u-flex u-ai-center u-fd-col u-ph-1bl u-vspace-06r">
             <h1 className="u-size-h1 u-color-white">
@@ -31,7 +31,7 @@ const SignUpScreen = () => (
 
         <hr className="c-hr" />
 
-        <SignUpFormContainer />
+        <CreateClubUnauthenticatedFormContainer />
 
         <FooterContainer>
             <Link
@@ -44,4 +44,4 @@ const SignUpScreen = () => (
     </Template>
 );
 
-export default SignUpScreen;
+export default CreateClubUnauthenticatedScreen;
