@@ -25,7 +25,7 @@ window.addEventListener('load', () => {
   }
 
   function setScrollbarVar(value) {
-      document.body.style.setProperty('--scrollbar-width', value + 'px');
+    document.documentElement.style.setProperty('--scrollbar-width', value + 'px');
   }
 
   function addScrollObserver() {

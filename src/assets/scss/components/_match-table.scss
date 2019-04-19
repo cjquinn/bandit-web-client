@@ -13,8 +13,13 @@ $component: 'match-table';
   //   margin-top: 1px;
   // }
 
+  &__head,
+  &__cell {
+    padding: calc(1.5 * var(--baseline)) var(--baseline);
+  }
+
   &__head {
-    padding: var(--baseline);
+    // padding: var(--baseline);
     grid-column-start: 1;
     grid-column-end: -1;
     background: #101421;
@@ -23,7 +28,7 @@ $component: 'match-table';
   &__cell {
     @extend %u-flex;
     // @extend %u-jc-between;
-    padding: var(--baseline);
+    // padding: var(--baseline);
     background: rgba(#0F121F, .5);
   }
 
