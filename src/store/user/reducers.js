@@ -9,7 +9,8 @@ const clubId = handleActions(
     {
         [combineActions(
             actions.fetchCurrentUserSuccess,
-            actions.signInSuccess
+            actions.signInSuccess,
+            actions.signUpSuccess
         )]: (state, { payload }) => {
             if (state) {
                 return state;
@@ -35,7 +36,8 @@ const id = handleActions(
     {
         [combineActions(
             actions.fetchCurrentUserSuccess,
-            actions.signInSuccess
+            actions.signInSuccess,
+            actions.signUpSuccess
         )]: (state, { payload }) => payload.result,
         [createClubSuccess]: (state, { payload }) => payload.entities.clubs[payload.result].founder_id
     },

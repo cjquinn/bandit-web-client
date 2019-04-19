@@ -9,7 +9,7 @@ import { createClub } from '../../store/club/actions';
 // Components
 import CreateClubAuthenticatedForm from '../../components/forms/CreateClubAuthenticatedForm';
 
-const CreateClubAuthenticatedReduxForm = reduxForm({form: 'createClub'})(CreateClubAuthenticatedForm);
+const CreateClubAuthenticatedReduxForm = reduxForm({form: 'createClubAuthenticated'})(CreateClubAuthenticatedForm);
 
 class CreateClubAuthenticatedFormContainer extends Component {
     handleSubmit = data => this.props.createClub(data);

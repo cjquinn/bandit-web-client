@@ -98,6 +98,25 @@ export const signOut = () => (dispatch, getState, api) => {
 };
 
 /**
+ * Sign in
+ */
+export const signUpRequest = createAction('SIGN_UP_REQUEST');
+export const signUpSuccess = createAction('SIGN_UP_SUCCESS');
+export const signUpFailure = createAction('SIGN_UP_FAILURE');
+
+export const signUp = data => (dispatch, getState, api) => {
+    dispatch(signUpRequest());
+
+    return api.signUp(data)
+        .then(api.checkStatus)
+        .then(response => api.getClubId() ? response : api.setClubId(response))
+        .then(api.setJwt)
+        .then(response => normalize(response.data.user, userSchema))
+        .then(normalizedData => dispatch(signInSuccess(normalizedData)))
+        .catch(api.handleError(dispatch, signInFailure));
+};
+
+/**
  * Update settings
  */
 export const updateSettingsRequest = createAction('UPDATE_SETTINGS_REQUEST');
