@@ -20,8 +20,8 @@ $object: 'window';
   @extend .u-width-window;
 
   @include iota-breakpoint(fromappgap) {
-    margin-top: var(--WindowGap);
-    margin-bottom: var(--WindowGap);
+    margin-top: var(--window-gap);
+    margin-bottom: var(--window-gap);
     box-shadow: inset 0 1px 0 rgba($colour-blanket, .2);
   }
 }

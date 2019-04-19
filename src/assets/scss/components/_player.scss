@@ -26,7 +26,7 @@ $component: 'player';
  @include iota-breakpoint('frommax') {
 
     &__photo {
-      margin-right: var(--Baseline);
+      margin-right: var(--baseline);
     }
 
     &__challenge {

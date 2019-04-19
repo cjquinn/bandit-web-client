@@ -5,10 +5,10 @@ $utilities-margin-settings: (
     values: (
       (
         'auto',
-        (calc(var(--Baseline) * 1), '1bl'),
-        (calc(var(--Baseline) * 2), '2bl'),
-        (calc(var(--Baseline) * 3), '3bl'),
-        (calc(var(--Baseline) * 4), '4bl'),
+        (calc(var(--baseline) * 1), '1bl'),
+        (calc(var(--baseline) * 2), '2bl'),
+        (calc(var(--baseline) * 3), '3bl'),
+        (calc(var(--baseline) * 4), '4bl'),
       ),
     ),
   ),
@@ -17,7 +17,7 @@ $utilities-margin-settings: (
 
     values: (
       (
-        value: (calc(var(--Baseline) * 3), '3bl'),
+        value: (calc(var(--baseline) * 3), '3bl'),
         combinator: $combinator-child,
       ),
     ),
@@ -39,15 +39,19 @@ $utilities-margin-settings: (
         combinator: $combinator-child-siblings,
       ),
       (
-        value: (calc(var(--Baseline) * 1), '1bl'),
+        value: (calc(var(--baseline) * 0.5), '05bl'),
         combinator: $combinator-child-siblings,
       ),
       (
-        value: (calc(var(--Baseline) * 2), '2bl'),
+        value: (calc(var(--baseline) * 1), '1bl'),
         combinator: $combinator-child-siblings,
       ),
       (
-        value: (calc(var(--Baseline) * 3), '3bl'),
+        value: (calc(var(--baseline) * 2), '2bl'),
+        combinator: $combinator-child-siblings,
+      ),
+      (
+        value: (calc(var(--baseline) * 3), '3bl'),
         combinator: $combinator-child-siblings,
       ),
     ),
@@ -58,8 +62,8 @@ $utilities-margin-settings: (
     values: (
       (
         'auto',
-        (calc(var(--Baseline) * 1), '1bl'),
-        (calc(var(--Baseline) * 2), '2bl'),
+        (calc(var(--baseline) * 1), '1bl'),
+        (calc(var(--baseline) * 2), '2bl'),
       ),
     ),
   ),
@@ -69,7 +73,7 @@ $utilities-margin-settings: (
     values: (
       (
         'auto',
-        (calc(var(--Baseline) * 1), '1bl'),
+        (calc(var(--baseline) * 1), '1bl'),
       ),
     ),
   ),
@@ -87,15 +91,15 @@ $utilities-margin-settings: (
 
     values: (
       (
-        value: (calc(var(--Baseline) * .5), '05bl'),
+        value: (calc(var(--baseline) * .5), '05bl'),
         combinator: $combinator-child-siblings,
       ),
       (
-        value: (calc(var(--Baseline) * 1), '1bl'),
+        value: (calc(var(--baseline) * 1), '1bl'),
         combinator: $combinator-child-siblings,
       ),
       (
-        value: (calc(var(--Baseline) * 2), '2bl'),
+        value: (calc(var(--baseline) * 2), '2bl'),
         combinator: $combinator-child-siblings,
       ),
       (
@@ -120,7 +124,7 @@ $utilities-margin-settings: (
 
     values: (
       (
-        ('var(--WindowGap)', 'window'),
+        ('var(--window-gap)', 'window'),
       ),
     ),
   ),
