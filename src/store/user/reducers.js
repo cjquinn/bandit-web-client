@@ -16,11 +16,11 @@ const clubId = handleActions(
                 return state;
             }
 
-            const playerIds = Object.keys(payload.entities.players);
-
-            if (playerIds.length === 0) {
+            if (!payload.entities.players) {
                 return null;
             }
+
+            const playerIds = Object.keys(payload.entities.players);
 
             return payload.entities.players[playerIds[0]].club_id;
         },

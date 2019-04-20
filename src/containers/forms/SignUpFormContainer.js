@@ -12,7 +12,11 @@ import SignupForm from '../../components/forms/SignupForm';
 // Selectors
 import { getEmail } from '../../store/router/selectors';
 
-const SignupReduxForm = reduxForm({form: 'signUp'})(SignupForm);
+const mapStateToProps = state => ({
+    initialValues: {email: getEmail(state)}
+});
+
+const SignupReduxForm = connect(mapStateToProps)(reduxForm({form: 'signUp'})(SignupForm));
 
 class SignupFormContainer extends Component {
     handleSubmit = data => this.props.signUp(data);
@@ -23,16 +27,11 @@ class SignupFormContainer extends Component {
 }
 
 SignupFormContainer.propTypes = {
-    email: PropTypes.string,
     signUp: PropTypes.func.isRequired,
 };
-
-const mapStateToProps = state => ({
-    email: getEmail(state)
-});
 
 const mapDispatchToProps = dispatch => ({
     signUp: data => dispatch(signUp(data))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupFormContainer);
+export default connect(null, mapDispatchToProps)(SignupFormContainer);

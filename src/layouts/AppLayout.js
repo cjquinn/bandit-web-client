@@ -31,6 +31,7 @@ import MatchScreen from '../screens/MatchScreen';
 import MatchesScreen from '../screens/MatchesScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import SignInScreen from '../screens/SignInScreen';
+import SignUpScreen from '../screens/SignUpScreen';
 import UpdateClubScreen from '../screens/UpdateClubScreen';
 import UpdateSettingsScreen from '../screens/UpdateSettingsScreen';
 
@@ -79,6 +80,7 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                     <UnauthenticatedRoute exact path="/request-password-reset" component={RequestPasswordResetScreen} />
                     <UnauthenticatedRoute exact path="/reset-password" component={ResetPasswordScreen} />
                     <UnauthenticatedRoute exact path="/sign-in" component={SignInScreen} />
+                    <UnauthenticatedRoute exact path="/sign-up" component={SignUpScreen} />
 
                     <Route exact path="/error" component={ErrorScreen} />
 

@@ -6,7 +6,7 @@ import React from 'react';
 import WeeklyLeaderboardItem from '../items/WeeklyLeaderboardItem';
 
 const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players, userId }) => {
-    if (!isFetching && players.length === 0) {
+    if (players.length === 0) {
         return (
             <div className="c-notification c-notification--alert">
                 <p className="u-weight-bold">

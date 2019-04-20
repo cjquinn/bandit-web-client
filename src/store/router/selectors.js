@@ -20,10 +20,10 @@ const getQueryParams = location => {
 
 export const getEmail = createSelector(
     getLocation,
-    location => getQueryParams(location.search).email || null
+    location => getQueryParams(location).email || null
 );
 
 export const getToken = createSelector(
     getLocation,
-    location => getQueryParams(location.search).token || null
+    location => getQueryParams(location).token || null
 );

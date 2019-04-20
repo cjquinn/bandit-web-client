@@ -115,7 +115,11 @@ export const setClubId = response => {
     if (response.data.user || response.data.club) {
         const clubId = response.data.club
             ? response.data.club.id
-            : response.data.user.players[0].club_id;
+            : (
+                response.data.user.players.length !== 0
+                    ? response.data.user.players[0].club_id
+                    : null
+            );
 
         window.localStorage.setItem(CLUB_ID, clubId);
     }
