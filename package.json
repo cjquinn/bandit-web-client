@@ -3,6 +3,7 @@
   "scripts": {
     "build:live": "API=live NODE_ENV=production webpack -p --config ./webpack.production.config.js",
     "build:staging": "API=staging NODE_ENV=production webpack -p --config ./webpack.production.config.js",
+    "start:local": "API=local webpack-dev-server --host 0.0.0.0",
     "start:live": "API=live webpack-dev-server --host 0.0.0.0",
     "start:staging": "API=staging webpack-dev-server --host 0.0.0.0",
     "lint": "eslint -c .eslintrc src test",

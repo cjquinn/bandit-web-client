@@ -89,7 +89,9 @@ export const handleError = (dispatch, failure) => response => {
  * An instance of axios to use for all requests
  */
 export const instance = () => axios.create({
-    baseURL: `https://${API !== 'live' ? 'drill-' : ''}api.banditmatch.com`,
+    baseURL: API === 'local'
+        ? 'http://localhost'
+        : `https://${API !== 'live' ? 'drill-' : ''}api.banditmatch.com`,
     headers: {
         'X-Requested-With': 'XMLHttpRequest',
         ...(
