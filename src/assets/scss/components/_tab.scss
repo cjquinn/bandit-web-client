@@ -10,6 +10,8 @@ $component: 'tab';
   transition: all .2s ease;
 
   &:not(&--active) {
+    @extend .u-color-blanket;
+
     &:hover,
     &:focus {
       @extend .u-color-playdough\@hover;

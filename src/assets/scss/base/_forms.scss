@@ -94,7 +94,9 @@ textarea {
 [type="text"],
 [type="email"],
 [type="password"],
-[type="file"] {
+[type="file"],
+[type="date"],
+[type="datetime-local"] {
   @extend .u-block;
   @extend .u-width-100pc;
   @extend .u-pv-1bl;

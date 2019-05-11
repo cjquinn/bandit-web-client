@@ -15,10 +15,14 @@ import AuthenticatedRoute from '../routes/AuthenticatedRoute';
 import UnauthenticatedRoute from '../routes/UnauthenticatedRoute';
 
 // Screens
+import AcceptedChallengeScreen from '../screens/AcceptedChallengeScreen';
 import ActivateAccountScreen from '../screens/ActivateAccountScreen';
 import AddMatchScreen from '../screens/AddMatchScreen';
 import ClubsScreen from '../screens/ClubsScreen';
 import CreateClubScreen from '../screens/CreateClubScreen';
+import ChallengeScreen from '../screens/ChallengeScreen';
+import ChallengesScreen from '../screens/ChallengesScreen';
+import CreateChallengeScreen from '../screens/CreateChallengeScreen';
 import DashboardScreen from '../screens/DashboardScreen';
 import ErrorScreen from '../screens/ErrorScreen';
 import InvitePlayerScreen from '../screens/InvitePlayerScreen';
@@ -74,6 +78,12 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                     <AuthenticatedRoute exact path="/matches" component={MatchesScreen} isClubRoute={true} />
                     <AuthenticatedRoute exact path="/matches/add" component={AddMatchScreen} isClubRoute={true} />
                     <AuthenticatedRoute exact path="/matches/:matchId" component={MatchScreen} isClubRoute={true} />
+
+                    {/* Templates */}
+                    <AuthenticatedRoute exact path="/challenges/create" component={CreateChallengeScreen} />
+                    <AuthenticatedRoute exact path="/challenges" component={ChallengesScreen} />
+                    <AuthenticatedRoute exact path="/challenges/open" component={ChallengeScreen} />
+                    <AuthenticatedRoute exact path="/challenges/accepted" component={AcceptedChallengeScreen} />
 
                     {/* Unauthenticated */}
                     <UnauthenticatedRoute exact path="/activate-account" component={ActivateAccountScreen} />

@@ -7,11 +7,22 @@ $component: 'player-photo';
 #{'.' + $global-components-namespace + $component} {
   @include aspect-ratio($aspect-player-photo);
   @extend .u-cover;
-  @extend .u-bgcolor-fold05;
+  // @extend .u-bgcolor-fold05;
+  background-color: #31384D;
   @extend .u-clip-hexagon;
 
   &--no-photo {
     background-image: url('../img/empty.png');
+  }
+
+  &--unassigned {
+    opacity: .5;
+
+    &:after {
+      @extend .o-abscentre;
+      // @extend %u-size-13px;
+      content: '?';
+    }
   }
 
   &__level,
