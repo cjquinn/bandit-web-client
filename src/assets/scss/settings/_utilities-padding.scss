@@ -19,6 +19,15 @@ $utilities-padding-settings: (
     ),
   ),
   (
+    property: ('padding-bottom', 'pb'),
+
+    values: (
+      (
+        (calc(var(--Baseline) * 1), '1bl'),
+      ),
+    ),
+  ),
+  (
     property: (('padding-top', 'padding-bottom'), 'pv'),
 
     values: (
