@@ -9,7 +9,7 @@ import { fetchClubs, switchClub } from '../../store/club/actions';
 import ClubsList from '../../components/lists/ClubsList';
 
 // Selectors
-import { getClubs } from '../../store/club/selectors';
+import { getClubs, getIsFetching } from '../../store/club/selectors';
 import { getClubId } from '../../store/shared/selectors';
 
 class ClubsListContainer extends Component {
@@ -20,13 +20,14 @@ class ClubsListContainer extends Component {
     handleClick = clubId => this.props.switchClub(clubId);
 
     render() {
-        const { clubId, clubs } = this.props;
+        const { clubId, clubs, isFetching } = this.props;
 
         return (
             <ClubsList
                 clubId={clubId}
                 clubs={clubs}
                 handleClick={this.handleClick}
+                isFetching={isFetching}
             />
         );
     }
@@ -36,12 +37,14 @@ ClubsListContainer.propTypes = {
     clubId: PropTypes.number,
     clubs: PropTypes.array.isRequired,
     fetchClubs: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
     switchClub: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
     clubId: getClubId(state),
-    clubs: getClubs(state)
+    clubs: getClubs(state),
+    isFetching: getIsFetching(state)
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -10,13 +10,11 @@ import rating from '../../../assets/svg/sprite/rating.svg';
 
 const Rating = ({ level, playerRating, snapshot }) => (
     <Template>
-        {level &&
-            <span className="c-levels u-flex u-ai-center">
-                <span className={`c-level u-bgcolor-${level.slug}`}>
-                    {level.name}
-                </span>
+        <span className="c-levels u-flex u-ai-center">
+            <span className={`c-level u-bgcolor-${level.slug}`}>
+                {level.name}
             </span>
-        }
+        </span>
 
         <div className="u-flex u-ai-center u-hspace-4px">
             <Svg
@@ -40,7 +38,7 @@ const Rating = ({ level, playerRating, snapshot }) => (
 );
 
 Rating.propTypes = {
-    level: PropTypes.object,
+    level: PropTypes.object.isRequired,
     playerRating: PropTypes.number.isRequired,
     snapshot: PropTypes.object
 };

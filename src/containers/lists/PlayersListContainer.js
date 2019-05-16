@@ -9,7 +9,7 @@ import { fetchPlayers } from '../../store/byClubId/player/actions';
 import PlayersList from '../../components/lists/PlayersList';
 
 // Selectors
-import { getPlayers } from '../../store/byClubId/player/selectors';
+import { getIsFetching, getPlayers } from '../../store/byClubId/player/selectors';
 import { getUserId } from '../../store/shared/selectors';
 
 class PlayersListContainer extends Component {
@@ -18,10 +18,11 @@ class PlayersListContainer extends Component {
     }
 
     render() {
-        const { players, userId } = this.props;
+        const { isFetching, players, userId } = this.props;
 
         return (
             <PlayersList
+                isFetching={isFetching}
                 players={players}
                 userId={userId}
             />
@@ -32,10 +33,12 @@ class PlayersListContainer extends Component {
 PlayersListContainer.propTypes = {
     players: PropTypes.array.isRequired,
     fetchPlayers: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
     userId: PropTypes.number.isRequired
 };
 
 const mapStateToProps = state => ({
+    isFetching: getIsFetching(state),
     players: getPlayers(state),
     userId: getUserId(state)
 });

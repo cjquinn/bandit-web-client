@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Components
+import Loading from '../shared/Loading';
 import WeeklyLeaderboardItem from '../items/WeeklyLeaderboardItem';
 
 const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players, userId }) => {
-    if (!isFetching && players.length === 0) {
+    if (players.length === 0) {
+        if (isFetching) {
+            return <Loading />;
+        }
+
         return (
             <div className="c-notification c-notification--alert">
                 <p className="u-weight-bold">

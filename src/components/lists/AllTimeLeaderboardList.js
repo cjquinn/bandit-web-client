@@ -3,9 +3,14 @@ import React from 'react';
 
 // Components
 import AllTimeLeaderboardItem from '../items/AllTimeLeaderboardItem';
+import Loading from '../shared/Loading';
 
 const AllTimeLeaderboardList = ({ isFetching, players, playerId, userId }) => {
-    if (!isFetching && players.length === 0) {
+    if (players.length === 0) {
+        if (isFetching) {
+            return <Loading />;
+        }
+
         return (
             <div className="c-notification c-notification--alert">
                 <p className="u-weight-bold">

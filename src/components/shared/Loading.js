@@ -2,7 +2,7 @@ import React from 'react';
 
 const Loading = () => (
     <div className="o-container">
-        <div className="u-height-4bl u-bgcolor-fold05 u-borrad-3">
+        <div className="u-height-4bl u-bgcolor-fold05 u-borrad-3 u-pos-relative">
 
             <div className="o-abscentre u-z-2">
                 <div className="c-loading">

@@ -2,10 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Components
+import Loading from '../shared/Loading';
 import MatchItem from '../items/MatchItem';
 
 const MatchesList = ({ currentPlayerId, isFetching, matches, playerId }) => {
-    if (!isFetching && matches.length === 0) {
+    if (matches.length === 0) {
+        if (isFetching) {
+            return <Loading />;
+        }
+        
         return (
             <div className="c-notification c-notification--alert">
                 <p className="u-weight-bold">

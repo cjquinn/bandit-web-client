@@ -12,7 +12,7 @@ const MatchItem = ({ match }) => (
     >
         <div className="u-grow-1 u-basis-0 u-flex u-ai-center u-jc-center u-order-2 u-align-center">
             <PlayerPhoto 
-                player={match.player_a} 
+                player={match.player_a_snapshot} 
                 width="3bl"
             />
 
@@ -26,7 +26,7 @@ const MatchItem = ({ match }) => (
 
             <div className="c-match-item__gap">
                 <PlayerPhoto 
-                    player={match.player_b} 
+                    player={match.player_b_snapshot} 
                     width="3bl"
                 />
             </div>

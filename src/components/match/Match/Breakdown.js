@@ -3,7 +3,7 @@ import React from 'react';
 
 const Breakdown = ({ breakdown, isPlayerA, playerName, playerAScore, playerBScore, snapshot}) => {
     if (!breakdown) {
-        return;
+        return null;
     }
 
     return (

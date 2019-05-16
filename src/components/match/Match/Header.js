@@ -11,7 +11,7 @@ const Header = ({ player, score, snapshot }) => (
         <div className="u-flex u-fd-col u-ai-center u-pv-3bl u-vspace-1bl">
             <Link to={`/players/${player.id}`}>
                 <PlayerPhoto
-                    player={player}
+                    player={snapshot}
                     width="4bl"
                 />
             </Link>
@@ -33,6 +33,7 @@ const Header = ({ player, score, snapshot }) => (
 
         <div className="u-flex u-fd-col u-ai-center u-vspace-05bl u-bgcolor-obsidian u-pv-2bl">
             <Rating
+                level={snapshot.level}
                 playerRating={snapshot.rating}
                 snapshot={snapshot}
             />
