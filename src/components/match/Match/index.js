@@ -51,7 +51,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => (
 
                     <Breakdown
                         breakdown={match.player_b_breakdown}
-                        isPlayerA={true}
+                        isPlayerA={false}
                         playerName={match.player_b.user.first_name}
                         playerAScore={match.player_a_score}
                         playerBScore={match.player_b_score}
