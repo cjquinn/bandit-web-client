@@ -12,27 +12,6 @@ import { user as userSchema } from '../schema';
 import { getToken } from '../router/selectors';
 
 /**
- * Activate account
- */
-export const activateAccountRequest = createAction('ACTIVE_ACCOUNT_REQUEST');
-export const activateAccountSuccess = createAction('ACTIVE_ACCOUNT_SUCCESS');
-export const activateAccountFailure = createAction('ACTIVE_ACCOUNT_FAILURE');
-
-export const activateAccount = data => (dispatch, getState, api) => {
-    dispatch(activateAccountRequest());
-
-    return api.activateAccount(getToken(getState()), data)
-        .then(api.checkStatus)
-        .then(api.setClubId)
-        .then(api.setJwt)
-        .then(response => normalize(response.data.user, userSchema))
-        .then(normalizedData => dispatch(activateAccountSuccess(normalizedData)))
-        .then(() => dispatch(push('/')))
-        .then(() => api.trackEvent('userActivated'))
-        .catch(api.handleError(dispatch, activateAccountFailure));
-};
-
-/**
  * Fetch current user
  */
 export const fetchCurrentUserRequest = createAction('FETCH_CURRENT_USER_REQUEST');
@@ -119,6 +98,25 @@ export const signOut = () => (dispatch, getState, api) => {
 };
 
 /**
+ * Sign in
+ */
+export const signUpRequest = createAction('SIGN_UP_REQUEST');
+export const signUpSuccess = createAction('SIGN_UP_SUCCESS');
+export const signUpFailure = createAction('SIGN_UP_FAILURE');
+
+export const signUp = data => (dispatch, getState, api) => {
+    dispatch(signUpRequest());
+
+    return api.signUp(data)
+        .then(api.checkStatus)
+        .then(response => api.getClubId() ? response : api.setClubId(response))
+        .then(api.setJwt)
+        .then(response => normalize(response.data.user, userSchema))
+        .then(normalizedData => dispatch(signInSuccess(normalizedData)))
+        .catch(api.handleError(dispatch, signInFailure));
+};
+
+/**
  * Update settings
  */
 export const updateSettingsRequest = createAction('UPDATE_SETTINGS_REQUEST');
@@ -134,22 +132,6 @@ export const updateSettings = data => (dispatch, getState, api) => {
         .then(normalizedData => dispatch(updateSettingsSuccess(normalizedData)))
         .then(() => dispatch(setFlash({message: 'Your settings were updated', type: 'success'})))
         .catch(api.handleError(dispatch, updateSettingsFailure));
-};
-
-/**
- * Validate activate account token
- */
-export const validateActivateAccountTokenRequest = createAction('VALIDATE_ACTIVATE_ACCOUNT_TOKEN_REQUEST');
-export const validateActivateAccountTokenSuccess = createAction('VALIDATE_ACTIVATE_ACCOUNT_TOKEN_SUCCESS');
-export const validateActivateAccountTokenFailure = createAction('VALIDATE_ACTIVATE_ACCOUNT_TOKEN_FAILURE');
-
-export const validateActivateAccountToken = () => (dispatch, getState, api) => {
-    dispatch(validateActivateAccountTokenRequest());
-
-    return api.validateActivateAccountToken(getToken(getState()))
-        .then(api.checkStatus)
-        .then(() => dispatch(validateActivateAccountTokenSuccess()))
-        .catch(api.handleError(dispatch, validateActivateAccountTokenFailure));
 };
 
 /**

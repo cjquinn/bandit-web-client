@@ -89,7 +89,9 @@ export const handleError = (dispatch, failure) => response => {
  * An instance of axios to use for all requests
  */
 export const instance = () => axios.create({
-    baseURL: `https://${API !== 'live' ? 'drill-' : ''}api.banditmatch.com`,
+    baseURL: API === 'local'
+        ? 'http://localhost'
+        : `https://${API !== 'live' ? 'drill-' : ''}api.banditmatch.com`,
     headers: {
         'X-Requested-With': 'XMLHttpRequest',
         ...(
@@ -113,7 +115,11 @@ export const setClubId = response => {
     if (response.data.user || response.data.club) {
         const clubId = response.data.club
             ? response.data.club.id
-            : response.data.user.players[0].club_id;
+            : (
+                response.data.user.players.length !== 0
+                    ? response.data.user.players[0].club_id
+                    : null
+            );
 
         window.localStorage.setItem(CLUB_ID, clubId);
     }

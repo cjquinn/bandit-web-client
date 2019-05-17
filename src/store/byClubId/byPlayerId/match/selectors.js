@@ -9,10 +9,7 @@ import { match as matchSchema } from '../../../schema';
 import { getMatchEntities, getPlayerEntities, getUserEntities } from '../../../entities/selectors';
 import { getByPlayerIdState } from '../selectors';
 import { getLimit, getMatchId } from '../../../props/selectors';
-import { getBanditId, makeIsFetchingSelector } from '../../../shared/selectors';
-
-// Utilities
-import { withIsBandit } from '../../../utilities';
+import { makeIsFetchingSelector } from '../../../shared/selectors';
 
 export const initialState = {
     ids: [],
@@ -48,29 +45,23 @@ export const makeGetHasMore = () => createSelector(
 );
 
 export const makeGetMatch = () => createSelector(
-    [getBanditId, getMatchEntity, getPlayerEntities, getUserEntities],
-    (banditId, match, players, users) => {
+    [getMatchEntity, getPlayerEntities, getUserEntities],
+    (match, players, users) => {
         if (!match) {
             return undefined;
         }
 
-        const denormalizedMatch = denormalize(
+        return denormalize(
             match.id,
             matchSchema,
             {disputes: {}, matches: {[match.id]: match}, players, users}
         );
-
-        return {
-            ...denormalizedMatch,
-            player_a: withIsBandit(denormalizedMatch.player_a, banditId),
-            player_b: withIsBandit(denormalizedMatch.player_b, banditId)
-        };
     }
 );  
 
 export const makeGetMatches = () => createSelector(
-    [getIds, getLimit, getBanditId, getMatchEntities, getPlayerEntities, getUserEntities],
-    (ids, limit, banditId, matches, players, users) => {
+    [getIds, getLimit, getMatchEntities, getPlayerEntities, getUserEntities],
+    (ids, limit, matches, players, users) => {
         const denormalizedMatches = denormalize(
             limit ? ids.slice(0, limit) : ids,
             [matchSchema],
@@ -78,11 +69,7 @@ export const makeGetMatches = () => createSelector(
         );
 
         if (limit) {
-            return denormalizedMatches.map(match => ({
-                ...match,
-                player_a: withIsBandit(match.player_a, banditId),
-                player_b: withIsBandit(match.player_b, banditId)
-            }));
+            return denormalizedMatches;
         }
 
         const matchesByDate = denormalizedMatches.reduce((acc, match) => {
@@ -95,11 +82,7 @@ export const makeGetMatches = () => createSelector(
                     date,
                     matches: [
                         ...matches,
-                        {
-                            ...match,
-                            player_a: withIsBandit(match.player_a, banditId),
-                            player_b: withIsBandit(match.player_b, banditId)
-                        }
+                        match
                     ]
                 }
             };

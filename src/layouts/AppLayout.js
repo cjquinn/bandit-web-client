@@ -15,10 +15,10 @@ import AuthenticatedRoute from '../routes/AuthenticatedRoute';
 import UnauthenticatedRoute from '../routes/UnauthenticatedRoute';
 
 // Screens
-import ActivateAccountScreen from '../screens/ActivateAccountScreen';
 import AddMatchScreen from '../screens/AddMatchScreen';
 import ClubsScreen from '../screens/ClubsScreen';
-import CreateClubScreen from '../screens/CreateClubScreen';
+import CreateClubAuthenticatedScreen from '../screens/CreateClubAuthenticatedScreen';
+import CreateClubUnauthenticatedScreen from '../screens/CreateClubUnauthenticatedScreen';
 import DashboardScreen from '../screens/DashboardScreen';
 import ErrorScreen from '../screens/ErrorScreen';
 import InvitePlayerScreen from '../screens/InvitePlayerScreen';
@@ -57,7 +57,7 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                 <Switch>
                     {/* Authenticated */}
                     <AuthenticatedRoute exact path="/clubs" component={ClubsScreen} />
-                    <AuthenticatedRoute exact path="/clubs/create" component={CreateClubScreen} />
+                    <AuthenticatedRoute exact path="/clubs/create" component={CreateClubAuthenticatedScreen} />
                     <AuthenticatedRoute exact path="/settings" component={UpdateSettingsScreen} />
 
                     <AuthenticatedRoute exact path="/" component={DashboardScreen} isClubRoute={true} />
@@ -76,7 +76,7 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                     <AuthenticatedRoute exact path="/matches/:matchId" component={MatchScreen} isClubRoute={true} />
 
                     {/* Unauthenticated */}
-                    <UnauthenticatedRoute exact path="/activate-account" component={ActivateAccountScreen} />
+                    <UnauthenticatedRoute exact path="/create-club" component={CreateClubUnauthenticatedScreen} />
                     <UnauthenticatedRoute exact path="/request-password-reset" component={RequestPasswordResetScreen} />
                     <UnauthenticatedRoute exact path="/reset-password" component={ResetPasswordScreen} />
                     <UnauthenticatedRoute exact path="/sign-in" component={SignInScreen} />

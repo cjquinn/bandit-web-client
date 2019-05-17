@@ -6,23 +6,24 @@ import { Field } from 'redux-form';
 import Form from './Form';
 import InputField from '../fields/InputField';
 
-const ActivateAccountForm = props => (
+const CreateClubUnauthenticatedForm = props => (
     <Form
-        buttonText="Activate account"
+        buttonText="Create club"
         {...props}
     >   
+
         <div className="u-ph-1bl u-vspace-3bl">
             <div className="u-flex u-hspace-2bl">
                 <Field
                     component={InputField}
-                    name="first_name"
+                    name="founder[first_name]"
                     label="First name:"
                     type="text"
                 />
                 
                 <Field
                     component={InputField}
-                    name="last_name"
+                    name="founder[last_name]"
                     label="Last name:"
                     type="text"
                 />
@@ -30,7 +31,21 @@ const ActivateAccountForm = props => (
 
             <Field
                 component={InputField}
-                name="password"
+                name="name"
+                label="Club name:"
+                type="text"
+                autocomplete="nope"
+            />
+
+            <Field
+                component={InputField}
+                name="founder[email]"
+                label="Email:"
+                type="email"
+            />
+            <Field
+                component={InputField}
+                name="founder[password]"
                 label="Password:"
                 type="password"
             />
@@ -38,10 +53,10 @@ const ActivateAccountForm = props => (
     </Form>
 );
 
-ActivateAccountForm.propTypes = {
+CreateClubUnauthenticatedForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     error: PropTypes.string,
     submitting: PropTypes.bool.isRequired
 };
 
-export default ActivateAccountForm;
+export default CreateClubUnauthenticatedForm;

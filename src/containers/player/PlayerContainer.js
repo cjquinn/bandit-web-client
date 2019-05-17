@@ -7,7 +7,6 @@ import { fetchPlayer } from '../../store/byClubId/player/actions';
 
 // Components
 import Player from '../../components/player/Player';
-import Loading from '../../components/shared/Loading';
 
 // Selectors
 import { getClub } from '../../store/club/selectors';
@@ -27,10 +26,6 @@ class PlayerContainer extends Component {
 
     render() {
         const { club, player, user } = this.props;
-
-        if (!player) {
-            return <Loading />;
-        }
 
         return (
             <Player

@@ -8,7 +8,7 @@
  */
 @function columnspan($columnspan) {
 
-  @return calc(#{$columnspan} * var(--ColumnUnit) + ((#{$columnspan - 1}) * var(--GutterUnit)));
+  @return calc(#{$columnspan} * var(--column-unit) + ((#{$columnspan - 1}) * var(--gutter-unit)));
 }
 
 /**
@@ -21,7 +21,7 @@
  */
 @function columns($columns) {
 
-  @return calc(#{$columns} * var(--ColumnUnit));
+  @return calc(#{$columns} * var(--column-unit));
 }
 
 /**
@@ -34,7 +34,7 @@
  */
 @function gutterspan($gutterspan) {
 
-  @return calc(#{$gutterspan} * var(--GutterUnit) + ((#{$gutterspan - 1}) * var(--ColumnUnit)));
+  @return calc(#{$gutterspan} * var(--gutter-unit) + ((#{$gutterspan - 1}) * var(--column-unit)));
 }
 
 /**
@@ -47,7 +47,7 @@
  */
 @function gutters($gutters) {
 
-  @return calc(#{$gutters} * var(--GutterUnit));
+  @return calc(#{$gutters} * var(--gutter-unit));
 }
 
 /**
@@ -62,5 +62,5 @@
  */
 @function mix($columns, $gutters: $columns) {
 
-  @return calc(#{$columns} * var(--ColumnUnit) + (#{$gutters} * var(--GutterUnit)));
+  @return calc(#{$columns} * var(--column-unit) + (#{$gutters} * var(--gutter-unit)));
 }

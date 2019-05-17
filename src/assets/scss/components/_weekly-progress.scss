@@ -7,7 +7,7 @@ $component: 'weekly-progress';
 #{'.' + $global-components-namespace + $component} {
   display: grid;
   grid-template-columns: min-content auto min-content;
-  grid-gap: var(--Baseline);
+  grid-gap: var(--baseline);
   align-items: center;
 
   &__status {

@@ -4,6 +4,7 @@ import { Field } from 'redux-form';
 
 // Components
 import Form from './Form';
+import EmailField from '../fields/EmailField';
 import InputField from '../fields/InputField';
 
 const SignUpForm = props => (
@@ -11,41 +12,33 @@ const SignUpForm = props => (
         buttonText="Sign up"
         {...props}
     >   
-
         <div className="u-ph-1bl u-vspace-3bl">
             <div className="u-flex u-hspace-2bl">
                 <Field
                     component={InputField}
-                    name="founder[first_name]"
+                    name="first_name"
                     label="First name:"
                     type="text"
                 />
                 
                 <Field
                     component={InputField}
-                    name="founder[last_name]"
+                    name="last_name"
                     label="Last name:"
                     type="text"
                 />
             </div>
 
             <Field
-                component={InputField}
-                name="name"
-                label="Club name:"
-                type="text"
-                autocomplete="nope"
+                component={EmailField}
+                name="email"
+                label="Email:"
+                type="email"
             />
 
             <Field
                 component={InputField}
-                name="founder[email]"
-                label="Email:"
-                type="email"
-            />
-            <Field
-                component={InputField}
-                name="founder[password]"
+                name="password"
                 label="Password:"
                 type="password"
             />

@@ -22,7 +22,7 @@ const SignUpScreen = () => (
                         sprite={logo_knot}
                     />
             
-                    Create a Club
+                    Join Bandit Match
                 </span>
             </h1>
 

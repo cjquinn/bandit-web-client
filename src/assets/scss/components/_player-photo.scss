@@ -24,27 +24,28 @@ $component: 'player-photo';
 
   &__level {
     @extend .u-left-0;
+    @extend %u-ov-hidden;
     /* Why does &__stripe need a parent?
-    Some mobile browsers throw a fit and hit the whole stripe when you have `filter:` and transform:
+    Some mobile browsers throw a fit and hide the whole stripe when you have `filter:` and transform:
     */
     filter: drop-shadow(-1px -1px 3px rgba($colour-basement, 0.5));
   }
 
   &__stripe {
-    --levelThickness: 25%;
+    --level-thickness: 25%;
 
     &--only {
-      --levelThickness: 60%;
+      --level-thickness: 60%;
     }
 
     &:first-of-type {
-      left: calc(-1 * var(--levelThickness));
+      left: calc(-1 * var(--level-thickness));
       transform: skew(-60deg) translateX(150%);
     }
 
     &:nth-of-type(2) {
       // bandit level
-      right: calc(-1 * var(--levelThickness));
+      right: calc(-1 * var(--level-thickness));
       transform: skew(60deg) translateX(-150%);
     }
   }
