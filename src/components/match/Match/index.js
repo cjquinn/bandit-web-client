@@ -46,6 +46,10 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => {
                             <h4 className="c-match-table__subtitle">Games</h4>
                         </div>
 
+                        {!match.player_a_breakdown && !match.player_b_breakdown &&
+                            <Loading />
+                        }
+
                         <Breakdown
                             breakdown={match.player_a_breakdown}
                             isPlayerA={true}
