@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Loading from '../../shared/Loading';
+
 const Breakdown = ({ breakdown, isPlayerA, playerName, playerAScore, playerBScore, snapshot}) => {
     if (!breakdown) {
-        return null;
+        return <Loading />;
     }
 
     return (
