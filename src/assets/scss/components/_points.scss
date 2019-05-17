@@ -8,12 +8,13 @@ $component: 'points';
   @extend .o-type-tiny;
   @extend %u-uppercase;
   display: inline-block;
-  font-weight: 600;
-  padding: .02em .32em;
-  line-height: 1.6;
+  font-weight: 500;
+  padding: .02em .28em;
+  line-height: 1.4;
   border-radius: 2px;
   min-width: 22px;
   text-align: right;
+  letter-spacing: -.05em;
   
   &--game {
     background-color: #0A0E19;
