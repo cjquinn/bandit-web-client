@@ -31,16 +31,17 @@ const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players,
     }
 
     const momentToday = moment();
-    const day = (+momentToday.format('d') - 1) % 6;
+    const daysPerWeek = 7;
+    // Moment day starts on Sunday at 0...
+    const day = momentToday.format('d') || daysPerWeek;
 
     return (
         <div className="u-vspace-2bl">
-
             <dl className="c-weekly-progress u-ph-1bl">
                 <dt className="c-weekly-progress__status">
-                    <span className="o-dictate">{`This week's leaderboard is ${day + 1} day${day !== 0 ? 's' : ''} in.`}</span>
-                    <progress className="c-weekly-progress__bar" value={day} max="6">
-                        {`${(day / 6 * 100).toFixed(2)}%`}
+                    <span className="o-dictate">{`This week's leaderboard is ${day} day${day !== 1 ? 's' : ''} in.`}</span>
+                    <progress className="c-weekly-progress__bar" value={day} max={daysPerWeek}>
+                        {`${(day / daysPerWeek * 100).toFixed(2)}%`}
                     </progress>
                 </dt>
 
