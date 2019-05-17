@@ -1,0 +1,13 @@
+/**
+ * .o-type
+*/
+
+$object: 'type';
+
+#{'.' + $global-objects-namespace + $object} {
+ 
+  &-tiny {
+    @extend %u-font-system;
+    @extend %u-size-12px;
+  }
+}

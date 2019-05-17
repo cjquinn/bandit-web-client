@@ -11,7 +11,6 @@ const reducers = combineReducers({
     disputes: mergeEntities('disputes'),
     matches,
     players: mergeEntities('players'),
-    snapshots: mergeEntities('snapshots'),
     users: mergeEntities('users')
 });
 

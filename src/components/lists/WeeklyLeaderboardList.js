@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 // Components
+import Loading from '../shared/Loading';
 import WeeklyLeaderboardItem from '../items/WeeklyLeaderboardItem';
 
 const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players, userId }) => {
-    if (!isFetching && players.length === 0) {
+    if (players.length === 0) {
+        if (isFetching) {
+            return <Loading />;
+        }
+
         return (
             <div className="c-notification c-notification--alert">
                 <p className="u-weight-bold">
@@ -52,7 +57,7 @@ const WeeklyLeaderboardList = ({ currentPlayerId, isFetching, playerId, players,
                 {players.map(player => (
                     <li
                         key={player.id}
-                        className={`u-pos-relative u-bgcolor-fold ${playerId && player.id !== playerId && 'u-blur1px u-blur0@hover u-opac-05 u-opac-1@hover'}`}
+                        className={`u-pos-relative u-bgcolor-fold ${playerId && player.id !== playerId && 'u-blur-tiny u-blur0@hover u-opac-05 u-opac-1@hover'}`}
                     >
                         <WeeklyLeaderboardItem
                             player={player}
