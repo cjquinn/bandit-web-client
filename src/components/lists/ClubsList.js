@@ -3,9 +3,14 @@ import React from 'react';
 
 // Components
 import ClubItem from '../items/ClubItem';
+import Loading from '../shared/Loading';
 
 const ClubsList = ({ clubId, clubs, handleClick }) => {
     if (clubs.length === 0) {
+        if (isFetching) {
+          return <Loading />;
+        }
+      
         return (
             <div className="c-notification c-notification--alert">
                 <p className="u-weight-bold">
@@ -36,7 +41,8 @@ const ClubsList = ({ clubId, clubs, handleClick }) => {
 ClubsList.propTypes = {
     clubId: PropTypes.number,
     clubs: PropTypes.array.isRequired,
-    handleClick: PropTypes.func.isRequired
+    handleClick: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired
 };
 
 export default ClubsList;

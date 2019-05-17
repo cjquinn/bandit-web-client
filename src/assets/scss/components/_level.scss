@@ -5,11 +5,15 @@
 $component: 'level';
 
 #{'.' + $global-components-namespace + $component} {
+  @extend .o-type-tiny;
   @extend %u-uppercase;
-  font-size: .8rem;
-  padding: .04em .3em;
-  // padding: 2px 4px;
+  display: inline-block;
+  // font-weight: 600;
+  padding: .02em .32em;
+  line-height: 1.6;
   border-radius: 2px;
+  min-width: 22px;
+  text-align: right;
   color: $colour-basement;
 
   &.u-bgcolor-warrior {

@@ -9,11 +9,15 @@ $utilities-background-settings: (
       ),
       (
         ($colour-basement, 'basement'),
+        ($colour-obsidian, 'obsidian'),
+        ($colour-win, 'win'),
+        ($colour-loss, 'loss'),
         ($colour-fold, 'fold'),
         ($colour-fold05, 'fold05'),
         ($colour-floor, 'floor'),
         ($colour-deepblue, 'deepblue'),
         ($colour-mariana, 'mariana'),
+        
 
         // Levels
         ($colour-bandit, 'bandit'),
