@@ -5,9 +5,19 @@ import React from 'react';
 import ClubItem from '../items/ClubItem';
 import Loading from '../shared/Loading';
 
-const ClubsList = ({ clubId, clubs, handleClick, isFetching }) => {
-    if (clubs.length === 0 && isFetching) {
-        return <Loading />;
+const ClubsList = ({ clubId, clubs, handleClick }) => {
+    if (clubs.length === 0) {
+        if (isFetching) {
+          return <Loading />;
+        }
+      
+        return (
+            <div className="c-notification c-notification--alert">
+                <p className="u-weight-bold">
+                    You aren't a part of any clubs.
+                </p>
+            </div>
+        );
     }
 
     return (

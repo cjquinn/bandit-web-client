@@ -6,7 +6,7 @@ import { Field } from 'redux-form';
 import Form from './Form';
 import InputField from '../fields/InputField';
 
-const CreateClubForm = props => (
+const CreateClubAuthenticatedForm = props => (
     <Form
         buttonText="Create club"
         {...props}
@@ -23,10 +23,10 @@ const CreateClubForm = props => (
     </Form>
 );
 
-CreateClubForm.propTypes = {
+CreateClubAuthenticatedForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     error: PropTypes.string,
     submitting: PropTypes.bool.isRequired
 };
 
-export default CreateClubForm;
+export default CreateClubAuthenticatedForm;
