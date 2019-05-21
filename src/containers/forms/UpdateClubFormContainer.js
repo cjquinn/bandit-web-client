@@ -7,7 +7,6 @@ import { initialize, reduxForm } from 'redux-form';
 import { updateClub } from '../../store/club/actions';
 
 // Components
-import Loading from '../../components/shared/Loading';
 import UpdateClubForm from '../../components/forms/UpdateClubForm';
 
 // Selectors
@@ -31,11 +30,12 @@ class UpdateClubFormContainer extends Component {
     handleSubmit = data => this.props.updateClub(data);
 
     render() {
-        if (!this.props.club) {
-            return <Loading />;
-        }
-
-        return <UpdateClubReduxForm onSubmit={this.handleSubmit} />;
+        return (
+            <UpdateClubReduxForm
+                club={this.props.club}
+                onSubmit={this.handleSubmit}
+            />
+        );
     }
 }
 

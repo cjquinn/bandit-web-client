@@ -15,6 +15,8 @@ import configureStore from './store/configureStore';
 // Stylesheet
 import './assets/scss/main.scss';
 
+import './scrollbar-width.js';
+
 const history = createHistory();
 const store = configureStore({user: {clubId: getClubId()}}, history);
 

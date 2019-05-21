@@ -8,25 +8,25 @@ import PlayerPhoto from '../shared/PlayerPhoto';
 const MatchItem = ({ match }) => (
     <Link
         to={`/matches/${match.id}`}
-        className="u-flex u-ai-center u-pv-1bl u-ph-1bl u-color-paste"
+        className="c-match-item u-flex u-ai-center u-pv-1bl u-ph-1bl u-color-paste"
     >
         <div className="u-grow-1 u-basis-0 u-flex u-ai-center u-jc-center u-order-2 u-align-center">
             <PlayerPhoto 
-                player={match.player_a} 
+                player={match.player_a_snapshot} 
                 width="3bl"
             />
 
             <dt className="u-size-h4 u-weight-bold u-ws-no">
                 <span className="o-dictate u-capitalize">{match.player_a.user.display_name}</span>
-                <span className="u-inline-block u-width-2ch u-align-right u-ml-1bl">{match.player_a_score}</span>
+                <span className="c-match-item__gap u-inline-block u-width-2ch u-align-right">{match.player_a_score}</span>
                 <span className="u-inline-block u-width-2ch u-align-center">&ndash;</span>
                 <span className="o-dictate u-capitalize">{match.player_b.user.display_name}</span>
                 <span className="u-inline-block u-width-2ch u-align-left">{match.player_b_score}</span>
             </dt>
 
-            <div className="u-ml-1bl">
+            <div className="c-match-item__gap">
                 <PlayerPhoto 
-                    player={match.player_b} 
+                    player={match.player_b_snapshot} 
                     width="3bl"
                 />
             </div>

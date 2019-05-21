@@ -75,6 +75,7 @@ module.exports = {
             comments: false
         }),
         new webpack.DefinePlugin({
+            IS_DEV: false,
             API: JSON.stringify(process.env.API)
         }),
         new SWPrecacheWebpackPlugin({

@@ -5,9 +5,9 @@ import FooterContainer from '../containers/shared/FooterContainer';
 import Template from '../components/shared/Template';
 
 // Containers
-import CreateClubFormContainer from '../containers/forms/CreateClubFormContainer';
+import CreateClubAuthenticatedFormContainer from '../containers/forms/CreateClubAuthenticatedFormContainer';
 
-const CreateClubScreen = () => (
+const CreateClubAuthenticatedScreen = () => (
     <Template>
         <header className="o-container u-ph-1bl u-vspace-06r">
             <h1 className="u-size-h1 u-color-white">Create a Club</h1>
@@ -17,10 +17,10 @@ const CreateClubScreen = () => (
 
         <hr className="c-hr" />
 
-        <CreateClubFormContainer />
+        <CreateClubAuthenticatedFormContainer />
 
         <FooterContainer/>
     </Template>
 );
 
-export default CreateClubScreen;
+export default CreateClubAuthenticatedScreen;
