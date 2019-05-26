@@ -23,7 +23,10 @@ const CreateChallengeScreen = () => (
             {/* <CreateChallengeFormContainer /> */}
 
             <fieldset className="u-pos-relative">
-                <input type="datetime-local" />
+                <input type="datetime-local" 
+                    value="2019-05-27T06:00" // tomorrow?
+                    min="2019-05-26T00:00" // today?
+                    />
                 <label>Date and Time:</label>
             </fieldset>
 

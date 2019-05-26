@@ -16,10 +16,15 @@ import rating from '../assets/svg/sprite/rating.svg';
 
 const CreateChallengeScreen = () => (
     <Template>
-        <header className="o-container u-ph-1bl u-vspace-06r">
-            <h1 className="u-size-h1 u-color-white">Open Challenge</h1>
-            {/* <h2 className="u-size-h4 u-line-error">Your open challenge will be shared with your club-mates</h2> */}
-        </header>
+
+        <div className="o-container u-ph-1bl u-vspace-2bl">
+            <Link
+                to="/challenges"
+                className="c-go"
+            >
+                Back to challenges
+            </Link>
+        </div>
 
         <hr className="c-hr" />
 
@@ -32,7 +37,7 @@ const CreateChallengeScreen = () => (
                 </div>
                 <div className="u-vspace-03r">
                     <dt className="u-size-h3 u-color-white">Location:</dt>
-                    <dd className="">Britannia Squash Centre</dd>
+                    <dd className="u-capitalize">Britannia Squash Centre</dd>
                 </div>
                 <div className="u-vspace-03r">
                     <dt className="o-dictate u-size-h3 u-color-white">Player:</dt>
