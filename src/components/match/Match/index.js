@@ -14,7 +14,12 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => {
     }
 
     return (
-        <section className="o-container">
+        <section className="o-container u-vspace-2bl">
+
+            <header class="u-flex u-jc-between u-ai-center u-ph-1bl">
+                <h1 className="u-size-h3 u-color-white">{moment(match.created).format('dddd Do MMMM')}</h1>
+            </header>
+
             <div className="u-vspace-3bl">
                 {match.deleted &&
                     <p className="u-ph-1bl u-flex u-ai-center u-weight-bold u-color-hotmelon">
@@ -77,7 +82,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => {
 
                     <div className="c-match-table">
                         <div className="c-match-table__head">
-                            <h4 className="c-match-table__subtitle">Last Rating</h4>
+                            <h4 className="c-match-table__subtitle">Previous Rating</h4>
                         </div>
 
                         <ol className="c-match-table__column">

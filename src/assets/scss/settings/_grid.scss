@@ -12,8 +12,11 @@
   }
 
   @include iota-breakpoint(fromwindowgap) {
-    --window-width: calc(var(--viewport-width) - (var(--baseline) * 2));
     --baseline: 12px;
+  }
+
+  @include iota-breakpoint(fromappgap) {
+    --window-width: calc(var(--viewport-width) - (var(--baseline) * 2));
   }
 
   @include iota-breakpoint(frommax) {
