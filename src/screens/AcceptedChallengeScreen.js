@@ -16,21 +16,26 @@ import rating from '../assets/svg/sprite/rating.svg';
 
 const CreateChallengeScreen = () => (
     <Template>
-        <header className="o-container u-ph-1bl">
-            <h1 className="u-size-h1 u-color-white">Upcoming Match</h1>
+
+
+        <div className="o-container u-ph-1bl u-vspace-2bl">
             <Link
                 to="/challenges"
-                className="u-mt-2bl c-button c-button--default"
+                className="c-go"
             >
-                Contact Alaric
+                Back to challenges
             </Link>
+        </div>
+
+        <header className="o-container u-ph-1bl">
+            <h1 className="u-size-h1 u-color-white">Upcoming Match</h1>
         </header>
 
         <hr className="c-hr" />
 
-        <div className="o-container u-ph-1bl u-vspace-3bl">
+        <div className="o-container u-vspace-3bl">
 
-            <dl className="u-vspace-2bl">
+            <dl className="u-vspace-2bl u-ph-1bl">
                 <div className="u-vspace-03r">
                     <dt className="u-size-h3 u-color-white">Date:</dt>
                     <dd className="">Tuesday 18:30 - 26th February</dd>
@@ -99,30 +104,39 @@ const CreateChallengeScreen = () => (
 
                 </div>
 
+            </div>
 
-                </div>
+            {/* Just show this _after_ the match time?? */}
 
-            {/* Just show this _after_ the time?? */}
-            <Link
-                to="/challenges"
-                className="c-button c-button--default"
-            >
-                Submit match score
-            </Link>
+            <div className="u-ph-1bl u-vspace-3bl">
+                <Link
+                    to="/challenges"
+                    className="u-mt-2bl c-button c-button--default"
+                >
+                    Contact Alaric
+                </Link>
 
-            
-            {/* Just show this _after_ the time?? */}
-            <button
-                className="c-button c-button--warning u-mt-3bl"
-            >
-                Cancel challenge
-            </button>
+                <Link
+                    to="/challenges"
+                    className="c-button c-button--default"
+                >
+                    Submit match score
+                </Link>
 
-            <button
-                className="c-button c-button--warning u-mt-3bl"
-            >
-                Decline challenge
-            </button>
+                
+                {/* Just show this _after_ the time?? */}
+                <button
+                    className="c-button c-button--warning"
+                >
+                    Cancel challenge
+                </button>
+
+                <button
+                    className="c-button c-button--warning"
+                >
+                    Decline challenge
+                </button>
+            </div>
 
         </div>
 

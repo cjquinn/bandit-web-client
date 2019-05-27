@@ -35,6 +35,7 @@ const CreateChallengeScreen = () => (
                     <dt className="u-size-h3 u-color-white">Date:</dt>
                     <dd className="">18:40 - Tuesday 26th February</dd>
                 </div>
+                
                 <div className="u-vspace-03r u-ph-1bl ">
                     <dt className="u-size-h3 u-color-white">Location:</dt>
                     <dd className="u-capitalize">Britannia Squash Centre</dd>

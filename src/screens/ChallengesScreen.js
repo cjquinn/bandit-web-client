@@ -27,13 +27,12 @@ const ChallengesScreen = () => (
 
         <div className="o-container u-vspace-3bl">
 
-
             <div>
                 <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                     <h1 className="u-size-h3 u-color-white">This Week</h1>
                 </header>
 
-                <ol className="u-mt-2bl u-vspace-2bl">
+                <ol className="u-mt-2bl u-vspace-1bl">
 
                 <li>
                 {/* Open Challenge */}
@@ -49,7 +48,6 @@ const ChallengesScreen = () => (
                         
                         <div className="u-align-right">
                             <p className="u-color-white u-size-13px u-weight-bold">26th February</p>
-                            
                         </div>
 
                     </div>
@@ -201,7 +199,7 @@ const ChallengesScreen = () => (
                     <h1 className="u-size-h3 u-color-white">Next Week</h1>
                 </header>
 
-                <ol className="u-mt-2bl u-vspace-2bl">
+                <ol className="u-mt-2bl u-vspace-1bl">
 
                 <li>
                 {/* Completely Open Challenge(!?) */}
