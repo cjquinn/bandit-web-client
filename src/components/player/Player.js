@@ -103,34 +103,60 @@ const Player = ({ club, player, user }) => {
                                 <dl className="u-flex u-jc-between u-ai-center u-fw-wrap u-width-100pc">
 
                                     <div className="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
+                                        <dt className="u-color-paste u-weight-bold">Matches</dt>
+
+                                        <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
+                                            <span className="c-points c-points--game u-hspace-8px">
+                                                <span className="u-color-paste">{player.games}</span>
+                                                <span className="u-color-win">{player.wins}w</span>
+                                                <span className="u-color-loss">{player.losses}l</span>
+                                            </span>
+
+
+                                            <span className="c-points c-points--game u-hspace-8px">
+                                                {((player.wins) / (player.games) * 100).toFixed(1)}%
+                                            </span>
+
+                                            {/* <span className="u-color-paste">{player.winRatio}</span> */}
+                                        </dd>
+
+                                    </div>
+
+                                    <div className="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
                                         <dt className="u-color-paste u-weight-bold">Games</dt>
 
                                         <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                                            <span className="u-color-paste">{player.games}</span>
+                                            <span className="c-points c-points--game u-hspace-8px">
+                                                <span className="u-color-paste">{player.games}</span>
+                                                <span className="u-color-win">{player.wins}w</span>
+                                                <span className="u-color-loss">{player.losses}l</span>
+                                            </span>
+
+                                            <span className="c-points c-points--game u-hspace-8px">
+                                                {((player.wins) / (player.games) * 120).toFixed(1)}%
+                                            </span>
+                                        </dd>
+
+                                    </div>
+                                </dl>
+                            </li>
+
+                            <li className="u-bgcolor-fold">
+                                <dl className="u-flex u-jc-between u-ai-center u-fw-wrap u-width-100pc">
+                                    <div className="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
+                                        <dt className="u-color-paste u-weight-bold">Activity</dt>
+
+                                        <dd className="u-size-13px">
+                                            <span className="c-points c-points--match c-points--win">Active</span> 3 recent matches
+                                            {/* <span className="c-points c-points--match c-points--loss">Inactive</span> 0 recent matches */}
                                         </dd>
                                     </div>
 
                                     <div className="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
-                                        <dt className="u-color-paste u-weight-bold">Wins</dt>
+                                        <dt className="u-color-paste u-weight-bold">Opponents</dt>
 
-                                        <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                                            <span className="u-color-paste">{player.wins}</span>
-                                        </dd>
-                                    </div>
-
-                                    <div className="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
-                                        <dt className="u-color-paste u-weight-bold">Losses</dt>
-
-                                        <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                                            <span className="u-color-paste">{player.losses}</span>
-                                        </dd>
-                                    </div>
-
-                                    <div className="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
-                                        <dt className="u-color-paste u-weight-bold">Ratio</dt>
-
-                                        <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                                            <span className="u-color-paste">{player.winRatio}</span>
+                                        <dd className="u-size-13px">
+                                            <span className="">12 played </span><span className="">of 70 (17%)</span>
                                         </dd>
                                     </div>
                                 </dl>
@@ -139,7 +165,7 @@ const Player = ({ club, player, user }) => {
                             <li className="u-bgcolor-fold">
                                 <dl className="u-flex u-jc-between u-ai-center u-fw-wrap u-width-100pc">
                                     <div className="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
-                                        <dt className="u-color-paste u-weight-bold">Highest Rating</dt>
+                                        <dt className="u-color-paste u-weight-bold">Highest rating</dt>
                                         <dd className="u-flex u-ai-center u-hspace-4px u-size-13px">
                                             <Svg
                                                 className="u-width-1bl u-height-auto"
@@ -152,7 +178,7 @@ const Player = ({ club, player, user }) => {
 
                                     {player.highest_level &&
                                         <div className="u-grow-1 u-basis-0 u-vspace-03r u-pv-1bl u-ph-1bl">
-                                            <dt className="u-color-paste u-weight-bold">Highest Level</dt>
+                                            <dt className="u-color-paste u-weight-bold">Highest level</dt>
 
                                             <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
                                                 <span className={`c-level u-uppercase u-bgcolor-${player.highest_level.slug}`}>
