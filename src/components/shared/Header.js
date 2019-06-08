@@ -25,7 +25,7 @@ const Header = ({ children, club, user }) => (
                     <div className="u-pos-relative">
                         <Svg
                             sprite={logo_head_pride}
-                            className="u-width-2bl u-height-auto"
+                            className="u-block u-width-2bl u-height-auto"
                             activeClassName=""
                         />
                         
@@ -36,12 +36,12 @@ const Header = ({ children, club, user }) => (
                     </div>
 
                     <h1 className="u-uppercase">
-                        <p className="u-weight-bold u-color-orange">
+                        <p className="u-weight-bold u-color-orange u-ls-02em">
                             Bandit Match
                         </p>
 
                         {club &&
-                            <p className="u-size-12px u-color-paste">
+                            <p className="o-type-tiny u-color-paste">
                                 {club.name}
                             </p>
                         }
