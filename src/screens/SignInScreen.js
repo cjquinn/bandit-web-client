@@ -12,6 +12,8 @@ import SignInFormContainer from '../containers/forms/SignInFormContainer';
 // Sprites
 import logo_knot from '../assets/svg/sprite/logo_knot.svg';
 import logo_head from '../assets/svg/sprite/logo_head.svg';
+import logo_knot_pride from '../assets/svg/sprite/logo_knot_pride.svg';
+import logo_head_pride from '../assets/svg/sprite/logo_head_pride.svg';
 
 const SignInScreen = () => (
     <Template>
@@ -19,12 +21,12 @@ const SignInScreen = () => (
             <div className="u-pos-relative">
                 <Svg
                     className="u-width-6bl u-height-auto"
-                    sprite={logo_head}
+                    sprite={logo_head_pride}
                 />
 
                 <Svg
                     className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-2bl u-height-auto"
-                    sprite={logo_knot}
+                    sprite={logo_knot_pride}
                 />
             </div>
 
