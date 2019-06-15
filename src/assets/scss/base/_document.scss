@@ -1,3 +1,8 @@
+body {
+  @extend .u-font-europa;
+  @extend .u-color-blanket;
+}
+
 details {
   summary {
     @extend %u-flex;
