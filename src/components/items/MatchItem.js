@@ -16,13 +16,13 @@ const MatchItem = ({ match }) => (
                 width="3bl"
             />
 
-            <dt className="u-size-h4 u-weight-bold u-ws-no">
+            <div className="u-size-h4 u-weight-bold u-ws-no">
                 <span className="o-dictate u-capitalize">{match.player_a.user.display_name}</span>
                 <span className="c-match-item__gap u-inline-block u-width-2ch u-align-right">{match.player_a_score}</span>
                 <span className="u-inline-block u-width-2ch u-align-center">&ndash;</span>
                 <span className="o-dictate u-capitalize">{match.player_b.user.display_name}</span>
                 <span className="u-inline-block u-width-2ch u-align-left">{match.player_b_score}</span>
-            </dt>
+            </div>
 
             <div className="c-match-item__gap">
                 <PlayerPhoto 

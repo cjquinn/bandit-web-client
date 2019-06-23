@@ -16,7 +16,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => {
     return (
         <section className="o-container u-vspace-2bl">
 
-            <header class="u-flex u-jc-between u-ai-center u-ph-1bl">
+            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h3 u-color-white">{moment(match.created).format('dddd Do MMMM')}</h1>
             </header>
 
@@ -140,7 +140,8 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => {
                     </li>
 
                     <li className="u-flex u-ai-center u-hspace-05bl u-size-12px u-color-steam">
-                        <dt>Submitted by</dt><dd className=""><span className="u-capitalize">{match.player_a.user.first_name} {match.player_a.user.last_name}</span></dd>
+                        <dt>Submitted by</dt>
+                        <dd className=""><span className="u-capitalize">{match.player_a.user.first_name} {match.player_a.user.last_name}</span></dd>
                     </li>
                 </dl>
 

@@ -28,9 +28,10 @@ const WeeklyLeaderboardItem = ({ player, position, userId }) => (
                 <dt className="u-color-paste u-size-h4 u-weight-bold u-ws-no u-order-2">#{position || player.position}</dt>
 
                 <dd className="u-grow-1 u-vspace-03r u-order-1">
-                    <dt className="u-color-paste u-capitalize">{player.user.first_name} {player.user.last_name}</dt>
+                    <dl>
+                        <dt className="u-color-paste u-capitalize">{player.user.first_name} {player.user.last_name}</dt>
 
-                    <dd className="u-flex u-ai-center u-hspace-4px u-size-13px">
+                        <dd className="u-flex u-ai-center u-hspace-4px u-size-13px">
                     
                         <span className=
                         {`c-points c-points--match c-points--${player.rating_change === 0 ? 'neutral' : (player.rating_change > 0 ? 'win' : 'loss')}`}
@@ -44,6 +45,7 @@ const WeeklyLeaderboardItem = ({ player, position, userId }) => (
 
                         <span><span className="o-dictate">and </span> {player.losses_change} losses</span>
                     </dd>
+                    </dl>
                 </dd>
 
                 
