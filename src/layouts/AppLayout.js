@@ -3,6 +3,7 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 // Components
+import LegalFooter from '../components/shared/LegalFooter';
 import UserMenu from '../components/menus/UserMenu';
 
 // Containers
@@ -91,24 +92,8 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                 </main>
             </div>
 
-            <footer className="u-opac-05 u-opac-1@hover">
-                <div className="o-container u-flex u-jc-between u-ai-center u-ph-1bl u-pv-2bl">
-                    
-                    <a
-                        className="u-color-playdough"
-                        href="mailto:referee@banditmatch.com"
-                    >
-                        Terms &amp; Conditions
-                    </a>
+            <LegalFooter />
 
-                    <a
-                        className="u-color-playdough"
-                        href="mailto:referee@banditmatch.com"
-                    >
-                        Privacy Policy
-                    </a>
-                </div>
-            </footer>
         </div>
     );
 };
