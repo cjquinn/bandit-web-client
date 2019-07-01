@@ -16,13 +16,13 @@ import UnauthenticatedRoute from '../routes/UnauthenticatedRoute';
 
 // Screens
 import AcceptedChallengeScreen from '../screens/AcceptedChallengeScreen';
-import ActivateAccountScreen from '../screens/ActivateAccountScreen';
 import AddMatchScreen from '../screens/AddMatchScreen';
-import ClubsScreen from '../screens/ClubsScreen';
-import CreateClubScreen from '../screens/CreateClubScreen';
 import ChallengeScreen from '../screens/ChallengeScreen';
 import ChallengesScreen from '../screens/ChallengesScreen';
+import ClubsScreen from '../screens/ClubsScreen';
 import CreateChallengeScreen from '../screens/CreateChallengeScreen';
+import CreateClubAuthenticatedScreen from '../screens/CreateClubAuthenticatedScreen';
+import CreateClubUnauthenticatedScreen from '../screens/CreateClubUnauthenticatedScreen';
 import DashboardScreen from '../screens/DashboardScreen';
 import ErrorScreen from '../screens/ErrorScreen';
 import InvitePlayerScreen from '../screens/InvitePlayerScreen';
@@ -61,7 +61,7 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                 <Switch>
                     {/* Authenticated */}
                     <AuthenticatedRoute exact path="/clubs" component={ClubsScreen} />
-                    <AuthenticatedRoute exact path="/clubs/create" component={CreateClubScreen} />
+                    <AuthenticatedRoute exact path="/clubs/create" component={CreateClubAuthenticatedScreen} />
                     <AuthenticatedRoute exact path="/settings" component={UpdateSettingsScreen} />
 
                     <AuthenticatedRoute exact path="/" component={DashboardScreen} isClubRoute={true} />
@@ -86,7 +86,7 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                     <AuthenticatedRoute exact path="/challenges/accepted" component={AcceptedChallengeScreen} />
 
                     {/* Unauthenticated */}
-                    <UnauthenticatedRoute exact path="/activate-account" component={ActivateAccountScreen} />
+                    <UnauthenticatedRoute exact path="/create-club" component={CreateClubUnauthenticatedScreen} />
                     <UnauthenticatedRoute exact path="/request-password-reset" component={RequestPasswordResetScreen} />
                     <UnauthenticatedRoute exact path="/reset-password" component={ResetPasswordScreen} />
                     <UnauthenticatedRoute exact path="/sign-in" component={SignInScreen} />

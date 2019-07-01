@@ -8,19 +8,19 @@ import { createClubSuccess, fetchClubSuccess } from '../club/actions';
 const clubId = handleActions(
     {
         [combineActions(
-            actions.activateAccountSuccess,
             actions.fetchCurrentUserSuccess,
-            actions.signInSuccess
+            actions.signInSuccess,
+            actions.signUpSuccess
         )]: (state, { payload }) => {
             if (state) {
                 return state;
             }
 
-            const playerIds = Object.keys(payload.entities.players);
-
-            if (playerIds.length === 0) {
+            if (!payload.entities.players) {
                 return null;
             }
+
+            const playerIds = Object.keys(payload.entities.players);
 
             return payload.entities.players[playerIds[0]].club_id;
         },
@@ -35,9 +35,9 @@ const clubId = handleActions(
 const id = handleActions(
     {
         [combineActions(
-            actions.activateAccountSuccess,
             actions.fetchCurrentUserSuccess,
-            actions.signInSuccess
+            actions.signInSuccess,
+            actions.signUpSuccess
         )]: (state, { payload }) => payload.result,
         [createClubSuccess]: (state, { payload }) => payload.entities.clubs[payload.result].founder_id
     },

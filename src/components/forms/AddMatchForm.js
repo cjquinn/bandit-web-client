@@ -16,7 +16,7 @@ const AddMatchForm = ({ players, user, ...props }) => (
             <div className="u-vspace-2bl">
                 <div className="c-add-match u-flex u-ai-center u-pv-1bl u-ph-1bl u-color-paste u-bgcolor-fold">
                     <div className="c-add-match__player c-add-match__player--you u-grow-1 u-basis-0 u-flex u-ai-center u-jc-center u-order-2 u-align-center">
-                        <dt className="u-size-h4 u-weight-bold u-ws-no u-hspace-05bl">
+                        <div className="u-size-h4 u-weight-bold u-ws-no u-hspace-05bl">
                             <Field
                                 className="c-score-input u-width-205bl u-line-2 u-align-center"
                                 name="player_a_score"
@@ -34,7 +34,7 @@ const AddMatchForm = ({ players, user, ...props }) => (
                                 placeholder="0"
                                 min="0"
                             />
-                        </dt>
+                        </div>
                     </div>
 
                     <div className="u-ov-hidden u-grow-1 u-basis-0 u-order-1 u-flex u-ai-center u-align-left">

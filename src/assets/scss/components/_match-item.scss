@@ -1,0 +1,13 @@
+/**
+ * .c-match-item
+ */
+
+$component: 'match-item';
+
+#{'.' + $global-components-namespace + $component} {
+  &__gap {
+    @include iota-breakpoint('frommatchitemgap') {
+      margin-left: calc(var(--baseline) * 1);
+    }
+  }
+}

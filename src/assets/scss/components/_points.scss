@@ -1,0 +1,47 @@
+/**
+ * .c-points
+ */
+
+$component: 'points';
+
+#{'.' + $global-components-namespace + $component} {
+  @extend .o-type-tiny;
+  @extend %u-uppercase;
+  display: inline-block;
+  font-weight: 500;
+  padding: .02em .28em;
+  line-height: 1.4;
+  border-radius: 2px;
+  min-width: 22px;
+  text-align: right;
+  letter-spacing: -.05em;
+  
+  &--game {
+    background-color: #0A0E19;
+  }
+
+  &--game#{&}--win {
+    @extend %u-color-win;
+  }
+
+  &--game#{&}--loss {
+    @extend %u-color-loss;
+  }
+
+  &--match {
+    @extend %u-color-basement;
+  }
+
+  &--match#{&}--win {
+    @extend %u-bgcolor-win;
+  }
+
+  &--match#{&}--loss {
+    @extend %u-bgcolor-loss;
+  }
+
+  &--match#{&}--neutral {
+    @extend %u-bgcolor-unrated;
+  }
+
+}

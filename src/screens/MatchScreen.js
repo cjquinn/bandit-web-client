@@ -20,8 +20,6 @@ const MatchScreen = ({ match }) => (
             </Link>
         </div>
 
-        <hr className="c-hr" />
-
         <MatchContainer matchId={+match.params.matchId} />
 
         <FooterContainer />

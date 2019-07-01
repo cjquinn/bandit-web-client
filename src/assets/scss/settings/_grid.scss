@@ -1,17 +1,25 @@
 :root {
-  --ViewportWidth: 100vw;
-  --ContainerWidth: calc(var(--WindowWidth) - (var(--Baseline) * 2));
+  --scrollbar-width: 0px;
+  --viewport-width: calc(100vw - var(--scrollbar-width));
+
+  // viewport > window > container
+
+  --window-width: var(--viewport-width);
+  --container-width: calc(var(--window-width) - (var(--baseline) * 2));
 
   @include iota-breakpoint(uptowindowgap) {
-    --Baseline: 9px;
+    --baseline: 9px;
   }
 
   @include iota-breakpoint(fromwindowgap) {
-    --Baseline: 12px;
-    --WindowWidth: calc(var(--ViewportWidth) - (var(--Baseline) * 2));
+    --baseline: 12px;
+  }
+
+  @include iota-breakpoint(fromappgap) {
+    --window-width: calc(var(--viewport-width) - (var(--baseline) * 2));
   }
 
   @include iota-breakpoint(frommax) {
-    --ViewportWidth: 465px;
+    --window-width: 516px;
   }
 }

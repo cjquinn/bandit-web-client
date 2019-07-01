@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { deleteMatch, fetchMatch } from '../../store/byClubId/byPlayerId/match/actions';
 
 // Components
-import Loading from '../../components/shared/Loading';
 import Match from '../../components/match/Match';
 
 // Selectors
@@ -26,10 +25,6 @@ class MatchContainer extends Component {
 
     render() {
         const { deleteMatch, isDeleting, match, userId } = this.props;
-
-        if (!match) {
-            return <Loading />;
-        }
 
         return (
             <Match
