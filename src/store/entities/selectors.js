@@ -1,3 +1,5 @@
+export const getChallengeEntities = state => state.entities.clubs;
+
 export const getClubEntities = state => state.entities.clubs;
 
 export const getDisputeEntities = state => state.entities.disputes;

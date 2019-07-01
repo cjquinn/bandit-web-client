@@ -74,7 +74,6 @@ export const handleError = (dispatch, failure) => response => {
             return dispatch(push('/sign-in'));
 
         case 403:
-            // Handle this for unauthed users
             return dispatch(signOut());
 
         case 404:

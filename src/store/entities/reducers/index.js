@@ -7,6 +7,7 @@ import matches from './matches';
 import { mergeEntities } from './utilities';
 
 const reducers = combineReducers({
+    challenges: mergeEntities('challenges'),
     clubs: mergeEntities('clubs'),
     disputes: mergeEntities('disputes'),
     matches,

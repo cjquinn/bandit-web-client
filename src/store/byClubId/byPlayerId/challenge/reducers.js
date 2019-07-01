@@ -24,23 +24,24 @@ const isFetching = makeIsFetchingReducer(
     actions.fetchMatchesSuccess
 );
 
-const page = handleAction(
-    actions.fetchMatchesSuccess,
-    (state, { payload }) => payload.page,
-    initialState.page
-);
-
-const total = handleAction(
-    actions.fetchMatchesSuccess,
-    (state, { payload }) => payload.total,
-    initialState.total
-);
-
-const reducers = combineReducers({
+const challengeReducers = combineReducers({
     ids,
-    isFetching,
-    page,
-    total
+    isFetching
 });
+
+const reducers = (state = {}, action) => {
+    if (!action.payload ||
+        !action.payload.filter
+    ) {
+        return state;
+    }
+
+    const filter = action.payload.filter;
+
+    return {
+        ...state,
+        [filter]: challengeReducers(state[filter], action)
+    };
+};
 
 export default reducers;

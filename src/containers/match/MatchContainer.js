@@ -9,10 +9,12 @@ import { deleteMatch, fetchMatch } from '../../store/byClubId/byPlayerId/match/a
 import Match from '../../components/match/Match';
 
 // Selectors
-import { getIsDeleting, makeGetMatch } from '../../store/byClubId/byPlayerId/match/selectors';
+import { makeGetMatch } from '../../store/byClubId/byPlayerId/match/selectors';
 import { getUserId } from '../../store/shared/selectors';
 
 class MatchContainer extends Component {
+    state = {isDeleting: false};
+
     componentDidMount() {
         this.props.fetchMatch();
     }
@@ -23,12 +25,18 @@ class MatchContainer extends Component {
         }
     }
 
+    handleClickCancel = () => this.setState(
+        {isDeleting: true},
+        this.props.deleteMatch()
+    );
+
     render() {
-        const { deleteMatch, isDeleting, match, userId } = this.props;
+        const { match, userId } = this.props;
+        const { isDeleting } = this.state;
 
         return (
             <Match
-                handleClickCancel={deleteMatch}
+                handleClickCancel={this.handleClickCancel}
                 isDeleting={isDeleting}
                 match={match}
                 userId={userId}
@@ -40,7 +48,6 @@ class MatchContainer extends Component {
 MatchContainer.propTypes = {
     deleteMatch: PropTypes.func.isRequired,
     fetchMatch: PropTypes.func.isRequired,
-    isDeleting: PropTypes.bool.isRequired,
     match: PropTypes.object,
     matchId: PropTypes.number.isRequired,
     userId: PropTypes.number.isRequired
@@ -50,7 +57,6 @@ const makeMapStateToProps = () => {
     const getMatch = makeGetMatch();
 
     return (state, props) => ({
-        isDeleting: getIsDeleting(state, props),
         match: getMatch(state, props),
         userId: getUserId(state)
     });
