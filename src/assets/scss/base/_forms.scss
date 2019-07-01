@@ -39,7 +39,7 @@ textarea {
   border: none;
 
   &:focus {
-    outline: none;
+    // outline: none;
   }
 }
 
@@ -101,7 +101,13 @@ textarea {
   @extend .u-ph-1bl;
   @extend .u-size-h4;
   @extend .u-weight-bold;
+}
 
+[type="text"],
+[type="email"],
+[type="password"],
+[type="file"],
+.c-select {
   ~ label {
     transform: translateY(-70%);
   }
@@ -111,12 +117,6 @@ textarea {
     ~ label {
       @extend .u-color-white;
       transform: translateY(-120%);
-    }
-  }
-
-  &:not(:placeholder-shown) {
-    ~ label {
-      // opacity: .5;
     }
   }
 }

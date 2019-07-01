@@ -8,7 +8,116 @@ import PlayerPhoto from '../shared/PlayerPhoto';
 import PlayerSelectField from '../fields/PlayerSelectField';
 
 const AddMatchForm = ({ players, user, ...props }) => (
-    <Form
+    <div>
+
+        <div className="o-container u-ph-1bl">
+
+                <fieldset className="u-pos-relative">
+
+                <div className="c-select">
+                    <select
+                        className="c-select__select u-color-playdough u-capitalize"
+                    >
+                        <option value={null}>
+                            Select player
+                        </option>
+
+                        <option>
+                            Adrian Barnes
+                        </option>
+
+                        <option>
+                            Barnaby Baby
+                        </option>
+                    </select>
+                </div>
+
+                <label>Who did you play?</label>
+
+            </fieldset>
+
+            <div>
+                <h3>Match Score:</h3>
+
+                <dl className="u-flex u-hspace-1px u-borrad-first-2002 u-borrad-last-0220 null">
+                    <li className="u-grow-1 u-basis-0 u-pt-3bl u-bgcolor-fold">
+                    <div className="u-flex u-fd-col u-ai-center u-pv-3bl u-vspace-1bl">
+                    <div>
+                    <div className="u-pos-relative" aria-hidden="true">
+                    <div className="c-player-photo c-player-photo--no-photo u-width-4bl">
+                    <div className="c-player-photo__level">
+                    <div className="c-player-photo__stripe u-bgcolor-gladiator">
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                <dt>
+                    <h2 className="u-weight-bold u-color-paste u-capitalize">Hassan Patel</h2>
+                    <div className="u-flex u-hspace-4px u-ai-center u-pv-2bl">
+                        <span className="c-levels u-flex u-ai-center"><span className="c-level u-bgcolor-fighter">Fighter</span></span>
+                        <div className="u-flex u-ai-center u-hspace-4px">
+                            {/* <svg className="c-svg c-svg--rating u-width-1bl u-height-auto" viewBox="0 0 11 13">
+                            <use xlink:href="#rating">
+                            </use>
+                        </svg> */}
+                        <span className="u-color-paste">1157 <span className="o-dictate">rating</span>
+                        </span>
+                        </div>
+                    </div>
+                </dt>
+                <dd>
+                    <input type="number" placeholder="0" styleProp="font-size: 3rem;" />
+                    {/* <p className="u-size-h1 u-color-white">3</p> */}
+                </dd>
+                </div>
+                </li>
+                <li className="u-grow-1 u-basis-0 u-pt-3bl u-bgcolor-fold">
+                    <div className="u-flex u-fd-col u-ai-center u-pv-3bl u-vspace-1bl">
+                    <div>
+                    <div className="u-pos-relative" aria-hidden="true">
+                    <div className="c-player-photo c-player-photo--no-photo u-width-4bl">
+                    <div className="c-player-photo__level">
+                    <div className="c-player-photo__stripe u-bgcolor-fighter">
+                    </div>
+                </div>
+                </div>
+                </div>
+                </div>
+                <dt>
+                    <h2 className="u-weight-bold u-color-paste u-capitalize">Hassan Patel</h2>
+                    <div className="u-flex u-hspace-4px u-ai-center u-pv-2bl">
+                        <span className="c-levels u-flex u-ai-center"><span className="c-level u-bgcolor-fighter">Fighter</span></span>
+                        <div className="u-flex u-ai-center u-hspace-4px">
+                            {/* <svg className="c-svg c-svg--rating u-width-1bl u-height-auto" viewBox="0 0 11 13">
+                            <use xlink:href="#rating">
+                            </use>
+                        </svg> */}
+                        <span className="u-color-paste">1157 <span className="o-dictate">rating</span>
+                        </span>
+                        </div>
+                    </div>
+                </dt>
+                <dd>
+                    <input type="number" placeholder="0" styleProp="font-size: 3rem;" />
+                </dd>
+                </div>
+                
+                </li>
+                </dl>
+
+            </div>
+
+        </div>
+
+    {/* <Field
+        name="player_b_id"
+        component={PlayerSelectField}
+        players={players}
+    /> */}
+    
+    
+    {/* <Form
         buttonText="Add match"
         {...props}
     >
@@ -73,7 +182,8 @@ const AddMatchForm = ({ players, user, ...props }) => (
                 </div>
             </div>
         </div>
-    </Form>
+    </Form> */}
+    </div>
 );
 
 AddMatchForm.propTypes = {
