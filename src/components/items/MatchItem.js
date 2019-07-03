@@ -32,7 +32,7 @@ const MatchItem = ({ match }) => (
             </div>
         </div>
 
-        <div className="u-grow-1 u-basis-0 u-order-1 u-align-left o-ellipsis u-capitalize">
+        <div className="u-grow-1 u-basis-0 u-order-1 u-align-left o-ellipsis u-capitalize u-mr-1bl">
             <span aria-hidden="true">{match.player_a.user.display_name}</span>
         </div>
 
