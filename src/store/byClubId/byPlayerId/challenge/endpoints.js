@@ -2,7 +2,7 @@ import { instance } from '../../../api';
 
 export const acceptChallenge = (clubId, challengeId) => instance().delete(`/clubs/${clubId}/challenges/${challengeId}/accept.json`);
 
-export const addChallenge = (clubId, data) => instance().post(`/clubs/${clubId}/challenges.json`, data);
+export const createChallenge = (clubId, data) => instance().post(`/clubs/${clubId}/challenges.json`, data);
 
 export const deleteChallenge = (clubId, challengeId) => instance().delete(`/clubs/${clubId}/challenges/${challengeId}.json`);
 

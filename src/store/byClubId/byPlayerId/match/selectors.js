@@ -69,20 +69,19 @@ export const makeGetMatches = () => createSelector(
             return denormalizedMatches;
         }
 
-        const matchesByDate = denormalizedMatches.reduce((acc, match) => {
-            const date = moment(match.created).format('dddd Do');
-            const matches = acc[date] ? acc[date]['matches'] : []; 
+        const matchesByDate = {};
 
-            return {
-                ...acc,
-                [date]: {
+        denormalizedMatches.forEach(match => {
+            const date = moment(match.created).format('dddd Do');
+
+            if (!matchesByDate[date]) {
+                matchesByDate[date] = {
                     date,
-                    matches: [
-                        ...matches,
-                        match
-                    ]
-                }
-            };
+                    matches: []
+                };
+            }
+
+            matchesByDate[date].matches.push(match);
         }, {});
 
         return Object.keys(matchesByDate).map(date => matchesByDate[date]);

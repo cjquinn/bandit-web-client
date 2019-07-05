@@ -33,24 +33,24 @@ export const acceptChallenge = challengeId => (dispatch, getState, api) => {
 };
 
 /**
- * Add challenge
+ * Create challenge
  */
-export const addChallengeRequest = createAction('ADD_CHALLENGE_REQUEST');
-export const addChallengeSuccess = createAction('ADD_CHALLENGE_SUCCESS');
-export const addChallengeFailure = createAction('ADD_CHALLENGE_FAILURE');
+export const createChallengeRequest = createAction('ADD_CHALLENGE_REQUEST');
+export const createChallengeSuccess = createAction('ADD_CHALLENGE_SUCCESS');
+export const createChallengeFailure = createAction('ADD_CHALLENGE_FAILURE');
 
-export const addChallenge = data => (dispatch, getState, api) => {
+export const createChallenge = data => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(addChallengeRequest({clubId}));
+    dispatch(createChallengeRequest({clubId}));
 
-    return api.addChallenge(clubId, data)
+    return api.createChallenge(clubId, data)
         .then(api.checkStatus)
         .then(response => normalize(response.data.challenge, challengeSchema))
-        .then(normalizedData => dispatch(addChallengeSuccess(normalizedData)))
+        .then(normalizedData => dispatch(createChallengeSuccess(normalizedData)))
         .then(action => dispatch(push(`/challenges/${action.payload.result}`)))
         .then(() => api.trackEvent('challengeAdded'))
-        .catch(api.handleError(dispatch, addChallengeFailure));
+        .catch(api.handleError(dispatch, createChallengeFailure));
 };
 
 /**

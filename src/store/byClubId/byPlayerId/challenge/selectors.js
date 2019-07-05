@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { denormalize } from 'normalizr';
 import { createSelector } from 'reselect';
 
@@ -7,7 +8,7 @@ import { challenge as challengeSchema } from '../../../schema';
 // Selectors
 import { getChallengeEntities, getPlayerEntities, getUserEntities } from '../../../entities/selectors';
 import { getByPlayerIdState } from '../selectors';
-import { getFilter, getChallengeId } from '../../../props/selectors';
+import { getChallengeId, getPrimaryFilter, getSecondaryFilter } from '../../../props/selectors';
 import { makeIsFetchingSelector } from '../../../shared/selectors';
 
 // State
@@ -21,14 +22,14 @@ const getChallengeState = (state, props) =>
         ? getByPlayerIdState(state, props).challenge
         : undefined;
 
-const getFilterState = (state, props) =>
+const getPrimaryFilterState = (state, props) =>
     getChallengeState(state, props)
-        ? getChallengeState(state, props)[getFilter(null, props)]
+        ? getChallengeState(state, props)[getPrimaryFilter(null, props)]
         : initialState;
 
-export const getIds = (state, props) => getFilterState(state, props).ids;
+export const getIds = (state, props) => getPrimaryFilterState(state, props).ids;
 
-export const getIsFetching = makeIsFetchingSelector(getFilterState);
+export const getIsFetching = makeIsFetchingSelector(getPrimaryFilterState);
 
 // Normalized
 export const getChallengeEntity = (state, props) => getChallengeEntities(state)[getChallengeId(null, props)];
@@ -47,14 +48,58 @@ export const makeGetChallenge = () => createSelector(
             {challenges: {[challenge.id]: challenge}, players, users}
         );
     }
-);  
+);
 
 export const makeGetChallenges = () => createSelector(
-    [getIds, getChallengeEntities, getPlayerEntities, getUserEntities],
-    (ids, challenges, players, users) => 
-        denormalize(
+    [getIds, getPrimaryFilter, getSecondaryFilter, getChallengeEntities, getPlayerEntities, getUserEntities],
+    (ids, primaryFilter, secondaryFilter, challenges, players, users) => {
+        const secondaryFilterTest = secondaryFilter === 'open'
+            ? ({ player_b_id }) => player_b_id === null
+            : ({ player_b_id }) => player_b_id !== null;
+
+        const denormalizedChallenges = denormalize(
             ids,
             [challengeSchema],
             {challenges, players, users}
-        )
+        ).filter(secondaryFilterTest);
+
+        // All challenges
+        if (primaryFilter !== 'upcoming') {
+            return denormalizedChallenges;
+        }
+
+        // Only upcoming challenges
+        const m = moment();
+
+        const thisWeek = m.format('W');
+        const nextWeek = m.add(1, 'week').format('W');
+
+        const challengesByPeriod = {
+            thisWeek: {
+                challenges: []
+            },
+            nextWeek: {
+                challenges: []
+            },
+            further: {
+                challenges: []
+            }
+        };
+
+        denormalizedChallenges.forEach(challenge => {
+            challenge.moment = moment(challenge.match_datetime);
+
+            const week = challenge.moment.format('W');
+
+            const period = week === thisWeek
+                ? 'thisWeek'
+                : week === nextWeek
+                    ? 'nextWeek'
+                    : 'further';
+
+            challengesByPeriod[period].challenges.push(challenge);
+        });
+
+        return Object.keys(challengesByPeriod).map(period => challengesByPeriod[period]);
+    }
 );
