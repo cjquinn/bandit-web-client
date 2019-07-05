@@ -1,6 +1,12 @@
 import { schema } from 'normalizr';
 
-export const challenge = new schema.Entity('challenges');
+export const challenge = new schema.Entity('challenges', {}, {
+    processStrategy: entity => ({
+        ...entity,
+        player_a: entity.player_a || entity.player_a_id,
+        player_b: entity.player_b || entity.player_b_id
+    })
+});
 
 export const club = new schema.Entity('clubs');
 

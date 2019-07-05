@@ -7,6 +7,7 @@ import { fetchChallenges } from '../../store/byClubId/byPlayerId/challenge/actio
 
 // Selectors
 import { getIsFetching, makeGetChallenges } from '../../store/byClubId/byPlayerId/challenge/selectors';
+import { getCurrentPlayerId } from '../../store/user/selectors';
 
 class ChallengesListContainer extends Component {
     componentDidMount() {
@@ -20,10 +21,11 @@ class ChallengesListContainer extends Component {
     }
 
     render() {
-        const { component: Component, isFetching, challenges, playerId } = this.props;
+        const { component: Component, currentPlayerId, isFetching, challenges, playerId } = this.props;
 
         return (
             <Component
+                currentPlayerId={currentPlayerId}
                 isFetching={isFetching}
                 challenges={challenges}
                 playerId={playerId}
@@ -34,6 +36,7 @@ class ChallengesListContainer extends Component {
 
 ChallengesListContainer.propTypes = {
     component: PropTypes.func.isRequired,
+    currentPlayerId: PropTypes.number.isRequired,
     fetchChallenges: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
     challenges: PropTypes.array.isRequired,
@@ -46,6 +49,7 @@ const makeMapStateToProps = () => {
     const getChallenges = makeGetChallenges();
 
     return (state, props) => ({
+        currentPlayerId: getCurrentPlayerId(state, props),
         isFetching: getIsFetching(state, props),
         challenges: getChallenges(state, props)
     });

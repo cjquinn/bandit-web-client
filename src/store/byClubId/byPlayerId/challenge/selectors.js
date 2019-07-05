@@ -57,11 +57,20 @@ export const makeGetChallenges = () => createSelector(
             ? ({ player_b_id }) => player_b_id === null
             : ({ player_b_id }) => player_b_id !== null;
 
-        const denormalizedChallenges = denormalize(
+        let denormalizedChallenges = denormalize(
             ids,
             [challengeSchema],
             {challenges, players, users}
-        ).filter(secondaryFilterTest);
+        );
+
+        denormalizedChallenges = denormalizedChallenges
+            .filter(secondaryFilterTest)
+            .map(challenge => ({
+                ...challenge,
+                moment: moment(challenge.match_datetime)
+            }));
+
+        console.log(denormalizedChallenges);
 
         // All challenges
         if (primaryFilter !== 'upcoming') {
@@ -76,19 +85,20 @@ export const makeGetChallenges = () => createSelector(
 
         const challengesByPeriod = {
             thisWeek: {
+                period: 'This Week',
                 challenges: []
             },
             nextWeek: {
+                period: 'Next Week',
                 challenges: []
             },
             further: {
+                period: 'Further',
                 challenges: []
             }
         };
 
         denormalizedChallenges.forEach(challenge => {
-            challenge.moment = moment(challenge.match_datetime);
-
             const week = challenge.moment.format('W');
 
             const period = week === thisWeek

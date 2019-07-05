@@ -1,4 +1,4 @@
-export const getChallengeEntities = state => state.entities.clubs;
+export const getChallengeEntities = state => state.entities.challenges;
 
 export const getClubEntities = state => state.entities.clubs;
 

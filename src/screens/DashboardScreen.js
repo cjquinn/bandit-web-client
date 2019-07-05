@@ -1,178 +1,40 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
 import AllTimeLeaderboardList from '../components/lists/AllTimeLeaderboardList';
+import ChallengesList from '../components/lists/ChallengesList';
 import FooterContainer from '../containers/shared/FooterContainer';
 import MatchesList from '../components/lists/MatchesList';
 import Template from '../components/shared/Template';
 import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
-import Svg from '../components/shared/Svg';
 
 // Containers
+import ChallengesListContainer from '../containers/lists/ChallengesListContainer';
 import LeaderboardListContainer from '../containers/lists/LeaderboardListContainer';
 import MatchesListContainer from '../containers/lists/MatchesListContainer';
 
-// Sprite
-import rating from '../assets/svg/sprite/rating.svg';
-
-const DashboardScreen = () => (
+const DashboardScreen = ({ user }) => (
     <Template>
         <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">Challenges <span className="u-weight-normal u-color-steam">open</span></h1>
 
                 <Link
-                    to="/challenges"
+                    to="/challenges/open"
                     className="c-go"
                 >
                     Go
                 </Link>
             </header>
 
-            <ol className="u-mt-2bl u-vspace-1bl">
-                <li>
-                    {/* Open Challenge */}
-                    <Link
-                        to="/challenges/open"
-                        className="u-block u-color-paste"
-                    >
-                        <div className="u-flex u-jc-between u-ai-center u-pv-105bl u-ph-1bl u-bgcolor-fold u-borrad-3300">
-
-                            <div className="">
-                                <p className="u-size-14px u-color-white u-weight-bold">Tuesday 18:30</p>
-                            </div>
-                            
-                            <div className="u-align-right">
-                                <p className="u-color-white u-size-13px u-weight-bold">26th February</p>
-                            </div>
-
-                        </div>
-                        {/* <div className="u-mr-2bl u-ml-1bl u-color-paste u-size-h4 u-weight-bold">vs</div> */}
-
-                        <div className="u-flex u-ai-center u-pv-1bl u-ph-1bl u-bgcolor-fold05">
-
-                            <div className="u-grow-1 u-basis-0 u-flex u-ai-center u-jc-center u-order-2 u-align-center">
-
-                                {/* <PlayerPhoto 
-                                    player={match.player_a} 
-                                    width="3bl"
-                                /> */}<div className="u-pos-relative" aria-hidden="true"><div className="c-player-photo c-player-photo--unassigned u-width-3bl"></div></div>
-
-                                <dt className="u-ml-1bl u-size-h4 u-weight-bold u-ws-no">
-                                    <span className="u-inline-block u-width-4ch u-align-center">vs</span>
-                                    <span className="o-dictate u-capitalize">Player B.</span>
-                                </dt>
-
-                                <div className="u-ml-1bl">
-                                    {/* <PlayerPhoto 
-                                        player={match.player_a} 
-                                        width="3bl"
-                                    /> */}<div className="u-pos-relative" aria-hidden="true"><div className="c-player-photo c-player-photo--no-photo u-width-3bl"><div className="c-player-photo__level"><div className="c-player-photo__stripe u-bgcolor-fighter"></div></div></div></div>
-                                </div>
-                            </div>
-
-                            <div className="u-grow-1 u-basis-0 u-order-1 u-align-left o-ellipsis u-capitalize">
-                                <span className="c-go">
-                                    Open
-                                </span>
-                            </div>
-
-                            <div className="u-grow-1 u-basis-0 u-order-3 u-flex u-ai-end u-fd-col u-jc-end u-align-right o-ellipsis u-capitalize u-vspace-03r">
-
-                                <dt className="u-color-paste u-capitalize">Jamie B.</dt>
-                                <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                                    <span className="u-flex u-ai-center u-hspace-4px">
-                                        <Svg
-                                            sprite={rating}
-                                            className="u-width-1bl u-height-auto"
-                                        />
-
-                                        <span className="u-color-paste">
-                                            1339 <span className="o-dictate">rating</span>
-                                        </span>
-                                    
-                                    </span>
-                                </dd>
-
-                            </div>
-
-                        </div>
-                        
-                    </Link>
-                    {/*  */} 
-                </li>
-
-                <li>
-                    {/* Open Challenge */}
-                    <Link
-                        to="/challenges/open"
-                        className="u-block u-color-paste"
-                    >
-                        <div className="u-flex u-jc-between u-ai-center u-pv-105bl u-ph-1bl u-bgcolor-fold u-borrad-3300">
-
-                            <div className="">
-                                <p className="u-size-14px u-color-white u-weight-bold">Tuesday 18:30</p>
-                            </div>
-                            
-                            <div className="u-align-right">
-                                <p className="u-color-white u-size-13px u-weight-bold">26th February</p>
-                            </div>
-
-                        </div>
-                        {/* <div className="u-mr-2bl u-ml-1bl u-color-paste u-size-h4 u-weight-bold">vs</div> */}
-
-                        <div className="u-flex u-ai-center u-pv-1bl u-ph-1bl u-bgcolor-fold05">
-
-                            <div className="u-grow-1 u-basis-0 u-flex u-ai-center u-jc-center u-order-2 u-align-center">
-
-                                {/* <PlayerPhoto 
-                                    player={match.player_a} 
-                                    width="3bl"
-                                /> */}<div className="u-pos-relative" aria-hidden="true"><div className="c-player-photo c-player-photo--unassigned u-width-3bl"></div></div>
-
-                                <dt className="u-ml-1bl u-size-h4 u-weight-bold u-ws-no">
-                                    <span className="u-inline-block u-width-4ch u-align-center">vs</span>
-                                    <span className="o-dictate u-capitalize">Player B.</span>
-                                </dt>
-
-                                <div className="u-ml-1bl">
-                                    {/* <PlayerPhoto 
-                                        player={match.player_a} 
-                                        width="3bl"
-                                    /> */}<div className="u-pos-relative" aria-hidden="true"><div className="c-player-photo c-player-photo--no-photo u-width-3bl"><div className="c-player-photo__level"><div className="c-player-photo__stripe u-bgcolor-fighter"></div></div></div></div>
-                                </div>
-                            </div>
-
-                            <div className="u-grow-1 u-basis-0 u-order-1 u-align-left o-ellipsis u-capitalize">
-                                <span className="c-go">
-                                    Open
-                                </span>
-                            </div>
-
-                            <div className="u-grow-1 u-basis-0 u-order-3 u-flex u-ai-end u-fd-col u-jc-end u-align-right o-ellipsis u-capitalize u-vspace-03r">
-
-                                <dt className="u-color-paste u-capitalize">Jamie B.</dt>
-                                <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
-                                    <span className="u-flex u-ai-center u-hspace-4px">
-                                        <Svg
-                                            sprite={rating}
-                                            className="u-width-1bl u-height-auto"
-                                        />
-
-                                        <span className="u-color-paste">
-                                            1339 <span className="o-dictate">rating</span>
-                                        </span>
-                                    
-                                    </span>
-                                </dd>
-
-                            </div>
-
-                        </div>   
-                    </Link>
-                </li>
-            </ol>
+            <ChallengesListContainer
+                component={ChallengesList}
+                playerId={user.player.id}
+                primaryFilter="all"
+                secondaryFilter="open"
+            />
         </section>
         
         <section className="o-container u-vspace-1bl">
@@ -244,5 +106,9 @@ const DashboardScreen = () => (
         <FooterContainer />
     </Template>
 );
+
+DashboardScreen.propTypes = {
+    user: PropTypes.object.isRequired
+};
 
 export default DashboardScreen;

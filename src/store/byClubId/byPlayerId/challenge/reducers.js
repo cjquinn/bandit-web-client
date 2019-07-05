@@ -11,7 +11,7 @@ import { makeIsFetchingReducer } from '../../../shared/reducers';
 import { initialState } from './selectors';
 
 const ids = handleAction(
-    actions.fetchMatchesSuccess,
+    actions.fetchChallengesSuccess,
     (state, { payload }) => payload.page === 1
         ? payload.result
         : [...state, ...payload.result],
@@ -19,9 +19,9 @@ const ids = handleAction(
 );
 
 const isFetching = makeIsFetchingReducer(
-    actions.fetchMatchesRequest,
-    actions.fetchMatchesFailure,
-    actions.fetchMatchesSuccess
+    actions.fetchChallengesRequest,
+    actions.fetchChallengesFailure,
+    actions.fetchChallengesSuccess
 );
 
 const challengeReducers = combineReducers({
