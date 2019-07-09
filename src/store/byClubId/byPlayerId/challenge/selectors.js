@@ -8,7 +8,7 @@ import { challenge as challengeSchema } from '../../../schema';
 // Selectors
 import { getChallengeEntities, getPlayerEntities, getUserEntities } from '../../../entities/selectors';
 import { getByPlayerIdState } from '../selectors';
-import { getChallengeId, getPrimaryFilter, getSecondaryFilter } from '../../../props/selectors';
+import { getChallengeId, getFilter, getPlayerId } from '../../../props/selectors';
 import { makeIsFetchingSelector } from '../../../shared/selectors';
 
 // State
@@ -22,14 +22,18 @@ const getChallengeState = (state, props) =>
         ? getByPlayerIdState(state, props).challenge
         : undefined;
 
-const getPrimaryFilterState = (state, props) =>
-    getChallengeState(state, props)
-        ? getChallengeState(state, props)[getPrimaryFilter(null, props)]
+const getFilterState = (state, props) => {
+    const challenge = getChallengeState(state, props);
+    const filter = getFilter(null, props);
+
+    return challenge && challenge[filter]
+        ? challenge[filter]
         : initialState;
+};
 
-export const getIds = (state, props) => getPrimaryFilterState(state, props).ids;
+export const getIds = (state, props) => getFilterState(state, props).ids;
 
-export const getIsFetching = makeIsFetchingSelector(getPrimaryFilterState);
+export const getIsFetching = makeIsFetchingSelector(getFilterState);
 
 // Normalized
 export const getChallengeEntity = (state, props) => getChallengeEntities(state)[getChallengeId(null, props)];
@@ -51,12 +55,8 @@ export const makeGetChallenge = () => createSelector(
 );
 
 export const makeGetChallenges = () => createSelector(
-    [getIds, getPrimaryFilter, getSecondaryFilter, getChallengeEntities, getPlayerEntities, getUserEntities],
-    (ids, primaryFilter, secondaryFilter, challenges, players, users) => {
-        const secondaryFilterTest = secondaryFilter === 'open'
-            ? ({ player_b_id }) => player_b_id === null
-            : ({ player_b_id }) => player_b_id !== null;
-
+    [getIds, getFilter, getPlayerId, getChallengeEntities, getPlayerEntities, getUserEntities],
+    (ids, filter, playerId, challenges, players, users) => {
         let denormalizedChallenges = denormalize(
             ids,
             [challengeSchema],
@@ -64,16 +64,14 @@ export const makeGetChallenges = () => createSelector(
         );
 
         denormalizedChallenges = denormalizedChallenges
-            .filter(secondaryFilterTest)
             .map(challenge => ({
                 ...challenge,
                 moment: moment(challenge.match_datetime)
             }));
 
-        console.log(denormalizedChallenges);
-
         // All challenges
-        if (primaryFilter !== 'upcoming') {
+        // All players only returns future challenges
+        if (filter === 'all' || playerId !== 'all') {
             return denormalizedChallenges;
         }
 

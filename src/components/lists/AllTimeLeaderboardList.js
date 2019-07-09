@@ -23,23 +23,19 @@ const AllTimeLeaderboardList = ({ isFetching, players, playerId, userId }) => {
     }
 
     return (
-        <section className="o-container">
-            {players.length > 0 &&
-                <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
-                    {players.map(player => (
-                        <li
-                            key={player.id}
-                            className={`u-pos-relative u-bgcolor-fold ${playerId && player.id !== playerId && 'u-blur-tiny u-blur0@hover u-opac-05 u-opac-1@hover'}`}
-                        >
-                            <AllTimeLeaderboardItem
-                                player={player}
-                                userId={userId}
-                            />
-                        </li>
-                    ))}
-                </ol>
-            }
-        </section>
+        <ol className="u-vspace-1px u-borrad-first-2200 u-borrad-last-0022">
+            {players.map(player => (
+                <li
+                    key={player.id}
+                    className={`u-pos-relative u-bgcolor-fold ${playerId && player.id !== playerId && 'u-blur-tiny u-blur0@hover u-opac-05 u-opac-1@hover'}`}
+                >
+                    <AllTimeLeaderboardItem
+                        player={player}
+                        userId={userId}
+                    />
+                </li>
+            ))}
+        </ol>
     );
 };
 

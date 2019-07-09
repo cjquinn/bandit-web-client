@@ -8,8 +8,6 @@ export const getMatchId = (_, props) => props.matchId || getMatchParams(_, props
 
 export const getPlayerId = (_, props) => props.playerId || getMatchParams(_, props).playerId;
 
+export const getFilter = (_, props) => props.filter;
+
 export const getLimit = (_, props) => props.limit;
-
-export const getPrimaryFilter = (_, props) => props.primaryFilter;
-
-export const getSecondaryFilter = (_, props) => props.secondaryFilter;

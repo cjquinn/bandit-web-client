@@ -19,10 +19,10 @@ const DashboardScreen = ({ user }) => (
     <Template>
         <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">Challenges <span className="u-weight-normal u-color-steam">open</span></h1>
+                <h1 className="u-size-h2 u-color-white">Challenges <span className="u-weight-normal u-color-steam">accepted</span></h1>
 
                 <Link
-                    to="/challenges/open"
+                    to="/challenges"
                     className="c-go"
                 >
                     Go
@@ -32,8 +32,26 @@ const DashboardScreen = ({ user }) => (
             <ChallengesListContainer
                 component={ChallengesList}
                 playerId={user.player.id}
-                primaryFilter="all"
-                secondaryFilter="open"
+                filter="accepted"
+            />
+        </section>
+
+        <section className="o-container u-vspace-1bl">
+            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                <h1 className="u-size-h2 u-color-white">Challenges <span className="u-weight-normal u-color-steam">open</span></h1>
+
+                <Link
+                    to="/challenges"
+                    className="c-go"
+                >
+                    Go
+                </Link>
+            </header>
+
+            <ChallengesListContainer
+                component={ChallengesList}
+                playerId={user.player.id}
+                filter="open"
             />
         </section>
         

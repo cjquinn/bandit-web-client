@@ -12,9 +12,7 @@ import { initialState } from './selectors';
 
 const ids = handleAction(
     actions.fetchChallengesSuccess,
-    (state, { payload }) => payload.page === 1
-        ? payload.result
-        : [...state, ...payload.result],
+    (state, { payload }) => payload.result,
     initialState.ids
 );
 

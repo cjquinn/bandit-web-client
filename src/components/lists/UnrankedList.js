@@ -4,7 +4,7 @@ import React from 'react';
 // Components
 import PlayersList from './PlayersList';
 
-const UnrankedList = ({ players, userId }) => {
+const UnrankedList = ({ isFetching, players, userId }) => {
     if (players.length === 0) {
         return null;
     }
@@ -18,6 +18,7 @@ const UnrankedList = ({ players, userId }) => {
             </header>
 
             <PlayersList
+                isFetching={isFetching}
                 players={players}
                 userId={userId}
             />
@@ -26,6 +27,7 @@ const UnrankedList = ({ players, userId }) => {
 };
 
 UnrankedList.propTypes = {
+    isFetching: PropTypes.bool.isRequired,
     players: PropTypes.array.isRequired,
     userId: PropTypes.number.isRequired
 };

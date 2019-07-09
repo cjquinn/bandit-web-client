@@ -15,19 +15,22 @@ class ChallengesListContainer extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.playerId !== this.props.playerId) {
+        if (prevProps.playerId !== this.props.playerId ||
+            prevProps.filter !== this.props.filter
+        ) {
             this.props.fetchChallenges();
         }
     }
 
     render() {
-        const { component: Component, currentPlayerId, isFetching, challenges, playerId } = this.props;
+        const { component: Component, currentPlayerId, filter, isFetching, challenges, playerId } = this.props;
 
         return (
             <Component
                 currentPlayerId={currentPlayerId}
-                isFetching={isFetching}
                 challenges={challenges}
+                filter={filter}
+                isFetching={isFetching}
                 playerId={playerId}
             />
         );
@@ -41,8 +44,7 @@ ChallengesListContainer.propTypes = {
     isFetching: PropTypes.bool.isRequired,
     challenges: PropTypes.array.isRequired,
     playerId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    primaryFilter: PropTypes.string.isRequired,
-    secondaryFilter: PropTypes.string
+    filter: PropTypes.string.isRequired
 };
 
 const makeMapStateToProps = () => {
@@ -56,7 +58,7 @@ const makeMapStateToProps = () => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    fetchChallenges: () => dispatch(fetchChallenges(ownProps.playerId, ownProps.primaryFilter)),
+    fetchChallenges: () => dispatch(fetchChallenges(ownProps.playerId, ownProps.filter)),
 });
 
 export default connect(makeMapStateToProps, mapDispatchToProps)(ChallengesListContainer);

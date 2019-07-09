@@ -5,7 +5,7 @@ import React from 'react';
 import Loading from '../shared/Loading';
 import ChallengeItem from '../items/ChallengeItem';
 
-const ChallengesList = ({ currentPlayerId, isFetching, playerId, challenges }) => {
+const ChallengesList = ({ currentPlayerId, filter, isFetching, playerId, challenges }) => {
     if (challenges.length === 0) {
         if (isFetching) {
             return <Loading />;
@@ -19,9 +19,7 @@ const ChallengesList = ({ currentPlayerId, isFetching, playerId, challenges }) =
             
                 <p>
                     {playerId !== 'all'
-                        ? playerId === currentPlayerId
-                            ? 'You haven\'t created any challenges yet.'
-                            : 'This player hasn\'t created any challenges yet.'
+                        ? `${playerId === currentPlayerId ? 'You don\'t have any' : 'This player doesn\'t have any'} ${filter === 'open' ? 'open' : 'upcoming'} challenges.`
                         : 'Create a challenge to find a new opponent.'
                     }
                 </p>
@@ -30,7 +28,7 @@ const ChallengesList = ({ currentPlayerId, isFetching, playerId, challenges }) =
     }
 
     return (
-        <ol className="u-mt-2bl u-vspace-1bl">
+        <ol className="u-vspace-1bl">
             {challenges.map(challenge =>
                 <li key={challenge.id}>
                     <ChallengeItem challenge={challenge} />
@@ -42,6 +40,7 @@ const ChallengesList = ({ currentPlayerId, isFetching, playerId, challenges }) =
 
 ChallengesList.propTypes = {
     currentPlayerId: PropTypes.number.isRequired,
+    filter: PropTypes.string.isRequired,
     isFetching: PropTypes.bool.isRequired,
     challenges: PropTypes.array.isRequired,
     playerId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
