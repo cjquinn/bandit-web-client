@@ -141,6 +141,7 @@ describe('selectors', () => {
             {
                 id: 2,
                 rating: 1800,
+                position: 1,
                 wins: 1,
                 losses: 1,
                 user: {
@@ -152,6 +153,7 @@ describe('selectors', () => {
             {
                 id: 1,
                 rating: 1600,
+                position: 2,
                 wins: 1,
                 losses: 3,
                 user: {
@@ -163,6 +165,7 @@ describe('selectors', () => {
             {
                 id: 3,
                 rating: 1220,
+                position: 3,
                 wins: 2,
                 losses: 1,
                 user: {
@@ -174,6 +177,7 @@ describe('selectors', () => {
             {
                 id: 4,
                 rating: 1012,
+                position: 4,
                 wins: 0,
                 losses: 6,
                 user: {
@@ -195,6 +199,7 @@ describe('selectors', () => {
             {
                 id: 2,
                 rating: 1800,
+                position: 1,
                 wins: 1,
                 losses: 1,
                 user: {
@@ -217,6 +222,7 @@ describe('selectors', () => {
             {
                 id: 2,
                 rating: 1800,
+                position: 1,
                 wins: 1,
                 losses: 1,
                 user: {
@@ -228,6 +234,7 @@ describe('selectors', () => {
             {
                 id: 1,
                 rating: 1600,
+                position: 2,
                 wins: 1,
                 losses: 3,
                 user: {
@@ -239,6 +246,7 @@ describe('selectors', () => {
             {
                 id: 3,
                 rating: 1220,
+                position: 3,
                 wins: 2,
                 losses: 1,
                 user: {
@@ -257,6 +265,7 @@ describe('selectors', () => {
             {
                 id: 2,
                 rating: 1800,
+                position: 1,
                 wins: 1,
                 losses: 1,
                 user: {
@@ -268,6 +277,7 @@ describe('selectors', () => {
             {
                 id: 1,
                 rating: 1600,
+                position: 2,
                 wins: 1,
                 losses: 3,
                 user: {
@@ -279,6 +289,7 @@ describe('selectors', () => {
             {
                 id: 3,
                 rating: 1220,
+                position: 3,
                 wins: 2,
                 losses: 1,
                 user: {
@@ -297,6 +308,7 @@ describe('selectors', () => {
             {
                 id: 1,
                 rating: 1600,
+                position: 2,
                 wins: 1,
                 losses: 3,
                 user: {
@@ -308,6 +320,7 @@ describe('selectors', () => {
             {
                 id: 3,
                 rating: 1220,
+                position: 3,
                 wins: 2,
                 losses: 1,
                 user: {
@@ -319,6 +332,7 @@ describe('selectors', () => {
             {
                 id: 4,
                 rating: 1012,
+                position: 4,
                 wins: 0,
                 losses: 6,
                 user: {
@@ -337,6 +351,7 @@ describe('selectors', () => {
             {
                 id: 1,
                 rating: 1600,
+                position: 2,
                 wins: 1,
                 losses: 3,
                 user: {
@@ -348,6 +363,7 @@ describe('selectors', () => {
             {
                 id: 3,
                 rating: 1220,
+                position: 3,
                 wins: 2,
                 losses: 1,
                 user: {
@@ -359,6 +375,7 @@ describe('selectors', () => {
             {
                 id: 4,
                 rating: 1012,
+                position: 4,
                 wins: 0,
                 losses: 6,
                 user: {

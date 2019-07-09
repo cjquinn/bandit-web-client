@@ -21,15 +21,12 @@ export const fetchPlayerFailure = createAction('FETCH_PLAYER_FAILURE');
 export const fetchPlayer = playerId => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(fetchPlayerRequest({clubId, playerId}));
+    dispatch(fetchPlayerRequest());
 
     return api.fetchPlayer(clubId, playerId)
         .then(api.checkStatus)
         .then(response => normalize(response.data.player, playerSchema))
-        .then(normalizedData => dispatch(fetchPlayerSuccess({
-            ...normalizedData,
-            clubId
-        })))
+        .then(normalizedData => dispatch(fetchPlayerSuccess(normalizedData)))
         .catch(api.handleError(dispatch, fetchPlayerFailure));
 };
 
@@ -65,7 +62,7 @@ export const invitePlayerFailure = createAction('INVITE_PLAYER_FAILURE');
 export const invitePlayer = data => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(invitePlayerRequest({clubId}));
+    dispatch(invitePlayerRequest());
 
     return api.invitePlayer(clubId, data)
         .then(api.checkStatus)

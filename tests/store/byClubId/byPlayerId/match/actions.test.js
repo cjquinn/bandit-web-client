@@ -4,6 +4,7 @@ import { push } from 'react-router-redux';
 
 // Actions
 import * as actions from '../../../../../src/store/byClubId/byPlayerId/match/actions';
+import { setFlash } from '../../../../../src/store/flash/actions';
 import { SIGN_OUT } from '../../../../../src/store/user/actions';
 
 const clubId = 1;
@@ -61,7 +62,7 @@ describe('addMatch', () => {
                             }
                         }
                     },
-                    push('/matches')
+                    push('/matches/1')
                 ];
 
                 expect(store.getActions()).toEqual(expected);
@@ -109,7 +110,6 @@ describe('deleteMatch', () => {
                         type: actions.deleteMatchSuccess.toString(),
                         payload: {
                             clubId,
-                            matchId,
                             result: [1],
                             entities: {
                                 clubs: {1: {id: 1}},
@@ -121,6 +121,13 @@ describe('deleteMatch', () => {
                                     player_b: 2
                                 }}
                             }
+                        }
+                    },
+                    {
+                        type: setFlash.toString(),
+                        payload: {
+                            message: 'Your match was deleted',
+                            type: 'info'
                         }
                     }
                 ];
@@ -201,7 +208,13 @@ describe('fetchMatches', () => {
         return store.dispatch(actions.fetchMatches(playerId))
             .then(() => {
                 const expected = [
-                    {type: actions.fetchMatchesRequest.toString()},
+                    {
+                        type: actions.fetchMatchesRequest.toString(),
+                        payload: {
+                            clubId,
+                            playerId
+                        }
+                    },
                     {type: actions.fetchMatchesFailure.toString()},
                     {type: SIGN_OUT}
                 ];
@@ -218,7 +231,13 @@ describe('fetchMatches', () => {
         return store.dispatch(actions.fetchMatches(playerId))
             .then(() => {
                 const expected = [
-                    {type: actions.fetchMatchesRequest.toString()},
+                    {
+                        type: actions.fetchMatchesRequest.toString(),
+                        payload: {
+                            clubId,
+                            playerId
+                        }
+                    },
                     {
                         type: actions.fetchMatchesSuccess.toString(),
                         payload: {
@@ -273,7 +292,13 @@ describe('fetchMoreMatches', () => {
         return store.dispatch(actions.fetchMoreMatches(playerId))
             .then(() => {
                 const expected = [
-                    {type: actions.fetchMatchesRequest.toString()},
+                    {
+                        type: actions.fetchMatchesRequest.toString(),
+                        payload: {
+                            clubId,
+                            playerId
+                        }
+                    },
                     {type: actions.fetchMatchesFailure.toString()},
                     {type: SIGN_OUT}
                 ];
@@ -293,7 +318,13 @@ describe('fetchMoreMatches', () => {
         return store.dispatch(actions.fetchMoreMatches(playerId))
             .then(() => {
                 const expected = [
-                    {type: actions.fetchMatchesRequest.toString()},
+                    {
+                        type: actions.fetchMatchesRequest.toString(),
+                        payload: {
+                            clubId,
+                            playerId
+                        }
+                    },
                     {
                         type: actions.fetchMatchesSuccess.toString(),
                         payload: {

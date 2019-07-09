@@ -13,11 +13,19 @@ const reducers = (state = {}, action) => {
         return state;
     }
 
-    const playerId = action.payload.playerId;
+    let playerId = action.payload.playerId;
+
+    if (!Array.isArray(playerId)) {
+        playerId = [playerId];
+    }
 
     return {
         ...state,
-        [playerId]: playerReducers(state[playerId], action)
+        ...playerId.reduce((playersState, id) => {
+            playersState[id] = playerReducers(state[id], action);
+
+            return playersState;
+        }, {})
     };
 };
 

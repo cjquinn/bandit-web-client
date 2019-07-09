@@ -22,8 +22,9 @@ export const addMatchFailure = createAction('ADD_MATCH_FAILURE');
 export const addMatch = data => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(addMatchRequest({clubId}));
+    dispatch(addMatchRequest());
 
+    // TODO: Pass playerId and add match in right places
     return api.addMatch(clubId, data)
         .then(api.checkStatus)
         .then(response => normalize(response.data, {club: clubSchema, match: matchSchema}))
@@ -38,7 +39,7 @@ export const addMatch = data => (dispatch, getState, api) => {
 };
 
 /**
- * Fetch match
+ * Delete match
  */
 export const deleteMatchRequest = createAction('DELETE_MATCH_REQUEST');
 export const deleteMatchSuccess = createAction('DELETE_MATCH_SUCCESS');
@@ -47,16 +48,16 @@ export const deleteMatchFailure = createAction('DELETE_MATCH_FAILURE');
 export const deleteMatch = matchId => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
     
-    dispatch(deleteMatchRequest({clubId}));
+    dispatch(deleteMatchRequest());
 
+    // TODO: Pass playerId and remove match in right places
     return api.deleteMatch(clubId, matchId)
         .then(api.checkStatus)
         .then(response => normalize(response.data, {club: clubSchema, matches: [matchSchema]}))
         .then(normalizedData => dispatch(deleteMatchSuccess({
             ...normalizedData,
             result: normalizedData.result.matches,
-            clubId,
-            matchId
+            clubId
         })))
         .then(() => dispatch(setFlash({message: 'Your match was deleted', type: 'info'})))
         .then(() => api.trackEvent('matchDeleted'))
@@ -73,7 +74,7 @@ export const fetchMatchFailure = createAction('FETCH_MATCH_FAILURE');
 export const fetchMatch = matchId => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(fetchMatchRequest({clubId, matchId}));
+    dispatch(fetchMatchRequest());
 
     return api.fetchMatch(clubId, matchId)
         .then(api.checkStatus)

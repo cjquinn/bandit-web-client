@@ -34,11 +34,19 @@ const reducers = (state = {}, action) => {
         return state;
     }
 
-    const filter = action.payload.filter;
+    let filter = action.payload.filter;
+
+    if (!Array.isArray(filter)) {
+        filter = [filter];
+    }
 
     return {
         ...state,
-        [filter]: challengeReducers(state[filter], action)
+        ...filter.reduce((filtersState, f) => {
+            filtersState[f] = challengeReducers(state[f], action);
+
+            return filtersState;
+        }, {})
     };
 };
 

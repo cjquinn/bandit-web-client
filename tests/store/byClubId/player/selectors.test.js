@@ -196,6 +196,7 @@ describe('selectors', () => {
                     rating: 1600,
                     wins: 1,
                     losses: 3,
+                    games: 4,
                     user: 1
                 },
                 2: {
@@ -203,6 +204,7 @@ describe('selectors', () => {
                     rating: 1800,
                     wins: 1,
                     losses: 1,
+                    games: 2,
                     user: 2
                 },
                 3: {
@@ -210,21 +212,28 @@ describe('selectors', () => {
                     rating: 1220,
                     wins: 2,
                     losses: 1,
+                    games: 3,
                     user: 3
                 }
             },
             users: {
                 1: {
                     id: 1,
-                    name: 'Russell'
+                    first_name: 'Russell',
+                    last_name: 'Bishop',
+                    display_name: 'Russell B.'
                 },
                 2: {
                     id: 2,
-                    name: 'Christy'
+                    first_name: 'Christy',
+                    last_name: 'Quinn',
+                    display_name: 'Christy Q.'
                 },
                 3: {
                     id: 3,
-                    name: 'Nathan'
+                    first_name: 'Nathan',
+                    last_name: 'Rathbone',
+                    display_name: 'Nathan R.'
                 }
             }
         },
@@ -263,7 +272,9 @@ describe('selectors', () => {
                 games: 2,
                 user: {
                     id: 2,
-                    name: 'Christy'
+                    first_name: 'Christy',
+                    last_name: 'Quinn',
+                    display_name: 'Christy Q.'
                 },
                 isBandit: false
             },
@@ -275,7 +286,9 @@ describe('selectors', () => {
                 games: 3,
                 user: {
                     id: 3,
-                    name: 'Nathan'
+                    first_name: 'Nathan',
+                    last_name: 'Rathbone',
+                    display_name: 'Nathan R.'
                 },
                 isBandit: true
             },
@@ -287,7 +300,9 @@ describe('selectors', () => {
                 games: 4,
                 user: {
                     id: 1,
-                    name: 'Russell'  
+                    first_name: 'Russell',
+                    last_name: 'Bishop',
+                    display_name: 'Russell B.'
                 },
                 isBandit: false
             }
@@ -315,7 +330,9 @@ describe('selectors', () => {
                 games: 4,
                 user: {
                     id: 1,
-                    name: 'Russell'  
+                    first_name: 'Russell',
+                    last_name: 'Bishop',
+                    display_name: 'Russell B.'
                 },
                 isBandit: false
             },
@@ -327,7 +344,9 @@ describe('selectors', () => {
                 games: 3,
                 user: {
                     id: 3,
-                    name: 'Nathan'
+                    first_name: 'Nathan',
+                    last_name: 'Rathbone',
+                    display_name: 'Nathan R.'
                 },
                 isBandit: true
             },
@@ -339,7 +358,9 @@ describe('selectors', () => {
                 games: 2,
                 user: {
                     id: 2,
-                    name: 'Christy'
+                    first_name: 'Christy',
+                    last_name: 'Quinn',
+                    display_name: 'Christy Q.'
                 },
                 isBandit: false
             }
@@ -366,7 +387,9 @@ describe('selectors', () => {
                 games: 2,
                 user: {
                     id: 2,
-                    name: 'Christy'
+                    first_name: 'Christy',
+                    last_name: 'Quinn',
+                    display_name: 'Christy Q.'
                 },
                 isBandit: false
             },
@@ -378,7 +401,9 @@ describe('selectors', () => {
                 games: 4,
                 user: {
                     id: 1,
-                    name: 'Russell'  
+                    first_name: 'Russell',
+                    last_name: 'Bishop',
+                    display_name: 'Russell B.'
                 },
                 isBandit: false
             },
@@ -390,7 +415,9 @@ describe('selectors', () => {
                 games: 3,
                 user: {
                     id: 3,
-                    name: 'Nathan'
+                    first_name: 'Nathan',
+                    last_name: 'Rathbone',
+                    display_name: 'Nathan R.'
                 },
                 isBandit: true
             }

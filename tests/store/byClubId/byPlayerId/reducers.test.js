@@ -7,6 +7,7 @@ describe('byPlayerId', () => {
 
         const expected = {
             1: {
+                challenge: {},
                 match: {
                     ids: [],
                     isFetching: false,

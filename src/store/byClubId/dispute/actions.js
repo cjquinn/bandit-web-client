@@ -17,7 +17,7 @@ export const addDisputeFailure = createAction('ADD_DISPUTE_FAILURE');
 export const addDispute = data => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
     
-    dispatch(addDisputeRequest({clubId}));
+    dispatch(addDisputeRequest());
 
     return api.addDispute(clubId, data)
         .then(api.checkStatus)
@@ -40,14 +40,15 @@ export const closeDisputeFailure = createAction('CLOSE_DISPUTE_FAILURE');
 export const closeDispute = (disputeId, data) => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(closeDisputeRequest({clubId}));
+    dispatch(closeDisputeRequest());
 
     return api.closeDispute(clubId, disputeId, data)
         .then(api.checkStatus)
         .then(response => normalize(response.data, {club: clubSchema, dispute: disputeSchema, matches: [matchSchema]}))
         .then(normalizedData => dispatch(closeDisputeSuccess({
             ...normalizedData,
-            result: normalizedData.result.dispute
+            result: normalizedData.result.dispute,
+            clubId
         })))
         .then(() => api.trackEvent('disputeClosed'))
         .catch(api.handleError(dispatch, closeDisputeFailure));
@@ -63,7 +64,7 @@ export const deleteDisputeFailure = createAction('DELETE_DISPUTE_FAILURE');
 export const deleteDispute = disputeId => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(deleteDisputeRequest({clubId, disputeId}));
+    dispatch(deleteDisputeRequest());
 
     return api.deleteDispute(clubId, disputeId)
         .then(api.checkStatus)
@@ -84,12 +85,12 @@ export const fetchDisputesRequest = createAction('FETCH_DISPUTES_REQUEST');
 export const fetchDisputesSuccess = createAction('FETCH_DISPUTES_SUCCESS');
 export const fetchDisputesFailure = createAction('FETCH_DISPUTES_FAILURE');
 
-export const fetchDisputes = disputeId => (dispatch, getState, api) => {
+export const fetchDisputes = () => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(fetchDisputesRequest({clubId, disputeId}));
+    dispatch(fetchDisputesRequest({clubId}));
 
-    return api.fetchDisputes(clubId, disputeId)
+    return api.fetchDisputes(clubId)
         .then(api.checkStatus)
         .then(response => normalize(response.data.disputes, [disputeSchema]))
         .then(normalizedData => dispatch(fetchDisputesSuccess({

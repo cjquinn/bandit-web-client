@@ -8,7 +8,7 @@ describe('initial state', () => {
     it('shape', () => {
         const state = reducers(undefined, {});
 
-        const expected = ['byClubId', 'club', 'form', 'entities', 'router', 'user'];
+        const expected = ['byClubId', 'club', 'flash', 'form', 'entities', 'router', 'user'];
 
         expect(Object.keys(state)).toEqual(expected);
     });
@@ -35,12 +35,16 @@ describe('app', () => {
                 ids: [1],
                 isFetching: true
             },
+            flash: {
+                message: 'Some message',
+                type: 'success'
+            },
             entities: {
+                challenges: {1: {id: 1}},
                 clubs: {1: {id: 1}},
                 disputes: {1: {id: 1}},
                 matches: {1: {id: 1}},
                 players: {1: {id: 1}},
-                snapshots: {1: {id: 1}},
                 users: {1: {id: 1}}
             },
             user: {
@@ -56,12 +60,16 @@ describe('app', () => {
                 ids: [],
                 isFetching: false
             },
+            flash: {
+                message: null,
+                type: null
+            },
             entities: {
+                challenges: {},
                 clubs: {},
                 disputes: {},
                 matches: {},
                 players: {},
-                snapshots: {},
                 users: {}
             },
             user: {

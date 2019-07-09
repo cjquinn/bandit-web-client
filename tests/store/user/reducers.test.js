@@ -17,32 +17,6 @@ describe('initial state', () => {
     });
 });
 
-describe('activateAccount', () => {
-    it(actions.activateAccountSuccess.toString(), () => {
-        const state = {
-            clubId: null,
-            id: null,
-            isLoading: false
-        };
-
-        const payload = {
-            result: 1,
-            entities: {
-                users: {1: {id: 1, players: [3]}},
-                players: {3: {id: 3, club_id: 2, user_id: 1}}
-            }
-        };
-
-        const expected = {
-            clubId: 2,
-            id: 1,
-            isLoading: false
-        };
-
-        expect(reducers(state, actions.activateAccountSuccess(payload))).toEqual(expected);
-    });
-});
-
 describe('createClub', () => {
     it(createClubSuccess.toString(), () => {
         const state = {
@@ -219,5 +193,31 @@ describe('signIn', () => {
         };
 
         expect(reducers(state, actions.signInSuccess(payload))).toEqual(expected);
+    });
+});
+
+describe('signUp', () => {
+    it(actions.signUpSuccess.toString(), () => {
+        const state = {
+            clubId: null,
+            id: null,
+            isLoading: false
+        };
+
+        const payload = {
+            result: 1,
+            entities: {
+                users: {1: {id: 1, players: [3]}},
+                players: {3: {id: 3, club_id: 2, user_id: 1}}
+            }
+        };
+
+        const expected = {
+            clubId: 2,
+            id: 1,
+            isLoading: false
+        };
+
+        expect(reducers(state, actions.signUpSuccess(payload))).toEqual(expected);
     });
 });

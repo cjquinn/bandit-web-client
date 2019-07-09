@@ -100,6 +100,7 @@ describe('closeDispute', () => {
                     {
                         type: actions.closeDisputeSuccess.toString(),
                         payload: {
+                            clubId,
                             result: 1,
                             entities: {
                                 clubs: {1: {id: 1}},
@@ -190,7 +191,10 @@ describe('fetchDisputes', () => {
         return store.dispatch(actions.fetchDisputes())
             .then(() => {
                 const expected = [
-                    {type: actions.fetchDisputesRequest.toString()},
+                    {
+                        type: actions.fetchDisputesRequest.toString(),
+                        payload: {clubId}
+                    },
                     {type: actions.fetchDisputesFailure.toString()},
                     {type: SIGN_OUT}
                 ];
@@ -207,7 +211,10 @@ describe('fetchDisputes', () => {
         return store.dispatch(actions.fetchDisputes())
             .then(() => {
                 const expected = [
-                    {type: actions.fetchDisputesRequest.toString()},
+                    {
+                        type: actions.fetchDisputesRequest.toString(),
+                        payload: {clubId}
+                    },
                     {
                         type: actions.fetchDisputesSuccess.toString(),
                         payload: {

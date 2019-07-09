@@ -22,7 +22,7 @@ const DashboardScreen = ({ user }) => (
                 <h1 className="u-size-h2 u-color-white">Challenges <span className="u-weight-normal u-color-steam">accepted</span></h1>
 
                 <Link
-                    to="/challenges"
+                    to="/challenges/accepted"
                     className="c-go"
                 >
                     Go
@@ -41,7 +41,7 @@ const DashboardScreen = ({ user }) => (
                 <h1 className="u-size-h2 u-color-white">Challenges <span className="u-weight-normal u-color-steam">open</span></h1>
 
                 <Link
-                    to="/challenges"
+                    to="/challenges/open"
                     className="c-go"
                 >
                     Go
@@ -53,6 +53,15 @@ const DashboardScreen = ({ user }) => (
                 playerId={user.player.id}
                 filter="open"
             />
+
+            <div className="u-ph-1bl">
+                <Link
+                    to="/challenges/create"
+                    className="c-button c-button--default u-mt-2bl"
+                >
+                    Create challenge
+                </Link>
+            </div>
         </section>
         
         <section className="o-container u-vspace-1bl">

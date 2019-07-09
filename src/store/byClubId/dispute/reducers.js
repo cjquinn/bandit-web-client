@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { handleActions } from 'redux-actions';
+import { combineActions, handleActions } from 'redux-actions';
 
 // Actions
 import * as actions from './actions';
@@ -13,9 +13,10 @@ const ids = handleActions(
             payload.result,
             ...state
         ]),
-        [actions.deleteDisputeSuccess]: (state, { payload }) => state.filter(
-            id => id !== payload.result
-        ),
+        [combineActions(actions.closeDisputeSuccess, actions.deleteDisputeSuccess)]: (state, { payload }) =>
+            state.filter(
+                id => id !== payload.result
+            ),
         [actions.fetchDisputesSuccess]: (state, { payload }) => payload.result
     },
     []

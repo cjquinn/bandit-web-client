@@ -55,8 +55,8 @@ export const makeGetChallenge = () => createSelector(
 );
 
 export const makeGetChallenges = () => createSelector(
-    [getIds, getFilter, getPlayerId, getChallengeEntities, getPlayerEntities, getUserEntities],
-    (ids, filter, playerId, challenges, players, users) => {
+    [getIds, getPlayerId, getChallengeEntities, getPlayerEntities, getUserEntities],
+    (ids, playerId, challenges, players, users) => {
         let denormalizedChallenges = denormalize(
             ids,
             [challengeSchema],
@@ -69,9 +69,8 @@ export const makeGetChallenges = () => createSelector(
                 moment: moment(challenge.match_datetime)
             }));
 
-        // All challenges
-        // All players only returns future challenges
-        if (filter === 'all' || playerId !== 'all') {
+        // Specific player returns list of challenges
+        if (playerId !== 'all') {
             return denormalizedChallenges;
         }
 

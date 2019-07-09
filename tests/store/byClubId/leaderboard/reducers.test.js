@@ -11,6 +11,10 @@ describe('initial state', () => {
                 ids: [],
                 isFetching: false
             },
+            unranked: {
+                ids: [],
+                isFetching: false
+            },
             weekly: {
                 ids: [],
                 isFetching: false
@@ -30,6 +34,10 @@ describe('fetchLeaderboard', () => {
                 ids: [],
                 isFetching: false
             },
+            unranked: {
+                ids: [],
+                isFetching: false
+            },
             weekly: {
                 ids: [],
                 isFetching: false
@@ -40,6 +48,10 @@ describe('fetchLeaderboard', () => {
             allTime: {
                 ids: [],
                 isFetching: true
+            },
+            unranked: {
+                ids: [],
+                isFetching: false
             },
             weekly: {
                 ids: [],
@@ -56,6 +68,10 @@ describe('fetchLeaderboard', () => {
                 ids: [],
                 isFetching: true
             },
+            unranked: {
+                ids: [],
+                isFetching: false
+            },
             weekly: {
                 ids: [],
                 isFetching: false
@@ -64,6 +80,10 @@ describe('fetchLeaderboard', () => {
 
         const expected = {
             allTime: {
+                ids: [],
+                isFetching: false
+            },
+            unranked: {
                 ids: [],
                 isFetching: false
             },
@@ -82,6 +102,10 @@ describe('fetchLeaderboard', () => {
                 ids: [],
                 isFetching: true
             },
+            unranked: {
+                ids: [],
+                isFetching: false
+            },
             weekly: {
                 ids: [],
                 isFetching: false
@@ -96,6 +120,10 @@ describe('fetchLeaderboard', () => {
         const expected = {
             allTime: {
                 ids: [1, 2, 3],
+                isFetching: false
+            },
+            unranked: {
+                ids: [],
                 isFetching: false
             },
             weekly: {
