@@ -42,7 +42,7 @@ describe('selectors', () => {
     });
 
     it('getClubs', () => {
-        const twoDaysAgo = moment().day(-2).format();
+        const twoDaysAgo = moment().subtract(2, 'days').format();
 
         const state = {
             club: {
