@@ -1,13 +1,30 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+// Actions
+import { acceptChallenge, deleteChallenge, reportChallenge, withdrawChallenge } from '../../store/byClubId/byPlayerId/challenge/actions';
+
 // Components
+import Button from '../shared/Button';
 import Loading from '../shared/Loading';
 import Player from '../player/Player';
 import Players from '../items/ChallengeItem/Players';
 import Template from '../shared/Template';
+
+// HOCs
+import withAction from '../../hocs/withAction';
+
+// Selectors
+import { getChallengeId } from '../../store/props/selectors';
+
+// Containers
+const AcceptChallengeButton = withAction(Button, props => acceptChallenge(getChallengeId(props)));
+const DeleteChallengeButton = withAction(Button, props => deleteChallenge(getChallengeId(props)));
+const ReportChallengeButton = withAction(Button, props => reportChallenge(getChallengeId(props)));
+const WithdrawChallengeButton = withAction(Button, props => withdrawChallenge(getChallengeId(props)));
 
 const Challenge = ({ challenge, user }) => {
     if (!challenge) {
@@ -58,43 +75,52 @@ const Challenge = ({ challenge, user }) => {
 
             <div className="u-ph-1bl u-vspace-3bl">
                 {!challenge.player_b_id && user.id !== challenge.player_a.user_id &&
-                    <button
-                        className="c-button c-button--default"
-                    >
+                    <AcceptChallengeButton type="default">
                         Accept challenge
-                    </button>
+                    </AcceptChallengeButton>
                 }
 
                 {challenge.player_b_id && [challenge.player_a.user_id, challenge.player_b.user_id].indexOf(user.id) !== -1 &&
                     <Template>
-                        <button
-                            className="u-mt-2bl c-button c-button--default"
-                        >
-                            Contact Alaric
-                        </button>
-
-                        <button
+                        <a
                             className="c-button c-button--default"
+                            href={`mailto:${user.id === challenge.player_a.user_id
+                                ? challenge.player_b.user.email
+                                : challenge.player_a.user.email
+                            }`}
                         >
-                            Submit match score
-                        </button>
+                            Contact {user.id === challenge.player_a.user_id
+                                ? challenge.player_b.user.first_name
+                                : challenge.player_a.user.first_name
+                            }
+                        </a>
+
+                        {challenge.moment < moment() &&
+                            <Template>
+                                <button
+                                    className="c-button c-button--default"
+                                >
+                                    Submit match score
+                                </button>
+
+                                <ReportChallengeButton type="warning">
+                                    Report opponent
+                                </ReportChallengeButton>
+                            </Template>
+                        }
 
                         {user.id === challenge.player_b.user_id &&
-                            <button
-                                className="c-button c-button--warning"
-                            >
-                                Decline challenge
-                            </button>
+                            <WithdrawChallengeButton type="warning">
+                                Withdraw from challenge
+                            </WithdrawChallengeButton>
                         }
                     </Template>
                 }
 
                 {user.id === challenge.player_a.user_id &&
-                    <button
-                        className="c-button c-button--warning u-mt-3bl"
-                    >
+                    <DeleteChallengeButton type="warning">
                         Cancel challenge
-                    </button>
+                    </DeleteChallengeButton>
                 }
             </div>
         </Template>
