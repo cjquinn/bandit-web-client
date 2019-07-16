@@ -22,7 +22,13 @@ const reducers = (state = {}, action) => {
     return {
         ...state,
         ...playerId.reduce((playersState, id) => {
-            playersState[id] = playerReducers(state[id], action);
+            playersState[id] = playerReducers(
+                state[id],
+                {
+                    ...action,
+                    playerId: id
+                }
+            );
 
             return playersState;
         }, {})

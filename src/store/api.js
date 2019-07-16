@@ -55,12 +55,16 @@ export const checkStatus = response => {
     throw response;
 };
 
-export const handleError = (dispatch, failure) => response => {
+export const handleError = (dispatch, failure, payload = null) => response => {
     if (!response.status) {
         throw response;
     }
 
-    dispatch(failure());
+    if (payload) {
+        dispatch(failure(payload));
+    } else {
+        dispatch(failure());
+    }
 
     switch (response.status) {
         case 400:

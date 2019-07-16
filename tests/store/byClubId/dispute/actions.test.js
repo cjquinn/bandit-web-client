@@ -46,10 +46,9 @@ describe('addDispute', () => {
                             clubId,
                             result: 1,
                             entities: {
-                                disputes: {1: {
-                                    match_id: 1,
-                                    match: 1
-                                }}
+                                disputes: {
+                                    1: {match_id: 1, match: 1}
+                                }
                             }
                         }
                     }

@@ -4,7 +4,7 @@ import { addDisputeSuccess, deleteDisputeSuccess } from '../../../../src/store/b
 // Reducers
 import reducers from '../../../../src/store/entities/reducers/matches';
 
-describe('addListItem', () => {
+describe('addDispute', () => {
     it(addDisputeSuccess.toString(), () => {
         const state = {
             1: {
@@ -27,7 +27,7 @@ describe('addListItem', () => {
     });
 });
 
-describe('deleteListItem', () => {
+describe('deleteDispute', () => {
     it(deleteDisputeSuccess.toString(), () => {
         let state = {
             1: {

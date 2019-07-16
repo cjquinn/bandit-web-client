@@ -22,14 +22,13 @@ export const acceptChallengeFailure = createAction('ACCEPT_CHALLENGE_FAILURE');
 export const acceptChallenge = challengeId => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(acceptChallengeRequest({clubId, challengeId}));
+    dispatch(acceptChallengeRequest());
 
     return api.acceptChallenge(clubId, challengeId)
         .then(api.checkStatus)
         .then(({ data }) => dispatch(acceptChallengeSuccess({
             ...normalize(data.challenge, challengeSchema),
             clubId,
-            filter: ['accepted', 'open'],
             playerId: ['all', data.challenge.player_a_id, data.challenge.player_b_id]
         })))
         .then(() => dispatch(setFlash({message: 'You have accepted the challenge', type: 'info'})))
@@ -47,14 +46,13 @@ export const createChallengeFailure = createAction('ADD_CHALLENGE_FAILURE');
 export const createChallenge = data => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(createChallengeRequest({clubId}));
+    dispatch(createChallengeRequest());
 
     return api.createChallenge(clubId, data)
         .then(api.checkStatus)
         .then(({ data }) => dispatch(createChallengeSuccess({
             ...normalize(data.challenge, challengeSchema),
             clubId,
-            filter: 'open',
             playerId: ['all', data.challenge.player_a_id]
         })))
         .then(action => dispatch(push(`/challenges/${action.payload.result}`)))
@@ -72,22 +70,20 @@ export const deleteChallengeFailure = createAction('DELETE_CHALLENGE_FAILURE');
 export const deleteChallenge = challengeId => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(deleteChallengeRequest({clubId, challengeId}));
+    dispatch(deleteChallengeRequest());
 
     return api.deleteChallenge(clubId, challengeId)
         .then(api.checkStatus)
         .then(({ data }) => {
             const playerId = ['all', data.challenge.player_a_id];
-            const filter = data.challenge.player_b_id !== null ? 'accepted' : 'open';
 
-            if (filter === 'accepted') {
+            if (data.challenge.player_b_id !== null) {
                 playerId.push(data.challenge.player_b_id);
             }
 
             return dispatch(deleteChallengeSuccess({
                 ...normalize(data.challenge, challengeSchema),
                 clubId,
-                filter,
                 playerId
             }));
         })
@@ -107,7 +103,7 @@ export const fetchChallengeFailure = createAction('FETCH_CHALLENGE_FAILURE');
 export const fetchChallenge = challengeId => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(fetchChallengeRequest({clubId, challengeId}));
+    dispatch(fetchChallengeRequest());
 
     return api.fetchChallenge(clubId, challengeId)
         .then(api.checkStatus)
@@ -137,7 +133,7 @@ export const fetchChallenges = (playerId, filter) => (dispatch, getState, api) =
             playerId,
             filter
         })))
-        .catch(api.handleError(dispatch, fetchChallengesFailure));
+        .catch(api.handleError(dispatch, fetchChallengesFailure, {clubId, playerId, filter}));
 };
 
 /**
@@ -150,15 +146,14 @@ export const reportChallengeFailure = createAction('REPORT_CHALLENGE_FAILURE');
 export const reportChallenge = challengeId => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
 
-    dispatch(reportChallengeRequest({clubId, challengeId}));
+    dispatch(reportChallengeRequest());
 
     return api.reportChallenge(clubId, challengeId)
         .then(api.checkStatus)
         .then(({ data }) => dispatch(reportChallengeSuccess({
             ...normalize(data.challenge, challengeSchema),
             clubId,
-            filter: 'accepted',
-            playerId: ['all', data.player_a_id, data.player_b_id]
+            playerId: ['all', data.challenge.player_a_id, data.challenge.player_b_id]
         })))
         .then(() => dispatch(setFlash({message: 'Your opponent has been reported', type: 'info'})))
         .then(() => dispatch(push('/challenges')))
@@ -177,14 +172,13 @@ export const withdrawChallenge = challengeId => (dispatch, getState, api) => {
     const clubId = getClubId(getState());
     const currentPlayerId = getCurrentPlayerId(getState());
 
-    dispatch(withdrawChallengeRequest({clubId, challengeId}));
+    dispatch(withdrawChallengeRequest());
 
     return api.withdrawChallenge(clubId, challengeId)
         .then(api.checkStatus)
         .then(({ data }) => dispatch(withdrawChallengeSuccess({
             ...normalize(data.challenge, challengeSchema),
             clubId,
-            filter: ['accepted', 'open'],
             playerId: ['all', data.challenge.player_a_id, currentPlayerId]
         })))
         .then(() => dispatch(setFlash({message: 'You have withdrawn from the challenge', type: 'info'})))

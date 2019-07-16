@@ -17,7 +17,6 @@ describe('selectors', () => {
                     byPlayerId: {
                         1: {
                             match: {
-                                didError: false,
                                 ids: [1, 2],
                                 isFetching: false,
                                 page: 1
@@ -59,7 +58,6 @@ describe('selectors', () => {
                     byPlayerId: {
                         1: {
                             match: {
-                                didError: false,
                                 ids: [],
                                 isFetching: true,
                                 page: 1
@@ -99,7 +97,6 @@ describe('selectors', () => {
                     byPlayerId: {
                         1: {
                             match: {
-                                didError: false,
                                 ids: [],
                                 isFetching: false,
                                 page: 2
@@ -274,7 +271,6 @@ describe('selectors', () => {
                     byPlayerId: {
                         1: {
                             match: {
-                                didError: false,
                                 ids: [1, 2],
                                 isFetching: false,
                                 page: 1

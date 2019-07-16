@@ -1,8 +1,10 @@
 import {
     getMatchParams,
+    getChallengeId,
     getDisputeId,
     getMatchId,
     getPlayerId,
+    getFilter,
     getLimit } from '../../../src/store/props/selectors';
 
 describe('selectors', () => {
@@ -10,23 +12,38 @@ describe('selectors', () => {
         const props = {
             match: {
                 params: {
-                    clubId: 1
+                    clubId: '1'
                 }
             }
         };
 
         const expected = {
-            clubId: 1
+            clubId: '1'
         };
 
         expect(getMatchParams({}, props)).toEqual(expected);
+    });
+
+    it('getChallengeId', () => {
+        const props = {
+            match: {
+                params: {
+                    challengeId: '1'
+                }
+            }
+        };
+
+        const expected = 1;
+
+        expect(getChallengeId({}, props)).toEqual(expected);
+        expect(getChallengeId({}, {challengeId: 1})).toEqual(expected);
     });
 
     it('getDisputeId', () => {
         const props = {
             match: {
                 params: {
-                    disputeId: 1
+                    disputeId: '1'
                 }
             }
         };
@@ -41,7 +58,7 @@ describe('selectors', () => {
         const props = {
             match: {
                 params: {
-                    matchId: 1
+                    matchId: '1'
                 }
             }
         };
@@ -56,7 +73,7 @@ describe('selectors', () => {
         const props = {
             match: {
                 params: {
-                    playerId: 1
+                    playerId: '1'
                 }
             }
         };
@@ -65,6 +82,16 @@ describe('selectors', () => {
 
         expect(getPlayerId({}, props)).toEqual(expected);
         expect(getPlayerId({}, {playerId: 1})).toEqual(expected);
+    });
+
+    it('getFilter', () => {
+        const props = {
+            filter: 'all'
+        };
+
+        const expected = 'all';
+
+        expect(getFilter({}, props)).toEqual(expected);
     });
 
     it('getLimit', () => {

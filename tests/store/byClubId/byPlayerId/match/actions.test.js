@@ -48,6 +48,7 @@ describe('addMatch', () => {
                     {
                         type: actions.addMatchSuccess.toString(),
                         payload: {
+                            playerId: ['all', 1, 2],
                             clubId,
                             result: 1,
                             entities: {
@@ -71,7 +72,15 @@ describe('addMatch', () => {
 });
 
 describe('deleteMatch', () => {
-    beforeEach(() => store = global.configureStore({user: {clubId}}));
+    beforeEach(() => store = global.configureStore({
+        user: {clubId},
+        entities: {
+            matches: {
+                1: {id: 1, player_a_id: 1, player_b_id: 2},
+                2: {id: 1, player_a_id: 1, player_b_id: 2}
+            }
+        }
+    }));
 
     afterEach(() => mock.reset());
 
@@ -110,7 +119,8 @@ describe('deleteMatch', () => {
                         type: actions.deleteMatchSuccess.toString(),
                         payload: {
                             clubId,
-                            result: [1],
+                            playerId: ['all', 1, 2],
+                            result: 1,
                             entities: {
                                 clubs: {1: {id: 1}},
                                 matches: {1: {
@@ -215,7 +225,13 @@ describe('fetchMatches', () => {
                             playerId
                         }
                     },
-                    {type: actions.fetchMatchesFailure.toString()},
+                    {
+                        type: actions.fetchMatchesFailure.toString(),
+                        payload: {
+                            clubId,
+                            playerId
+                        }
+                    },
                     {type: SIGN_OUT}
                 ];
 
@@ -299,7 +315,13 @@ describe('fetchMoreMatches', () => {
                             playerId
                         }
                     },
-                    {type: actions.fetchMatchesFailure.toString()},
+                    {
+                        type: actions.fetchMatchesFailure.toString(),
+                        payload: {
+                            clubId,
+                            playerId
+                        }
+                    },
                     {type: SIGN_OUT}
                 ];
 
