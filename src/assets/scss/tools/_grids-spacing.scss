@@ -64,3 +64,14 @@
 
   @return calc(#{$columns} * var(--column-unit) + (#{$gutters} * var(--gutter-unit)));
 }
+
+
+/**
+ *
+ *  Baselines
+ *
+ */
+ @function baselines($value) {
+
+  @return calc(var(--baseline) * #{$value});
+}
