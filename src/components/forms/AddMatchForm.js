@@ -17,11 +17,22 @@ const AddMatchForm = ({ players, user, ...props }) => (
 
         <nav className="u-bgcolor-fold u-pt-2bl u-borrad-3300">
             <ul className="u-flex u-ph-1bl u-hspace-1bl">
-                <li className="u-grow-1">
+                <li className="u-grow-1 u-basis-0">
                     <a className="c-tab c-tab--main c-tab--active" aria-current="page" href="/leaderboard/all-time">New Match</a>
                 </li>
-                <li className="u-grow-1">
+                <li className="u-grow-1 u-basis-0">
                     <a className="c-tab c-tab--main" href="/leaderboard/weekly">Challenge <span className="c-count">3</span></a>
+                </li>
+            </ul>
+        </nav>
+
+        <nav className="u-bgcolor-fold u-pt-2bl u-borrad-3300">
+            <ul className="u-flex u-ph-1bl u-hspace-1bl">
+                <li className="u-grow-1 u-basis-0">
+                    <a className="c-tab c-tab--main c-tab--active" aria-current="page" href="/leaderboard/all-time">New Match</a>
+                </li>
+                <li className="u-grow-1 u-basis-0">
+                    <a className="c-tab c-tab--main c-tab--disabled" href="/leaderboard/weekly">Challenge</a>
                 </li>
             </ul>
         </nav>
