@@ -14,7 +14,7 @@ const createChallengeEmailSubject = clubName => encodeURIComponent(`Are you free
 
 const createChallengeEmailBody = (challengerFirstName, opponentFirstName) => `Hi ${opponentFirstName},%0D%0A%0D%0AAre you free to play a match?%0D%0A%0D%0ALocation: %0D%0ATime: %0D%0A%0D%0AThanks,%0D%0A${challengerFirstName}`;
 
-const Player = ({ club, cta = true, player, user }) => {
+const Player = ({ club, withCta, player, user }) => {
     if (!player) {
         return <Loading />;
     }
@@ -64,7 +64,7 @@ const Player = ({ club, cta = true, player, user }) => {
                     </dd>
                 </dl>
 
-                {cta && player.id !== user.player.id &&
+                {withCta && player.id !== user.player.id &&
                     <a href={`mailto:${player.user.email}?subject=${createChallengeEmailSubject(club && club.name)}&body=${createChallengeEmailBody(user.first_name, player.user.first_name)}`} className="c-player__challenge c-go">
                         Challenge
                     </a>
@@ -173,7 +173,7 @@ const Player = ({ club, cta = true, player, user }) => {
 
 Player.propTypes = {
     club: PropTypes.object,
-    cta: PropTypes.bool,
+    withCta: PropTypes.bool,
     player: PropTypes.object,
     user: PropTypes.object.isRequired
 };

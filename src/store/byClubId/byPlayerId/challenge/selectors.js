@@ -46,11 +46,14 @@ export const makeGetChallenge = () => createSelector(
             return undefined;
         }
 
-        return denormalize(
-            challenge.id,
-            challengeSchema,
-            {challenges: {[challenge.id]: challenge}, players, users}
-        );
+        return {
+            ...denormalize(
+                challenge.id,
+                challengeSchema,
+                {challenges: {[challenge.id]: challenge}, players, users}
+            ),
+            moment: moment(challenge.match_datetime)
+        };
     }
 );
 

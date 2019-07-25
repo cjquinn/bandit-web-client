@@ -10,9 +10,11 @@ import { acceptChallenge, deleteChallenge, reportChallenge, withdrawChallenge } 
 // Components
 import Button from '../shared/Button';
 import Loading from '../shared/Loading';
-import Player from '../player/Player';
 import Players from '../items/ChallengeItem/Players';
 import Template from '../shared/Template';
+
+// Containers
+import PlayerContainer from '../../containers/player/PlayerContainer';
 
 // HOCs
 import withAction from '../../hocs/withAction';
@@ -21,10 +23,10 @@ import withAction from '../../hocs/withAction';
 import { getChallengeId } from '../../store/props/selectors';
 
 // Containers
-const AcceptChallengeButton = withAction(Button, props => acceptChallenge(getChallengeId(props)));
-const DeleteChallengeButton = withAction(Button, props => deleteChallenge(getChallengeId(props)));
-const ReportChallengeButton = withAction(Button, props => reportChallenge(getChallengeId(props)));
-const WithdrawChallengeButton = withAction(Button, props => withdrawChallenge(getChallengeId(props)));
+const AcceptChallengeButton = withAction(Button, props => acceptChallenge(getChallengeId(undefined, props)));
+const DeleteChallengeButton = withAction(Button, props => deleteChallenge(getChallengeId(undefined, props)));
+const ReportChallengeButton = withAction(Button, props => reportChallenge(getChallengeId(undefined, props)));
+const WithdrawChallengeButton = withAction(Button, props => withdrawChallenge(getChallengeId(undefined, props)));
 
 const Challenge = ({ challenge, user }) => {
     if (!challenge) {
@@ -65,17 +67,22 @@ const Challenge = ({ challenge, user }) => {
 
                 {!challenge.player_b_id
                     ? (
-                        <Link to={`/players/${challenge.player_a_id}`}>
-                            <Player player={challenge.player_a} user={user} cta={false} />
+                        <Link className="u-block" to={`/players/${challenge.player_a_id}`}>
+                            <PlayerContainer playerId={challenge.player_a_id} withCta={false} />
                         </Link>
                     )
-                    : <Players challenge={challenge} />
+                    : <div className="u-flex u-ai-center u-pv-1bl u-ph-1bl u-bgcolor-fold">
+                        <Players challenge={challenge} />
+                    </div>
                 }
             </div>
 
             <div className="u-ph-1bl u-vspace-3bl">
                 {!challenge.player_b_id && user.id !== challenge.player_a.user_id &&
-                    <AcceptChallengeButton type="default">
+                    <AcceptChallengeButton
+                        challengeId={challenge.id}
+                        type="default"
+                    >
                         Accept challenge
                     </AcceptChallengeButton>
                 }
@@ -103,14 +110,23 @@ const Challenge = ({ challenge, user }) => {
                                     Submit match score
                                 </button>
 
-                                <ReportChallengeButton type="warning">
-                                    Report opponent
+                                <ReportChallengeButton
+                                    challengeId={challenge.id}
+                                    type="warning"
+                                >
+                                    Report {user.id === challenge.player_a.user_id
+                                        ? challenge.player_b.user.first_name
+                                        : challenge.player_a.user.first_name
+                                    }
                                 </ReportChallengeButton>
                             </Template>
                         }
 
                         {user.id === challenge.player_b.user_id &&
-                            <WithdrawChallengeButton type="warning">
+                            <WithdrawChallengeButton
+                                challengeId={challenge.id}
+                                type="warning"
+                            >
                                 Withdraw from challenge
                             </WithdrawChallengeButton>
                         }
@@ -118,7 +134,10 @@ const Challenge = ({ challenge, user }) => {
                 }
 
                 {user.id === challenge.player_a.user_id &&
-                    <DeleteChallengeButton type="warning">
+                    <DeleteChallengeButton
+                        challengeId={challenge.id}
+                        type="warning"
+                    >
                         Cancel challenge
                     </DeleteChallengeButton>
                 }
