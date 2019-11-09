@@ -135,7 +135,8 @@ describe('selectors', () => {
                     1: {
                         id: 1,
                         player_a: 1,
-                        player_b: 2
+                        player_b: 2,
+                        match_datetime: '2019-08-31T12:00:00+00:00'
                     }
                 },
                 players: {
@@ -186,7 +187,9 @@ describe('selectors', () => {
                 },
                 wins: 1,
                 losses: 0
-            }
+            },
+            match_datetime: '2019-08-31T12:00:00+00:00',
+            moment: moment('2019-08-31T12:00:00+00:00')
         };
 
         expect(makeGetChallenge()(state, props)).toEqual(expected);

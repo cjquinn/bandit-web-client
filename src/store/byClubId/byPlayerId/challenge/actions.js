@@ -32,6 +32,7 @@ export const acceptChallenge = challengeId => (dispatch, getState, api) => {
             playerId: ['all', data.challenge.player_a_id, data.challenge.player_b_id]
         })))
         .then(() => api.trackEvent('challengeAccepted'))
+        .then(() => dispatch(setFlash({message: 'You have accepted the challenge', type: 'info'})))
         .catch(api.handleError(dispatch, acceptChallengeFailure));
 };
 
