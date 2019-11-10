@@ -1,17 +1,17 @@
 ::-webkit-input-placeholder {
-  color: rgba($colour-steam, .3);
+  color: rgba($colour-white, .3);
 }
 
 ::-moz-placeholder {
-  color: rgba($colour-steam, .3);
+  color: rgba($colour-white, .3);
 }
 
 :-ms-input-placeholder {
-  color: rgba($colour-steam, .3);
+  color: rgba($colour-white, .3);
 }
 
 :-moz-placeholder {
-  color: rgba($colour-steam, .3);
+  color: rgba($colour-white, .3);
 }
 
 [disabled] {
@@ -39,7 +39,7 @@ textarea {
   border: none;
 
   &:focus {
-    outline: none;
+    // outline: none;
   }
 }
 
@@ -69,9 +69,6 @@ textarea {
 }
 
 label {
-  @extend .u-pos-absolute;
-  @extend .u-top-0;
-  @extend .u-left-0;
   @extend .u-weight-bold;
   @extend .u-ws-no;
   @extend .u-color-white;
@@ -103,8 +100,16 @@ textarea {
   @extend .u-ph-1bl;
   @extend .u-size-h4;
   @extend .u-weight-bold;
+}
 
+[type="text"],
+[type="email"],
+[type="password"],
+[type="file"] {
   ~ label {
+    @extend .u-pos-absolute;
+    @extend .u-top-0;
+    @extend .u-left-0;
     transform: translateY(-70%);
   }
 
@@ -115,26 +120,35 @@ textarea {
       transform: translateY(-120%);
     }
   }
-
-  &:not(:placeholder-shown) {
-    ~ label {
-      // opacity: .5;
-    }
-  }
 }
 
 .c-score-input {
-  border-bottom-color: rgba($colour-paste, .7);
-  
-  &:placeholder-shown {
-    background-color: rgba($colour-deepblue, .3);
+  @extend %u-bgcolor-deck;
+  @extend %u-align-center;
+  @extend %u-weight-bold;
+  padding-top: baselines(1);
+  padding-bottom: calc(#{baselines(1)} + 2px);
+  line-height: 1;
+  width: 3ch;
+  border-bottom: 2px solid $colour-playdough;
+  font-family: inherit;
+  font-size: $font-size-score-input;
+
+  &:not(:placeholder-shown) {
+    @extend %u-color-white;
   }
 
-  &:focus {
-    border-bottom-color: $colour-white;
+  // border-bottom-color: rgba($colour-paste, .7);
+  
+  // &:placeholder-shown {
+  //   background-color: rgba($colour-deepblue, .3);
+  // }
+
+  // &:focus {
+  //   border-bottom-color: $colour-white;
     
-    &:placeholder-shown {
-      box-shadow: 0 4px 3px rgba($colour-deepblue, .7);
-    }
-  }
+  //   &:placeholder-shown {
+  //     box-shadow: 0 4px 3px rgba($colour-deepblue, .7);
+  //   }
+  // }
 }
