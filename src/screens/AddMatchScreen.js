@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { NavLink, Route, Switch } from 'react-router-dom';
 
 // Components
 import FooterContainer from '../containers/shared/FooterContainer';
 import Template from '../components/shared/Template';
 
 // Containers
+import AddChallengeMatchFormContainer from '../containers/forms/AddChallengeMatchFormContainer';
 import AddMatchFormContainer from '../containers/forms/AddMatchFormContainer';
 
 const AddMatchScreen = ({ user }) => (
@@ -18,7 +20,37 @@ const AddMatchScreen = ({ user }) => (
             </header>
         </div>
 
-        <AddMatchFormContainer />
+        <nav className="u-bgcolor-fold u-pt-2bl u-borrad-3300">
+            <ul className="u-flex u-ph-1bl u-hspace-1bl">
+                <li className="u-grow-1">
+                    <NavLink
+                        to="/matches/add"
+                        exact
+                        className="c-tab c-tab--main"
+                        activeClassName="c-tab--active"
+                    >
+                        New Match
+                    </NavLink>
+                </li>
+
+                <li className="u-grow-1">
+                    <NavLink
+                        to="/matches/add/challenges"
+                        className="c-tab c-tab--main"
+                        activeClassName="c-tab--active"
+                    >
+                        Challenge
+                    </NavLink>
+                </li>
+            </ul>
+        </nav>
+
+        <div className="o-container">
+            <Switch>
+                <Route exact path="/matches/add" component={AddMatchFormContainer} />
+                <Route path="/matches/add/challenges/:challengeId?" component={AddChallengeMatchFormContainer} />
+            </Switch>
+        </div>
 
         <FooterContainer />
     </Template>

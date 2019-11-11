@@ -45,7 +45,6 @@ club.define({founder: user});
 dispute.define({match});
 
 match.define({
-    challenge,
     dispute,
     player_a: player,
     player_b: player

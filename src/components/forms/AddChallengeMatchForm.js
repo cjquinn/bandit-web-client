@@ -8,8 +8,8 @@ import Notification from '../shared/Notification';
 import ScoreField from '../fields/ScoreField';
 import SelectField from '../fields/SelectField';
 
-const AddMatchForm = ({ error, handleSubmit, invalid, isFetching, opponentOptions, playerA, playerB, submitting }) => {
-    if (opponentOptions.length === 0) {
+const AddChallengeMatchForm = ({ challenge, challengeOptions, currentPlayerId, error, handleSubmit, invalid, isFetching, submitting }) => {
+    if (challengeOptions.length === 0) {
         if (isFetching) {
             return <Loading />;
         }
@@ -17,10 +17,10 @@ const AddMatchForm = ({ error, handleSubmit, invalid, isFetching, opponentOption
         return (
             <div className="c-notification c-notification--alert">
                 <p className="u-weight-bold">
-                    No opponents
+                    No challenges
                 </p>
             
-                <p>You don&apos;t have any opponents.</p>
+                <p>You don&apos;t have any accepted challenges.</p>
             </div>
         );
     }
@@ -40,21 +40,29 @@ const AddMatchForm = ({ error, handleSubmit, invalid, isFetching, opponentOption
             <div className="u-vspace-2bl">
                 <Field
                     component={SelectField}
-                    name="player_b_id"
-                    label="Opponent"
-                    options={opponentOptions}
-                    placeholder="Select player"
+                    name="challenge.id"
+                    label="Challenge"
+                    options={challengeOptions}
+                    placeholder="Select challenge"
                 />
 
-                {playerB &&
+                {challenge &&
                     <ScoreField
-                        playerA={playerA}
-                        playerB={playerB}
+                        playerA={
+                            challenge.player_a_id === currentPlayerId
+                                ? challenge.player_a
+                                : challenge.player_b
+                        }
+                        playerB={
+                            challenge.player_a_id === currentPlayerId
+                                ? challenge.player_b
+                                : challenge.player_a
+                        }
                     />
                 }
             </div>
 
-            {playerB &&
+            {challenge &&
                 <div className="u-ph-1bl">
                     <button
                         className="c-button c-button--default"
@@ -69,15 +77,15 @@ const AddMatchForm = ({ error, handleSubmit, invalid, isFetching, opponentOption
     );
 };
 
-AddMatchForm.propTypes = {
+AddChallengeMatchForm.propTypes = {
+    challenge: PropTypes.object,
+    challengeOptions: PropTypes.array.isRequired,
+    currentPlayerId: PropTypes.number.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     invalid: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     error: PropTypes.string,
-    opponentOptions: PropTypes.array.isRequired,
-    playerA: PropTypes.object.isRequired,
-    playerB: PropTypes.object,
     submitting: PropTypes.bool.isRequired
 };
 
-export default AddMatchForm;
+export default AddChallengeMatchForm;

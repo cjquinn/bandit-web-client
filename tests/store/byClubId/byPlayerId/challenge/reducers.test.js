@@ -1,5 +1,6 @@
 // Actions
 import * as actions from '../../../../../src/store/byClubId/byPlayerId/challenge/actions';
+import { addMatchSuccess } from '../../../../../src/store/byClubId/byPlayerId/match/actions';
 
 // Reducers
 import reducers from '../../../../../src/store/byClubId/byPlayerId/challenge/reducers';
@@ -50,6 +51,41 @@ describe('acceptChallenge', () => {
         };
 
         expect(reducers(state, actions.acceptChallengeSuccess(payload))).toEqual(expected);
+    });
+});
+
+describe('addMatch', () => {
+    it(addMatchSuccess.toString(), () => {
+        const state = {
+            accepted: {
+                ids: [2],
+                isFetching: false
+            },
+            open: {
+                ids: [1],
+                isFetching: false
+            }
+        };
+
+        const payload = {
+            entities: {
+                matches: {3: {challenge: {id: 2}}}
+            },
+            result: 3
+        };
+
+        const expected = {
+            accepted: {
+                ids: [],
+                isFetching: false
+            },
+            open: {
+                ids: [1],
+                isFetching: false
+            }
+        };
+
+        expect(reducers(state, addMatchSuccess(payload))).toEqual(expected);
     });
 });
 

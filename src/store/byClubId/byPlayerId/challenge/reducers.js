@@ -3,6 +3,7 @@ import { combineActions, handleActions } from 'redux-actions';
 
 // Actions
 import * as actions from './actions';
+import { addMatchSuccess } from '../match/actions';
 
 // Selectors
 import { initialState } from './selectors';
@@ -11,6 +12,15 @@ const accepted = (state = initialState, action) => {
     const ids = handleActions(
         {
             [actions.acceptChallengeSuccess]: (state, { payload }) => [...state, payload.result],
+            [addMatchSuccess]: (state, { payload }) => {
+                const challenge = payload.entities && payload.entities.matches && payload.entities.matches[payload.result].challenge;
+
+                if (!challenge) {
+                    return state;
+                }
+
+                return state.filter(id => id !== challenge.id);
+            },
             [combineActions(actions.deleteChallengeSuccess, actions.reportChallengeSuccess)]: (state, { payload }) =>
                 state.filter(id => id !== payload.result),
             [actions.fetchChallengesSuccess]: (state, { payload }) =>

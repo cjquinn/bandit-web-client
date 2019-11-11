@@ -104,11 +104,12 @@ const Challenge = ({ challenge, user }) => {
 
                         {challenge.moment < moment() &&
                             <Template>
-                                <button
+                                <Link
                                     className="c-button c-button--default"
+                                    to={`/matches/add/challenges/${challenge.id}`}
                                 >
                                     Submit match score
-                                </button>
+                                </Link>
 
                                 <ReportChallengeButton
                                     challengeId={challenge.id}

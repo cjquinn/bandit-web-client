@@ -100,7 +100,24 @@ export const getPlayers = createSelector(
     }
 );
 
-export const getOpponents = createSelector(
+export const getOpponentOptions = createSelector(
     [getUserId, getPlayers],
-    (userId, players) => players.filter(player => player.user_id !== userId)
+    (userId, players) => {
+        const opponentOptions = [];
+
+        for (let i = 0; i < players.length; i++) {
+            const player = players[i];
+
+            if (player.user_id === userId) {
+                continue;
+            }
+
+            opponentOptions.push({
+                value: player.id,
+                text: `${player.user.first_name} ${player.user.last_name}`
+            });
+        }
+
+        return opponentOptions;
+    }
 );

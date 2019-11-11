@@ -10,6 +10,7 @@ import { getChallengeEntities, getPlayerEntities, getUserEntities } from '../../
 import { getByPlayerIdState } from '../selectors';
 import { getChallengeId, getFilter, getPlayerId } from '../../../props/selectors';
 import { makeIsFetchingSelector } from '../../../shared/selectors';
+import { getCurrentPlayerId } from '../../../user/selectors';
 
 // State
 export const initialState = {
@@ -39,6 +40,33 @@ export const getIsFetching = makeIsFetchingSelector(getFilterState);
 export const getChallengeEntity = (state, props) => getChallengeEntities(state)[getChallengeId(null, props)];
 
 // Memoized
+export const getChallengeOptions = createSelector(
+    [getIds, getCurrentPlayerId, getChallengeEntities, getPlayerEntities, getUserEntities],
+    (ids, currentPlayerId, challenges, players, users) => {
+        const denormalizedChallenges = denormalize(
+            ids,
+            [challengeSchema],
+            {challenges, players, users}
+        );
+
+        const challengeOptions = [];
+
+        for (let i = 0; i < denormalizedChallenges.length; i++) {
+            const challenge = denormalizedChallenges[i];
+            const otherPlayer = challenge.player_a_id === currentPlayerId
+                ? challenge.player_b
+                : challenge.player_a;
+
+            challengeOptions.push({
+                value: challenge.id,
+                text: `${otherPlayer.user.first_name} ${otherPlayer.user.last_name} - ${moment(challenge.match_datetime).format('dddd HH:mm - Do MMMM')}`
+            });
+        }
+
+        return challengeOptions;
+    }
+);
+
 export const makeGetChallenge = () => createSelector(
     [getChallengeEntity, getPlayerEntities, getUserEntities],
     (challenge, players, users) => {
