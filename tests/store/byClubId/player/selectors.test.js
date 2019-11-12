@@ -8,10 +8,11 @@ import reducers from '../../../../src/store/reducers';
 import {
     getIds,
     getIsFetching,
+    getOpponentOptions,
     getOrderBy,
     getPlayerEntity,
-    makeGetPlayer,
-    getPlayers } from '../../../../src/store/byClubId/player/selectors';
+    getPlayers,
+    makeGetPlayer } from '../../../../src/store/byClubId/player/selectors';
 
 describe('selectors', () => {
     it('getIds', () => {
@@ -171,6 +172,73 @@ describe('selectors', () => {
         const expectedNoPlayer = undefined;
 
         expect(makeGetPlayer()(stateNoPlayer, props)).toEqual(expectedNoPlayer);
+    });
+
+    it('getOpponentOptions', () => {
+        const state = {
+            byClubId: {
+                1: {
+                    player: {
+                        ids: [1, 2, 3],
+                        isFetching: false,
+                        orderBy: 'a-z'
+                    }
+                }
+            },
+            entities: {
+                players: {
+                    1: {
+                        id: 1,
+                        user: 1,
+                        user_id: 1
+                    },
+                    2: {
+                        id: 2,
+                        user: 2,
+                        user_id: 2
+                    },
+                    3: {
+                        id: 3,
+                        user: 3,
+                        user_id: 3
+                    }
+                },
+                users: {
+                    1: {
+                        id: 1,
+                        first_name: 'Russell',
+                        last_name: 'Bishop'
+                    },
+                    2: {
+                        id: 2,
+                        first_name: 'Christy',
+                        last_name: 'Quinn'
+                    },
+                    3: {
+                        id: 3,
+                        first_name: 'Nathan',
+                        last_name: 'Rathbone'
+                    }
+                }
+            },
+            user: {
+                clubId: 1,
+                id: 1
+            }
+        };
+
+        const expected = [
+            {
+                value: 2,
+                text: 'Christy Quinn'
+            },
+            {
+                value: 3,
+                text: 'Nathan Rathbone'
+            }
+        ];
+
+        expect(getOpponentOptions(state)).toEqual(expected);
     });
 
     const stateForGetPlayers = {

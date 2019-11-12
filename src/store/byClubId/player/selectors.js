@@ -36,21 +36,29 @@ export const getIsFetching = makeIsFetchingSelector(getPlayerState);
 export const getOrderBy = (state, props) => props && props.orderBy ? props.orderBy : getPlayerState(state).orderBy;
 
 // Memoized
-export const makeGetPlayer = () => createSelector(
-    [getBanditId, getPlayerEntity, getUserEntities],
-    (banditId, player, users) =>
-        player
-            ? {
-                ...withIsBandit(
-                    denormalize(player.id, playerSchema, {players: {[player.id]: player}, users}),
-                    banditId
-                ),
-                winRatio: player.losses === 0
-                    ? player.wins.toFixed(2)
-                    : (player.wins / player.losses).toFixed(2)
+export const getOpponentOptions = createSelector(
+    [getIds, getUserId, getPlayerEntities, getUserEntities],
+    (ids, userId, players, users) => {
+        const denormalizedPlayers = denormalize(ids, [playerSchema], {players, users});
+        const opponentOptions = [];
+
+        for (let i = 0; i < denormalizedPlayers.length; i++) {
+            const player = denormalizedPlayers[i];
+
+            if (player.user_id === userId) {
+                continue;
             }
-            : undefined
+
+            opponentOptions.push({
+                value: player.id,
+                text: `${player.user.first_name} ${player.user.last_name}`
+            });
+        }
+
+        return opponentOptions;
+    }
 );
+
 
 const sortPlayers = {
     'a-z': (a, b) => {
@@ -100,24 +108,18 @@ export const getPlayers = createSelector(
     }
 );
 
-export const getOpponentOptions = createSelector(
-    [getUserId, getPlayers],
-    (userId, players) => {
-        const opponentOptions = [];
-
-        for (let i = 0; i < players.length; i++) {
-            const player = players[i];
-
-            if (player.user_id === userId) {
-                continue;
+export const makeGetPlayer = () => createSelector(
+    [getBanditId, getPlayerEntity, getUserEntities],
+    (banditId, player, users) =>
+        player
+            ? {
+                ...withIsBandit(
+                    denormalize(player.id, playerSchema, {players: {[player.id]: player}, users}),
+                    banditId
+                ),
+                winRatio: player.losses === 0
+                    ? player.wins.toFixed(2)
+                    : (player.wins / player.losses).toFixed(2)
             }
-
-            opponentOptions.push({
-                value: player.id,
-                text: `${player.user.first_name} ${player.user.last_name}`
-            });
-        }
-
-        return opponentOptions;
-    }
+            : undefined
 );

@@ -7,8 +7,8 @@
     "start:live": "API=live webpack-dev-server --host 0.0.0.0",
     "start:staging": "API=staging webpack-dev-server --host 0.0.0.0",
     "lint": "eslint -c .eslintrc src test",
-    "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test": "TZ=UTC jest",
+    "test:watch": "TZ=UTC npm test -- --watch"
   },
   "dependencies": {
     "axios": "^0.18.0",

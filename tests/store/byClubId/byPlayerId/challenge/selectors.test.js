@@ -5,6 +5,7 @@ import {
     getIds,
     getIsFetching,
     getChallengeEntity,
+    getChallengeOptions,
     makeGetChallenge,
     makeGetChallenges } from '../../../../../src/store/byClubId/byPlayerId/challenge/selectors';
 
@@ -126,6 +127,107 @@ describe('selectors', () => {
         };
 
         expect(getChallengeEntity(state, props)).toEqual(expected);
+    });
+
+    it('getChallengeOptions', () => {
+        const state = {
+            byClubId: {
+                1: {
+                    byPlayerId: {
+                        1: {
+                            challenge: {
+                                accepted: {
+                                    ids: [1, 2, 3],
+                                    isFetching: true
+                                },
+                                open: {
+                                    ids: [3],
+                                    isFetching: false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            entities: {
+                challenges: {
+                    1: {
+                        id: 1,
+                        player_a: 1,
+                        player_a_id: 1,
+                        player_b: 2,
+                        player_b_id: 2,
+                        match_datetime: '2019-08-31T12:00:00+00:00'
+                    },
+                    2: {
+                        id: 2,
+                        player_a: 1,
+                        player_a_id: 1,
+                        player_b: 2,
+                        player_b_id: 2,
+                        match_datetime: '2019-08-30T12:00:00+00:00'
+                    },
+                    3: {
+                        id: 3,
+                        player_a: 1,
+                        player_a_id: 1,
+                        player_b: 2,
+                        player_b_id: 2,
+                        match_datetime: '2019-08-29T12:00:00+00:00'
+                    }
+                },
+                players: {
+                    1: {
+                        id: 1,
+                        user: 1,
+                        club_id: 1
+                    },
+                    2: {
+                        id: 2,
+                        user: 2
+                    }
+                },
+                users: {
+                    1: {
+                        id: 1,
+                        first_name: 'Christy',
+                        last_name: 'Quinn',
+                        players: [1]
+                    },
+                    2: {
+                        id: 2,
+                        first_name: 'Russell',
+                        last_name: 'Bishop'
+                    }
+                }
+            },
+            user: {
+                clubId: 1,
+                id: 1
+            }
+        };
+
+        const props = {
+            playerId: 1,
+            filter: 'accepted'
+        };
+
+        const expected = [
+            {
+                value: 1,
+                text: 'Russell Bishop - Saturday 12:00 - 31st August'
+            },
+            {
+                value: 2,
+                text: 'Russell Bishop - Friday 12:00 - 30th August'
+            },
+            {
+                value: 3,
+                text: 'Russell Bishop - Thursday 12:00 - 29th August'
+            }
+        ];
+
+        expect(getChallengeOptions(state, props)).toEqual(expected);
     });
 
     it('makeGetChallenge', () => {

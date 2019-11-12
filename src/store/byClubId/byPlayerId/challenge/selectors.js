@@ -53,6 +53,7 @@ export const getChallengeOptions = createSelector(
 
         for (let i = 0; i < denormalizedChallenges.length; i++) {
             const challenge = denormalizedChallenges[i];
+
             const otherPlayer = challenge.player_a_id === currentPlayerId
                 ? challenge.player_b
                 : challenge.player_a;
