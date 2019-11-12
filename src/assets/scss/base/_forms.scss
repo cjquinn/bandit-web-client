@@ -105,7 +105,9 @@ textarea {
 [type="text"],
 [type="email"],
 [type="password"],
-[type="file"] {
+[type="file"],
+[type="date"],
+[type="datetime-local"] {
   ~ label {
     @extend .u-pos-absolute;
     @extend .u-top-0;

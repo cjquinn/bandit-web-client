@@ -1,5 +1,5 @@
-import { createAction } from 'redux-actions';
 import { normalize } from 'normalizr';
+import { createAction } from 'redux-actions';
 import { push } from 'react-router-redux';
 
 // Actions

@@ -1,8 +1,17 @@
+import moment from 'moment';
 import { instance } from '../../../api';
 
 export const acceptChallenge = (clubId, challengeId) => instance().patch(`/clubs/${clubId}/challenges/${challengeId}/accept.json`);
 
-export const createChallenge = (clubId, data) => instance().post(`/clubs/${clubId}/challenges.json`, data);
+export const createChallenge = (clubId, data) => {
+    data = {...data};
+
+    if (data.match_datetime) {
+        data.match_datetime = moment(data.match_datetime);
+    }    
+
+    return instance().post(`/clubs/${clubId}/challenges.json`, data);
+};
 
 export const deleteChallenge = (clubId, challengeId) => instance().delete(`/clubs/${clubId}/challenges/${challengeId}.json`);
 
