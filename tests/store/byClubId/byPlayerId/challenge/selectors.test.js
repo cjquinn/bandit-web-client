@@ -192,12 +192,14 @@ describe('selectors', () => {
                         id: 1,
                         first_name: 'Christy',
                         last_name: 'Quinn',
+                        full_name: 'Christy Quinn',
                         players: [1]
                     },
                     2: {
                         id: 2,
                         first_name: 'Russell',
-                        last_name: 'Bishop'
+                        last_name: 'Bishop',
+                        full_name: 'Russell Bishop'
                     }
                 }
             },

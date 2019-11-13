@@ -19,7 +19,7 @@ const Player = ({ autoFocus = false, name, player }) => (
 
             <dt className="u-flex u-fd-col u-ai-center u-mt-1bl">
                 <h2 className="u-weight-bold u-color-paste u-capitalize">
-                    {player.user.first_name} {player.user.last_name}
+                    {player.user.full_name}
                 </h2>
 
                 <div className="u-flex u-hspace-4px u-ai-center">

@@ -51,7 +51,7 @@ export const getOpponentOptions = createSelector(
 
             opponentOptions.push({
                 value: player.id,
-                text: `${player.user.first_name} ${player.user.last_name}`
+                text: `${player.user.full_name}`
             });
         }
 

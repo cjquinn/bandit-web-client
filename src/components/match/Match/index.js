@@ -141,7 +141,7 @@ const Match = ({ handleClickCancel, isDeleting, match, userId }) => {
 
                     <li className="u-flex u-ai-center u-hspace-05bl u-size-12px u-color-steam">
                         <dt>Submitted by</dt>
-                        <dd className=""><span className="u-capitalize">{match.player_a.user.first_name} {match.player_a.user.last_name}</span></dd>
+                        <dd className=""><span className="u-capitalize">{match.player_a.user.full_name}</span></dd>
                     </li>
                 </dl>
 

@@ -207,17 +207,20 @@ describe('selectors', () => {
                     1: {
                         id: 1,
                         first_name: 'Russell',
-                        last_name: 'Bishop'
+                        last_name: 'Bishop',
+                        full_name: 'Russell Bishop'
                     },
                     2: {
                         id: 2,
                         first_name: 'Christy',
-                        last_name: 'Quinn'
+                        last_name: 'Quinn',
+                        full_name: 'Christy Quinn'
                     },
                     3: {
                         id: 3,
                         first_name: 'Nathan',
-                        last_name: 'Rathbone'
+                        last_name: 'Rathbone',
+                        full_name: 'Nathan Rathbone'
                     }
                 }
             },

@@ -27,7 +27,7 @@ const PlayerSelectField = ({ input, players }) => {
                             key={player.id}
                             value={player.id}
                         >
-                            {player.user.first_name} {player.user.last_name}
+                            {player.user.full_name}
                         </option>
                     )}
                 </select>

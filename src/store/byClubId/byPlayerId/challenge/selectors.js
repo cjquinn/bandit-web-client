@@ -60,7 +60,7 @@ export const getChallengeOptions = createSelector(
 
             challengeOptions.push({
                 value: challenge.id,
-                text: `${otherPlayer.user.first_name} ${otherPlayer.user.last_name} - ${moment(challenge.match_datetime).format('dddd HH:mm - Do MMMM')}`
+                text: `${otherPlayer.user.full_name} - ${moment(challenge.match_datetime).format('dddd HH:mm - Do MMMM')}`
             });
         }
 

@@ -32,7 +32,7 @@ const AllTimeLeaderboardItem = ({ player, position, userId }) => (
 
                 <dd className="u-grow-1 u-vspace-03r u-order-1">
                     <dl>
-                        <dt className="u-color-paste u-capitalize">{player.user.first_name} {player.user.last_name}</dt>
+                        <dt className="u-color-paste u-capitalize">{player.user.full_name}</dt>
 
                         <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
                         <span className="u-flex u-ai-center u-hspace-4px">

@@ -32,7 +32,7 @@ const Player = ({ club, withCta, player, user }) => {
                 <dl className="c-player__info u-flex u-vspace-03r">
                     <dt>
                         <h1 className="u-size-h1 u-color-white u-capitalize">
-                            {player.user.first_name} {player.user.last_name}
+                            {player.user.full_name}
                         </h1>
                     </dt>
 

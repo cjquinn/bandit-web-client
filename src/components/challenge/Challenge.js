@@ -102,25 +102,23 @@ const Challenge = ({ challenge, user }) => {
                             }
                         </a>
 
-                        {challenge.moment < moment() &&
-                            <Template>
-                                <Link
-                                    className="c-button c-button--default"
-                                    to={`/matches/add/challenges/${challenge.id}`}
-                                >
-                                    Submit match score
-                                </Link>
+                        <Link
+                            className="c-button c-button--default"
+                            to={`/matches/add/challenges/${challenge.id}`}
+                        >
+                            Submit match score
+                        </Link>
 
-                                <ReportChallengeButton
-                                    challengeId={challenge.id}
-                                    type="warning"
-                                >
-                                    Report {user.id === challenge.player_a.user_id
-                                        ? challenge.player_b.user.first_name
-                                        : challenge.player_a.user.first_name
-                                    }
-                                </ReportChallengeButton>
-                            </Template>
+                        {challenge.moment < moment() &&
+                            <ReportChallengeButton
+                                challengeId={challenge.id}
+                                type="warning"
+                            >
+                                Report {user.id === challenge.player_a.user_id
+                                    ? challenge.player_b.user.first_name
+                                    : challenge.player_a.user.first_name
+                                }
+                            </ReportChallengeButton>
                         }
 
                         {user.id === challenge.player_b.user_id &&
