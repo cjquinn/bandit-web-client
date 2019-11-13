@@ -6,27 +6,25 @@ import ChallengesList from './ChallengesList';
 import Template from '../shared/Template';
 
 const UpcomingChallengesList = ({ currentPlayerId, filter, isFetching, playerId, challenges }) => (
-    challenges.map(({ period, challenges }, i) =>
-        challenges.length > 0 && (
-            <Template key={i}>
-                <div className="u-vspace-2bl">
-                    <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                        <h1 className="u-size-h3 u-color-white">{period}</h1>
-                    </header>
+    challenges.map(({ period, challenges }, i) => (
+        <Template key={i}>
+            <div className="u-vspace-2bl">
+                <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                    <h1 className="u-size-h3 u-color-white">{period}</h1>
+                </header>
 
-                    <ChallengesList
-                        currentPlayerId={currentPlayerId}
-                        challenges={challenges}
-                        filter={filter}
-                        isFetching={isFetching}
-                        playerId={playerId}
-                    />
-                </div>
+                <ChallengesList
+                    currentPlayerId={currentPlayerId}
+                    challenges={challenges}
+                    filter={filter}
+                    isFetching={isFetching}
+                    playerId={playerId}
+                />
+            </div>
 
-                {period !== 'Further' && <hr className="c-hr" />}
-            </Template>
-        )
-    )
+            {period !== 'Further' && <hr className="c-hr" />}
+        </Template>
+    ))
 );
 
 UpcomingChallengesList.propTypes = {
