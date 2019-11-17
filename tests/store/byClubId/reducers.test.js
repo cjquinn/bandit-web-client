@@ -17,6 +17,10 @@ describe('byClubId', () => {
                         ids: [],
                         isFetching: false
                     },
+                    unranked: {
+                        ids: [],
+                        isFetching: false
+                    },
                     weekly: {
                         ids: [],
                         isFetching: false

@@ -1,48 +1,76 @@
 /**
- * .c-select
+ * .c-select-field
 **/
 
-$component: 'select';
+$component: 'select-field';
 
 #{'.' + $global-components-namespace + $component} {
+  --select-field-height: 3.5rem;
 
-  position: relative;
-  color: $colour-playdough;
+  @extend %u-flex;
+  @extend %u-fd-col-rev;
 
-  &:focus,
-  &:focus-within {
-    color: $colour-white;
+  > * {
+    margin-bottom: baselines(1);
   }
 
   &::-ms-expand { 
     display: none; /* remove default arrow on ie10 and ie11 */
   }
 
-  &:after {
-    position: absolute;
-    top: calc(50% + 1px);
-    right: 0;
-    width: 1em;
-    text-align: center;
-    color: currentColor;
-    content: '\2195';
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
+  // &:after {
+  //   position: absolute;
+  //   top: calc(50% + 1px);
+  //   right: 0;
+  //   width: 1em;
+  //   text-align: center;
+  //   color: currentColor;
+  //   content: '\2195';
+  //   transform: translateY(-50%);
+  //   pointer-events: none;
+  // }
 
   &__select {
-    @extend .u-width-100pc;
-    appearance: none;
-    padding-top: .3em;
-    padding-right: 1em;
-    padding-bottom: .5em;
-    padding-left: .3em;
-    background: rgba(98, 111, 148, .3);
-    border-top: 1px solid rgba(98,111,148, .4);
-    color: currentColor;
+    @extend %u-pos-relative;
+  }
 
-    &:not([disabled]):focus {
-      border-top-color: rgba(98,111,148, 1);
+  &__input {
+    @extend %u-width-100pc;
+    @extend %u-bgcolor-deck;
+    @extend %u-weight-bold;
+    @extend %u-color-white;
+    height: var(--select-field-height);
+    appearance: none;
+    padding: var(--baseline);
+    border-bottom: 2px solid $colour-playdough;
+  }
+
+  &__label {
+
+  }
+
+  &__icon {
+    @extend %u-pos-absolute;
+    @extend %u-top-0;
+    @extend %u-right-0;
+    @extend %u-flex;
+    @extend %u-ai-center;
+    @extend %u-jc-center;
+    @extend %u-pointer-none;
+    width: var(--select-field-height);
+    height: var(--select-field-height);
+  }
+
+  &__svg {
+    @extend %u-block;
+    width: baselines(1);
+    fill: $colour-playdough;
+  }
+
+  &:focus,
+  &:focus-within { 
+    &__icon {
+      transform: rotate(90deg);
     }
   }
 }

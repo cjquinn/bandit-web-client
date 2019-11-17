@@ -5,11 +5,13 @@
 $component: 'tab';
 
 #{'.' + $global-components-namespace + $component} {
-  @extend .u-block;
-  @extend .u-borrad-3300;
+  @extend %u-block;
+  @extend %u-borrad-3300;
   transition: all .2s ease;
 
-  &:not(&--active) {
+  &:not(&--active):not(&--default) {
+    @extend .u-color-blanket;
+
     &:hover,
     &:focus {
       @extend .u-color-playdough\@hover;
@@ -17,26 +19,32 @@ $component: 'tab';
   }
 
   &--active {
-    @extend .u-color-white;
-    @extend .u-bgcolor-floor;
+    @extend %u-color-white;
+    @extend %u-bgcolor-floor;
   }
 
   // .c-tab--header
   &--header {
-    @extend .u-pv-1bl;
-    @extend .u-ph-1bl;
-    @extend .u-size-h5;
-    @extend .u-bgcolor-floor05;
+    @extend %u-pv-1bl;
+    @extend %u-ph-1bl;
+    @extend %u-size-h5;
+    @extend %u-bgcolor-floor05;
   }
 
   // .c-tab--main
   &--main {
-    @extend .u-pv-105bl;
-    @extend .u-ph-1bl;
-    @extend .u-size-h3;
+    @extend %u-height-5bl; /* so that non-text content doesn't change the height */
+    @extend %u-pv-105bl;
+    @extend %u-ph-1bl;
+    @extend %u-size-h3;
   }
 
   &--main:not(&--active) {
-    @extend .u-bgcolor-floor05;
+    @extend %u-bgcolor-floor05;
+  }
+
+  &--disabled {
+    cursor: default;
+    color: rgba(white, .3);
   }
 }

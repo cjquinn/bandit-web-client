@@ -42,7 +42,7 @@ export const requestPasswordReset = data => (dispatch, getState, api) => {
     return api.requestPasswordReset(data)
         .then(api.checkStatus)
         .then(() => dispatch(requestPasswordResetSuccess()))
-        .then(() => dispatch(setFlash({message: 'Check your email for your reset password link.', type: 'info'})))
+        .then(() => dispatch(setFlash({message: 'Check your email for your reset password link', type: 'info'})))
         .then(() => dispatch(push('/sign-in')))
         .then(() => api.trackEvent('userRequestedPasswordReset'))
         .catch(api.handleError(dispatch, requestPasswordResetFailure));
@@ -98,7 +98,7 @@ export const signOut = () => (dispatch, getState, api) => {
 };
 
 /**
- * Sign in
+ * Sign up
  */
 export const signUpRequest = createAction('SIGN_UP_REQUEST');
 export const signUpSuccess = createAction('SIGN_UP_SUCCESS');
@@ -112,8 +112,8 @@ export const signUp = data => (dispatch, getState, api) => {
         .then(response => api.getClubId() ? response : api.setClubId(response))
         .then(api.setJwt)
         .then(response => normalize(response.data.user, userSchema))
-        .then(normalizedData => dispatch(signInSuccess(normalizedData)))
-        .catch(api.handleError(dispatch, signInFailure));
+        .then(normalizedData => dispatch(signUpSuccess(normalizedData)))
+        .catch(api.handleError(dispatch, signUpFailure));
 };
 
 /**

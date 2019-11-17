@@ -23,7 +23,13 @@ describe('fetchLeaderboard', () => {
         return store.dispatch(actions.fetchLeaderboard(period))
             .then(() => {
                 const expected = [
-                    {type: actions.fetchLeaderboardRequest.toString()},
+                    {
+                        type: actions.fetchLeaderboardRequest.toString(),
+                        payload: {
+                            clubId,
+                            period
+                        }
+                    },
                     {type: actions.fetchLeaderboardFailure.toString()},
                     {type: SIGN_OUT}
                 ];
@@ -35,12 +41,18 @@ describe('fetchLeaderboard', () => {
     it('success', () => {
         mock
             .onGet(`/clubs/${clubId}/leaderboards/all-time.json`)
-            .reply(200, {players: [{id: 1, rating: 1200}]});
+            .reply(200, {players: [{id: 1, rating: 1200, user_id: 1}]});
 
         return store.dispatch(actions.fetchLeaderboard(period))
             .then(() => {
                 const expected = [
-                    {type: actions.fetchLeaderboardRequest.toString()},
+                    {
+                        type: actions.fetchLeaderboardRequest.toString(),
+                        payload: {
+                            clubId,
+                            period
+                        }
+                    },
                     {
                         type: actions.fetchLeaderboardSuccess.toString(),
                         payload: {
@@ -48,7 +60,7 @@ describe('fetchLeaderboard', () => {
                             period,
                             result: [1],
                             entities: {
-                                players: {1: {id: 1, rating: 1200}}
+                                players: {1: {id: 1, rating: 1200, user_id: 1, user: 1}}
                             }
                         }
                     }

@@ -9,6 +9,7 @@ import { signOut } from './user/actions';
 
 // Endpoints
 export * from './club/endpoints';
+export * from './byClubId/byPlayerId/challenge/endpoints';
 export * from './byClubId/byPlayerId/match/endpoints';
 export * from './byClubId/dispute/endpoints';
 export * from './byClubId/leaderboard/endpoints';
@@ -54,12 +55,16 @@ export const checkStatus = response => {
     throw response;
 };
 
-export const handleError = (dispatch, failure) => response => {
+export const handleError = (dispatch, failure, payload = null) => response => {
     if (!response.status) {
         throw response;
     }
 
-    dispatch(failure());
+    if (payload) {
+        dispatch(failure(payload));
+    } else {
+        dispatch(failure());
+    }
 
     switch (response.status) {
         case 400:
@@ -74,7 +79,6 @@ export const handleError = (dispatch, failure) => response => {
             return dispatch(push('/sign-in'));
 
         case 403:
-            // Handle this for unauthed users
             return dispatch(signOut());
 
         case 404:

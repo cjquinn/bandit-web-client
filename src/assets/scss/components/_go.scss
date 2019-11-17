@@ -1,3 +1,4 @@
+
 /**
  * .c-go
  */
@@ -9,12 +10,11 @@ $component: 'go';
   @extend .u-borrad-3;
   @extend .u-weight-bold;
   @extend .u-color-basement;
+  @extend .u-ls--02em;
   padding: .4em .7em;
   text-shadow: 0 1px 0 rgba(white, .3);
-  @extend .u-ls--02em;
   letter-spacing: -0.02em;
   background-image: linear-gradient(0deg, $colour-orange 3%, $colour-satsuma 100%);
-  background-image: linear-gradient(0deg, $colour-orange 3%, #FFAF23 100%);
 
   &:hover,
   &:focus {

@@ -10,6 +10,7 @@ const configureStore = initialState => {
 };
 
 global.configureStore = configureStore;
+global.API = 'local';
 
 class LocalStorageMock {
     constructor() {

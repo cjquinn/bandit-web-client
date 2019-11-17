@@ -8,10 +8,11 @@ import reducers from '../../../../src/store/reducers';
 import {
     getIds,
     getIsFetching,
+    getOpponentOptions,
     getOrderBy,
     getPlayerEntity,
-    makeGetPlayer,
-    getPlayers } from '../../../../src/store/byClubId/player/selectors';
+    getPlayers,
+    makeGetPlayer } from '../../../../src/store/byClubId/player/selectors';
 
 describe('selectors', () => {
     it('getIds', () => {
@@ -173,6 +174,76 @@ describe('selectors', () => {
         expect(makeGetPlayer()(stateNoPlayer, props)).toEqual(expectedNoPlayer);
     });
 
+    it('getOpponentOptions', () => {
+        const state = {
+            byClubId: {
+                1: {
+                    player: {
+                        ids: [1, 2, 3],
+                        isFetching: false,
+                        orderBy: 'a-z'
+                    }
+                }
+            },
+            entities: {
+                players: {
+                    1: {
+                        id: 1,
+                        user: 1,
+                        user_id: 1
+                    },
+                    2: {
+                        id: 2,
+                        user: 2,
+                        user_id: 2
+                    },
+                    3: {
+                        id: 3,
+                        user: 3,
+                        user_id: 3
+                    }
+                },
+                users: {
+                    1: {
+                        id: 1,
+                        first_name: 'Russell',
+                        last_name: 'Bishop',
+                        full_name: 'Russell Bishop'
+                    },
+                    2: {
+                        id: 2,
+                        first_name: 'Christy',
+                        last_name: 'Quinn',
+                        full_name: 'Christy Quinn'
+                    },
+                    3: {
+                        id: 3,
+                        first_name: 'Nathan',
+                        last_name: 'Rathbone',
+                        full_name: 'Nathan Rathbone'
+                    }
+                }
+            },
+            user: {
+                clubId: 1,
+                id: 1
+            }
+        };
+
+        const expected = [
+            {
+                value: 2,
+                text: 'Christy Quinn'
+            },
+            {
+                value: 3,
+                text: 'Nathan Rathbone'
+            }
+        ];
+
+        expect(getOpponentOptions(state)).toEqual(expected);
+    });
+
     const stateForGetPlayers = {
         byClubId: {
             1: {
@@ -196,6 +267,7 @@ describe('selectors', () => {
                     rating: 1600,
                     wins: 1,
                     losses: 3,
+                    games: 4,
                     user: 1
                 },
                 2: {
@@ -203,6 +275,7 @@ describe('selectors', () => {
                     rating: 1800,
                     wins: 1,
                     losses: 1,
+                    games: 2,
                     user: 2
                 },
                 3: {
@@ -210,21 +283,28 @@ describe('selectors', () => {
                     rating: 1220,
                     wins: 2,
                     losses: 1,
+                    games: 3,
                     user: 3
                 }
             },
             users: {
                 1: {
                     id: 1,
-                    name: 'Russell'
+                    first_name: 'Russell',
+                    last_name: 'Bishop',
+                    display_name: 'Russell B.'
                 },
                 2: {
                     id: 2,
-                    name: 'Christy'
+                    first_name: 'Christy',
+                    last_name: 'Quinn',
+                    display_name: 'Christy Q.'
                 },
                 3: {
                     id: 3,
-                    name: 'Nathan'
+                    first_name: 'Nathan',
+                    last_name: 'Rathbone',
+                    display_name: 'Nathan R.'
                 }
             }
         },
@@ -263,7 +343,9 @@ describe('selectors', () => {
                 games: 2,
                 user: {
                     id: 2,
-                    name: 'Christy'
+                    first_name: 'Christy',
+                    last_name: 'Quinn',
+                    display_name: 'Christy Q.'
                 },
                 isBandit: false
             },
@@ -275,7 +357,9 @@ describe('selectors', () => {
                 games: 3,
                 user: {
                     id: 3,
-                    name: 'Nathan'
+                    first_name: 'Nathan',
+                    last_name: 'Rathbone',
+                    display_name: 'Nathan R.'
                 },
                 isBandit: true
             },
@@ -287,7 +371,9 @@ describe('selectors', () => {
                 games: 4,
                 user: {
                     id: 1,
-                    name: 'Russell'  
+                    first_name: 'Russell',
+                    last_name: 'Bishop',
+                    display_name: 'Russell B.'
                 },
                 isBandit: false
             }
@@ -315,7 +401,9 @@ describe('selectors', () => {
                 games: 4,
                 user: {
                     id: 1,
-                    name: 'Russell'  
+                    first_name: 'Russell',
+                    last_name: 'Bishop',
+                    display_name: 'Russell B.'
                 },
                 isBandit: false
             },
@@ -327,7 +415,9 @@ describe('selectors', () => {
                 games: 3,
                 user: {
                     id: 3,
-                    name: 'Nathan'
+                    first_name: 'Nathan',
+                    last_name: 'Rathbone',
+                    display_name: 'Nathan R.'
                 },
                 isBandit: true
             },
@@ -339,7 +429,9 @@ describe('selectors', () => {
                 games: 2,
                 user: {
                     id: 2,
-                    name: 'Christy'
+                    first_name: 'Christy',
+                    last_name: 'Quinn',
+                    display_name: 'Christy Q.'
                 },
                 isBandit: false
             }
@@ -366,7 +458,9 @@ describe('selectors', () => {
                 games: 2,
                 user: {
                     id: 2,
-                    name: 'Christy'
+                    first_name: 'Christy',
+                    last_name: 'Quinn',
+                    display_name: 'Christy Q.'
                 },
                 isBandit: false
             },
@@ -378,7 +472,9 @@ describe('selectors', () => {
                 games: 4,
                 user: {
                     id: 1,
-                    name: 'Russell'  
+                    first_name: 'Russell',
+                    last_name: 'Bishop',
+                    display_name: 'Russell B.'
                 },
                 isBandit: false
             },
@@ -390,7 +486,9 @@ describe('selectors', () => {
                 games: 3,
                 user: {
                     id: 3,
-                    name: 'Nathan'
+                    first_name: 'Nathan',
+                    last_name: 'Rathbone',
+                    display_name: 'Nathan R.'
                 },
                 isBandit: true
             }

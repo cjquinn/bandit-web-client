@@ -4,7 +4,7 @@ import React from 'react';
 // Components
 import Notification from '../shared/Notification';
 
-const InputField = ({ input, label, meta, placeholder = '', autoComplete = '', type }) => (
+const InputField = ({ input, label, meta: { error, touched }, placeholder = '', autoComplete = '', type }) => (
     <fieldset className="u-pos-relative">
         <input
             {...input}
@@ -15,9 +15,9 @@ const InputField = ({ input, label, meta, placeholder = '', autoComplete = '', t
 
         <label>{label}</label>
 
-        {meta && meta.error &&
+        {error && touched &&
             <Notification
-                message={meta.error}
+                message={error}
                 type="error"
             />
         }

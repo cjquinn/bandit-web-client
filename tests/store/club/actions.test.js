@@ -4,6 +4,7 @@ import { push } from 'react-router-redux';
 
 // Actions
 import * as actions from '../../../src/store/club/actions';
+import { setFlash } from '../../../src/store/flash/actions';
 import { SIGN_OUT } from '../../../src/store/user/actions';
 
 // Api
@@ -45,7 +46,7 @@ describe('createClub', () => {
                 jwt: 'TOKEN'
             });
 
-        return store.dispatch(actions.createClub())
+        return store.dispatch(actions.createClub({name: 'Bandit'}))
             .then(() => {
                 const expected = [
                     {type: actions.createClubRequest.toString()},
@@ -250,6 +251,13 @@ describe('updateClub', () => {
                             entities: {
                                 clubs: {1: {id: 1, name: 'Bandit'}}
                             }
+                        }
+                    },
+                    {
+                        type: setFlash.toString(),
+                        payload: {
+                            message: 'Your club settings were updated',
+                            type: 'success'
                         }
                     }
                 ];

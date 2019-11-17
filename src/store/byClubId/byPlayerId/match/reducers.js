@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { combineActions, handleAction, handleActions } from 'redux-actions';
+import { handleActions } from 'redux-actions';
 
 // Actions
 import * as actions from './actions';
@@ -10,20 +10,16 @@ import { makeIsFetchingReducer } from '../../../shared/reducers';
 // Selectors
 import { initialState } from './selectors';
 
-const ids = handleAction(
-    actions.fetchMatchesSuccess,
-    (state, { payload }) => payload.page === 1
-        ? payload.result
-        : [...state, ...payload.result],
-    initialState.ids
-);
-
-const isDeleting = handleActions(
+const ids = handleActions(
     {
-        [actions.deleteMatchRequest]: () => true,
-        [combineActions(actions.deleteMatchFailure, actions.deleteMatchSuccess)]: () => false
+        [actions.addMatchSuccess]: (state, { payload }) => [payload.result, ...state],
+        [actions.deleteMatchSuccess]: (state, { payload }) => state.filter(id => id !== payload.result),
+        [actions.fetchMatchesSuccess]: (state, { payload }) =>
+            payload.page === 1
+                ? payload.result
+                : [...state, ...payload.result],
     },
-    false
+    initialState.ids
 );
 
 const isFetching = makeIsFetchingReducer(
@@ -32,21 +28,26 @@ const isFetching = makeIsFetchingReducer(
     actions.fetchMatchesSuccess
 );
 
-const page = handleAction(
-    actions.fetchMatchesSuccess,
-    (state, { payload }) => payload.page,
+const page = handleActions(
+    {
+        [actions.addMatchSuccess]: () => undefined,
+        [actions.deleteMatchSuccess]: () => undefined,
+        [actions.fetchMatchesSuccess]: (state, { payload }) => payload.page,
+    },
     initialState.page
 );
 
-const total = handleAction(
-    actions.fetchMatchesSuccess,
-    (state, { payload }) => payload.total,
+const total = handleActions(
+    {
+        [actions.addMatchSuccess]: state => state + 1,
+        [actions.deleteMatchSuccess]: state => state - 1,
+        [actions.fetchMatchesSuccess]: (state, { payload }) => payload.total,
+    },
     initialState.total
 );
 
 const reducers = combineReducers({
     ids,
-    isDeleting,
     isFetching,
     page,
     total

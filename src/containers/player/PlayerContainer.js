@@ -25,13 +25,14 @@ class PlayerContainer extends Component {
     }
 
     render() {
-        const { club, player, user } = this.props;
+        const { club, player, user, withCta = true } = this.props;
 
         return (
             <Player
                 club={club}
                 player={player}
                 user={user}
+                withCta={withCta}
             />
         );
     }
@@ -39,6 +40,7 @@ class PlayerContainer extends Component {
 
 PlayerContainer.propTypes = {
     club: PropTypes.object,
+    withCta: PropTypes.bool,
     fetchPlayer: PropTypes.func.isRequired,
     player: PropTypes.object,
     playerId: PropTypes.number.isRequired,

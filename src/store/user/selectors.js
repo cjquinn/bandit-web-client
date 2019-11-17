@@ -40,6 +40,6 @@ export const getIsClubOwner = createSelector(
 );
 
 export const getCurrentPlayerId = createSelector(
-    [getClubId, getUserId, getPlayerEntities, getUserEntity],
-    (clubId, userId, players, user) => user.players.find(playerId => players[playerId].club_id === clubId)
+    [getClubId, getPlayerEntities, getUserEntity],
+    (clubId, players, user) => user.players.find(playerId => players[playerId].club_id === clubId)
 );

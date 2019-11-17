@@ -5,11 +5,10 @@
     "build:staging": "API=staging NODE_ENV=production webpack -p --config ./webpack.production.config.js",
     "start:local": "API=local webpack-dev-server --host 0.0.0.0",
     "start:live": "API=live webpack-dev-server --host 0.0.0.0",
-    "start:local": "API=local webpack-dev-server --host 0.0.0.0",
     "start:staging": "API=staging webpack-dev-server --host 0.0.0.0",
     "lint": "eslint -c .eslintrc src test",
-    "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test": "TZ=UTC jest",
+    "test:watch": "TZ=UTC npm test -- --watch"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -58,6 +57,7 @@
     "webpack-dev-server": "^2.11.3"
   },
   "jest": {
+    "testURL": "http://localhost:3000",
     "setupTestFrameworkScriptFile": "./tests/index.js"
   }
 }

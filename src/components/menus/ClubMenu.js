@@ -25,6 +25,16 @@ const ClubMenu = ({ isClubOwner }) => (
 
                 <li>
                     <NavLink
+                        to="/challenges"
+                        className="c-tab c-tab--header"
+                        activeClassName="c-tab--active"
+                    >
+                        Challenges
+                    </NavLink>
+                </li>
+
+                <li>
+                    <NavLink
                         to="/matches"
                         className="c-tab c-tab--header"
                         activeClassName="c-tab--active"
@@ -35,11 +45,11 @@ const ClubMenu = ({ isClubOwner }) => (
 
                 <li>
                     <NavLink
-                        to="/leaderboard/all-time"
+                        to="/leaderboard"
                         className="c-tab c-tab--header"
                         activeClassName="c-tab--active"
                     >
-                        Leaderboard
+                        Leaderboards
                     </NavLink>
                 </li>
 

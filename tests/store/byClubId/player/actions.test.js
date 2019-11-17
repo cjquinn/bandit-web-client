@@ -4,6 +4,7 @@ import { push } from 'react-router-redux';
 
 // Actions
 import * as actions from '../../../../src/store/byClubId/player/actions';
+import { setFlash } from '../../../../src/store/flash/actions';
 import { SIGN_OUT } from '../../../../src/store/user/actions';
 
 const clubId = 1;
@@ -37,7 +38,7 @@ describe('fetchPlayer', () => {
     it('success', () => {
         mock
             .onGet(`/clubs/${clubId}/players/${playerId}.json`)
-            .reply(200, {player: {id: 1, rating: 1200}});
+            .reply(200, {player: {id: 1, rating: 1200, user_id: 1}});
 
         return store.dispatch(actions.fetchPlayer(playerId))
             .then(() => {
@@ -46,10 +47,9 @@ describe('fetchPlayer', () => {
                     {
                         type: actions.fetchPlayerSuccess.toString(),
                         payload: {
-                            clubId,
                             result: 1,
                             entities: {
-                                players: {1: {id: 1, rating: 1200}}
+                                players: {1: {id: 1, rating: 1200, user_id: 1, user: 1}}
                             }
                         }
                     }
@@ -73,7 +73,10 @@ describe('fetchPlayers', () => {
         return store.dispatch(actions.fetchPlayers())
             .then(() => {
                 const expected = [
-                    {type: actions.fetchPlayersRequest.toString()},
+                    {
+                        type: actions.fetchPlayersRequest.toString(),
+                        payload: {clubId}
+                    },
                     {type: actions.fetchPlayersFailure.toString()},
                     {type: SIGN_OUT}
                 ];
@@ -85,19 +88,22 @@ describe('fetchPlayers', () => {
     it('success', () => {
         mock
             .onGet(`/clubs/${clubId}/players.json`)
-            .reply(200, {players: [{id: 1, rating: 1200}]});
+            .reply(200, {players: [{id: 1, rating: 1200, user_id: 1}]});
 
         return store.dispatch(actions.fetchPlayers())
             .then(() => {
                 const expected = [
-                    {type: actions.fetchPlayersRequest.toString()},
+                    {
+                        type: actions.fetchPlayersRequest.toString(),
+                        payload: {clubId}
+                    },
                     {
                         type: actions.fetchPlayersSuccess.toString(),
                         payload: {
                             clubId,
                             result: [1],
                             entities: {
-                                players: {1: {id: 1, rating: 1200}}
+                                players: {1: {id: 1, rating: 1200, user_id: 1, user: 1}}
                             }
                         }
                     }
@@ -133,7 +139,7 @@ describe('invitePlayer', () => {
     it('success', () => {
         mock
             .onPost(`/clubs/${clubId}/players.json`)
-            .reply(200, {player: {id: 1, rating: 1200}});
+            .reply(200, {player: {id: 1, rating: 1200, user_id: 1}});
 
         return store.dispatch(actions.invitePlayer())
             .then(() => {
@@ -144,8 +150,15 @@ describe('invitePlayer', () => {
                         payload: {
                             result: 1,
                             entities: {
-                                players: {1: {id: 1, rating: 1200}}
+                                players: {1: {id: 1, rating: 1200, user_id: 1, user: 1}}
                             }
+                        }
+                    },
+                    {
+                        type: setFlash.toString(),
+                        payload: {
+                            message: 'Invite sent',
+                            type: 'success'
                         }
                     },
                     push('/players')

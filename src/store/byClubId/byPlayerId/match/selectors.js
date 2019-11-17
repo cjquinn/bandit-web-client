@@ -11,18 +11,14 @@ import { getByPlayerIdState } from '../selectors';
 import { getLimit, getMatchId } from '../../../props/selectors';
 import { makeIsFetchingSelector } from '../../../shared/selectors';
 
+// State
 export const initialState = {
     ids: [],
-    isDeleting: false,
     isFetching: false,
     page: 1,
     total: 0
 };
 
-// Normalized
-export const getMatchEntity = (state, props) => getMatchEntities(state)[getMatchId(null, props)];
-
-// State
 const getMatchState = (state, props) =>
     getByPlayerIdState(state, props)
         ? getByPlayerIdState(state, props).match
@@ -30,13 +26,14 @@ const getMatchState = (state, props) =>
 
 export const getIds = (state, props) => getMatchState(state, props).ids;
 
-export const getIsDeleting = (state, props) => getMatchState(state, props).isDeleting;
-
 export const getIsFetching = makeIsFetchingSelector(getMatchState);
 
 export const getPage = (state, props) => getMatchState(state, props).page;
 
 export const getTotal = (state, props) => getMatchState(state, props).total;
+
+// Normalized
+export const getMatchEntity = (state, props) => getMatchEntities(state)[getMatchId(null, props)];
 
 // Memoized
 export const makeGetHasMore = () => createSelector(
@@ -72,20 +69,19 @@ export const makeGetMatches = () => createSelector(
             return denormalizedMatches;
         }
 
-        const matchesByDate = denormalizedMatches.reduce((acc, match) => {
-            const date = moment(match.created).format('dddd Do');
-            const matches = acc[date] ? acc[date]['matches'] : []; 
+        const matchesByDate = {};
 
-            return {
-                ...acc,
-                [date]: {
+        denormalizedMatches.forEach(match => {
+            const date = moment(match.created).format('dddd Do');
+
+            if (!matchesByDate[date]) {
+                matchesByDate[date] = {
                     date,
-                    matches: [
-                        ...matches,
-                        match
-                    ]
-                }
-            };
+                    matches: []
+                };
+            }
+
+            matchesByDate[date].matches.push(match);
         }, {});
 
         return Object.keys(matchesByDate).map(date => matchesByDate[date]);

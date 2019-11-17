@@ -1,19 +1,69 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
 // Components
 import AllTimeLeaderboardList from '../components/lists/AllTimeLeaderboardList';
+import ChallengesList from '../components/lists/ChallengesList';
 import FooterContainer from '../containers/shared/FooterContainer';
 import MatchesList from '../components/lists/MatchesList';
 import Template from '../components/shared/Template';
 import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
 
 // Containers
+import ChallengesListContainer from '../containers/lists/ChallengesListContainer';
 import LeaderboardListContainer from '../containers/lists/LeaderboardListContainer';
 import MatchesListContainer from '../containers/lists/MatchesListContainer';
 
-const DashboardScreen = () => (
+const DashboardScreen = ({ user }) => (
     <Template>
+        <section className="o-container u-vspace-1bl">
+            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                <h1 className="u-size-h2 u-color-white">Challenges <span className="u-weight-normal u-color-steam">accepted</span></h1>
+
+                <Link
+                    to="/challenges/accepted"
+                    className="c-go"
+                >
+                    Go
+                </Link>
+            </header>
+
+            <ChallengesListContainer
+                component={ChallengesList}
+                playerId={user.player.id}
+                filter="accepted"
+            />
+        </section>
+
+        <section className="o-container u-vspace-1bl">
+            <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
+                <h1 className="u-size-h2 u-color-white">Challenges <span className="u-weight-normal u-color-steam">open</span></h1>
+
+                <Link
+                    to="/challenges/open"
+                    className="c-go"
+                >
+                    Go
+                </Link>
+            </header>
+
+            <ChallengesListContainer
+                component={ChallengesList}
+                playerId={user.player.id}
+                filter="open"
+            />
+
+            <div className="u-ph-1bl">
+                <Link
+                    to="/challenges/create"
+                    className="c-button c-button--default u-mt-2bl"
+                >
+                    Create challenge
+                </Link>
+            </div>
+        </section>
+        
         <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">Matches <span className="u-weight-normal u-color-steam">recent</span></h1>
@@ -83,5 +133,9 @@ const DashboardScreen = () => (
         <FooterContainer />
     </Template>
 );
+
+DashboardScreen.propTypes = {
+    user: PropTypes.object.isRequired
+};
 
 export default DashboardScreen;

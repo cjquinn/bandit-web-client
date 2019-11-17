@@ -20,12 +20,14 @@ const ClubsScreen = () => (
         <section className="o-container u-vspace-3bl">
             <ClubsListContainer />
 
-            <Link
-                to="/clubs/create"
-                className="c-button c-button--default"
-            >
-                Create a club
-            </Link>
+            <div className="u-ph-1bl">
+                <Link
+                    to="/clubs/create"
+                    className="c-button c-button--default"
+                >
+                    Create a club
+                </Link>
+            </div>
         </section>
 
         <FooterContainer/>

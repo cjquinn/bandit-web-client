@@ -19,7 +19,7 @@ const Header = ({ player, score, snapshot }) => (
             <dt>
                 <h2 className="u-weight-bold u-color-paste u-capitalize">
                     <Link to={`/players/${player.id}`}>
-                        {player.user.first_name} {player.user.last_name}
+                        {player.user.full_name}
                     </Link>
                 </h2>
             </dt>

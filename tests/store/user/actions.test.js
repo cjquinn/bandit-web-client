@@ -4,74 +4,13 @@ import { push } from 'react-router-redux';
 
 // Actions
 import * as actions from '../../../src/store/user/actions';
+import { setFlash } from '../../../src/store/flash/actions';
 
 // Api
 import { getClubId, setClubId, getJwt, setJwt } from '../../../src/store/api';
 
 const mock = new MockAdapter(axios);
 let store;
-
-describe('activateAccount', () => {
-    beforeEach(() => store = global.configureStore({
-        router: {
-            location: {
-                search: '?token=123'
-            }
-        }
-    }));
-
-    afterEach(() => {
-        mock.reset();
-        global.localStorage.clear();
-    });
-
-    it('failure', () => {
-        mock
-            .onPatch('/users/activate-account.json?token=123')
-            .reply(403);
-
-        return store.dispatch(actions.activateAccount())
-            .then(() => {
-                const expected = [
-                    {type: actions.activateAccountRequest.toString()},
-                    {type: actions.activateAccountFailure.toString()},
-                    {type: actions.SIGN_OUT}
-                ];
-
-                expect(store.getActions()).toEqual(expected);
-            });
-    });
-
-    it('success', () => {
-        mock
-            .onPatch('/users/activate-account.json?token=123')
-            .reply(200, {
-                user: {id: 1, players: [{id: 1, club_id: 1}]},
-                jwt: 'TOKEN'
-            });
-
-        return store.dispatch(actions.activateAccount())
-            .then(() => {
-                const expected = [
-                    {type: actions.activateAccountRequest.toString()},
-                    {
-                        type: actions.activateAccountSuccess.toString(),
-                        payload: {
-                            result: 1,
-                            entities: {
-                                players: {1: {id: 1, club_id: 1}},
-                                users: {1: {id: 1, players: [1]}}
-                            }
-                        }
-                    }
-                ];
-
-                expect(store.getActions()).toEqual(expected);
-                expect(getClubId()).toEqual(1);
-                expect(getJwt()).toEqual('TOKEN');
-            });
-    });
-});
 
 describe('fetchCurrentUser', () => {
     beforeEach(() => store = global.configureStore());
@@ -192,6 +131,13 @@ describe('requestPasswordReset', () => {
                 const expected = [
                     {type: actions.requestPasswordResetRequest.toString()},
                     {type: actions.requestPasswordResetSuccess.toString()},
+                    {
+                        type: setFlash.toString(),
+                        payload: {
+                            message: 'Check your email for your reset password link',
+                            type: 'info'
+                        }
+                    },
                     push('/sign-in')
                 ];
 
@@ -359,6 +305,62 @@ describe('signOut', () => {
     });
 });
 
+describe('signUp', () => {
+    beforeEach(() => store = global.configureStore());
+    
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
+
+    it('failure', () => {
+        mock
+            .onPost('/users.json')
+            .reply(403);
+
+        return store.dispatch(actions.signUp())
+            .then(() => {
+                const expected = [
+                    {type: actions.signUpRequest.toString()},
+                    {type: actions.signUpFailure.toString()},
+                    {type: actions.SIGN_OUT}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onPost('/users.json')
+            .reply(200, {
+                user: {id: 1, players: [{id: 1, club_id: 1}]},
+                jwt: 'TOKEN'
+            });
+
+        return store.dispatch(actions.signUp())
+            .then(() => {
+                const expected = [
+                    {type: actions.signUpRequest.toString()},
+                    {
+                        type: actions.signUpSuccess.toString(),
+                        payload: {
+                            result: 1,
+                            entities: {
+                                players: {1: {id: 1, club_id: 1}},
+                                users: {1: {id: 1, players: [1]}}
+                            }
+                        }
+                    }
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+                expect(getClubId()).toEqual(1);
+                expect(getJwt()).toEqual('TOKEN');
+            });
+    });
+});
+
 describe('updateSettings', () => {
     beforeEach(() => store = global.configureStore());
 
@@ -369,7 +371,7 @@ describe('updateSettings', () => {
 
     it('failure', () => {
         mock
-            .onPut('/users/update-settings.json')
+            .onPut('/users.json')
             .reply(403);
 
         return store.dispatch(actions.updateSettings())
@@ -386,7 +388,7 @@ describe('updateSettings', () => {
 
     it('success', () => {
         mock
-            .onPut('/users/update-settings.json')
+            .onPut('/users.json')
             .reply(200, {
                 user: {id: 1}
             });
@@ -403,55 +405,14 @@ describe('updateSettings', () => {
                                 users: {1: {id: 1}}
                             }
                         }
+                    },
+                    {
+                        type: setFlash.toString(),
+                        payload: {
+                            message: 'Your settings were updated',
+                            type: 'success'
+                        }
                     }
-                ];
-
-                expect(store.getActions()).toEqual(expected);
-            });
-    });
-});
-
-describe('validateActivateAccountToken', () => {
-    beforeEach(() => store = global.configureStore({
-        router: {
-            location: {
-                search: '?token=123'
-            }
-        }
-    }));
-
-    afterEach(() => {
-        mock.reset();
-        global.localStorage.clear();
-    });
-
-    it('failure', () => {
-        mock
-            .onGet('/users/activate-account.json?token=123')
-            .reply(403);
-
-        return store.dispatch(actions.validateActivateAccountToken())
-            .then(() => {
-                const expected = [
-                    {type: actions.validateActivateAccountTokenRequest.toString()},
-                    {type: actions.validateActivateAccountTokenFailure.toString()},
-                    {type: actions.SIGN_OUT}
-                ];
-
-                expect(store.getActions()).toEqual(expected);
-            });
-    });
-
-    it('success', () => {
-        mock
-            .onGet('/users/activate-account.json?token=123')
-            .reply(200);
-
-        return store.dispatch(actions.validateActivateAccountToken())
-            .then(() => {
-                const expected = [
-                    {type: actions.validateActivateAccountTokenRequest.toString()},
-                    {type: actions.validateActivateAccountTokenSuccess.toString()}
                 ];
 
                 expect(store.getActions()).toEqual(expected);

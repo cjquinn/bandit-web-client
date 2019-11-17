@@ -1,5 +1,13 @@
 import { schema } from 'normalizr';
 
+export const challenge = new schema.Entity('challenges', {}, {
+    processStrategy: entity => ({
+        ...entity,
+        player_a: entity.player_a || entity.player_a_id,
+        player_b: entity.player_b || entity.player_b_id
+    })
+});
+
 export const club = new schema.Entity('clubs');
 
 export const dispute = new schema.Entity('disputes', {}, {
@@ -26,6 +34,11 @@ export const player = new schema.Entity('players', {}, {
 });
 
 export const user = new schema.Entity('users');
+
+challenge.define({
+    player_a: player,
+    player_b: player
+});
 
 club.define({founder: user});
 

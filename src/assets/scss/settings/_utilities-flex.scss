@@ -5,6 +5,7 @@ $utilities-flex-settings: (
     values: (
       (
         ('column', 'col'),
+        ('column-reverse', 'col-rev'),
       ),
     ),
   ),
@@ -65,6 +66,7 @@ $utilities-flex-settings: (
     values: (
       (
         'center',
+        ('flex-end', 'end'),
       ),
     ),
   ),

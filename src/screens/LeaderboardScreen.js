@@ -64,6 +64,7 @@ const LeaderboardScreen = () => (
                         />
                     </div>
                 )} />
+                
                 <Route exact path="/leaderboard/weekly" render={props => (
                     <LeaderboardListContainer
                         component={WeeklyLeaderboardList}

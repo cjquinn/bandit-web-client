@@ -3,11 +3,11 @@ import reducers from '../../../../src/store/entities/reducers';
 describe('initial state', () => {
     it('shape', () => {
         const expected = {
+            challenges: {},
             clubs: {},
             disputes: {},
             matches: {},
             players: {},
-            snapshots: {},
             users: {}
         };
 
@@ -16,6 +16,9 @@ describe('initial state', () => {
 
     it('cache entities', () => {
         const state = {
+            challenges: {
+                1: {id: 1, player_a_id: 1}
+            },
             clubs: {
                 1: {id: 1, name: 'Bandit'}
             },
@@ -28,9 +31,6 @@ describe('initial state', () => {
             players: {
                 1: {id: 1, rating: 1200}
             },
-            snapshots: {
-                '1-1': {match_id: 1, player_id: 1, rating: 1200}
-            },
             users: {
                 1: {id: 1, name: 'Christy'}
             }
@@ -38,6 +38,9 @@ describe('initial state', () => {
 
         const payload = {
             entities: {
+                challenges: {
+                    2: {id: 2, player_a_id: 2}
+                },
                 clubs: {
                     2: {id: 2, name: 'Squash'}
                 },
@@ -50,9 +53,6 @@ describe('initial state', () => {
                 players: {
                     2: {id: 2, rating: 1200}
                 },
-                snapshots: {
-                    '2-2': {match_id: 2, player_id: 2, rating: 1200}
-                },
                 users: {
                     2: {id: 2, name: 'Russell'}
                 }
@@ -60,6 +60,10 @@ describe('initial state', () => {
         };
 
         const expected = {
+            challenges: {
+                1: {id: 1, player_a_id: 1},
+                2: {id: 2, player_a_id: 2}
+            },
             clubs: {
                 2: {id: 2, name: 'Squash'},
                 1: {id: 1, name: 'Bandit'}
@@ -75,10 +79,6 @@ describe('initial state', () => {
             players: {
                 2: {id: 2, rating: 1200},
                 1: {id: 1, rating: 1200}
-            },
-            snapshots: {
-                '2-2': {match_id: 2, player_id: 2, rating: 1200},
-                '1-1': {match_id: 1, player_id: 1, rating: 1200}
             },
             users: {
                 1: {id: 1, name: 'Christy'},

@@ -17,6 +17,54 @@ describe('initial state', () => {
     });
 });
 
+describe('addMatch', () => {
+    it(actions.addMatchSuccess.toString(), () => {
+        const state = {
+            ids: [1],
+            isFetching: false,
+            page: 2,
+            total: 1
+        };
+
+        const payload = {
+            result: 2
+        };
+
+        const expected = {
+            ids: [2, 1],
+            isFetching: false,
+            page: 1,
+            total: 2
+        };
+
+        expect(reducers(state, actions.addMatchSuccess(payload))).toEqual(expected);
+    });
+});
+
+describe('deleteMatch', () => {
+    it(actions.deleteMatchSuccess.toString(), () => {
+        const state = {
+            ids: [2, 1],
+            isFetching: false,
+            page: 2,
+            total: 2
+        };
+
+        const payload = {
+            result: 2
+        };
+
+        const expected = {
+            ids: [1],
+            isFetching: false,
+            page: 1,
+            total: 1
+        };
+
+        expect(reducers(state, actions.deleteMatchSuccess(payload))).toEqual(expected);
+    });
+});
+
 describe('fetchMatches', () => {
     it(actions.fetchMatchesRequest.toString(), () => {
         const state = {

@@ -1,11 +1,30 @@
 // Selectors
 import {
+    getChallengeEntities,
     getClubEntities,
     getDisputeEntities,
     getMatchEntities,
     getPlayerEntities } from '../../../src/store/entities/selectors';
 
 describe('selectors', () => {
+    it('getChallengeEntities', () => {
+        const state = {
+            entities: {
+                challenges: {
+                    1: {id: 1},
+                    2: {id: 2}
+                }
+            }
+        };
+
+        const expected = {
+            1: {id: 1},
+            2: {id: 2}
+        };
+
+        expect(getChallengeEntities(state)).toEqual(expected);
+    });
+
     it('getClubEntities', () => {
         const state = {
             entities: {

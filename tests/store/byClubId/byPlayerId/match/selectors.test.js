@@ -17,7 +17,6 @@ describe('selectors', () => {
                     byPlayerId: {
                         1: {
                             match: {
-                                didError: false,
                                 ids: [1, 2],
                                 isFetching: false,
                                 page: 1
@@ -59,7 +58,6 @@ describe('selectors', () => {
                     byPlayerId: {
                         1: {
                             match: {
-                                didError: false,
                                 ids: [],
                                 isFetching: true,
                                 page: 1
@@ -99,7 +97,6 @@ describe('selectors', () => {
                     byPlayerId: {
                         1: {
                             match: {
-                                didError: false,
                                 ids: [],
                                 isFetching: false,
                                 page: 2
@@ -214,8 +211,7 @@ describe('selectors', () => {
                     name: 'Russell'  
                 },
                 wins: 1,
-                losses: 0,
-                isBandit: true
+                losses: 0
             },
             player_b: {
                 id: 2,
@@ -224,8 +220,7 @@ describe('selectors', () => {
                     name: 'Christy'
                 },
                 wins: 1,
-                losses: 0,
-                isBandit: false
+                losses: 0
             },
             dispute: null
         };
@@ -276,7 +271,6 @@ describe('selectors', () => {
                     byPlayerId: {
                         1: {
                             match: {
-                                didError: false,
                                 ids: [1, 2],
                                 isFetching: false,
                                 page: 1
@@ -352,16 +346,14 @@ describe('selectors', () => {
                                 id: 1,
                                 name: 'Russell'  
                             },
-                            wins: 1,
-                            isBandit: true
+                            wins: 1
                         },
                         player_b: {
                             id: 2,
                             user: {
                                 id: 2,
                                 name: 'Christy'
-                            },
-                            isBandit: false
+                            }
                         },
                         dispute: null,
                         created: '2018-06-10 12:00:00'
@@ -378,16 +370,14 @@ describe('selectors', () => {
                             user: {
                                 id: 2,
                                 name: 'Christy'
-                            },
-                            isBandit: false
+                            }
                         },
                         player_b: {
                             id: 3,
                             user: {
                                 id: 3,
                                 name: 'Nathan'
-                            },
-                            isBandit: false
+                            }
                         },
                         dispute: null,
                         created: '2018-06-11 12:00:00'
@@ -412,16 +402,14 @@ describe('selectors', () => {
                         id: 1,
                         name: 'Russell'  
                     },
-                    wins: 1,
-                    isBandit: true
+                    wins: 1
                 },
                 player_b: {
                     id: 2,
                     user: {
                         id: 2,
                         name: 'Christy'
-                    },
-                    isBandit: false
+                    }
                 },
                 dispute: null,
                 created: '2018-06-10 12:00:00'
