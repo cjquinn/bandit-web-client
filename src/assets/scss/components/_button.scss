@@ -11,23 +11,21 @@ $component: 'button';
   @extend .u-jc-around;
   @extend .u-width-100pc;
   @extend .u-borrad-3;
-  @extend .u-size-h4;
-  @extend .u-weight-bold;
   @extend .u-align-center;
   @extend .u-pv-1bl;
   @extend .u-ls--05px;
   appearance: none;
-
+  
   &:active {
     @extend .u-bgcolor-mariana;
     box-shadow: 0 -3px 10px 0 rgba(0,2,7,0.25), inset 0 7px 10px 0 rgba(0,2,7, .39);
   }
-
+  
   &--default,
   &--warning {
+    @extend .u-size-h4;
+    @extend .u-weight-bold;
     @extend .u-color-white;
-    border-top: 2px solid $colour-satsuma;
-    border-bottom: 2px solid $colour-orange;
     box-shadow: 0 3px 10px 0 rgba(0,0,0, .50), inset 0 2px 0 0 $colour-steam;
 
     &:not(:hover):not(:focus) {
@@ -43,13 +41,29 @@ $component: 'button';
   }
 
   &--default {
+    --gradient-top: #{$colour-satsuma};
+    --gradient-bottom: #{$colour-orange};
+
+    border-top: 2px solid var(--gradient-top);
+    border-bottom: 2px solid var(--gradient-bottom);
+
     &:before {
       // gradient border
       @extend %u-content-none;
       @extend .o-absfill;
       border-width: 2px;
       border-style: solid;
-      border-image: linear-gradient(to bottom, $colour-satsuma, $colour-orange) 1 100%;
+      border-image: linear-gradient(to bottom, var(--gradient-top), var(--gradient-bottom)) 1 100%;
+    }
+  }
+
+  &--default + .c-button--default {
+    --gradient-top: #{$colour-grape};
+    --gradient-bottom: #{$colour-whale};
+
+    &:before {
+      // gradient border
+      // border-image: linear-gradient(to bottom, $colour-grape, $colour-whale) 1 100%;
     }
   }
 
@@ -69,5 +83,15 @@ $component: 'button';
     transform: skew(-5deg);
     box-shadow: none;
     color: rgba(255,255,255, .2);
+  }
+
+  &--secondary {
+    @extend .u-weight-bold;
+    // @extend .u-size-h6;
+  }
+
+  &--secondary.warning {
+    background-color: rgba($colour-hotmelon, .05);
+    color: $colour-hotmelon;
   }
 }

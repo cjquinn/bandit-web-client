@@ -11,24 +11,24 @@ const ChallengesList = ({ currentPlayerId, filter, isFetching, playerId, challen
             return <Loading />;
         }
         
-        return (
-            <div className="c-notification c-notification--alert">
-                <p className="u-weight-bold">
-                    No challenges
-                </p>
+        // return (
+        //     // <div className="c-notification c-notification--alert">
+        //     //     <p className="u-weight-bold">
+        //     //         No challenges
+        //     //     </p>
             
-                <p>
-                    {playerId !== 'all'
-                        ? `${playerId === currentPlayerId ? 'You don\'t have any' : 'This player doesn\'t have any'} ${filter === 'open' ? 'open' : 'upcoming'} challenges.`
-                        : 'Create a challenge to find a new opponent.'
-                    }
-                </p>
-            </div>
-        );
+        //     //     <p>
+        //     //         {playerId !== 'all'
+        //     //             ? `${playerId === currentPlayerId ? 'You don\'t have any' : 'This player doesn\'t have any'} ${filter === 'open' ? 'open' : 'upcoming'} challenges.`
+        //     //             : 'Create a challenge to find a new opponent.'
+        //     //         }
+        //     //     </p>
+        //     // </div>
+        // );
     }
 
     return (
-        <ol className="u-vspace-1bl">
+        <ol className="u-vspace-105bl">
             {challenges.map(challenge =>
                 <li key={challenge.id}>
                     <ChallengeItem challenge={challenge} />

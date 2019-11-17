@@ -47,6 +47,10 @@ $utilities-margin-settings: (
         combinator: $combinator-child-siblings,
       ),
       (
+        value: (calc(var(--baseline) * 1.5), '105bl'),
+        combinator: $combinator-child-siblings,
+      ),
+      (
         value: (calc(var(--baseline) * 2), '2bl'),
         combinator: $combinator-child-siblings,
       ),

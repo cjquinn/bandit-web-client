@@ -19,7 +19,7 @@ const DashboardScreen = ({ user }) => (
     <Template>
         <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">Challenges <span className="u-weight-normal u-color-steam">accepted</span></h1>
+                <h1 className="u-size-h2 u-color-white">My Challenges <span className="u-weight-normal u-color-steam">accepted</span></h1>
 
                 <Link
                     to="/challenges/accepted"
@@ -38,7 +38,7 @@ const DashboardScreen = ({ user }) => (
 
         <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
-                <h1 className="u-size-h2 u-color-white">Challenges <span className="u-weight-normal u-color-steam">open</span></h1>
+                <h1 className="u-size-h2 u-color-white">My Challenges <span className="u-weight-normal u-color-steam">open</span></h1>
 
                 <Link
                     to="/challenges/open"
@@ -92,7 +92,7 @@ const DashboardScreen = ({ user }) => (
             </div>
         </section>
 
-        <section className="o-container u-vspace-1bl">
+        {/* <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">All time <span className="u-weight-normal u-color-steam">leaderboard</span></h1>
 
@@ -128,7 +128,7 @@ const DashboardScreen = ({ user }) => (
                 limit="3"
                 period="weekly"
             />
-        </section>
+        </section> */}
 
         <FooterContainer />
     </Template>

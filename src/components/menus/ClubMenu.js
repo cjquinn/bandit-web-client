@@ -19,7 +19,7 @@ const ClubMenu = ({ isClubOwner }) => (
                         className="c-tab c-tab--header"
                         activeClassName="c-tab--active"
                     >
-                        Dashboard
+                        Home
                     </NavLink>
                 </li>
 
@@ -70,7 +70,7 @@ const ClubMenu = ({ isClubOwner }) => (
                             className="c-tab c-tab--header"
                             activeClassName="c-tab--active"
                         >
-                            Club
+                            Club Settings
                         </NavLink>
                     </li>
                 }

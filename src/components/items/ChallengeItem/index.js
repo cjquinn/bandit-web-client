@@ -13,7 +13,7 @@ const ChallengeItem = ({ challenge }) => (
         <div className="u-flex u-jc-between u-ai-center u-pv-105bl u-ph-1bl u-bgcolor-fold u-borrad-3300">
             <div>
                 <p className="u-size-14px u-color-white u-weight-bold">
-                    {challenge.moment.format('dddd HH:mm')}
+                    {challenge.moment.format('dddd h:mma')}
                 </p>
             </div>
             
@@ -24,7 +24,7 @@ const ChallengeItem = ({ challenge }) => (
             </div>
         </div>
 
-        <div className="u-flex u-ai-center u-pv-1bl u-ph-1bl u-bgcolor-fold05">
+        <div className="u-flex u-ai-center u-pv-105bl u-ph-1bl u-bgcolor-fold05">
             <Players challenge={challenge} />
         </div>
     </Link>

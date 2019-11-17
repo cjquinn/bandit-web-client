@@ -66,7 +66,7 @@ const Players = ({ challenge }) => (
                         </span>
                     </dd>
                 </Template>
-                : <span className="c-go">Open</span>
+                : <span className="c-go">View</span>
             }
         </div>
     </Template>

@@ -35,14 +35,14 @@ const Challenge = ({ challenge, user }) => {
 
     return (
         <Template>
-            <div className="o-container u-ph-1bl u-vspace-2bl">
+            {/* <div className="o-container u-ph-1bl u-vspace-2bl">
                 <Link
                     to={`/challenges/${challenge.player_b_id ? 'accepted' : 'open'}`}
                     className="c-go"
                 >
                     Back to challenges
                 </Link>
-            </div>
+            </div> */}
 
             <header className="o-container u-ph-1bl">
                 <h1 className="u-size-h1 u-color-white">
@@ -50,18 +50,16 @@ const Challenge = ({ challenge, user }) => {
                 </h1>
             </header>
 
-            <hr className="c-hr" />
-
             <div className="o-container u-vspace-3bl">
                 <dl className="u-vspace-2bl u-ph-1bl">
                     <div className="u-vspace-03r">
-                        <dt className="u-size-h3 u-color-white">Date:</dt>
-                        <dd>{challenge.moment.format('dddd HH:mm - Do MMMM')}</dd>
+                        <dt>Date:</dt>
+                        <dd className="u-size-h3 u-color-white">{challenge.moment.format('dddd HH:mm - Do MMMM')}</dd>
                     </div>
 
                     <div className="u-vspace-03r">
-                        <dt className="u-size-h3 u-color-white">Location:</dt>
-                        <dd>{challenge.location}</dd>
+                        <dt>Location:</dt>
+                        <dd className="u-size-h3 u-color-white">{challenge.location}</dd>
                     </div>
                 </dl>
 
@@ -77,60 +75,63 @@ const Challenge = ({ challenge, user }) => {
                 }
             </div>
 
-            <div className="u-ph-1bl u-vspace-3bl">
-                {!challenge.player_b_id && user.id !== challenge.player_a.user_id &&
-                    <AcceptChallengeButton
-                        challengeId={challenge.id}
-                        type="default"
-                    >
-                        Accept challenge
-                    </AcceptChallengeButton>
-                }
+            <div className="o-container u-ph-1bl u-vspace-2bl">
 
-                {challenge.player_b_id && [challenge.player_a.user_id, challenge.player_b.user_id].indexOf(user.id) !== -1 &&
-                    <Template>
-                        <a
-                            className="c-button c-button--default"
-                            href={`mailto:${user.id === challenge.player_a.user_id
-                                ? challenge.player_b.user.email
-                                : challenge.player_a.user.email
-                            }`}
+                <div class="u-vspace-1bl">
+                    {!challenge.player_b_id && user.id !== challenge.player_a.user_id &&
+                        <AcceptChallengeButton
+                            challengeId={challenge.id}
+                            type="default"
                         >
-                            Contact {user.id === challenge.player_a.user_id
-                                ? challenge.player_b.user.first_name
-                                : challenge.player_a.user.first_name
-                            }
-                        </a>
+                            Accept challenge
+                        </AcceptChallengeButton>
+                    }
 
-                        <Link
-                            className="c-button c-button--default"
-                            to={`/matches/add/challenges/${challenge.id}`}
-                        >
-                            Submit match score
-                        </Link>
-
-                        {challenge.moment < moment() &&
-                            <ReportChallengeButton
-                                challengeId={challenge.id}
-                                type="warning"
+                    {challenge.player_b_id && [challenge.player_a.user_id, challenge.player_b.user_id].indexOf(user.id) !== -1 &&
+                        <Template>
+                            <Link
+                                className="c-button c-button--default"
+                                to={`/matches/add/challenges/${challenge.id}`}
                             >
-                                Report {user.id === challenge.player_a.user_id
+                                Submit match score
+                            </Link>
+
+                            <a
+                                className="c-button c-button--default"
+                                href={`mailto:${user.id === challenge.player_a.user_id
+                                    ? challenge.player_b.user.email
+                                    : challenge.player_a.user.email
+                                }`}
+                            >
+                                Contact {user.id === challenge.player_a.user_id
                                     ? challenge.player_b.user.first_name
                                     : challenge.player_a.user.first_name
                                 }
-                            </ReportChallengeButton>
-                        }
+                            </a>                        
 
-                        {user.id === challenge.player_b.user_id &&
-                            <WithdrawChallengeButton
-                                challengeId={challenge.id}
-                                type="warning"
-                            >
-                                Withdraw from challenge
-                            </WithdrawChallengeButton>
-                        }
-                    </Template>
-                }
+                            {challenge.moment < moment() &&
+                                <ReportChallengeButton
+                                    challengeId={challenge.id}
+                                    type="warning"
+                                >
+                                    Report {user.id === challenge.player_a.user_id
+                                        ? challenge.player_b.user.first_name
+                                        : challenge.player_a.user.first_name
+                                    }
+                                </ReportChallengeButton>
+                            }
+
+                            {user.id === challenge.player_b.user_id &&
+                                <WithdrawChallengeButton
+                                    challengeId={challenge.id}
+                                    type="secondary warning"
+                                >
+                                    Withdraw from challenge
+                                </WithdrawChallengeButton>
+                            }
+                        </Template>
+                    }
+                </div>
 
                 {user.id === challenge.player_a.user_id &&
                     <DeleteChallengeButton

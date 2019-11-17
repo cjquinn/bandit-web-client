@@ -7,6 +7,7 @@ $component: 'tab';
 #{'.' + $global-components-namespace + $component} {
   @extend %u-block;
   @extend %u-borrad-3300;
+  @extend %u-ws-no;
   transition: all .2s ease;
 
   &:not(&--active):not(&--default) {
