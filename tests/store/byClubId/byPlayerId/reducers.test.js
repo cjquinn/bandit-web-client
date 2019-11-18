@@ -15,6 +15,10 @@ describe('byPlayerId', () => {
                         ids: [],
                         isFetching: false
                     },
+                    all: {
+                        ids: [],
+                        isFetching: false
+                    },
                     open: {
                         ids: [],
                         isFetching: false
@@ -42,6 +46,10 @@ describe('byPlayerId', () => {
                         ids: [],
                         isFetching: false
                     },
+                    all: {
+                        ids: [],
+                        isFetching: false
+                    },
                     open: {
                         ids: [],
                         isFetching: false
@@ -60,6 +68,10 @@ describe('byPlayerId', () => {
                         ids: [],
                         isFetching: false
                     },
+                    all: {
+                        ids: [],
+                        isFetching: false
+                    },
                     open: {
                         ids: [],
                         isFetching: false
@@ -75,6 +87,10 @@ describe('byPlayerId', () => {
             2: {
                 challenge: {
                     accepted: {
+                        ids: [],
+                        isFetching: false
+                    },
+                    all: {
                         ids: [],
                         isFetching: false
                     },
@@ -103,6 +119,10 @@ describe('byPlayerId', () => {
                         ids: [],
                         isFetching: false
                     },
+                    all: {
+                        ids: [],
+                        isFetching: false
+                    },
                     open: {
                         ids: [],
                         isFetching: false
@@ -121,6 +141,10 @@ describe('byPlayerId', () => {
                         ids: [],
                         isFetching: false
                     },
+                    all: {
+                        ids: [],
+                        isFetching: false
+                    },
                     open: {
                         ids: [],
                         isFetching: false
@@ -136,6 +160,10 @@ describe('byPlayerId', () => {
             2: {
                 challenge: {
                     accepted: {
+                        ids: [],
+                        isFetching: false
+                    },
+                    all: {
                         ids: [],
                         isFetching: false
                     },
@@ -165,6 +193,10 @@ describe('byPlayerId', () => {
                         ids: [],
                         isFetching: false
                     },
+                    all: {
+                        ids: [],
+                        isFetching: false
+                    },
                     open: {
                         ids: [],
                         isFetching: false
@@ -183,6 +215,10 @@ describe('byPlayerId', () => {
                         ids: [],
                         isFetching: false
                     },
+                    all: {
+                        ids: [],
+                        isFetching: false
+                    },
                     open: {
                         ids: [],
                         isFetching: false
@@ -198,6 +234,10 @@ describe('byPlayerId', () => {
             2: {
                 challenge: {
                     accepted: {
+                        ids: [],
+                        isFetching: false
+                    },
+                    all: {
                         ids: [],
                         isFetching: false
                     },

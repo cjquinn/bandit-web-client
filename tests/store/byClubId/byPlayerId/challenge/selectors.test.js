@@ -7,7 +7,8 @@ import {
     getChallengeEntity,
     getChallengeOptions,
     makeGetChallenge,
-    makeGetChallenges } from '../../../../../src/store/byClubId/byPlayerId/challenge/selectors';
+    makeGetChallenges,
+    makeGetChallengesByPeriod } from '../../../../../src/store/byClubId/byPlayerId/challenge/selectors';
 
 describe('selectors', () => {
     const props = {
@@ -447,14 +448,90 @@ describe('selectors', () => {
         ];
 
         expect(makeGetChallenges()(state, props)).toEqual(expected);
+    });
+
+    it('makeGetChallengesByPeriod', () => {
+        const thisWeek = moment();
+        const nextWeek = moment().add(1, 'week');
+        const further = moment().add(2, 'week');
+
+        const state = {
+            byClubId: {
+                1: {
+                    byPlayerId: {
+                        'all': {
+                            challenge: {
+                                accepted: {
+                                    ids: [1, 2, 3],
+                                    isFetching: true
+                                },
+                                open: {
+                                    ids: [],
+                                    isFetching: false
+                                }
+                            }
+                        },
+                        1: {
+                            challenge: {
+                                accepted: {
+                                    ids: [1, 2, 3],
+                                    isFetching: true
+                                },
+                                open: {
+                                    ids: [],
+                                    isFetching: false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            entities: {
+                challenges: {
+                    1: {
+                        id: 1,
+                        player_a: 1,
+                        player_b: 2,
+                        match_datetime: thisWeek
+                    },
+                    2: {
+                        id: 2,
+                        player_a: 1,
+                        player_b: 2,
+                        match_datetime: nextWeek
+                    },
+                    3: {
+                        id: 3,
+                        player_a: 1,
+                        player_b: 2,
+                        match_datetime: further
+                    }
+                },
+                players: {
+                    1: {
+                        id: 1,
+                        user: 1
+                    },
+                    2: {
+                        id: 2,
+                        user: 2
+                    }
+                },
+                users: {
+                    1: {id: 1},
+                    2: {id: 2}
+                }
+            },
+            user: {clubId: 1}
+        };
 
         const propsAllPlayerId = {
             playerId: 'all',
             filter: 'accepted'
         };
 
-        const expectedByPeriod = [
-            {
+        const expectedByPeriod = {
+            thisWeek: {
                 period: 'This Week',
                 challenges: [
                     {
@@ -472,7 +549,7 @@ describe('selectors', () => {
                     }
                 ]
             },
-            {
+            nextWeek: {
                 period: 'Next Week',
                 challenges: [
                     {
@@ -490,7 +567,7 @@ describe('selectors', () => {
                     }
                 ]
             },
-            {
+            further: {
                 period: 'Further',
                 challenges: [
                     {
@@ -507,9 +584,10 @@ describe('selectors', () => {
                         moment: further
                     }
                 ]
-            }
-        ];
+            },
+            length: 3
+        };
 
-        expect(makeGetChallenges()(state, propsAllPlayerId)).toEqual(expectedByPeriod);
+        expect(makeGetChallengesByPeriod()(state, propsAllPlayerId)).toEqual(expectedByPeriod);
     });
 });

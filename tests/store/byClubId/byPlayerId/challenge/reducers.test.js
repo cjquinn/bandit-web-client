@@ -12,6 +12,10 @@ describe('initial state', () => {
                 ids: [],
                 isFetching: false
             },
+            all: {
+                ids: [],
+                isFetching: false
+            },
             open: {
                 ids: [],
                 isFetching: false
@@ -29,6 +33,10 @@ describe('acceptChallenge', () => {
                 ids: [2],
                 isFetching: false
             },
+            all: {
+                ids: [],
+                isFetching: false
+            },
             open: {
                 ids: [1],
                 isFetching: false
@@ -42,6 +50,10 @@ describe('acceptChallenge', () => {
         const expected = {
             accepted: {
                 ids: [2, 1],
+                isFetching: false
+            },
+            all: {
+                ids: [],
                 isFetching: false
             },
             open: {
@@ -59,6 +71,10 @@ describe('addMatch', () => {
         const state = {
             accepted: {
                 ids: [2],
+                isFetching: false
+            },
+            all: {
+                ids: [],
                 isFetching: false
             },
             open: {
@@ -79,6 +95,10 @@ describe('addMatch', () => {
                 ids: [],
                 isFetching: false
             },
+            all: {
+                ids: [],
+                isFetching: false
+            },
             open: {
                 ids: [1],
                 isFetching: false
@@ -96,6 +116,10 @@ describe('createChallenge', () => {
                 ids: [],
                 isFetching: false
             },
+            all: {
+                ids: [],
+                isFetching: false
+            },
             open: {
                 ids: [1],
                 isFetching: false
@@ -108,6 +132,10 @@ describe('createChallenge', () => {
 
         const expected = {
             accepted: {
+                ids: [],
+                isFetching: false
+            },
+            all: {
                 ids: [],
                 isFetching: false
             },
@@ -128,6 +156,10 @@ describe('deleteChallenge', () => {
                 ids: [1, 2],
                 isFetching: false
             },
+            all: {
+                ids: [],
+                isFetching: false
+            },
             open: {
                 ids: [1, 2],
                 isFetching: false
@@ -141,6 +173,10 @@ describe('deleteChallenge', () => {
         const expected = {
             accepted: {
                 ids: [2],
+                isFetching: false
+            },
+            all: {
+                ids: [],
                 isFetching: false
             },
             open: {
@@ -160,6 +196,10 @@ describe('fetchChallenges', () => {
                 ids: [],
                 isFetching: false
             },
+            all: {
+                ids: [],
+                isFetching: false
+            },
             open: {
                 ids: [],
                 isFetching: false
@@ -174,6 +214,10 @@ describe('fetchChallenges', () => {
             accepted: {
                 ids: [],
                 isFetching: true
+            },
+            all: {
+                ids: [],
+                isFetching: false
             },
             open: {
                 ids: [],
@@ -190,6 +234,10 @@ describe('fetchChallenges', () => {
                 ids: [],
                 isFetching: true
             },
+            all: {
+                ids: [],
+                isFetching: false
+            },
             open: {
                 ids: [],
                 isFetching: true
@@ -202,6 +250,10 @@ describe('fetchChallenges', () => {
 
         const expected = {
             accepted: {
+                ids: [],
+                isFetching: false
+            },
+            all: {
                 ids: [],
                 isFetching: false
             },
@@ -220,6 +272,10 @@ describe('fetchChallenges', () => {
                 ids: [],
                 isFetching: true
             },
+            all: {
+                ids: [],
+                isFetching: false
+            },
             open: {
                 ids: [],
                 isFetching: false
@@ -234,6 +290,10 @@ describe('fetchChallenges', () => {
         const expected = {
             accepted: {
                 ids: [1],
+                isFetching: false
+            },
+            all: {
+                ids: [],
                 isFetching: false
             },
             open: {
@@ -253,6 +313,10 @@ describe('reportChallenge', () => {
                 ids: [1, 2],
                 isFetching: false
             },
+            all: {
+                ids: [],
+                isFetching: false
+            },
             open: {
                 ids: [],
                 isFetching: false
@@ -266,6 +330,10 @@ describe('reportChallenge', () => {
         const expected = {
             accepted: {
                 ids: [2],
+                isFetching: false
+            },
+            all: {
+                ids: [],
                 isFetching: false
             },
             open: {
@@ -283,6 +351,10 @@ describe('withdrawChallenge', () => {
         const state = {
             accepted: {
                 ids: [1, 2],
+                isFetching: false
+            },
+            all: {
+                ids: [],
                 isFetching: false
             },
             open: {
@@ -306,6 +378,10 @@ describe('withdrawChallenge', () => {
                 ids: [2],
                 isFetching: false
             },
+            all: {
+                ids: [],
+                isFetching: false
+            },
             open: {
                 ids: [1],
                 isFetching: false
@@ -319,6 +395,10 @@ describe('withdrawChallenge', () => {
         const state = {
             accepted: {
                 ids: [1, 2],
+                isFetching: false
+            },
+            all: {
+                ids: [],
                 isFetching: false
             },
             open: {
@@ -340,6 +420,10 @@ describe('withdrawChallenge', () => {
         const expected = {
             accepted: {
                 ids: [2],
+                isFetching: false
+            },
+            all: {
+                ids: [],
                 isFetching: false
             },
             open: {
