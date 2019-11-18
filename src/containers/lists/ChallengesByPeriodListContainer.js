@@ -3,43 +3,43 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Components
-import ChallengesList from '../../components/lists/ChallengesList';
+import ChallengesByPeriodList from '../../components/lists/ChallengesByPeriodList';
 
 // HOCs
 import withChallenges from '../../hocs/withChallenges';
 
 // Selectors
-import { getIsFetching, makeGetChallenges } from '../../store/byClubId/byPlayerId/challenge/selectors';
+import { getIsFetching, makeGetChallengesByPeriod } from '../../store/byClubId/byPlayerId/challenge/selectors';
 import { getCurrentPlayerId } from '../../store/user/selectors';
 
-class ChallengesListContainer extends Component {
+class ChallengesByPeriodListContainer extends Component {
     render() {
-        const { challenges, isFetching } = this.props;
+        const { challengesByPeriod, isFetching } = this.props;
 
         return (
-            <ChallengesList
-                challenges={challenges}
+            <ChallengesByPeriodList
+                challengesByPeriod={challengesByPeriod}
                 isFetching={isFetching}
             />
         );
     }
 }
 
-ChallengesListContainer.propTypes = {
-    challenges: PropTypes.array.isRequired,
+ChallengesByPeriodListContainer.propTypes = {
+    challengesByPeriod: PropTypes.object.isRequired,
     filter: PropTypes.string.isRequired,
     isFetching: PropTypes.bool.isRequired,
     playerId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
 };
 
 const makeMapStateToProps = () => {
-    const getChallenges = makeGetChallenges();
+    const getChallengesByPeriod = makeGetChallengesByPeriod();
 
     return (state, props) => ({
         currentPlayerId: getCurrentPlayerId(state, props),
         isFetching: getIsFetching(state, props),
-        challenges: getChallenges(state, props)
+        challengesByPeriod: getChallengesByPeriod(state, props)
     });
 };
 
-export default connect(makeMapStateToProps)(withChallenges(ChallengesListContainer));
+export default connect(makeMapStateToProps)(withChallenges(ChallengesByPeriodListContainer));

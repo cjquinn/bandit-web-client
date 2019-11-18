@@ -8,44 +8,70 @@ import { addMatchSuccess } from '../match/actions';
 // Selectors
 import { initialState } from './selectors';
 
+const makeIsFetchingReducer = filter => handleActions(
+    {
+        [actions.fetchChallengesRequest]: (state, { payload }) =>
+            payload.filter === filter
+                ? true
+                : state,
+        [combineActions(actions.fetchChallengesFailure, actions.fetchChallengesSuccess)]: (state, { payload }) =>
+            payload.filter === filter
+                ? false
+                : state,
+    },
+    false
+);
+
+const makeFetchChallengesSuccessReducer = filter => (state, { payload }) =>
+    payload.filter === filter
+        ? payload.result
+        : state;
+
+const addMatchSuccessReducer = (state, { payload }) => {
+    const challenge = payload.entities && payload.entities.matches && payload.entities.matches[payload.result].challenge;
+
+    if (!challenge) {
+        return state;
+    }
+
+    return state.filter(id => id !== challenge.id);
+};
+
 const accepted = (state = initialState, action) => {
     const ids = handleActions(
         {
             [actions.acceptChallengeSuccess]: (state, { payload }) => [...state, payload.result],
-            [addMatchSuccess]: (state, { payload }) => {
-                const challenge = payload.entities && payload.entities.matches && payload.entities.matches[payload.result].challenge;
-
-                if (!challenge) {
-                    return state;
-                }
-
-                return state.filter(id => id !== challenge.id);
-            },
-            [combineActions(actions.deleteChallengeSuccess, actions.reportChallengeSuccess)]: (state, { payload }) =>
+            [addMatchSuccess]: addMatchSuccessReducer,
+            [combineActions(actions.deleteChallengeSuccess, actions.reportChallengeSuccess, actions.withdrawChallengeSuccess)]: (state, { payload }) =>
                 state.filter(id => id !== payload.result),
-            [actions.fetchChallengesSuccess]: (state, { payload }) =>
-                payload.filter === 'accepted'
-                    ? payload.result
-                    : state,
-            [actions.withdrawChallengeSuccess]: (state, { payload }) =>
-                state.filter(id => id !== payload.result)
+            [actions.fetchChallengesSuccess]: makeFetchChallengesSuccessReducer('accepted')
         },
         initialState.ids
     );
 
-    const isFetching = handleActions(
+    const isFetching = makeIsFetchingReducer('accepted');
+
+
+    const filterReducers = combineReducers({
+        ids,
+        isFetching
+    });
+
+    return filterReducers(state, action);
+};
+
+const all = (state = initialState, action) => {
+    const ids = handleActions(
         {
-            [actions.fetchChallengesRequest]: (state, { payload }) =>
-                payload.filter === 'accepted'
-                    ? true
-                    : state,
-            [combineActions(actions.fetchChallengesFailure, actions.fetchChallengesSuccess)]: (state, { payload }) =>
-                payload.filter === 'accepted'
-                    ? false
-                    : state,
+            [addMatchSuccess]: addMatchSuccessReducer,
+            [combineActions(actions.deleteChallengeSuccess, actions.reportChallengeSuccess, actions.withdrawChallengeSuccess)]: (state, { payload }) =>
+                state.filter(id => id !== payload.result),
+            [actions.fetchChallengesSuccess]: makeFetchChallengesSuccessReducer('all')
         },
-        false
+        initialState.ids
     );
+
+    const isFetching = makeIsFetchingReducer('all');
 
 
     const filterReducers = combineReducers({
@@ -62,10 +88,7 @@ const open = (state = initialState, action) => {
             [combineActions(actions.acceptChallengeSuccess, actions.deleteChallengeSuccess, actions.reportChallengeSuccess)]: (state, { payload }) =>
                 state.filter(id => id !== payload.result),
             [actions.createChallengeSuccess]: (state, { payload }) => [...state, payload.result],
-            [actions.fetchChallengesSuccess]: (state, { payload }) =>
-                payload.filter === 'open'
-                    ? payload.result
-                    : state,
+            [actions.fetchChallengesSuccess]: makeFetchChallengesSuccessReducer('open'),
             [actions.withdrawChallengeSuccess]: (state, { payload }) =>
                 payload.playerId === payload.entities.challenges[payload.result].player_a_id
                     ? [...state, payload.result]
@@ -74,19 +97,7 @@ const open = (state = initialState, action) => {
         initialState.ids
     );
 
-    const isFetching = handleActions(
-        {
-            [actions.fetchChallengesRequest]: (state, { payload }) =>
-                payload.filter === 'open'
-                    ? true
-                    : state,
-            [combineActions(actions.fetchChallengesFailure, actions.fetchChallengesSuccess)]: (state, { payload }) =>
-                payload.filter === 'open'
-                    ? false
-                    : state,
-        },
-        false
-    );
+    const isFetching = makeIsFetchingReducer('open');
 
     const filterReducers = combineReducers({
         ids,
@@ -98,6 +109,7 @@ const open = (state = initialState, action) => {
 
 const reducers = combineReducers({
     accepted,
+    all,
     open
 });
 

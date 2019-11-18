@@ -1,3 +1,4 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -15,7 +16,12 @@ class CreateChallengeFormContainer extends Component {
     handleSubmit = data => this.props.createChallenge(data);
 
     render() {
-        return <CreateChallengeReduxForm onSubmit={this.handleSubmit} />;
+        return (
+            <CreateChallengeReduxForm
+                initialValues={{match_datetime: moment().format('YYYY-MM-DDTHH:mm')}}
+                onSubmit={this.handleSubmit}
+            />
+        );
     }
 }
 

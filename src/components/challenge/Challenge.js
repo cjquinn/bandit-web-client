@@ -54,7 +54,7 @@ const Challenge = ({ challenge, user }) => {
                 <dl className="u-vspace-2bl u-ph-1bl">
                     <div className="u-vspace-03r">
                         <dt>Date:</dt>
-                        <dd className="u-size-h3 u-color-white">{challenge.moment.format('dddd HH:mm - Do MMMM')}</dd>
+                        <dd className="u-size-h3 u-color-white">{challenge.moment.format('dddd h:mma - Do MMMM')}</dd>
                     </div>
 
                     <div className="u-vspace-03r">
@@ -77,7 +77,7 @@ const Challenge = ({ challenge, user }) => {
 
             <div className="o-container u-ph-1bl u-vspace-2bl">
 
-                <div class="u-vspace-1bl">
+                <div className="u-vspace-1bl">
                     {!challenge.player_b_id && user.id !== challenge.player_a.user_id &&
                         <AcceptChallengeButton
                             challengeId={challenge.id}

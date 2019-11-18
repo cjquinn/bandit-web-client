@@ -72,7 +72,7 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
                     <AuthenticatedRoute exact path="/challenges/accepted" component={ChallengesScreen} isClubRoute={true} />
                     <AuthenticatedRoute exact path="/challenges/:challengeId" component={ChallengeScreen} isClubRoute={true} />
 
-                    <Redirect exact path="/leaderboard" to="/leaderboard/weekly" />
+                    <Redirect exact path="/leaderboard" to="/leaderboard/all-time" />
                     <AuthenticatedRoute path="/leaderboard" component={LeaderboardScreen} isClubRoute={true} />
                     
                     <AuthenticatedRoute exact path="/players" component={PlayersScreen} isClubRoute={true} />

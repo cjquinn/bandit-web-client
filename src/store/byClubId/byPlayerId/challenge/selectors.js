@@ -87,26 +87,21 @@ export const makeGetChallenge = () => createSelector(
 );
 
 export const makeGetChallenges = () => createSelector(
-    [getIds, getPlayerId, getChallengeEntities, getPlayerEntities, getUserEntities],
-    (ids, playerId, challenges, players, users) => {
-        let denormalizedChallenges = denormalize(
+    [getIds, getChallengeEntities, getPlayerEntities, getUserEntities],
+    (ids, challenges, players, users) =>
+        denormalize(
             ids,
             [challengeSchema],
             {challenges, players, users}
-        );
+        ).map(challenge => ({
+            ...challenge,
+            moment: moment(challenge.match_datetime)
+        }))
+);
 
-        denormalizedChallenges = denormalizedChallenges
-            .map(challenge => ({
-                ...challenge,
-                moment: moment(challenge.match_datetime)
-            }));
-
-        // Specific player returns list of challenges
-        if (playerId !== 'all') {
-            return denormalizedChallenges;
-        }
-
-        // Only upcoming challenges
+export const makeGetChallengesByPeriod = () => createSelector(
+    [makeGetChallenges()],
+    challenges => {
         const m = moment();
 
         const thisWeek = m.format('W');
@@ -124,10 +119,11 @@ export const makeGetChallenges = () => createSelector(
             further: {
                 period: 'Further',
                 challenges: []
-            }
+            },
+            length: challenges.length
         };
 
-        denormalizedChallenges.forEach(challenge => {
+        challenges.forEach(challenge => {
             const week = challenge.moment.format('W');
 
             const period = week === thisWeek
@@ -139,6 +135,6 @@ export const makeGetChallenges = () => createSelector(
             challengesByPeriod[period].challenges.push(challenge);
         });
 
-        return Object.keys(challengesByPeriod).map(period => challengesByPeriod[period]);
+        return challengesByPeriod;
     }
 );

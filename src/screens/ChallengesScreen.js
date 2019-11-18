@@ -4,11 +4,10 @@ import { Link, NavLink, Route, Switch } from 'react-router-dom';
 
 // Components
 import Template from '../components/shared/Template';
-import UpcomingChallengesList from '../components/lists/UpcomingChallengesList';
 
 // Containers
 import FooterContainer from '../containers/shared/FooterContainer';
-import ChallengesListContainer from '../containers/lists/ChallengesListContainer';
+import ChallengesByPeriodListContainer from '../containers/lists/ChallengesByPeriodListContainer';
 
 const ChallengesScreen = () => (
     <Template>
@@ -19,7 +18,7 @@ const ChallengesScreen = () => (
             </div>
 
             <Link to="/challenges/create" className="c-button c-button--default u-mt-2bl">
-                New challenge
+                Create challenge
             </Link>
         </header>
 
@@ -52,8 +51,7 @@ const ChallengesScreen = () => (
         <div className="o-container u-vspace-3bl">
             <Switch>
                 <Route exact path="/challenges/open" render={props => (
-                    <ChallengesListContainer
-                        component={UpcomingChallengesList}
+                    <ChallengesByPeriodListContainer
                         playerId="all"
                         filter="open"
                         {...props}
@@ -61,8 +59,7 @@ const ChallengesScreen = () => (
                 )} />
                 
                 <Route exact path="/challenges/accepted" render={props => (
-                    <ChallengesListContainer
-                        component={UpcomingChallengesList}
+                    <ChallengesByPeriodListContainer
                         playerId="all"
                         filter="accepted"
                         {...props}
