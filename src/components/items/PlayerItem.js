@@ -4,14 +4,12 @@ import { Link } from 'react-router-dom';
 
 // Components
 import PlayerPhoto from '../shared/PlayerPhoto';
-import Svg from '../shared/Svg';
-import Template from '../shared/Template';
 
 // Sprites
-import rating from '../../assets/svg/sprite/rating.svg';
+import { ReactComponent as Rating } from '../../assets/svg/sprite/rating.svg';
 
 const PlayerItem = ({ player, userId }) => (
-    <Template>
+    <>
         {player.user_id === userId &&
             <div className="o-absfill u-shadow-you u-pointer-none"></div>
         }
@@ -36,10 +34,7 @@ const PlayerItem = ({ player, userId }) => (
                             (
                                 <span className="u-flex u-ai-center u-hspace-8px">
                                     <span className="u-flex u-ai-center u-hspace-4px">
-                                        <Svg
-                                            className="u-width-1bl u-height-auto"
-                                            sprite={rating}
-                                        />
+                                        <Rating className="u-width-1bl u-height-auto" />
 
                                         <span className="u-color-paste">{player.rating} <span className="o-dictate">rating</span></span>
                                     </span>
@@ -54,7 +49,7 @@ const PlayerItem = ({ player, userId }) => (
                 </div>
             </dl>
         </Link>
-    </Template>
+    </>
 );
 
 PlayerItem.propTypes = {

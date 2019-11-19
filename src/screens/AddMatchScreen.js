@@ -4,14 +4,13 @@ import { NavLink, Route, Switch } from 'react-router-dom';
 
 // Components
 import FooterContainer from '../containers/shared/FooterContainer';
-import Template from '../components/shared/Template';
 
 // Containers
 import AddChallengeMatchFormContainer from '../containers/forms/AddChallengeMatchFormContainer';
 import AddMatchFormContainer from '../containers/forms/AddMatchFormContainer';
 
 const AddMatchScreen = ({ user }) => (
-    <Template>
+    <>
         <div className="o-container u-ph-1bl u-vspace-2bl">
             <header className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Add Match</h1>
@@ -53,7 +52,7 @@ const AddMatchScreen = ({ user }) => (
         </div>
 
         <FooterContainer />
-    </Template>
+    </>
 );
 
 AddMatchScreen.propTypes = {

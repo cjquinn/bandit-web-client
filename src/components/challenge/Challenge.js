@@ -11,7 +11,6 @@ import { acceptChallenge, deleteChallenge, reportChallenge, withdrawChallenge } 
 import Button from '../shared/Button';
 import Loading from '../shared/Loading';
 import Players from '../items/ChallengeItem/Players';
-import Template from '../shared/Template';
 
 // Containers
 import PlayerContainer from '../../containers/player/PlayerContainer';
@@ -34,16 +33,7 @@ const Challenge = ({ challenge, user }) => {
     }
 
     return (
-        <Template>
-            {/* <div className="o-container u-ph-1bl u-vspace-2bl">
-                <Link
-                    to={`/challenges/${challenge.player_b_id ? 'accepted' : 'open'}`}
-                    className="c-go"
-                >
-                    Back to challenges
-                </Link>
-            </div> */}
-
+        <>
             <header className="o-container u-ph-1bl">
                 <h1 className="u-size-h1 u-color-white">
                     {challenge.player_b_id ? 'Accepted' : 'Open'} Challenge
@@ -88,7 +78,7 @@ const Challenge = ({ challenge, user }) => {
                     }
 
                     {challenge.player_b_id && [challenge.player_a.user_id, challenge.player_b.user_id].indexOf(user.id) !== -1 &&
-                        <Template>
+                        <>
                             <Link
                                 className="c-button c-button--default"
                                 to={`/matches/add/challenges/${challenge.id}`}
@@ -129,7 +119,7 @@ const Challenge = ({ challenge, user }) => {
                                     Withdraw from challenge
                                 </WithdrawChallengeButton>
                             }
-                        </Template>
+                        </>
                     }
                 </div>
 
@@ -142,7 +132,7 @@ const Challenge = ({ challenge, user }) => {
                     </DeleteChallengeButton>
                 }
             </div>
-        </Template>
+        </>
     );
 };
 

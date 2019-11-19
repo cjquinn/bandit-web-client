@@ -3,20 +3,16 @@ import React from 'react';
 
 // Components
 import Notification from '../shared/Notification';
-import Svg from '../shared/Svg';
 
 // Sprites
-import arrow_down from '../../assets/svg/sprite/arrow_down.svg';
+import { ReactComponent as ArrowDown } from '../../assets/svg/sprite/arrow_down.svg';
 
 const SelectField = ({ input, label, meta: { error, touched }, options, placeholder }) => (
     <fieldset className="u-pos-relative">
         <div className="c-select-field">
             <div className="c-select-field__select">
                 <div className="c-select-field__icon">
-                    <Svg
-                        sprite={arrow_down}
-                        className="c-select-field__svg"
-                    />
+                    <ArrowDown className="c-select-field__svg" />
                 </div>
 
                 <select

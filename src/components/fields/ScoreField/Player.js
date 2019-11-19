@@ -4,10 +4,9 @@ import { Field } from 'redux-form';
 
 // Components
 import PlayerPhoto from '../../shared/PlayerPhoto';
-import Svg from '../../shared/Svg';
 
 // Sprites
-import rating from '../../../assets/svg/sprite/rating.svg';
+import { ReactComponent as Rating } from '../../../assets/svg/sprite/rating.svg';
 
 const Player = ({ autoFocus = false, name, player }) => (
     <li className="u-grow-1 u-basis-0 u-pt-3bl u-bgcolor-fold">
@@ -24,10 +23,7 @@ const Player = ({ autoFocus = false, name, player }) => (
 
                 <div className="u-flex u-hspace-4px u-ai-center">
                     <div className="u-flex u-ai-center u-hspace-4px">
-                        <Svg
-                            sprite={rating}
-                            className="u-width-1bl u-height-auto"
-                        />
+                        <Rating className="u-width-1bl u-height-auto" />
 
                         <span className="u-color-paste">{player.rating} <span className="o-dictate">rating</span></span>
                     </div>

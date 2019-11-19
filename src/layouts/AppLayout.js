@@ -3,6 +3,7 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 // Components
+import Loading from '../components/shared/Loading';
 import UserMenu from '../components/menus/UserMenu';
 
 // Containers
@@ -40,7 +41,11 @@ import UpdateSettingsScreen from '../screens/UpdateSettingsScreen';
 
 const AppLayout = ({ isAuthenticated, isLoading }) => {
     if (isLoading) {
-        return <p>Loading...</p>;
+        return (
+            <div className="o-window u-flex u-jc-center">
+                <Loading />
+            </div>
+        );
     }
 
     return (

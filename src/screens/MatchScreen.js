@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom';
 
 // Components
 import FooterContainer from '../containers/shared/FooterContainer';
-import Template from '../components/shared/Template';
 
 // Containers
 import MatchContainer from '../containers/match/MatchContainer';
 
 const MatchScreen = ({ match }) => (
-    <Template>
+    <>
         <div className="o-container u-ph-1bl u-vspace-2bl">
             <Link
                 to="/matches"
@@ -23,7 +22,7 @@ const MatchScreen = ({ match }) => (
         <MatchContainer matchId={+match.params.matchId} />
 
         <FooterContainer />
-    </Template>
+    </>
 );
 
 MatchScreen.propTypes = {

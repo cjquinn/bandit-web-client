@@ -8,7 +8,7 @@ import { challenge as challengeSchema } from '../../../schema';
 // Selectors
 import { getChallengeEntities, getPlayerEntities, getUserEntities } from '../../../entities/selectors';
 import { getByPlayerIdState } from '../selectors';
-import { getChallengeId, getFilter, getPlayerId } from '../../../props/selectors';
+import { getChallengeId, getFilter } from '../../../props/selectors';
 import { makeIsFetchingSelector } from '../../../shared/selectors';
 import { getCurrentPlayerId } from '../../../user/selectors';
 

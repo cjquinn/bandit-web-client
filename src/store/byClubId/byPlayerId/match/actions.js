@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 import { normalize } from 'normalizr';
-import { push } from 'react-router-redux';
+import { push } from 'connected-react-router';
 
 // Actions
 import { setFlash } from '../../../flash/actions';

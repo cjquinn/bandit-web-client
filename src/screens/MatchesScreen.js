@@ -4,14 +4,13 @@ import { Link } from 'react-router-dom';
 // Components
 import FooterContainer from '../containers/shared/FooterContainer';
 import DatedMatchesList from '../components/lists/DatedMatchesList';
-import Template from '../components/shared/Template';
 
 // Containers
 import MatchesListContainer from '../containers/lists/MatchesListContainer';
 import LoadMoreMatchesControlContainer from '../containers/controls/LoadMoreMatchesControlContainer';
 
 const MatchesScreen = () => (
-    <Template>
+    <>
         <header className="o-container u-ph-1bl">
             <div className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Matches</h1>
@@ -33,7 +32,7 @@ const MatchesScreen = () => (
         </div>
 
         <FooterContainer />
-    </Template>
+    </>
 );
 
 export default MatchesScreen;

@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 
 // Components
 import PlayerPhoto from '../shared/PlayerPhoto';
-import Template from '../shared/Template';
 
 const WeeklyLeaderboardItem = ({ player, position, userId }) => (
-    <Template>
+    <>
         {player.user_id === userId &&
             <div className="o-absfill u-shadow-you u-pointer-none"></div>
         }
@@ -51,7 +50,7 @@ const WeeklyLeaderboardItem = ({ player, position, userId }) => (
                 
             </dl>
         </Link>
-    </Template>
+    </>
 );
 
 WeeklyLeaderboardItem.propTypes = {

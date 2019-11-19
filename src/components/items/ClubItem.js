@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Template from '../shared/Template';
-
 const ClubItem = ({ club, clubId, handleClick }) => (
-    <Template>
+    <>
         {club.id === clubId &&
             <div className="o-absfill u-shadow-you u-pointer-none"></div>
         }
@@ -27,7 +25,7 @@ const ClubItem = ({ club, clubId, handleClick }) => (
                 </span>
             </dd>
         </button>
-    </Template>
+    </>
 );
 
 ClubItem.propTypes = {

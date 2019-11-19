@@ -4,14 +4,12 @@ import { Link } from 'react-router-dom';
 
 // Components
 import PlayerPhoto from '../shared/PlayerPhoto';
-import Svg from '../shared/Svg';
-import Template from '../shared/Template';
 
 // Sprite
-import rating from '../../assets/svg/sprite/rating.svg';
+import { ReactComponent as Rating } from '../../assets/svg/sprite/rating.svg';
 
 const AllTimeLeaderboardItem = ({ player, position, userId }) => (
-    <Template>
+    <>
         {player.user_id === userId &&
             <div className="o-absfill u-shadow-you u-pointer-none"></div>
         }
@@ -36,10 +34,7 @@ const AllTimeLeaderboardItem = ({ player, position, userId }) => (
 
                         <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
                         <span className="u-flex u-ai-center u-hspace-4px">
-                            <Svg
-                                sprite={rating}
-                                className="u-width-1bl u-height-auto"
-                            />
+                            <Rating className="u-width-1bl u-height-auto" />
 
                             <span className="u-color-paste">{player.rating} <span className="o-dictate">rating</span></span>
                         </span>
@@ -60,7 +55,7 @@ const AllTimeLeaderboardItem = ({ player, position, userId }) => (
 
             </dl>
         </Link>
-    </Template>
+    </>
 );
 
 AllTimeLeaderboardItem.propTypes = {
