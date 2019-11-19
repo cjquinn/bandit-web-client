@@ -28,7 +28,10 @@ class AuthenticatedRoute extends Component {
 
 AuthenticatedRoute.propTypes = {
     clubId: PropTypes.number,
-    component: PropTypes.func.isRequired,
+    component: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.object
+    ]).isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     isClubRoute: PropTypes.bool,
     user: PropTypes.object

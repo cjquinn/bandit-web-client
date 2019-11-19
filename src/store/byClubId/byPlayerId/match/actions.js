@@ -111,7 +111,7 @@ export const fetchMatches = (playerId, page) => (dispatch, getState, api) => {
  * Fetch more matches
  */
 export const fetchMoreMatches = playerId => (dispatch, getState) => {
-    const page = getPage(getState(), {match: {params: {playerId}}}) + 1;
+    const page = getPage(getState(), {playerId}) + 1;
 
     return dispatch(fetchMatches(playerId, page));
 };
