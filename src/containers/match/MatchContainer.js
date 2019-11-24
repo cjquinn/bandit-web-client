@@ -27,7 +27,7 @@ class MatchContainer extends Component {
 
     handleClickCancel = () => this.setState(
         {isDeleting: true},
-        this.props.deleteMatch()
+        () => this.props.deleteMatch()
     );
 
     render() {

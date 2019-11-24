@@ -31,20 +31,22 @@ const Header = ({ player, score, snapshot }) => (
             </dd>
         </div>
 
-        <div className="u-flex u-fd-col u-ai-center u-vspace-05bl u-bgcolor-obsidian u-pv-2bl">
-            <Rating
-                level={snapshot.level}
-                playerRating={snapshot.rating}
-                snapshot={snapshot}
-            />
-        </div>
+        {snapshot &&
+            <div className="u-flex u-fd-col u-ai-center u-vspace-05bl u-bgcolor-obsidian u-pv-2bl">
+                <Rating
+                    level={snapshot.level}
+                    playerRating={snapshot.rating}
+                    snapshot={snapshot}
+                />
+            </div>
+        }
     </li>
 );
 
 Header.propTypes = {
     player: PropTypes.object.isRequired,
     score: PropTypes.number.isRequired,
-    snapshot: PropTypes.object.isRequired
+    snapshot: PropTypes.object
 };
 
 export default Header;
