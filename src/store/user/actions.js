@@ -130,6 +130,7 @@ export const updateSettings = data => (dispatch, getState, api) => {
         .then(api.checkStatus)
         .then(response => normalize(response.data.user, userSchema))
         .then(normalizedData => dispatch(updateSettingsSuccess(normalizedData)))
+        .then(() => window.scrollTo(0, 0))
         .then(() => dispatch(setFlash({message: 'Your settings were updated', type: 'success'})))
         .catch(api.handleError(dispatch, updateSettingsFailure));
 };
