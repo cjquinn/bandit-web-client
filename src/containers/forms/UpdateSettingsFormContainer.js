@@ -16,6 +16,7 @@ const UpdateSettingsReduxForm = reduxForm({form: 'updateSettings'})(UpdateSettin
 
 class UpdateSettingsFormContainer extends Component {
     componentDidMount() {
+        console.log(this.props.user);
         this.props.initialize(this.props.user);
     }
 
