@@ -50,6 +50,44 @@ const UpdateSettingsForm = props => (
                     type="password"
                 />
             </div>
+
+            <hr className="c-hr" />
+
+            <div className="u-vspace-1bl">
+
+                <h2 className="u-size-h3 u-weight-bold u-color-white">Email Settings</h2>
+
+                <div className="u-vspace-1bl">
+
+                    <label className="c-checkbox u-flex u-ai-center u-hspace-1bl">
+                        <input className="c-checkbox__input" type="checkbox" />
+                        <div className="u-flex u-fd-col">
+                            <span className="c-checkbox__label">Match Scores</span>
+                            <span className="c-checkbox__description u-weight-normal u-color-grape u-size-14px">Submitted by my opponents</span>
+                        </div>
+                    </label>
+
+                    <label className="c-checkbox u-flex u-ai-center u-hspace-1bl">
+                        <input className="c-checkbox__input" type="checkbox" />
+                        <div className="u-flex u-fd-col">
+                            <span className="c-checkbox__label">Open Challenges</span>
+                            <span className="c-checkbox__description u-weight-normal u-color-grape u-size-14px">Open invitations from my club mates
+                            </span>
+                        </div>
+                    </label>
+
+                    <label className="c-checkbox u-flex u-ai-center u-hspace-1bl">
+                        <input className="c-checkbox__input" type="checkbox" />
+                        <div className="u-flex u-fd-col">
+                            <span className="c-checkbox__label">New Features</span>
+                            <span className="c-checkbox__description u-weight-normal u-color-grape u-size-14px">Platform updates about Bandit Match</span>
+                        </div>
+                    </label>
+
+                </div>
+
+            </div>
+
         </div>
     </Form>
 );
