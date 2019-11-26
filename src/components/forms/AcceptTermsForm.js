@@ -10,7 +10,7 @@ import Form from './Form';
 const AcceptTermsForm = props => (
     <>
         <Form
-            buttonText="Accept terms"
+            buttonText="Continue"
             {...props}
         >   
             <div className="u-ph-1bl u-vspace-2bl">
