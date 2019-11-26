@@ -60,6 +60,7 @@ const UpdateSettingsForm = props => (
                 <div className="u-vspace-1bl">
                     <Field
                         component={CheckboxField}
+                        type="checkbox"
                         name="email_preferences.match_added"
                         label="Match Scores"
                         description="Submitted by my opponents"
@@ -67,6 +68,7 @@ const UpdateSettingsForm = props => (
 
                     <Field
                         component={CheckboxField}
+                        type="checkbox"
                         name="email_preferences.challenge_created"
                         label="Open Challenges"
                         description="Open invitations from my club mates"
@@ -74,6 +76,7 @@ const UpdateSettingsForm = props => (
 
                     <Field
                         component={CheckboxField}
+                        type="checkbox"
                         name="email_preferences.weekly_digest"
                         label="Weekly Digest"
                         description="Weekly round-up of club activity"

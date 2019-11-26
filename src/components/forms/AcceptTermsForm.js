@@ -18,6 +18,7 @@ const AcceptTermsForm = props => (
 
                 <Field
                     component={CheckboxField}
+                    type="checkbox"
                     name="has_accepted_terms"
                     label="Terms of Service"
                 >

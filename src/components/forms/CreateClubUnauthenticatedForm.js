@@ -55,6 +55,7 @@ const CreateClubUnauthenticatedForm = props => (
 
             <Field
                 component={CheckboxField}
+                type="checkbox"
                 name="founder.has_accepted_terms"
                 label="Terms of Service"
             >

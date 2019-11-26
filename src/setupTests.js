@@ -10,7 +10,7 @@ const configureStore = initialState => {
 };
 
 global.configureStore = configureStore;
-global.scrollTo = jest.fn()
+global.scrollTo = jest.fn();
 
 class LocalStorageMock {
     constructor() {
