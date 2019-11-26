@@ -12,6 +12,60 @@ import { getClubId, setClubId, getJwt, setJwt } from '../../../store/api';
 const mock = new MockAdapter(axios);
 let store;
 
+describe('acceptTerms', () => {
+    beforeEach(() => store = global.configureStore());
+
+    afterEach(() => {
+        mock.reset();
+        global.localStorage.clear();
+    });
+
+    it('failure', () => {
+        mock
+            .onPatch('/users/current/accept-terms.json')
+            .reply(403);
+
+        return store.dispatch(actions.acceptTerms())
+            .then(() => {
+                const expected = [
+                    {type: actions.acceptTermsRequest.toString()},
+                    {type: actions.acceptTermsFailure.toString()},
+                    {type: actions.SIGN_OUT}
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+
+    it('success', () => {
+        mock
+            .onPatch('/users/current/accept-terms.json')
+            .reply(200, {
+                user: {id: 1, players: [{id: 1, club_id: 1}]}
+            });
+
+        return store.dispatch(actions.acceptTerms())
+            .then(() => {
+                const expected = [
+                    {type: actions.acceptTermsRequest.toString()},
+                    {
+                        type: actions.acceptTermsSuccess.toString(),
+                        payload: {
+                            result: 1,
+                            entities: {
+                                players: {1: {id: 1, club_id: 1}},
+                                users: {1: {id: 1, players: [1]}}
+                            }
+                        }
+                    },
+                    push('/')
+                ];
+
+                expect(store.getActions()).toEqual(expected);
+            });
+    });
+});
+
 describe('fetchCurrentUser', () => {
     beforeEach(() => store = global.configureStore());
 

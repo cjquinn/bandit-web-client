@@ -16,9 +16,11 @@ class AuthenticatedRoute extends Component {
                 {...props}
                 render={props =>
                     isAuthenticated
-                        ? !isClubRoute || clubId
-                            ? <Component {...props} user={user} />
-                            : <Redirect to="/clubs" />
+                        ? user.has_accepted_terms
+                            ?!isClubRoute || clubId
+                                ? <Component {...props} user={user} />
+                                : <Redirect to="/clubs" />
+                            : <Redirect to="/terms-of-service" />
                         : <Redirect to="/sign-in" />
                 }
             />

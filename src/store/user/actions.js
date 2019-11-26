@@ -12,6 +12,24 @@ import { user as userSchema } from '../schema';
 import { getToken } from '../router/selectors';
 
 /**
+ * Accept terms
+ */
+export const acceptTermsRequest = createAction('ACCEPT_TERMS_REQUEST');
+export const acceptTermsSuccess = createAction('ACCEPT_TERMS_SUCCESS');
+export const acceptTermsFailure = createAction('ACCEPT_TERMS_FAILURE');
+
+export const acceptTerms = data => (dispatch, getState, api) => {
+    dispatch(acceptTermsRequest());
+
+    return api.acceptTerms(data)
+        .then(api.checkStatus)
+        .then(response => normalize(response.data.user, userSchema))
+        .then(normalizedData => dispatch(acceptTermsSuccess(normalizedData)))
+        .then(() => dispatch(push('/')))
+        .catch(api.handleError(dispatch, acceptTermsFailure));
+};
+
+/**
  * Fetch current user
  */
 export const fetchCurrentUserRequest = createAction('FETCH_CURRENT_USER_REQUEST');

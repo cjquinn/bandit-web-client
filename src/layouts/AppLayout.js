@@ -3,7 +3,6 @@ import React, { Suspense, lazy } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 // Components
-import LegalFooter from '../components/shared/LegalFooter';
 import Loading from '../components/shared/Loading';
 import UserMenu from '../components/menus/UserMenu';
 
@@ -38,6 +37,7 @@ const MatchesScreen = lazy(() => import('../screens/MatchesScreen'));
 const NotFoundScreen = lazy(() => import('../screens/NotFoundScreen'));
 const SignInScreen = lazy(() => import('../screens/SignInScreen'));
 const SignUpScreen = lazy(() => import('../screens/SignUpScreen'));
+const TermsOfServiceScreen = lazy(() => import('../screens/TermsOfServiceScreen'));
 const UpdateClubScreen = lazy(() => import('../screens/UpdateClubScreen'));
 const UpdateSettingsScreen = lazy(() => import('../screens/UpdateSettingsScreen'));
 
@@ -51,68 +51,64 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
     }
 
     return (
-        <>
-            <div className="o-window">
-                {isAuthenticated &&
-                    <HeaderContainer>
+        <div className="o-window">
+            {isAuthenticated &&
+                <HeaderContainer>
+                    <Switch>
+                        <Route path="/(clubs|settings|profile)" component={UserMenu} />
+                        <Route component={ClubMenuContainer} isClubOwner={false} />
+                    </Switch>
+                </HeaderContainer>
+            }
+
+            <main className="o-main">
+                <FlashContainer />
+
+                <ErrorBoundary>
+                    <Suspense fallback={<Loading />}>
                         <Switch>
-                            <Route path="/(clubs|settings|profile)" component={UserMenu} />
-                            <Route component={ClubMenuContainer} isClubOwner={false} />
+                            {/* Authenticated */}
+                            <AuthenticatedRoute exact path="/clubs" component={ClubsScreen} />
+                            <AuthenticatedRoute exact path="/clubs/create" component={CreateClubAuthenticatedScreen} />
+                            <AuthenticatedRoute exact path="/settings" component={UpdateSettingsScreen} />
+
+                            <AuthenticatedRoute exact path="/" component={DashboardScreen} isClubRoute={true} />
+                            <AuthenticatedRoute exact path="/club" component={UpdateClubScreen} isClubRoute={true} />
+
+                            <AuthenticatedRoute exact path="/challenges/create" component={CreateChallengeScreen} isClubRoute={true} />
+                            <Redirect exact path="/challenges" to="/challenges/open" />
+                            <AuthenticatedRoute exact path="/challenges/open" component={ChallengesScreen} isClubRoute={true} />
+                            <AuthenticatedRoute exact path="/challenges/accepted" component={ChallengesScreen} isClubRoute={true} />
+                            <AuthenticatedRoute exact path="/challenges/:challengeId" component={ChallengeScreen} isClubRoute={true} />
+
+                            <Redirect exact path="/leaderboard" to="/leaderboard/all-time" />
+                            <AuthenticatedRoute path="/leaderboard" component={LeaderboardScreen} isClubRoute={true} />
+                            
+                            <AuthenticatedRoute exact path="/players" component={PlayersScreen} isClubRoute={true} />
+                            <AuthenticatedRoute exact path="/players/invite" component={InvitePlayerScreen} isClubRoute={true} />
+                            <AuthenticatedRoute exact path="/players/:playerId" component={PlayerScreen} isClubRoute={true} />
+                            <AuthenticatedRoute exact path="/profile" component={PlayerScreen} isClubRoute={true} />
+
+                            <AuthenticatedRoute exact path="/matches" component={MatchesScreen} isClubRoute={true} />
+                            <AuthenticatedRoute path="/matches/add" component={AddMatchScreen} isClubRoute={true} />
+                            <AuthenticatedRoute exact path="/matches/:matchId" component={MatchScreen} isClubRoute={true} />
+
+                            {/* Unauthenticated */}
+                            <UnauthenticatedRoute exact path="/create-club" component={CreateClubUnauthenticatedScreen} />
+                            <UnauthenticatedRoute exact path="/request-password-reset" component={RequestPasswordResetScreen} />
+                            <UnauthenticatedRoute exact path="/reset-password" component={ResetPasswordScreen} />
+                            <UnauthenticatedRoute exact path="/sign-in" component={SignInScreen} />
+                            <UnauthenticatedRoute exact path="/sign-up" component={SignUpScreen} />
+
+                            <Route exact path="/error" component={ErrorScreen} />
+                            <Route exact path="/not-found" component={NotFoundScreen} />
+                            <Route exact path="/terms-of-service" component={TermsOfServiceScreen} />
+                            <Redirect to="/not-found" />
                         </Switch>
-                    </HeaderContainer>
-                }
-
-                <main className="o-main">
-                    <FlashContainer />
-
-                    <ErrorBoundary>
-                        <Suspense fallback={<Loading />}>
-                            <Switch>
-                                {/* Authenticated */}
-                                <AuthenticatedRoute exact path="/clubs" component={ClubsScreen} />
-                                <AuthenticatedRoute exact path="/clubs/create" component={CreateClubAuthenticatedScreen} />
-                                <AuthenticatedRoute exact path="/settings" component={UpdateSettingsScreen} />
-
-                                <AuthenticatedRoute exact path="/" component={DashboardScreen} isClubRoute={true} />
-                                <AuthenticatedRoute exact path="/club" component={UpdateClubScreen} isClubRoute={true} />
-
-                                <AuthenticatedRoute exact path="/challenges/create" component={CreateChallengeScreen} isClubRoute={true} />
-                                <Redirect exact path="/challenges" to="/challenges/open" />
-                                <AuthenticatedRoute exact path="/challenges/open" component={ChallengesScreen} isClubRoute={true} />
-                                <AuthenticatedRoute exact path="/challenges/accepted" component={ChallengesScreen} isClubRoute={true} />
-                                <AuthenticatedRoute exact path="/challenges/:challengeId" component={ChallengeScreen} isClubRoute={true} />
-
-                                <Redirect exact path="/leaderboard" to="/leaderboard/all-time" />
-                                <AuthenticatedRoute path="/leaderboard" component={LeaderboardScreen} isClubRoute={true} />
-                                
-                                <AuthenticatedRoute exact path="/players" component={PlayersScreen} isClubRoute={true} />
-                                <AuthenticatedRoute exact path="/players/invite" component={InvitePlayerScreen} isClubRoute={true} />
-                                <AuthenticatedRoute exact path="/players/:playerId" component={PlayerScreen} isClubRoute={true} />
-                                <AuthenticatedRoute exact path="/profile" component={PlayerScreen} isClubRoute={true} />
-
-                                <AuthenticatedRoute exact path="/matches" component={MatchesScreen} isClubRoute={true} />
-                                <AuthenticatedRoute path="/matches/add" component={AddMatchScreen} isClubRoute={true} />
-                                <AuthenticatedRoute exact path="/matches/:matchId" component={MatchScreen} isClubRoute={true} />
-
-                                {/* Unauthenticated */}
-                                <UnauthenticatedRoute exact path="/create-club" component={CreateClubUnauthenticatedScreen} />
-                                <UnauthenticatedRoute exact path="/request-password-reset" component={RequestPasswordResetScreen} />
-                                <UnauthenticatedRoute exact path="/reset-password" component={ResetPasswordScreen} />
-                                <UnauthenticatedRoute exact path="/sign-in" component={SignInScreen} />
-                                <UnauthenticatedRoute exact path="/sign-up" component={SignUpScreen} />
-
-                                <Route exact path="/error" component={ErrorScreen} />
-
-                                <Route exact path="/not-found" component={NotFoundScreen} />
-                                <Redirect to="/not-found" />
-                            </Switch>
-                        </Suspense>
-                    </ErrorBoundary>
-                </main>
-            </div>
-
-            <LegalFooter />
-        </>
+                    </Suspense>
+                </ErrorBoundary>
+            </main>
+        </div>
     );
 };
 
