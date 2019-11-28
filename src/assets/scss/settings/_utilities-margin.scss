@@ -58,6 +58,10 @@ $utilities-margin-settings: (
         value: (calc(var(--baseline) * 3), '3bl'),
         combinator: $combinator-child-siblings,
       ),
+      (
+        value: '1em',
+        combinator: $combinator-child-siblings,
+      ),
     ),
   ),
   (
