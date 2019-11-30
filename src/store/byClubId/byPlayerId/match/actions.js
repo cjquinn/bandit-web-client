@@ -110,8 +110,10 @@ export const fetchMatches = (playerId, page) => (dispatch, getState, api) => {
 /**
  * Fetch more matches
  */
-export const fetchMoreMatches = playerId => (dispatch, getState) => {
+export const fetchMoreMatches = playerId => (dispatch, getState, api) => {
     const page = getPage(getState(), {playerId}) + 1;
+
+    api.trackEvent('matchLoadedMore');
 
     return dispatch(fetchMatches(playerId, page));
 };
