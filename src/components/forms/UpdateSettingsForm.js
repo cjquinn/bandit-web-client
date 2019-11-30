@@ -63,27 +63,24 @@ const UpdateSettingsForm = props => (
                         type="checkbox"
                         name="email_preferences.match_added"
                         label="Match Scores"
-                    >
-                        Submitted by my opponents
-                    </Field>
+                        description="Submitted by my opponents"
+                    />
 
                     <Field
                         component={CheckboxField}
                         type="checkbox"
                         name="email_preferences.challenge_created"
                         label="Open Challenges"
-                    >
-                        Open invitations from my club mates
-                    </Field>
+                        description="Open invitations from my club mates"
+                    />
 
                     <Field
                         component={CheckboxField}
                         type="checkbox"
                         name="email_preferences.weekly_digest"
                         label="Weekly Digest"
-                    >
-                        Weekly round-up of club activity
-                    </Field>
+                        description="Weekly round-up of club activity"
+                    />
                 </div>
 
             </div>

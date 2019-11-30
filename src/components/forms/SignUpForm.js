@@ -49,10 +49,8 @@ const SignUpForm = props => (
                 component={CheckboxField}
                 type="checkbox"
                 name="has_accepted_terms"
-                label="Terms of Service"
-            >
-                I accept the <Link className="u-color-playdough" to="/terms-of-service">terms</Link>
-            </Field>
+                label={<>I accept the <Link className="u-color-playdough" to="/terms-of-service">Terms of Service</Link></>}
+            />
         </div>
     </Form>
 );
