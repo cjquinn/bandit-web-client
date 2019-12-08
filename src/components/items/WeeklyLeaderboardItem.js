@@ -40,9 +40,9 @@ const WeeklyLeaderboardItem = ({ player, position, userId }) => (
                             {player.rating_change}
                         </span>
 
-                        <span><span className="o-dictate">with </span> {player.wins_change} wins</span>
+                        <span><span className="o-dictate">with </span> {player.wins_change} win{player.wins_change !== 1 ? 's' : ''}</span>
 
-                        <span><span className="o-dictate">and </span> {player.losses_change} losses</span>
+                        <span><span className="o-dictate">and </span> {player.losses_change} loss{player.losses_change !== 1 ? 'es' : ''}</span>
                     </dd>
                     </dl>
                 </dd>

@@ -17,7 +17,7 @@ const MatchesScreen = () => (
                 <h2 className="u-size-h4 u-line-error">Who’s been collecting scalps lately?</h2>
             </div>
 
-            <Link to="/matches/add" className="c-button c-button--default u-mt-2bl">Add match</Link>
+            <Link to="/matches/add" className="c-button c-button--default u-mt-2bl">Add match result</Link>
         </header>
 
         <hr className="c-hr" />

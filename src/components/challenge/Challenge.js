@@ -43,7 +43,7 @@ const Challenge = ({ challenge, user }) => {
                 <dl className="u-vspace-2bl u-ph-1bl">
                     <div className="u-vspace-03r">
                         <dt>Date:</dt>
-                        <dd className="u-size-h3 u-color-white">{challenge.moment.format('dddd h:mma - Do MMMM')}</dd>
+                        <dd className="u-size-h3 u-color-white">{challenge.moment.format('dddd Do MMMM [at] h:mma')}</dd>
                     </div>
 
                     <div className="u-vspace-03r">
@@ -82,7 +82,7 @@ const Challenge = ({ challenge, user }) => {
                                 className="c-button c-button--default"
                                 to={`/matches/add/challenges/${challenge.id}`}
                             >
-                                Submit match score
+                                Add match result
                             </Link>
 
                             <a

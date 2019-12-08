@@ -13,7 +13,7 @@ const AddMatchScreen = ({ user }) => (
     <>
         <div className="o-container u-ph-1bl u-vspace-2bl">
             <header className="u-vspace-06r">
-                <h1 className="u-size-h1 u-color-white">Add Match</h1>
+                <h1 className="u-size-h1 u-color-white">Add Match Result</h1>
 
                 <h2 className="u-size-h4">Tell us how it went down, {user.first_name}!</h2>
             </header>
