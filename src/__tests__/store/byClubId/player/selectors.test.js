@@ -295,19 +295,19 @@ describe('selectors', () => {
                     id: 1,
                     first_name: 'Russell',
                     last_name: 'Bishop',
-                    display_name: 'Russell B.'
+                    full_name: 'Russell Bishop'
                 },
                 2: {
                     id: 2,
                     first_name: 'Christy',
                     last_name: 'Quinn',
-                    display_name: 'Christy Q.'
+                    full_name: 'Christy Quinn'
                 },
                 3: {
                     id: 3,
                     first_name: 'Nathan',
                     last_name: 'Rathbone',
-                    display_name: 'Nathan R.'
+                    full_name: 'Nathan Rathbone'
                 }
             }
         },
@@ -348,7 +348,7 @@ describe('selectors', () => {
                     id: 2,
                     first_name: 'Christy',
                     last_name: 'Quinn',
-                    display_name: 'Christy Q.'
+                    full_name: 'Christy Quinn'
                 },
                 isBandit: false
             },
@@ -362,7 +362,7 @@ describe('selectors', () => {
                     id: 3,
                     first_name: 'Nathan',
                     last_name: 'Rathbone',
-                    display_name: 'Nathan R.'
+                    full_name: 'Nathan Rathbone'
                 },
                 isBandit: true
             },
@@ -376,7 +376,7 @@ describe('selectors', () => {
                     id: 1,
                     first_name: 'Russell',
                     last_name: 'Bishop',
-                    display_name: 'Russell B.'
+                    full_name: 'Russell Bishop'
                 },
                 isBandit: false
             }
@@ -406,7 +406,7 @@ describe('selectors', () => {
                     id: 1,
                     first_name: 'Russell',
                     last_name: 'Bishop',
-                    display_name: 'Russell B.'
+                    full_name: 'Russell Bishop'
                 },
                 isBandit: false
             },
@@ -420,7 +420,7 @@ describe('selectors', () => {
                     id: 3,
                     first_name: 'Nathan',
                     last_name: 'Rathbone',
-                    display_name: 'Nathan R.'
+                    full_name: 'Nathan Rathbone'
                 },
                 isBandit: true
             },
@@ -434,7 +434,7 @@ describe('selectors', () => {
                     id: 2,
                     first_name: 'Christy',
                     last_name: 'Quinn',
-                    display_name: 'Christy Q.'
+                    full_name: 'Christy Quinn'
                 },
                 isBandit: false
             }
@@ -463,7 +463,7 @@ describe('selectors', () => {
                     id: 2,
                     first_name: 'Christy',
                     last_name: 'Quinn',
-                    display_name: 'Christy Q.'
+                    full_name: 'Christy Quinn'
                 },
                 isBandit: false
             },
@@ -477,7 +477,7 @@ describe('selectors', () => {
                     id: 1,
                     first_name: 'Russell',
                     last_name: 'Bishop',
-                    display_name: 'Russell B.'
+                    full_name: 'Russell Bishop'
                 },
                 isBandit: false
             },
@@ -491,7 +491,7 @@ describe('selectors', () => {
                     id: 3,
                     first_name: 'Nathan',
                     last_name: 'Rathbone',
-                    display_name: 'Nathan R.'
+                    full_name: 'Nathan Rathbone'
                 },
                 isBandit: true
             }

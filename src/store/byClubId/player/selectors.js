@@ -36,34 +36,10 @@ export const getIsFetching = makeIsFetchingSelector(getPlayerState);
 export const getOrderBy = (state, props) => props && props.orderBy ? props.orderBy : getPlayerState(state).orderBy;
 
 // Memoized
-export const getOpponentOptions = createSelector(
-    [getIds, getUserId, getPlayerEntities, getUserEntities],
-    (ids, userId, players, users) => {
-        const denormalizedPlayers = denormalize(ids, [playerSchema], {players, users});
-        const opponentOptions = [];
-
-        for (let i = 0; i < denormalizedPlayers.length; i++) {
-            const player = denormalizedPlayers[i];
-
-            if (player.user_id === userId) {
-                continue;
-            }
-
-            opponentOptions.push({
-                value: player.id,
-                text: `${player.user.full_name}`
-            });
-        }
-
-        return opponentOptions;
-    }
-);
-
-
 const sortPlayers = {
     'a-z': (a, b) => {
-        const lowerCaseA = a.user.display_name.toLowerCase();
-        const lowerCaseB = b.user.display_name.toLowerCase();
+        const lowerCaseA = a.user.full_name.toLowerCase();
+        const lowerCaseB = b.user.full_name.toLowerCase();
 
         if (lowerCaseA < lowerCaseB) {
             return -1;
@@ -105,6 +81,28 @@ export const getPlayers = createSelector(
         }));
         
         return denormalizedPlayers.sort(sortPlayers[orderBy]);
+    }
+);
+
+export const getOpponentOptions = createSelector(
+    [getUserId, getPlayers],
+    (userId, players) => {
+        const opponentOptions = [];
+
+        for (let i = 0; i < players.length; i++) {
+            const player = players[i];
+
+            if (player.user_id === userId) {
+                continue;
+            }
+
+            opponentOptions.push({
+                value: player.id,
+                text: `${player.user.full_name}`
+            });
+        }
+
+        return opponentOptions;
     }
 );
 
