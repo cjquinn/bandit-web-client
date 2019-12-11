@@ -56,7 +56,7 @@ export const createChallenge = data => (dispatch, getState, api) => {
             playerId: ['all', data.challenge.player_a_id]
         })))
         .then(action => dispatch(push(`/challenges/${action.payload.result}`)))
-        .then(() => api.trackEvent('challengeAdded'))
+        .then(() => api.trackEvent('challengeCreated'))
         .catch(api.handleError(dispatch, createChallengeFailure));
 };
 
