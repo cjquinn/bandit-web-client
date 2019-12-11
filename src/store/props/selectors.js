@@ -2,6 +2,8 @@ export const getMatchParams = (_, props) => props.match ? props.match.params : {
 
 export const getChallengeId = (_, props) => props.challengeId || +getMatchParams(_, props).challengeId;
 
+export const getClubId = (_, props) => props.clubId || +getMatchParams(_, props).clubId;
+
 export const getDisputeId = (_, props) => props.disputeId || +getMatchParams(_, props).disputeId;
 
 export const getMatchId = (_, props) => props.matchId || +getMatchParams(_, props).matchId;

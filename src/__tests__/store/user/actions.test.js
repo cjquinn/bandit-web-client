@@ -74,7 +74,20 @@ describe('fetchCurrentUser', () => {
         global.localStorage.clear();
     });
 
-    it('failure', () => {
+    it('failure without JWT', () => {
+        store.dispatch(actions.fetchCurrentUser())
+
+        const expected = [
+            {type: actions.fetchCurrentUserRequest.toString()},
+            {type: actions.fetchCurrentUserFailure.toString()}
+        ];
+
+        expect(store.getActions()).toEqual(expected);
+    });
+
+    it('failure with JWT', () => {
+        setJwt({data: {jwt: 'TOKEN'}});
+
         mock
             .onGet('/users/current.json')
             .reply(403);
@@ -91,36 +104,8 @@ describe('fetchCurrentUser', () => {
             });
     });
 
-    it('success without clubId', () => {
-        mock
-            .onGet('/users/current.json')
-            .reply(200, {
-                user: {id: 1, players: [{id: 1, club_id: 1}]}
-            });
-
-        return store.dispatch(actions.fetchCurrentUser())
-            .then(() => {
-                const expected = [
-                    {type: actions.fetchCurrentUserRequest.toString()},
-                    {
-                        type: actions.fetchCurrentUserSuccess.toString(),
-                        payload: {
-                            result: 1,
-                            entities: {
-                                players: {1: {id: 1, club_id: 1}},
-                                users: {1: {id: 1, players: [1]}}
-                            }
-                        }
-                    }
-                ];
-
-                expect(store.getActions()).toEqual(expected);
-                expect(getClubId()).toEqual(1);
-            });
-    });
-
-    it('success with clubId', () => {
-        setClubId({data: {club: {id: 2}}});
+    it('success', () => {
+        setJwt({data: {jwt: 'TOKEN'}});
 
         mock
             .onGet('/users/current.json')
@@ -145,7 +130,6 @@ describe('fetchCurrentUser', () => {
                 ];
 
                 expect(store.getActions()).toEqual(expected);
-                expect(getClubId()).toEqual(2);
             });
     });
 });
@@ -204,7 +188,9 @@ describe('resetPassword', () => {
     beforeEach(() => store = global.configureStore({
         router: {
             location: {
-                search: '?token=123'
+                query: {
+                    token: '123'
+                }
             }
         }
     }));
@@ -249,6 +235,19 @@ describe('resetPassword', () => {
     });
 });
 
+describe('setClubId', () => {
+    beforeEach(() => store = global.configureStore());
+
+    it('success', () => {
+        const clubId = 1;
+        store.dispatch(actions.setClubId(clubId));
+
+        const expected = [actions.setClubId(clubId)];
+
+        expect(store.getActions()).toEqual(expected);
+    });
+});
+
 describe('signIn', () => {
     beforeEach(() => store = global.configureStore());
 
@@ -274,7 +273,7 @@ describe('signIn', () => {
             });
     });
 
-    it('success without cludId', () => {
+    it('success', () => {
         mock
             .onPost('/users/login.json')
             .reply(200, {
@@ -300,39 +299,6 @@ describe('signIn', () => {
 
                 expect(store.getActions()).toEqual(expected);
                 expect(getJwt()).toEqual('TOKEN');
-                expect(getClubId()).toEqual(1);
-            });
-    });
-
-    it('success with cludId', () => {
-        setClubId({data: {club: {id: 2}}});
-
-        mock
-            .onPost('/users/login.json')
-            .reply(200, {
-                user: {id: 1, players: [{id: 1, club_id: 1}]},
-                jwt: 'TOKEN'
-            });
-
-        return store.dispatch(actions.signIn())
-            .then(() => {
-                const expected = [
-                    {type: actions.signInRequest.toString()},
-                    {
-                        type: actions.signInSuccess.toString(),
-                        payload: {
-                            result: 1,
-                            entities: {
-                                players: {1: {id: 1, club_id: 1}},
-                                users: {1: {id: 1, players: [1]}}
-                            }
-                        }
-                    }
-                ];
-
-                expect(store.getActions()).toEqual(expected);
-                expect(getJwt()).toEqual('TOKEN');
-                expect(getClubId()).toEqual(2);
             });
     });
 });
@@ -478,7 +444,9 @@ describe('validateResetPasswordToken', () => {
     beforeEach(() => store = global.configureStore({
         router: {
             location: {
-                search: '?token=123'
+                query: {
+                    token: '123'
+                }
             }
         }
     }));

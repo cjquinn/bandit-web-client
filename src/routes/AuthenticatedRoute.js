@@ -21,7 +21,7 @@ class AuthenticatedRoute extends Component {
                                 ? <Component {...props} user={user} />
                                 : <Redirect to="/clubs" />
                             : <Redirect to="/terms-of-service" />
-                        : <Redirect to="/sign-in" />
+                        : <Redirect to={`/sign-in?redirect=${encodeURIComponent(props.location.pathname)}`} />
                 }
             />
         );
@@ -36,6 +36,7 @@ AuthenticatedRoute.propTypes = {
     ]).isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     isClubRoute: PropTypes.bool,
+    location: PropTypes.object.isRequired,
     user: PropTypes.object
 };
 

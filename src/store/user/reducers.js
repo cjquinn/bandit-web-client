@@ -8,26 +8,10 @@ import { createClubSuccess, fetchClubSuccess } from '../club/actions';
 const clubId = handleActions(
     {
         [combineActions(
-            actions.fetchCurrentUserSuccess,
-            actions.signInSuccess,
-            actions.signUpSuccess
-        )]: (state, { payload }) => {
-            if (state) {
-                return state;
-            }
-
-            if (!payload.entities.players) {
-                return null;
-            }
-
-            const playerIds = Object.keys(payload.entities.players);
-
-            return payload.entities.players[playerIds[0]].club_id;
-        },
-        [combineActions(
             createClubSuccess,
             fetchClubSuccess
-        )]: (state, { payload }) => payload.result
+        )]: (state, { payload }) => payload.result,
+        [actions.setClubId]: (state, { payload }) => payload
     },
     null
 );

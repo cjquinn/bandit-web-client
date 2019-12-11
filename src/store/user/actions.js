@@ -39,6 +39,10 @@ export const fetchCurrentUserFailure = createAction('FETCH_CURRENT_USER_FAILURE'
 export const fetchCurrentUser = () => (dispatch, getState, api) => {
     dispatch(fetchCurrentUserRequest());
 
+    if (!api.getJwt()) {
+        return dispatch(fetchCurrentUserFailure());
+    }
+
     return api.fetchCurrentUser()
         .then(api.checkStatus)
         .then(response => api.getClubId() ? response : api.setClubId(response))
@@ -85,6 +89,11 @@ export const resetPassword = data => (dispatch, getState, api) => {
 };
 
 /**
+ * Set clubId
+ */
+export const setClubId = createAction('SET_CLUB_ID');
+
+/**
  * Sign in
  */
 export const signInRequest = createAction('SIGN_IN_REQUEST');
@@ -96,7 +105,6 @@ export const signIn = data => (dispatch, getState, api) => {
 
     return api.signIn(data)
         .then(api.checkStatus)
-        .then(response => api.getClubId() ? response : api.setClubId(response))
         .then(api.setJwt)
         .then(response => normalize(response.data.user, userSchema))
         .then(normalizedData => dispatch(signInSuccess(normalizedData)))

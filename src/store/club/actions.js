@@ -80,11 +80,6 @@ export const fetchClubs = () => (dispatch, getState, api) => {
 };
 
 /**
- * Switch club
- */
-export const switchClub = clubId => dispatch => dispatch(fetchClub(clubId)).then(() => dispatch(push('/')));
-
-/**
  * Update club
  */
 export const updateClubRequest = createAction('UPDATE_CLUB_REQUEST');

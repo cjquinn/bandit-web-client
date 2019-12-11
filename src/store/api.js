@@ -56,10 +56,6 @@ export const checkStatus = response => {
 };
 
 export const handleError = (dispatch, failure, payload = null) => response => {
-    if (!response.status) {
-        throw response;
-    }
-
     if (payload) {
         dispatch(failure(payload));
     } else {
