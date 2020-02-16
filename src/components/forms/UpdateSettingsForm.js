@@ -32,7 +32,7 @@ const UpdateSettingsForm = props => (
             <Field
                 component={InputField}
                 name="email"
-                label="Email name:"
+                label="Email:"
                 type="text"
             />
 
