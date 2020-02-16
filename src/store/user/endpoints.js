@@ -1,5 +1,7 @@
 import { instance } from '../api';
 
+export const acceptTerms = data => instance().patch('/users/current/accept-terms.json', data);
+
 export const fetchCurrentUser = () => instance().get('/users/current.json');
 
 export const requestPasswordReset = data => instance().patch('/users/request-password-reset.json', data);

@@ -3,13 +3,12 @@ import { Link } from 'react-router-dom';
 
 // Components
 import FooterContainer from '../containers/shared/FooterContainer';
-import Template from '../components/shared/Template';
 
 // Containers
 import ClubsListContainer from '../containers/lists/ClubsListContainer';
 
 const ClubsScreen = () => (
-    <Template>
+    <>
         <header className="o-container u-ph-1bl u-vspace-06r">
             <h1 className="u-size-h1 u-color-white">Clubs</h1>
             <h2 className="u-size-h4">Jump into a different tribe.</h2>
@@ -31,7 +30,7 @@ const ClubsScreen = () => (
         </section>
 
         <FooterContainer/>
-    </Template>
+    </>
 );
 
 export default ClubsScreen;

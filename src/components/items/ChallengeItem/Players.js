@@ -3,14 +3,12 @@ import React from 'react';
 
 // Components
 import PlayerPhoto from '../../shared/PlayerPhoto';
-import Svg from '../../shared/Svg';
-import Template from '../../shared/Template';
 
 // Sprites
-import rating from '../../../assets/svg/sprite/rating.svg';
+import { ReactComponent as Rating } from '../../../assets/svg/sprite/rating.svg';
 
 const Players = ({ challenge }) => (
-    <Template>
+    <>
         <div className="u-grow-1 u-basis-0 u-flex u-ai-center u-jc-center u-order-2 u-align-center">
             <PlayerPhoto 
                 player={challenge.player_a}
@@ -36,10 +34,7 @@ const Players = ({ challenge }) => (
 
             <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
                 <span className="u-flex u-ai-center u-hspace-4px">
-                    <Svg
-                        sprite={rating}
-                        className="u-width-1bl u-height-auto"
-                    />
+                    <Rating className="u-width-1bl u-height-auto" />
 
                     <span className="u-color-paste">
                         {challenge.player_a.rating} <span className="o-dictate">rating</span>
@@ -50,26 +45,23 @@ const Players = ({ challenge }) => (
 
         <div className="u-grow-1 u-basis-0 u-order-3 u-flex u-ai-end u-fd-col u-jc-end u-align-right o-ellipsis u-capitalize u-vspace-03r">
             {challenge.player_b
-                ? <Template>
+                ? <>
                     <dt className="u-color-paste u-capitalize">{challenge.player_b.user.display_name}</dt>
 
                     <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
                         <span className="u-flex u-ai-center u-hspace-4px">
-                            <Svg
-                                sprite={rating}
-                                className="u-width-1bl u-height-auto"
-                            />
+                            <Rating className="u-width-1bl u-height-auto" />
 
                             <span className="u-color-paste">
                                 {challenge.player_b.rating} <span className="o-dictate">rating</span>
                             </span>
                         </span>
                     </dd>
-                </Template>
+                </>
                 : <span className="c-go">View</span>
             }
         </div>
-    </Template>
+    </>
 );
 
 Players.propTypes = {

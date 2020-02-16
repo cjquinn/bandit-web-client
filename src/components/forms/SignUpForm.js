@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 // Components
+import CheckboxField from '../fields/CheckboxField';
 import Form from './Form';
 import EmailField from '../fields/EmailField';
 import InputField from '../fields/InputField';
@@ -41,6 +43,13 @@ const SignUpForm = props => (
                 name="password"
                 label="Password:"
                 type="password"
+            />
+
+            <Field
+                component={CheckboxField}
+                type="checkbox"
+                name="has_accepted_terms"
+                label={<>I accept the <Link className="u-color-playdough" to="/terms-of-service">Terms of Service</Link></>}
             />
         </div>
     </Form>

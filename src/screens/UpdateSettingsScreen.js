@@ -2,13 +2,12 @@ import React from 'react';
 
 // Components
 import FooterContainer from '../containers/shared/FooterContainer';
-import Template from '../components/shared/Template';
 
 // Containers
 import UpdateSettingsFormContainer from '../containers/forms/UpdateSettingsFormContainer';
 
 const UpdateSettingsScreen = () => (
-    <Template>
+    <>
         <header className="o-container u-ph-1bl u-vspace-06r">
             <h1 className="u-size-h1 u-color-white">Settings</h1>
 
@@ -20,7 +19,7 @@ const UpdateSettingsScreen = () => (
         <UpdateSettingsFormContainer />
 
         <FooterContainer />    
-    </Template>
+    </>
 );
 
 export default UpdateSettingsScreen;

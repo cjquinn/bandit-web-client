@@ -3,31 +3,21 @@ import { Link } from 'react-router-dom';
 
 // Components
 import FooterContainer from '../containers/shared/FooterContainer';
-import Svg from '../components/shared/Svg';
-import Template from '../components/shared/Template';
 
 // Containers
 import SignInFormContainer from '../containers/forms/SignInFormContainer';
 
 // Sprites
-import logo_knot from '../assets/svg/sprite/logo_knot.svg';
-import logo_head from '../assets/svg/sprite/logo_head.svg';
-import logo_knot_pride from '../assets/svg/sprite/logo_knot_pride.svg';
-import logo_head_pride from '../assets/svg/sprite/logo_head_pride.svg';
+import { ReactComponent as LogoKnotPride } from '../assets/svg/sprite/logo_knot_pride.svg';
+import { ReactComponent as LogoHeadPride } from '../assets/svg/sprite/logo_head_pride.svg';
 
 const SignInScreen = () => (
-    <Template>
+    <>
         <header className="o-container u-ph-1bl u-vspace-06r u-flex u-fd-col u-ai-center">
             <div className="u-pos-relative">
-                <Svg
-                    className="u-width-6bl u-height-auto"
-                    sprite={logo_head_pride}
-                />
+                <LogoHeadPride className="u-width-6bl u-height-auto" />
 
-                <Svg
-                    className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-2bl u-height-auto"
-                    sprite={logo_knot_pride}
-                />
+                <LogoKnotPride className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-2bl u-height-auto" />
             </div>
 
             <h1 className="u-size-h2 u-color-orange u-uppercase u-weight-bold">Bandit Match</h1>
@@ -54,7 +44,7 @@ const SignInScreen = () => (
                 Reset password
             </Link>
         </FooterContainer>
-    </Template>
+    </>
 );
 
 export default SignInScreen;

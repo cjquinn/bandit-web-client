@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 
 // Components
+import CheckboxField from '../fields/CheckboxField';
 import Form from './Form';
 import InputField from '../fields/InputField';
 
@@ -16,14 +18,14 @@ const CreateClubUnauthenticatedForm = props => (
             <div className="u-flex u-hspace-2bl">
                 <Field
                     component={InputField}
-                    name="founder[first_name]"
+                    name="founder.first_name"
                     label="First name:"
                     type="text"
                 />
                 
                 <Field
                     component={InputField}
-                    name="founder[last_name]"
+                    name="founder.last_name"
                     label="Last name:"
                     type="text"
                 />
@@ -39,15 +41,23 @@ const CreateClubUnauthenticatedForm = props => (
 
             <Field
                 component={InputField}
-                name="founder[email]"
+                name="founder.email"
                 label="Email:"
                 type="email"
             />
+
             <Field
                 component={InputField}
-                name="founder[password]"
+                name="founder.password"
                 label="Password:"
                 type="password"
+            />
+
+            <Field
+                component={CheckboxField}
+                type="checkbox"
+                name="founder.has_accepted_terms"
+                label={<>I accept the <Link className="u-color-playdough" to="/terms-of-service">Terms of Service</Link></>}
             />
         </div>
     </Form>

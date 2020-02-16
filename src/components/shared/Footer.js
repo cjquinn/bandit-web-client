@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Components
-import Template from './Template';
-
 const Footer = ({ children, isAuthenticated, signOut }) => (
     <footer>
         <hr className="c-hr" />
@@ -12,7 +9,7 @@ const Footer = ({ children, isAuthenticated, signOut }) => (
             {children 
                 ? children
                 : (
-                    <Template>
+                    <>
                         <a
                             className="u-color-playdough"
                             href="mailto:referee@banditmatch.com"
@@ -28,7 +25,7 @@ const Footer = ({ children, isAuthenticated, signOut }) => (
                                 Sign out
                             </button>
                         }
-                    </Template>
+                    </>
                 )
             }
         </div>

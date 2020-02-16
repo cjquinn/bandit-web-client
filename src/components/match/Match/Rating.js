@@ -1,15 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-// Components
-import Svg from '../../shared/Svg';
-import Template from '../../shared/Template';
-
 // Sprite
-import rating from '../../../assets/svg/sprite/rating.svg';
+import { ReactComponent as RatingSvg } from '../../../assets/svg/sprite/rating.svg';
 
 const Rating = ({ level, playerRating, snapshot }) => (
-    <Template>
+    <>
         <span className="c-levels u-flex u-ai-center">
             <span className={`c-level u-bgcolor-${level.slug}`}>
                 {level.name}
@@ -17,10 +13,7 @@ const Rating = ({ level, playerRating, snapshot }) => (
         </span>
 
         <div className="u-flex u-ai-center u-hspace-4px">
-            <Svg
-                sprite={rating}
-                className="u-width-1bl u-height-auto"
-            />
+            <RatingSvg className="u-width-1bl u-height-auto" />
 
             <span className="u-color-paste">{playerRating} <span className="o-dictate">rating</span></span>&nbsp;
         
@@ -34,7 +27,7 @@ const Rating = ({ level, playerRating, snapshot }) => (
                 </dd>
             }
         </div>
-    </Template>
+    </>
 );
 
 Rating.propTypes = {

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
-import { routerReducer as router } from 'react-router-redux';
+import { connectRouter } from 'connected-react-router'
 
 // Actions
 import { SIGN_OUT } from './user/actions';
@@ -12,17 +12,7 @@ import entities from './entities/reducers';
 import flash from './flash/reducers';
 import user from './user/reducers';
 
-const appReducers = combineReducers({
-    byClubId,
-    club,
-    flash,
-    form,
-    entities,
-    router,
-    user
-});
-
-const reducers = (state, action) => {
+const createRootReducer = history => (state, action) => {
     if (action.type === SIGN_OUT) {
         // Only undefine state from this app
         state.byClubId = undefined;
@@ -32,7 +22,15 @@ const reducers = (state, action) => {
         state.user = {isLoading: false};
     }
 
-    return appReducers(state, action);
+    return combineReducers({
+        byClubId,
+        club,
+        flash,
+        form,
+        entities,
+        router: connectRouter(history),
+        user
+    })(state, action);
 };
 
-export default reducers;
+export default createRootReducer;

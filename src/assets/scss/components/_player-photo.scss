@@ -12,7 +12,7 @@ $component: 'player-photo';
   @extend .u-clip-hexagon;
 
   &--no-photo {
-    background-image: url('../img/empty.png');
+    background-image: url('../../img/empty.png');
   }
 
   &--unassigned {

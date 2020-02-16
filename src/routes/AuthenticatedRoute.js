@@ -16,10 +16,12 @@ class AuthenticatedRoute extends Component {
                 {...props}
                 render={props =>
                     isAuthenticated
-                        ? !isClubRoute || clubId
-                            ? <Component {...props} user={user} />
-                            : <Redirect to="/clubs" />
-                        : <Redirect to="/sign-in" />
+                        ? user.has_accepted_terms
+                            ?!isClubRoute || clubId
+                                ? <Component {...props} user={user} />
+                                : <Redirect to="/clubs" />
+                            : <Redirect to="/terms-of-service" />
+                        : <Redirect to={`/sign-in?redirect=${encodeURIComponent(props.location.pathname)}`} />
                 }
             />
         );
@@ -28,9 +30,13 @@ class AuthenticatedRoute extends Component {
 
 AuthenticatedRoute.propTypes = {
     clubId: PropTypes.number,
-    component: PropTypes.func.isRequired,
+    component: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.object
+    ]).isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     isClubRoute: PropTypes.bool,
+    location: PropTypes.object.isRequired,
     user: PropTypes.object
 };
 

@@ -4,13 +4,10 @@ import { NavLink } from 'react-router-dom';
 
 // Components
 import PlayerPhoto from './PlayerPhoto';
-import Svg from './Svg';
 
 // Sprites
-import logo_head from '../../assets/svg/sprite/logo_head.svg';
-import logo_knot from '../../assets/svg/sprite/logo_knot.svg';
-import logo_head_pride from '../../assets/svg/sprite/logo_head_pride.svg';
-import logo_knot_pride from '../../assets/svg/sprite/logo_knot_pride.svg';
+import { ReactComponent as LogoHeadPride } from '../../assets/svg/sprite/logo_head_pride.svg';
+import { ReactComponent as LogoKnotPride } from '../../assets/svg/sprite/logo_knot_pride.svg';
 
 const Header = ({ children, club, user }) => (
     <nav>
@@ -23,16 +20,9 @@ const Header = ({ children, club, user }) => (
                     isActive={(_, location) => /(clubs|settings|profile)/.test(location.pathname)}
                 >
                     <div className="u-pos-relative">
-                        <Svg
-                            sprite={logo_head_pride}
-                            className="u-block u-width-2bl u-height-auto"
-                            activeClassName=""
-                        />
+                        <LogoHeadPride className="u-block u-width-2bl u-height-auto" />
                         
-                        <Svg
-                            sprite={logo_knot_pride}
-                            className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto"
-                        />
+                        <LogoKnotPride className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto" />
                     </div>
 
                     <h1 className="u-uppercase">

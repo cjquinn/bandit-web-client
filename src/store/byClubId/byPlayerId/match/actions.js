@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 import { normalize } from 'normalizr';
-import { push } from 'react-router-redux';
+import { push } from 'connected-react-router';
 
 // Actions
 import { setFlash } from '../../../flash/actions';
@@ -110,8 +110,10 @@ export const fetchMatches = (playerId, page) => (dispatch, getState, api) => {
 /**
  * Fetch more matches
  */
-export const fetchMoreMatches = playerId => (dispatch, getState) => {
-    const page = getPage(getState(), {match: {params: {playerId}}}) + 1;
+export const fetchMoreMatches = playerId => (dispatch, getState, api) => {
+    const page = getPage(getState(), {playerId}) + 1;
+
+    api.trackEvent('matchLoadedMore');
 
     return dispatch(fetchMatches(playerId, page));
 };

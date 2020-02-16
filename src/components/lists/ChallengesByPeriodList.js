@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 // Components
 import ChallengesList from './ChallengesList';
 import Loading from '../shared/Loading';
-import Template from '../shared/Template';
 
 const ChallengesByPeriodList = ({ isFetching, challengesByPeriod }) => {
     if (challengesByPeriod.length === 0) {
@@ -25,7 +24,7 @@ const ChallengesByPeriodList = ({ isFetching, challengesByPeriod }) => {
         const { period, challenges } = challengesByPeriod[key];
 
         return (
-            <Template key={key}>
+            <Fragment key={key}>
                 <div className="u-vspace-2bl">
                     <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                         <h1 className="u-size-h3 u-color-white">{period}</h1>
@@ -35,7 +34,7 @@ const ChallengesByPeriodList = ({ isFetching, challengesByPeriod }) => {
                 </div>
 
                 {period !== 'Further' && <hr className="c-hr" />}
-            </Template>
+            </Fragment>
         );
     });
 };

@@ -3,21 +3,16 @@ import { Link } from 'react-router-dom';
 
 // Components
 import FooterContainer from '../containers/shared/FooterContainer';
-import Svg from '../components/shared/Svg';
-import Template from '../components/shared/Template';
 
 // Sprites
-import logo_knot from '../assets/svg/sprite/logo_knot.svg';
+import { ReactComponent as LogoKnot } from '../assets/svg/sprite/logo_knot.svg';
 
 const ErrorScreen = () => (
-    <Template>
+    <>
         <header className="o-container u-flex u-ai-center u-jc-center u-grow-1 u-fd-col u-ph-1bl">
             <h1 className="u-size-h0 u-color-white">
                 <span className="u-pos-relative u-inline-block">
-                    <Svg
-                        sprite={logo_knot}
-                        className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-2bl u-height-auto"
-                    />
+                    <LogoKnot className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-2bl u-height-auto" />
 
                     500
                 </span>
@@ -34,7 +29,7 @@ const ErrorScreen = () => (
 
         <FooterContainer>
         </FooterContainer>
-    </Template>
+    </>
 );
 
 export default ErrorScreen;

@@ -3,6 +3,7 @@ import React from 'react';
 import { Field } from 'redux-form';
 
 // Components
+import CheckboxField from '../fields/CheckboxField';
 import Form from './Form';
 import InputField from '../fields/InputField';
 
@@ -50,6 +51,40 @@ const UpdateSettingsForm = props => (
                     type="password"
                 />
             </div>
+
+            <hr className="c-hr" />
+
+            <div className="u-vspace-1bl">
+                <h2 className="u-size-h3 u-weight-bold u-color-white">Email Settings</h2>
+
+                <div className="u-vspace-1bl">
+                    <Field
+                        component={CheckboxField}
+                        type="checkbox"
+                        name="email_preferences.match_added"
+                        label="Match Scores"
+                        description="Submitted by my opponents"
+                    />
+
+                    <Field
+                        component={CheckboxField}
+                        type="checkbox"
+                        name="email_preferences.challenge_created"
+                        label="Open Challenges"
+                        description="Open invitations from my club mates"
+                    />
+
+                    <Field
+                        component={CheckboxField}
+                        type="checkbox"
+                        name="email_preferences.weekly_digest"
+                        label="Weekly Digest"
+                        description="Weekly round-up of club activity"
+                    />
+                </div>
+
+            </div>
+
         </div>
     </Form>
 );

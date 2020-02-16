@@ -1,6 +1,6 @@
 import { normalize } from 'normalizr';
 import { createAction } from 'redux-actions';
-import { push } from 'react-router-redux';
+import { push } from 'connected-react-router';
 
 // Actions
 import { setFlash } from '../flash/actions';
@@ -78,11 +78,6 @@ export const fetchClubs = () => (dispatch, getState, api) => {
         .then(normalizedData => dispatch(fetchClubsSuccess(normalizedData)))
         .catch(api.handleError(dispatch, fetchClubsFailure));
 };
-
-/**
- * Switch club
- */
-export const switchClub = clubId => dispatch => dispatch(fetchClub(clubId)).then(() => dispatch(push('/')));
 
 /**
  * Update club

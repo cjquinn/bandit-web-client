@@ -50,7 +50,7 @@ const DatedMatchesList = ({ currentPlayerId, isFetching, matches, playerId }) =>
 };
 
 DatedMatchesList.propTypes = {
-    currentPlayerId: PropTypes.number.isRequired,
+    currentPlayerId: PropTypes.number,
     isFetching: PropTypes.bool.isRequired,
     matches: PropTypes.array.isRequired,
     playerId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired

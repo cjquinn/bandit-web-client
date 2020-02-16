@@ -2,15 +2,12 @@ import React from 'react';
 
 import { Link, NavLink, Route, Switch } from 'react-router-dom';
 
-// Components
-import Template from '../components/shared/Template';
-
 // Containers
 import FooterContainer from '../containers/shared/FooterContainer';
 import ChallengesByPeriodListContainer from '../containers/lists/ChallengesByPeriodListContainer';
 
 const ChallengesScreen = () => (
-    <Template>
+    <>
         <header className="o-container u-ph-1bl">
             <div className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Challenges</h1>
@@ -69,7 +66,7 @@ const ChallengesScreen = () => (
         </div>
 
         <FooterContainer/>
-    </Template>
+    </>
 );
 
 export default ChallengesScreen;

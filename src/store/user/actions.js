@@ -1,6 +1,6 @@
 import { normalize } from 'normalizr';
 import { createAction } from 'redux-actions';
-import { push } from 'react-router-redux';
+import { push } from 'connected-react-router';
 
 // Actions
 import { setFlash } from '../flash/actions';
@@ -12,6 +12,24 @@ import { user as userSchema } from '../schema';
 import { getToken } from '../router/selectors';
 
 /**
+ * Accept terms
+ */
+export const acceptTermsRequest = createAction('ACCEPT_TERMS_REQUEST');
+export const acceptTermsSuccess = createAction('ACCEPT_TERMS_SUCCESS');
+export const acceptTermsFailure = createAction('ACCEPT_TERMS_FAILURE');
+
+export const acceptTerms = data => (dispatch, getState, api) => {
+    dispatch(acceptTermsRequest());
+
+    return api.acceptTerms(data)
+        .then(api.checkStatus)
+        .then(response => normalize(response.data.user, userSchema))
+        .then(normalizedData => dispatch(acceptTermsSuccess(normalizedData)))
+        .then(() => dispatch(push('/')))
+        .catch(api.handleError(dispatch, acceptTermsFailure));
+};
+
+/**
  * Fetch current user
  */
 export const fetchCurrentUserRequest = createAction('FETCH_CURRENT_USER_REQUEST');
@@ -20,6 +38,10 @@ export const fetchCurrentUserFailure = createAction('FETCH_CURRENT_USER_FAILURE'
 
 export const fetchCurrentUser = () => (dispatch, getState, api) => {
     dispatch(fetchCurrentUserRequest());
+
+    if (!api.getJwt()) {
+        return dispatch(fetchCurrentUserFailure());
+    }
 
     return api.fetchCurrentUser()
         .then(api.checkStatus)
@@ -67,6 +89,11 @@ export const resetPassword = data => (dispatch, getState, api) => {
 };
 
 /**
+ * Set clubId
+ */
+export const setClubId = createAction('SET_CLUB_ID');
+
+/**
  * Sign in
  */
 export const signInRequest = createAction('SIGN_IN_REQUEST');
@@ -78,7 +105,6 @@ export const signIn = data => (dispatch, getState, api) => {
 
     return api.signIn(data)
         .then(api.checkStatus)
-        .then(response => api.getClubId() ? response : api.setClubId(response))
         .then(api.setJwt)
         .then(response => normalize(response.data.user, userSchema))
         .then(normalizedData => dispatch(signInSuccess(normalizedData)))
@@ -130,6 +156,7 @@ export const updateSettings = data => (dispatch, getState, api) => {
         .then(api.checkStatus)
         .then(response => normalize(response.data.user, userSchema))
         .then(normalizedData => dispatch(updateSettingsSuccess(normalizedData)))
+        .then(() => window.scrollTo(0, 0))
         .then(() => dispatch(setFlash({message: 'Your settings were updated', type: 'success'})))
         .catch(api.handleError(dispatch, updateSettingsFailure));
 };

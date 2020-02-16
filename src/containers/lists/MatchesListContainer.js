@@ -36,7 +36,7 @@ class MatchesListContainer extends Component {
 
 MatchesListContainer.propTypes = {
     component: PropTypes.func.isRequired,
-    currentPlayerId: PropTypes.number.isRequired,
+    currentPlayerId: PropTypes.number,
     fetchMatches: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
     limit: PropTypes.string,

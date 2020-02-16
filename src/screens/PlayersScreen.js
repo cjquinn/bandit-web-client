@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 
 // Components
 import FooterContainer from '../containers/shared/FooterContainer';
-import Template from '../components/shared/Template';
 
 // Containers
 import OrderPlayersControlContainer from '../containers/controls/OrderPlayersControlContainer';
 import PlayersListContainer from '../containers/lists/PlayersListContainer';
 
 const PlayersScreen = () => (
-    <Template>
+    <>
         <header className="o-container u-ph-1bl">
             <div className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Players</h1>
@@ -35,7 +34,7 @@ const PlayersScreen = () => (
         </section>
 
         <FooterContainer />
-    </Template>
+    </>
 );
 
 export default PlayersScreen;

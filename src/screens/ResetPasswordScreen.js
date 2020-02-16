@@ -3,24 +3,19 @@ import { Link } from 'react-router-dom';
 
 // Components
 import FooterContainer from '../containers/shared/FooterContainer';
-import Svg from '../components/shared/Svg';
-import Template from '../components/shared/Template';
 
 // Containers
 import ResetPasswordFormContainer from '../containers/forms/ResetPasswordFormContainer';
 
 // Sprites
-import logo_knot from '../assets/svg/sprite/logo_knot.svg';
+import { ReactComponent as LogoKnot } from '../assets/svg/sprite/logo_knot.svg';
 
 const ResetPasswordScreen = () => (
-    <Template>
+    <>
         <header className="o-container u-flex u-ai-center u-fd-col u-ph-1bl u-vspace-06r">
             <h1 className="u-size-h1 u-color-white">
                 <span className="u-pos-relative">
-                    <Svg
-                        className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto"
-                        sprite={logo_knot}
-                    />
+                    <LogoKnot className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto" />
             
                     Reset Password
                 </span>
@@ -41,7 +36,7 @@ const ResetPasswordScreen = () => (
                 Sign in
             </Link>
         </FooterContainer>
-    </Template>
+    </>
 );
 
 export default ResetPasswordScreen;

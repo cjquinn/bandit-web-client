@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { forIn, isPlainObject } from 'lodash';
 import { SubmissionError } from 'redux-form';
-import { push } from 'react-router-redux';
+import { push } from 'connected-react-router';
 
 // Actions
 import { setFlash } from './flash/actions';
@@ -56,10 +56,6 @@ export const checkStatus = response => {
 };
 
 export const handleError = (dispatch, failure, payload = null) => response => {
-    if (!response.status) {
-        throw response;
-    }
-
     if (payload) {
         dispatch(failure(payload));
     } else {
@@ -93,9 +89,7 @@ export const handleError = (dispatch, failure, payload = null) => response => {
  * An instance of axios to use for all requests
  */
 export const instance = () => axios.create({
-    baseURL: API === 'local'
-        ? 'http://localhost'
-        : `https://${API !== 'live' ? 'drill-' : ''}api.banditmatch.com`,
+    baseURL: process.env.REACT_APP_API_URL,
     headers: {
         'X-Requested-With': 'XMLHttpRequest',
         ...(

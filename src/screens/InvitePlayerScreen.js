@@ -2,13 +2,12 @@ import React from 'react';
 
 // Components
 import FooterContainer from '../containers/shared/FooterContainer';
-import Template from '../components/shared/Template';
 
 // Containers
 import InvitePlayerFormContainer from '../containers/forms/InvitePlayerFormContainer';
 
 const InvitePlayerScreen = () => (
-    <Template>
+    <>
         <div className="o-container u-ph-1bl u-vspace-2bl">
             <header className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Invite Player</h1>
@@ -22,7 +21,7 @@ const InvitePlayerScreen = () => (
         <InvitePlayerFormContainer />
 
         <FooterContainer/>
-    </Template>
+    </>
 );
 
 export default InvitePlayerScreen;

@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import AllTimeLeaderboardList from '../components/lists/AllTimeLeaderboardList';
 import FooterContainer from '../containers/shared/FooterContainer';
 import MatchesList from '../components/lists/MatchesList';
-import Template from '../components/shared/Template';
 import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
 
 // Containers
@@ -15,7 +14,7 @@ import MatchesListContainer from '../containers/lists/MatchesListContainer';
 import PlayerContainer from '../containers/player/PlayerContainer';
 
 const PlayerScreen = ({ match, user }) => (
-    <Template>
+    <>
         <PlayerContainer playerId={match.params.playerId ? +match.params.playerId : user.player.id} />
 
         <hr className="c-hr" />
@@ -73,7 +72,7 @@ const PlayerScreen = ({ match, user }) => (
         </section>
 
         <FooterContainer />
-    </Template>
+    </>
 );
 
 PlayerScreen.propTypes = {

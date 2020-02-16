@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
 
 // Actions
 import { fetchCurrentUser } from '../store/user/actions';
@@ -17,26 +16,22 @@ import { getIsAuthenticated, getIsLoading } from '../store/user/selectors';
 
 class App extends Component {
     componentDidMount() {
-        // TODO: Do a better job of handling this
         this.props.fetchCurrentUser();
     }
     
     render() {
-        const { history, isAuthenticated, isLoading } = this.props;
+        const { isAuthenticated, isLoading } = this.props;
 
         return (
-            <ConnectedRouter history={history}>
-                <ScrollToTop>
-                    <AppLayout isAuthenticated={isAuthenticated} isLoading={isLoading} />
-                </ScrollToTop>
-            </ConnectedRouter>
+            <ScrollToTop>
+                <AppLayout isAuthenticated={isAuthenticated} isLoading={isLoading} />
+            </ScrollToTop>
         );
     }
 }
 
 App.propTypes = {
     fetchCurrentUser: PropTypes.func.isRequired,
-    history: PropTypes.object.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
     isLoading: PropTypes.bool.isRequired
 };

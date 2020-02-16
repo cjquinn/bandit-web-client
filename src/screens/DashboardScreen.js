@@ -6,14 +6,13 @@ import { Link } from 'react-router-dom';
 import ChallengesList from '../components/lists/ChallengesList';
 import FooterContainer from '../containers/shared/FooterContainer';
 import MatchesList from '../components/lists/MatchesList';
-import Template from '../components/shared/Template';
 
 // Containers
 import ChallengesListContainer from '../containers/lists/ChallengesListContainer';
 import MatchesListContainer from '../containers/lists/MatchesListContainer';
 
 const DashboardScreen = ({ user }) => (
-    <Template>
+    <>
         <section className="o-container u-vspace-1bl">
             <header className="u-flex u-jc-between u-ai-center u-ph-1bl">
                 <h1 className="u-size-h2 u-color-white">My Challenges</h1>
@@ -71,7 +70,7 @@ const DashboardScreen = ({ user }) => (
         </section>
 
         <FooterContainer />
-    </Template>
+    </>
 );
 
 DashboardScreen.propTypes = {

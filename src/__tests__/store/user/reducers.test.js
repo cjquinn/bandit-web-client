@@ -1,0 +1,195 @@
+// Actions
+import { createClubSuccess, fetchClubSuccess } from '../../../store/club/actions';
+import * as actions from '../../../store/user/actions';
+
+// Reducers
+import reducers from '../../../store/user/reducers';
+
+describe('initial state', () => {
+    it('shape', () => {
+        const expected = {
+            clubId: null,
+            id: null,
+            isLoading: true
+        };
+
+        expect(reducers(undefined, {})).toEqual(expected);
+    });
+});
+
+describe('createClub', () => {
+    it(createClubSuccess.toString(), () => {
+        const state = {
+            clubId: null,
+            id: null,
+            isLoading: false
+        };
+
+        const payload = {
+            result: 1,
+            entities: {
+                clubs: {
+                    1: {founder_id: 2}
+                }
+            }
+        };
+
+        const expected = {
+            clubId: 1,
+            id: 2,
+            isLoading: false
+        };
+
+        expect(reducers(state, createClubSuccess(payload))).toEqual(expected);
+    });
+});
+
+describe('fetchClub', () => {
+    it(fetchClubSuccess.toString(), () => {
+        const state = {
+            clubId: null,
+            id: null,
+            isLoading: false
+        };
+
+        const payload = {result: 1};
+
+        const expected = {
+            clubId: 1,
+            id: null,
+            isLoading: false
+        };
+
+        expect(reducers(state, fetchClubSuccess(payload))).toEqual(expected);
+    });
+});
+
+describe('fetchCurrentUser', () => {
+    it(actions.fetchCurrentUserRequest.toString(), () => {
+        const state = {
+            clubId: null,
+            id: null,
+            isLoading: false
+        };
+
+        const expected = {
+            clubId: null,
+            id: null,
+            isLoading: true
+        };
+
+        expect(reducers(state, actions.fetchCurrentUserRequest())).toEqual(expected);
+    });
+
+    it(actions.fetchCurrentUserFailure.toString(), () => {
+        const state = {
+            clubId: null,
+            id: null,
+            isLoading: true
+        };
+
+        const expected = {
+            clubId: null,
+            id: null,
+            isLoading: false
+        };
+
+        expect(reducers(state, actions.fetchCurrentUserFailure())).toEqual(expected);
+    });
+
+    it(actions.fetchCurrentUserSuccess.toString(), () => {
+        const state = {
+            clubId: null,
+            id: null,
+            isLoading: true
+        };
+
+        const payload = {
+            result: 1,
+            entities: {
+                users: {1: {id: 1, players: [3]}},
+                players: {3: {id: 3, club_id: 2, user_id: 1}}
+            }
+        };
+
+        const expected = {
+            clubId: null,
+            id: 1,
+            isLoading: false
+        };
+
+        expect(reducers(state, actions.fetchCurrentUserSuccess(payload))).toEqual(expected);
+    });
+});
+
+describe('setClubId', () => {
+    it(actions.setClubId.toString(), () => {
+        const state = {
+            clubId: null,
+            id: null,
+            isLoading: false
+        };
+
+        const clubId = 1;
+
+        const expected = {
+            clubId,
+            id: null,
+            isLoading: false
+        };
+
+        expect(reducers(state, actions.setClubId(clubId))).toEqual(expected);
+    });
+});
+
+describe('signIn', () => {
+    it(actions.signInSuccess.toString(), () => {
+        const state = {
+            clubId: null,
+            id: null,
+            isLoading: false
+        };
+
+        const payload = {
+            result: 1,
+            entities: {
+                users: {1: {id: 1, players: [3]}},
+                players: {3: {id: 3, club_id: 2, user_id: 1}}
+            }
+        };
+
+        const expected = {
+            clubId: null,
+            id: 1,
+            isLoading: false
+        };
+
+        expect(reducers(state, actions.signInSuccess(payload))).toEqual(expected);
+    });
+});
+
+describe('signUp', () => {
+    it(actions.signUpSuccess.toString(), () => {
+        const state = {
+            clubId: null,
+            id: null,
+            isLoading: false
+        };
+
+        const payload = {
+            result: 1,
+            entities: {
+                users: {1: {id: 1, players: [3]}},
+                players: {3: {id: 3, club_id: 2, user_id: 1}}
+            }
+        };
+
+        const expected = {
+            clubId: null,
+            id: 1,
+            isLoading: false
+        };
+
+        expect(reducers(state, actions.signUpSuccess(payload))).toEqual(expected);
+    });
+});

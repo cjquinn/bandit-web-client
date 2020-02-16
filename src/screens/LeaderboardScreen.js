@@ -4,7 +4,6 @@ import { NavLink, Route, Switch } from 'react-router-dom';
 // Components
 import AllTimeLeaderboardList from '../components/lists/AllTimeLeaderboardList';
 import FooterContainer from '../containers/shared/FooterContainer';
-import Template from '../components/shared/Template';
 import UnrankedList from '../components/lists/UnrankedList';
 import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
 
@@ -12,7 +11,7 @@ import WeeklyLeaderboardList from '../components/lists/WeeklyLeaderboardList';
 import LeaderboardListContainer from '../containers/lists/LeaderboardListContainer';
 
 const LeaderboardScreen = () => (
-    <Template>
+    <>
         <header className="o-container u-ph-1bl">
             <div className="u-vspace-06r">
                 <h1 className="u-size-h1 u-color-white">Leaderboards</h1>
@@ -76,7 +75,7 @@ const LeaderboardScreen = () => (
         </div>
 
         <FooterContainer />
-    </Template>
+    </>
 );
 
 export default LeaderboardScreen;

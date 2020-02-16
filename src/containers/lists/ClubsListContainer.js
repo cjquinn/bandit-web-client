@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
 
 // Actions
-import { fetchClubs, switchClub } from '../../store/club/actions';
+import { fetchClubs } from '../../store/club/actions';
+import { setClubId } from '../../store/user/actions';
 
 // Components
 import ClubsList from '../../components/lists/ClubsList';
@@ -17,7 +19,12 @@ class ClubsListContainer extends Component {
         this.props.fetchClubs();
     }
 
-    handleClick = clubId => this.props.switchClub(clubId);
+    handleClick = clubId => {
+        const { push, setClubId } = this.props;
+        
+        setClubId(clubId);
+        push('/');
+    }
 
     render() {
         const { clubId, clubs, isFetching } = this.props;
@@ -38,7 +45,8 @@ ClubsListContainer.propTypes = {
     clubs: PropTypes.array.isRequired,
     fetchClubs: PropTypes.func.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    switchClub: PropTypes.func.isRequired
+    push: PropTypes.func.isRequired,
+    setClubId: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -49,7 +57,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchClubs: () => dispatch(fetchClubs()),
-    switchClub: clubId => dispatch(switchClub(clubId))
+    push: path => dispatch(push(path)),
+    setClubId: clubId => dispatch(setClubId(clubId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ClubsListContainer);
