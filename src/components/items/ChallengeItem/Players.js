@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Components
 import PlayerPhoto from '../../shared/PlayerPhoto';
@@ -29,7 +30,7 @@ const Players = ({ challenge }) => (
             </div>
         </div>
 
-        <div className="u-grow-1 u-basis-0 u-order-1 u-align-left o-ellipsis u-capitalize u-vspace-03r">
+        <Link className="u-grow-1 u-basis-0 u-order-1 u-align-left o-ellipsis u-capitalize u-vspace-03r" to={`/players/${challenge.player_a_id}`}>
             <dt className="u-color-paste u-capitalize">{challenge.player_a.user.display_name}</dt>
 
             <dd className="u-flex u-ai-center u-hspace-8px u-size-13px">
@@ -41,9 +42,9 @@ const Players = ({ challenge }) => (
                     </span>
                 </span>
             </dd>
-        </div>
+        </Link>
 
-        <div className="u-grow-1 u-basis-0 u-order-3 u-flex u-ai-end u-fd-col u-jc-end u-align-right o-ellipsis u-capitalize u-vspace-03r">
+        <Link className="u-grow-1 u-basis-0 u-order-3 u-flex u-ai-end u-fd-col u-jc-end u-align-right o-ellipsis u-capitalize u-vspace-03r" to={`/players/${challenge.player_b_id}`}>
             {challenge.player_b
                 ? <>
                     <dt className="u-color-paste u-capitalize">{challenge.player_b.user.display_name}</dt>
@@ -60,7 +61,7 @@ const Players = ({ challenge }) => (
                 </>
                 : <span className="c-go">View</span>
             }
-        </div>
+        </Link>
     </>
 );
 
