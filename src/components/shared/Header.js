@@ -6,8 +6,8 @@ import { NavLink } from 'react-router-dom';
 import PlayerPhoto from './PlayerPhoto';
 
 // Sprites
-import { ReactComponent as LogoHeadPride } from '../../assets/svg/sprite/logo_head_pride.svg';
-import { ReactComponent as LogoKnotPride } from '../../assets/svg/sprite/logo_knot_pride.svg';
+import { ReactComponent as LogoHead } from '../../assets/svg/sprite/logo_head.svg';
+import { ReactComponent as LogoKnot } from '../../assets/svg/sprite/logo_knot.svg';
 
 const Header = ({ children, club, user }) => (
     <nav>
@@ -20,9 +20,9 @@ const Header = ({ children, club, user }) => (
                     isActive={(_, location) => /(clubs|settings|profile)/.test(location.pathname)}
                 >
                     <div className="u-pos-relative">
-                        <LogoHeadPride className="u-block u-width-2bl u-height-auto" />
+                        <LogoHead className="u-block u-width-2bl u-height-auto" />
                         
-                        <LogoKnotPride className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto" />
+                        <LogoKnot className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-1bl u-height-auto" />
                     </div>
 
                     <h1 className="u-uppercase">

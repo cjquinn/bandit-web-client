@@ -8,16 +8,16 @@ import FooterContainer from '../containers/shared/FooterContainer';
 import SignInFormContainer from '../containers/forms/SignInFormContainer';
 
 // Sprites
-import { ReactComponent as LogoKnotPride } from '../assets/svg/sprite/logo_knot_pride.svg';
-import { ReactComponent as LogoHeadPride } from '../assets/svg/sprite/logo_head_pride.svg';
+import { ReactComponent as LogoKnot } from '../assets/svg/sprite/logo_knot.svg';
+import { ReactComponent as LogoHead } from '../assets/svg/sprite/logo_head.svg';
 
 const SignInScreen = () => (
     <>
         <header className="o-container u-ph-1bl u-vspace-06r u-flex u-fd-col u-ai-center">
             <div className="u-pos-relative">
-                <LogoHeadPride className="u-width-6bl u-height-auto" />
+                <LogoHead className="u-width-6bl u-height-auto" />
 
-                <LogoKnotPride className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-2bl u-height-auto" />
+                <LogoKnot className="c-player-photo__knot u-z-1 u-pos-absolute u-top-0 u-left-0 u-width-2bl u-height-auto" />
             </div>
 
             <h1 className="u-size-h2 u-color-orange u-uppercase u-weight-bold">Bandit Match</h1>
