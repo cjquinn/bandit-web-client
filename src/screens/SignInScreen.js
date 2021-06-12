@@ -8,8 +8,8 @@ import FooterContainer from '../containers/shared/FooterContainer';
 import SignInFormContainer from '../containers/forms/SignInFormContainer';
 
 // Sprites
-import { ReactComponent as LogoKnot } from '../assets/svg/sprite/logo_knot.svg';
-import { ReactComponent as LogoHead } from '../assets/svg/sprite/logo_head.svg';
+import { ReactComponent as LogoKnot } from '../assets/svg/sprite/logo_knot_pride.svg';
+import { ReactComponent as LogoHead } from '../assets/svg/sprite/logo_head_pride.svg';
 
 const SignInScreen = () => (
     <>

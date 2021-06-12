@@ -6,8 +6,8 @@ import { NavLink } from 'react-router-dom';
 import PlayerPhoto from './PlayerPhoto';
 
 // Sprites
-import { ReactComponent as LogoHead } from '../../assets/svg/sprite/logo_head.svg';
-import { ReactComponent as LogoKnot } from '../../assets/svg/sprite/logo_knot.svg';
+import { ReactComponent as LogoHead } from '../../assets/svg/sprite/logo_head_pride.svg';
+import { ReactComponent as LogoKnot } from '../../assets/svg/sprite/logo_knot_pride.svg';
 
 const Header = ({ children, club, user }) => (
     <nav>
