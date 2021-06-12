@@ -54,7 +54,7 @@ const AppLayout = ({ isAuthenticated, isLoading }) => {
     return (
         <Switch>
             <AuthenticatedRoute
-                path="/clubs/:clubId/:path?"
+                path="/clubs/:clubId(\d+)/:path?"
                 component={ClubDeepLinkContainer}
             />
 
